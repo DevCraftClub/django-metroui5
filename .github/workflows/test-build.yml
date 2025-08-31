@@ -33,10 +33,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: ./.github/actions/checkout
+        uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: ./.github/actions/setup-python
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -52,7 +52,7 @@ jobs:
           pytest --cov=metroui5 --cov-report=xml --cov-report=term-missing
 
       - name: Upload coverage to Codecov
-        uses: ./.github/actions/codecov
+        uses: codecov/codecov-action@v4
         with:
           file: ./coverage.xml
           fail_ci_if_error: false
@@ -65,10 +65,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: ./.github/actions/checkout
+        uses: actions/checkout@v4
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: ./.github/actions/setup-python
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -86,7 +86,7 @@ jobs:
           twine check dist/*
 
       - name: Upload build artifacts
-        uses: ./.github/actions/upload-artifact
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist/
@@ -99,10 +99,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: ./.github/actions/checkout
+        uses: actions/checkout@v4
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: ./.github/actions/setup-python
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
