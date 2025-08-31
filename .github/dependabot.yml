@@ -2,8 +2,8 @@
 # Конфигурация Dependabot для Django MetroUI5
 version: 2
 updates:
-  # Python dependencies (pip)
-  # Зависимости Python (pip)
+  # Python dependencies (pip/poetry) - consolidated into one entry
+  # Зависимости Python (pip/poetry) - объединено в одну запись
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
@@ -11,7 +11,7 @@ updates:
       day: "monday"
       time: "09:00"
       timezone: "Europe/Berlin"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 20
     reviewers:
       - "Gokujo"
     assignees:
@@ -19,10 +19,11 @@ updates:
     labels:
       - "dependencies"
       - "python"
+      - "pip"
+      - "poetry"
       - "automated"
     commit-message:
-      prefix: "pip"
-      prefix-development: "pip"
+      prefix: "deps"
       include: "scope"
     ignore:
       # Ignore major version updates for critical packages
@@ -47,7 +48,6 @@ updates:
       - dependency-type: "development"
 
   # GitHub Actions
-  # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -67,93 +67,3 @@ updates:
     commit-message:
       prefix: "github-actions"
       include: "scope"
-
-  # npm dependencies (if any frontend assets)
-  # Зависимости npm (если есть фронтенд ресурсы)
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "wednesday"
-      time: "09:00"
-      timezone: "Europe/Berlin"
-    open-pull-requests-limit: 5
-    reviewers:
-      - "Gokujo"
-    assignees:
-      - "Gokujo"
-    labels:
-      - "dependencies"
-      - "npm"
-      - "automated"
-    commit-message:
-      prefix: "npm"
-      include: "scope"
-    ignore:
-      # Ignore major version updates for critical packages
-      - dependency-name: "metro-ui-core"
-        update-types: ["version-update:semver-major"]
-
-  # Poetry dependencies (pyproject.toml)
-  # Зависимости Poetry (pyproject.toml)
-  - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "friday"
-      time: "09:00"
-      timezone: "Europe/Berlin"
-    open-pull-requests-limit: 8
-    reviewers:
-      - "Gokujo"
-    assignees:
-      - "Gokujo"
-    labels:
-      - "dependencies"
-      - "poetry"
-      - "automated"
-    commit-message:
-      prefix: "poetry"
-      include: "scope"
-    ignore:
-      # Ignore major version updates for critical packages
-      - dependency-name: "django"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "django-*"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "pytest-django"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "pytest"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "mypy"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "black"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "flake8"
-        update-types: ["version-update:semver-major"]
-
-  # Security updates (always enabled)
-  # Обновления безопасности (всегда включены)
-  - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      time: "06:00"
-      timezone: "Europe/Berlin"
-    open-pull-requests-limit: 5
-    reviewers:
-      - "Gokujo"
-    assignees:
-      - "Gokujo"
-    labels:
-      - "dependencies"
-      - "security"
-      - "automated"
-      - "high-priority"
-    commit-message:
-      prefix: "security"
-      include: "scope"
-    # Only security updates
-    ignore:
-      - update-types:
-          ["version-update:semver-minor", "version-update:semver-patch"]
