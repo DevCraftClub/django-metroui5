@@ -26,10 +26,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: ./.github/actions/checkout
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: ./.github/actions/setup-python
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -45,7 +45,7 @@ jobs:
           pytest --cov=metroui5 --cov-report=xml --cov-report=term-missing
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: ./.github/actions/codecov
         with:
           file: ./coverage.xml
           fail_ci_if_error: false
@@ -58,10 +58,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: ./.github/actions/checkout
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v5
+        uses: ./.github/actions/setup-python
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -75,7 +75,7 @@ jobs:
           python -m build
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: ./.github/actions/upload-artifact
         with:
           name: dist
           path: dist/
@@ -89,15 +89,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: ./.github/actions/checkout
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v5
+        uses: ./.github/actions/setup-python
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v5
+        uses: ./.github/actions/download-artifact
         with:
           name: dist
           path: dist/
@@ -121,7 +121,7 @@ jobs:
 
       - name: Create GitHub Release
         if: github.event_name == 'push'
-        uses: actions/create-release@v1
+        uses: ./.github/actions/create-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:

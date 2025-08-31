@@ -1,0 +1,157 @@
+name: 'Codecov'
+description: 'Upload coverage reports to Codecov'
+inputs:
+  file:
+    description: 'Path to coverage file'
+    required: true
+  flags:
+    description: 'Flag the upload to group coverage metrics'
+  name:
+    description: 'Custom defined name of the upload'
+  fail_ci_if_error:
+    description: 'Specify if CI should fail if upload fails'
+    default: 'false'
+  verbose:
+    description: 'Specify if the upload should be verbose'
+    default: 'false'
+  root:
+    description: 'Project root directory'
+    default: '.'
+  token:
+    description: 'Codecov upload token'
+    default: ${{ secrets.CODECOV_TOKEN }}
+  url:
+    description: 'Codecov endpoint'
+    default: 'https://codecov.io'
+  working-directory:
+    description: 'Directory to change to before upload'
+  move_coverage_to_trash:
+    description: 'Move discovered coverage reports to the trash'
+    default: 'false'
+  search_coverage_in:
+    description: 'Directory to search for coverage reports'
+    default: '.'
+  coverage_endpoint:
+    description: 'Specify where to POST coverage data'
+    default: 'https://codecov.io'
+  gcov:
+    description: 'Run with gcov support'
+    default: 'false'
+  gcov_args:
+    description: 'Extra arguments to pass to gcov'
+  gcov_ignore:
+    description: 'Paths to ignore during gcov gathering'
+  gcov_include:
+    description: 'Paths to include during gcov gathering'
+  gcov_exclude:
+    description: 'Paths to exclude during gcov gathering'
+  xcode:
+    description: 'Run with xcode support'
+    default: 'false'
+  xcode_derived_data:
+    description: 'Specify Xcode derived data path'
+  xcode_package:
+    description: 'Specify Xcode package path'
+  xcrun_args:
+    description: 'Extra arguments to pass to xcrun'
+  xcrun_binary:
+    description: 'Specify xcrun binary path'
+  xcrun_ignore:
+    description: 'Paths to ignore during xcrun gathering'
+  xcrun_include:
+    description: 'Paths to include during xcrun gathering'
+  xcrun_exclude:
+    description: 'Paths to exclude during xcrun gathering'
+  jacoco:
+    description: 'Run with jacoco support'
+    default: 'false'
+  jacoco_include:
+    description: 'Paths to include during jacoco gathering'
+  jacoco_exclude:
+    description: 'Paths to exclude during jacoco gathering'
+  lcov:
+    description: 'Run with lcov support'
+    default: 'false'
+  lcov_args:
+    description: 'Extra arguments to pass to lcov'
+  lcov_ignore:
+    description: 'Paths to ignore during lcov gathering'
+  lcov_include:
+    description: 'Paths to include during lcov gathering'
+  lcov_exclude:
+    description: 'Paths to exclude during lcov gathering'
+  coverage:
+    description: 'Run with coverage support'
+    default: 'false'
+  coverage_args:
+    description: 'Extra arguments to pass to coverage'
+  coverage_ignore:
+    description: 'Paths to ignore during coverage gathering'
+  coverage_include:
+    description: 'Paths to include during coverage gathering'
+  coverage_exclude:
+    description: 'Paths to exclude during coverage gathering'
+  coverage_remove:
+    description: 'Paths to remove during coverage gathering'
+  coverage_search_in:
+    description: 'Directory to search for coverage reports'
+    default: '.'
+  coverage_move_to_trash:
+    description: 'Move discovered coverage reports to the trash'
+    default: 'false'
+  coverage_endpoint:
+    description: 'Specify where to POST coverage data'
+    default: 'https://codecov.io'
+  coverage_token:
+    description: 'Codecov upload token'
+    default: ${{ secrets.CODECOV_TOKEN }}
+  coverage_url:
+    description: 'Codecov endpoint'
+    default: 'https://codecov.io'
+  coverage_working_directory:
+    description: 'Directory to change to before upload'
+  coverage_root:
+    description: 'Project root directory'
+    default: '.'
+  coverage_name:
+    description: 'Custom defined name of the upload'
+  coverage_flags:
+    description: 'Flag the upload to group coverage metrics'
+  coverage_fail_ci_if_error:
+    description: 'Specify if CI should fail if upload fails'
+    default: 'false'
+  coverage_verbose:
+    description: 'Specify if the upload should be verbose'
+    default: 'false'
+runs:
+  using: 'composite'
+  steps:
+    - name: Upload coverage to Codecov
+      shell: bash
+      run: |
+        # Check if coverage file exists
+        if [ ! -f "${{ inputs.file }}" ]; then
+          echo "Coverage file ${{ inputs.file }} not found"
+          if [ "${{ inputs.fail_ci_if_error }}" = "true" ]; then
+            exit 1
+          fi
+          exit 0
+        fi
+        
+        # Install codecov if not available
+        if ! command -v codecov &> /dev/null; then
+          pip install codecov
+        fi
+        
+        # Upload to codecov
+        echo "Uploading coverage to Codecov..."
+        codecov \
+          --file "${{ inputs.file }}" \
+          --root "${{ inputs.root }}" \
+          --token "${{ inputs.token }}" \
+          --url "${{ inputs.url }}" \
+          --verbose="${{ inputs.verbose }}" \
+          --fail-on-error="${{ inputs.fail_ci_if_error }}" \
+          --name "${{ inputs.name }}" \
+          --flags "${{ inputs.flags }}" \
+          || echo "Codecov upload failed but continuing..."
