@@ -1,72 +1,92 @@
-name: Запрос на новый функционал
-description: Опиши то, что хочешь видеть в плагине
-title: "[Запрос]: "
+name: Feature Request
+description: Request a new feature for Django MetroUI5
+title: "[Feature]: "
 labels:
-    - Запрос на функционал
     - enhancement
+    - Запрос на функционал
 assignees:
     - Gokujo
 body:
     -   type: markdown
         attributes:
             value: |
-                Спасибо, что нашли время, чтобы составить этот отчёт
+                Thanks for taking the time to request a new feature!
+                
+                Спасибо, что нашли время, чтобы запросить новую функцию!
     -   type: checkboxes
         id: read-rules
         attributes:
-            label: Пользовательское соглашение
-            description: Перед просьбой добавить или "починить" что-либо в срочном порядке - [нужно прочесть соглашение](https://devcraft.club/pages/licence-agreement/).
+            label: User Agreement
+            description: Before requesting to add or "fix" anything urgently - [please read the agreement](https://devcraft.club/pages/licence-agreement/).
             options:
-                -   label: Я прочёл / прочла соглашение и согласен / согласна с ними
+                -   label: I have read and agree to the terms and conditions
                     required: true
     -   type: textarea
         id: what-do-you-need
         attributes:
-            label: В чём соль?
-            description: Если можно, то пожалуйста, опиши то, что хочешь увидеть в плагине в дальнейшем. Если можно пошагово и как можно детальней
-            placeholder: Я хочу, но не значю что...
-            value: "Моя хотелка!"
+            label: What do you need?
+            description: Please describe the feature you would like to see in Django MetroUI5. Be as detailed as possible
+            placeholder: I would like to see...
+            value: "I need a feature that..."
+        validations:
+            required: true
+    -   type: textarea
+        id: use-case
+        attributes:
+            label: Use Case
+            description: How would this feature be used? What problem does it solve?
+            placeholder: This feature would help when...
+            value: "Use case description..."
         validations:
             required: true
     -  type: dropdown
-       id: dle-version
+       id: django-version
        attributes:
-            label: Версия DLE
-            description: На какой версии DLE это произошло?
+            label: Django Version
+            description: What version of Django are you targeting?
             options:
-                - "18.0 (Default)"
-                - "17.3"
-                - "17.2"
-                - "17.1"
-                - "17.0"
-                - "17.х"
-                - "16.x"
-                - "15.x"
-                - "14.x"
-                - "13.x"
-                - "< 13.x"
+                - "5.2+ (Default)"
+                - "5.1"
+                - "5.0"
+                - "4.2"
+                - "4.1"
+                - "4.0"
+                - "3.2"
+                - "3.1"
+                - "3.0"
+                - "< 3.0"
        validations:
             required: true
     -   type: dropdown
-        id: php-version
+        id: python-version
         attributes:
-            label: Версия PHP
-            description: На какой версии PHP работает сайт?
+            label: Python Version
+            description: What version of Python are you targeting?
             options:
-                - "8.3 (Default)"
-                - "8.2"
-                - "8.1"
-                - "7.x"
-                - "5.x"
+                - "3.13+ (Default)"
+                - "3.12"
+                - "3.11"
+                - "3.10"
+                - "3.9"
+                - "3.8"
+                - "< 3.8"
         validations:
             required: true
-
     -   type: textarea
         id: "screenshots"
         attributes:
-            label: Скриншоты и файлы
-            description: Если есть возможность, добавь скриншоты и / или файлы как ты себе представляешь новый функционал
+            label: Mockups or Examples
+            description: If possible, add mockups, screenshots, or examples of how you envision this feature
             value: |
-                ![DESCRIPTION](LINK.png)
+                ![Description](link-to-mockup.png)
+        validations:
+            required: false
+    -   type: textarea
+        id: "alternatives"
+        attributes:
+            label: Alternatives Considered
+            description: Have you considered any alternative solutions or workarounds?
+            placeholder: I tried using... but it didn't work because...
+            value: "Alternative solutions..."
         validations:
             required: false
