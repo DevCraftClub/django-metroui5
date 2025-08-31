@@ -24,25 +24,33 @@ setup(
 	version="0.1.0",
 	author="Maxim Harder",
 	author_email="dev@devcraft.club",
-	description="MetroUI v5 integration for Django 5.2.5+",
+	description="MetroUI v5 integration for Django 4.1+",
 	long_description=read_readme(),
 	long_description_content_type="text/markdown",
 	url="https://github.com/DevCraftClub/django-metroui5",
 	project_urls={
 		"Bug Tracker": "https://github.com/DevCraftClub/django-metroui5/issues",
-		"Documentation (Russian)": "https://readme.devcraft.club/",
-		"Documentation (English)": "https://github.com/DevCraftClub/django-metroui5/docs/en/"
+		"Documentation (Russian)": "https://github.com/DevCraftClub/django-metroui5/tree/main/docs/ru",
+		"Documentation (English)": "https://github.com/DevCraftClub/django-metroui5/tree/main/docs/en"
 	},
 	classifiers=[
 		"Development Status :: 3 - Alpha",
 		"Environment :: Web Environment",
 		"Framework :: Django",
+		"Framework :: Django :: 4.1",
+		"Framework :: Django :: 4.2",
+		"Framework :: Django :: 5.0",
+		"Framework :: Django :: 5.1",
 		"Framework :: Django :: 5.2",
 		"Intended Audience :: Developers",
 		"License :: OSI Approved :: MIT License",
 		"Operating System :: OS Independent",
 		"Programming Language :: Python",
 		"Programming Language :: Python :: 3",
+		"Programming Language :: Python :: 3.9",
+		"Programming Language :: Python :: 3.10",
+		"Programming Language :: Python :: 3.11",
+		"Programming Language :: Python :: 3.12",
 		"Programming Language :: Python :: 3.13",
 		"Topic :: Internet :: WWW/HTTP",
 		"Topic :: Internet :: WWW/HTTP :: Dynamic Content",
@@ -51,9 +59,9 @@ setup(
 	package_dir={"": "."},
 	packages=find_packages(where="."),
 	include_package_data=True,
-	python_requires=">=3.13",
+	python_requires=">=3.9",
 	install_requires=[
-		"Django>=5.2.5",
+		"Django>=4.1",
 	],
 	extras_require={
 		"dev": [

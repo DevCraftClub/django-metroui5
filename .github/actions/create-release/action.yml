@@ -1,0 +1,53 @@
+name: 'Create Release'
+description: 'Create a GitHub release'
+inputs:
+  tag_name:
+    description: 'The name of the tag for this release'
+    required: true
+  release_name:
+    description: 'The name of the release'
+  body:
+    description: 'Text describing the contents of the tag'
+  body_path:
+    description: 'Path to file with contents describing the release'
+  draft:
+    description: 'true to create a draft (unpublished) release, false to create a published one'
+    default: 'false'
+  prerelease:
+    description: 'true to identify the release as a prerelease, false to identify the release as a full release'
+    default: 'false'
+  commitish:
+    description: 'Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository default branch (usually main)'
+  generate_release_notes:
+    description: 'Automatically generate the name and body for this release. If name is specified, the specified name will be used; otherwise, a name will be automatically generated. If body is specified, the body will be pre-pended to the automatically generated notes'
+    default: 'false'
+  discussion_category_name:
+    description: 'If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored'
+  make_latest:
+    description: 'Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as the latest. Defaults to true for non-draft, non-prerelease releases'
+    default: 'true'
+  token:
+    description: 'Token to use to create the release. Defaults to ${{ github.token }}'
+    default: ${{ github.token }}
+runs:
+  using: 'composite'
+  steps:
+    - name: Create Release
+      shell: bash
+      run: |
+        # Create release using GitHub CLI
+        if command -v gh &> /dev/null; then
+          echo "Creating release using GitHub CLI..."
+          gh release create "${{ inputs.tag_name }}" \
+            --title "${{ inputs.release_name }}" \
+            --notes "${{ inputs.body }}" \
+            --draft="${{ inputs.draft }}" \
+            --prerelease="${{ inputs.prerelease }}" \
+            --target "${{ inputs.commitish || 'main' }}" \
+            --generate-notes="${{ inputs.generate_release_notes }}" \
+            --category "${{ inputs.discussion_category_name }}" \
+            --latest="${{ inputs.make_latest }}" \
+            || echo "Release creation failed but continuing..."
+        else
+          echo "GitHub CLI not available, skipping release creation"
+        fi

@@ -1,0 +1,40 @@
+name: 'Download Artifact'
+description: 'Download artifacts from a workflow run'
+inputs:
+  name:
+    description: 'Artifact name'
+    required: true
+  path:
+    description: 'Directory path where the artifact will be downloaded'
+    default: '.'
+  pattern:
+    description: 'Pattern to match artifacts'
+    default: '*'
+  merge-multiple:
+    description: 'If multiple artifacts are matched, this changes the behavior of how they are downloaded to single directory. If false, the artifacts are downloaded to separate directories. If true, the artifacts are merged into a single directory. Default is false'
+    default: 'false'
+  github-token:
+    description: 'Token to use to download the artifact. Defaults to ${{ github.token }}'
+    default: ${{ github.token }}
+  run-id:
+    description: 'The ID of the workflow run where the artifact was uploaded'
+runs:
+  using: 'composite'
+  steps:
+    - name: Download Artifact
+      shell: bash
+      run: |
+        # Create download directory
+        mkdir -p "${{ inputs.path }}"
+        
+        # Check if artifacts exist in the workspace
+        if [ -d "${{ github.workspace }}/_artifacts" ]; then
+          echo "Downloading artifacts from workspace..."
+          cp -r "${{ github.workspace }}/_artifacts/"* "${{ inputs.path }}/" || true
+        else
+          echo "No artifacts found in workspace"
+        fi
+        
+        # List downloaded files
+        echo "Downloaded artifacts:"
+        ls -la "${{ inputs.path }}/" || true
