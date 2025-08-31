@@ -1,0 +1,158 @@
+{% extends "metroui5/layout/base.html" %}
+
+{% block title %}Демонстрация тем MetroUI 5{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>🎨 Демонстрация тем MetroUI 5</h1>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Информация о текущей теме</h3>
+                </div>
+                <div class="card-content">
+                    {% metroui5_theme_info as theme_info %}
+                    <p><strong>Текущая тема:</strong> {{ theme_info.theme }}</p>
+                    <p><strong>Target элемент:</strong> {{ theme_info.target }}</p>
+                    <p><strong>Theme switcher:</strong> {{ theme_info.switcher_enabled|yesno:"включен,выключен" }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cell-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Управление темами</h3>
+                </div>
+                <div class="card-content">
+                    <p>Используйте theme switcher для переключения между темами:</p>
+                    
+                    <div class="d-flex flex-column gap-2">
+                        <div>
+                            <label>Полный theme switcher:</label>
+                            {% metroui5_theme_switcher %}
+                        </div>
+                        
+                        <div>
+                            <label>Switch режим:</label>
+                            {% metroui5_theme_switcher_switch %}
+                        </div>
+                        
+                        <div>
+                            <label>Button режим:</label>
+                            {% metroui5_theme_switcher_button %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="cell-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Компоненты в текущей теме</h3>
+                </div>
+                <div class="card-content">
+                    <p>Все компоненты MetroUI 5 автоматически адаптируются к выбранной теме.</p>
+                    
+                    <div class="d-flex flex-column gap-2">
+                        <button class="button primary">Primary кнопка</button>
+                        <button class="button secondary">Secondary кнопка</button>
+                        <button class="button success">Success кнопка</button>
+                        <button class="button alert">Alert кнопка</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cell-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Плитки</h3>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="cell-6">
+                            <div class="tile tile-small tile-blue" data-role="tile">
+                                <div class="tile-content">
+                                    <h3 class="tile-title">Blue</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-6">
+                            <div class="tile tile-small tile-green" data-role="tile">
+                                <div class="tile-content">
+                                    <h3 class="tile-title">Green</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cell-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Формы</h3>
+                </div>
+                <div class="card-content">
+                    <form>
+                        <div class="form-group">
+                            <label>Имя:</label>
+                            <input type="text" class="form-control" placeholder="Введите имя">
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" class="form-control" placeholder="Введите email">
+                        </div>
+                        <button type="submit" class="button primary">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="cell-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Настройка тем</h3>
+                </div>
+                <div class="card-content">
+                    <p>Для настройки тем используйте следующие параметры в <code>settings.py</code>:</p>
+                    
+                    <pre><code>METROUI5 = {
+    # Тема: 'light', 'dark', или 'auto'
+    'theme': 'light',
+    
+    # Target элемент для применения темы
+    'theme_target': 'html',
+    
+    # Включить theme switcher
+    'theme_switcher_enabled': True,
+}</code></pre>
+                    
+                    <h4>Доступные значения темы:</h4>
+                    <ul>
+                        <li><strong>light</strong> - светлая тема (по умолчанию)</li>
+                        <li><strong>dark</strong> - темная тема</li>
+                        <li><strong>auto</strong> - автоматическое определение по системным настройкам</li>
+                    </ul>
+                    
+                    <h4>Target элементы:</h4>
+                    <ul>
+                        <li><strong>html</strong> - применять тему к тегу &lt;html&gt; (по умолчанию)</li>
+                        <li><strong>body</strong> - применять тему к тегу &lt;body&gt;</li>
+                        <li><strong>CSS селектор</strong> - например #app, .container</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

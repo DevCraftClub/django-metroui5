@@ -1,0 +1,319 @@
+{% extends 'base.html' %}
+{% load metroui5 %}
+
+{% block content %}
+<div class="grid">
+    <div class="row">
+        <div class="cell-12">
+            <h1 class="text-center">Демонстрация MetroUI Tiles</h1>
+            <p class="text-center text-leader">
+                MetroUI tiles - это уникальные компоненты для создания современного интерфейса
+            </p>
+        </div>
+    </div>
+    
+    <!-- Tile Sizes -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Размеры Tiles</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-2">
+            {% metroui5_tile "Small" size="small" color="blue" %}
+        </div>
+        <div class="cell-md-2">
+            {% metroui5_tile "Medium" size="medium" color="green" %}
+        </div>
+        <div class="cell-md-2">
+            {% metroui5_tile "Large" size="large" color="red" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Wide" size="wide" color="yellow" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Tall" size="tall" color="purple" %}
+        </div>
+    </div>
+    
+    <!-- Tile Colors -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Цвета Tiles</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-1">
+            {% metroui5_tile "Blue" size="small" color="blue" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Green" size="small" color="green" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Red" size="small" color="red" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Yellow" size="small" color="yellow" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Orange" size="small" color="orange" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Purple" size="small" color="purple" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Pink" size="small" color="pink" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Brown" size="small" color="brown" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Gray" size="small" color="gray" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Blue" size="small" color="blue" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Green" size="small" color="green" %}
+        </div>
+        <div class="cell-md-1">
+            {% metroui5_tile "Red" size="small" color="red" %}
+        </div>
+    </div>
+    
+    <!-- Tiles with Icons -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Tiles с иконками</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            {% metroui5_tile "Настройки" size="medium" color="blue" icon="cog" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Пользователи" size="medium" color="green" icon="users" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Статистика" size="medium" color="red" icon="stats-bars" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Уведомления" size="medium" color="yellow" icon="bell" %}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            {% metroui5_tile "Домой" size="medium" color="purple" icon="home" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Поиск" size="medium" color="pink" icon="search" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Файлы" size="medium" color="brown" icon="folder" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Настройки" size="medium" color="gray" icon="wrench" %}
+        </div>
+    </div>
+    
+    <!-- Tiles with Content -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Tiles с содержимым</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-4">
+            {% metroui5_tile "Пользователи онлайн" size="large" color="blue" content="1,234 активных пользователей" %}
+        </div>
+        <div class="cell-md-4">
+            {% metroui5_tile "Новые сообщения" size="large" color="green" content="56 непрочитанных сообщений" %}
+        </div>
+        <div class="cell-md-4">
+            {% metroui5_tile "Системные уведомления" size="large" color="red" content="3 важных уведомления" %}
+        </div>
+    </div>
+    
+    <!-- Interactive Tiles -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Интерактивные Tiles</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <div class="tile tile-medium tile-blue" data-role="tile" data-onclick="alert('Клик по синему tile!')">
+                <span class="icon mif-plus"></span>
+                <div class="tile-content">
+                    <h3 class="tile-title">Кликни меня!</h3>
+                    <div class="tile-content-text">Этот tile реагирует на клики</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cell-md-6">
+            <div class="tile tile-medium tile-green" data-role="tile" data-onclick="alert('Клик по зеленому tile!')">
+                <span class="icon mif-checkmark"></span>
+                <div class="tile-content">
+                    <h3 class="tile-title">И меня тоже!</h3>
+                    <div class="tile-content-text">Этот tile тоже интерактивный</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tile Grid Layouts -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Различные макеты Tiles</h2>
+        </div>
+    </div>
+    
+    <!-- Dashboard Layout -->
+    <div class="row">
+        <div class="cell-md-8">
+            <div class="tile tile-wide tile-blue" data-role="tile">
+                <span class="icon mif-chart-line"></span>
+                <div class="tile-content">
+                    <h3 class="tile-title">Главная панель</h3>
+                    <div class="tile-content-text">Широкая панель для отображения важной информации</div>
+                </div>
+            </div>
+        </div>
+        <div class="cell-md-4">
+            <div class="tile tile-tall tile-green" data-role="tile">
+                <span class="icon mif-user"></span>
+                <div class="tile-content">
+                    <h3 class="tile-title">Профиль</h3>
+                    <div class="tile-content-text">Высокий tile для профиля пользователя</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-4">
+            <div class="tile tile-medium tile-red" data-role="tile">
+                <span class="icon mif-mail"></span>
+                <div class="tile-content">
+                    <h3 class="tile-title">Почта</h3>
+                </div>
+            </div>
+        </div>
+        <div class="cell-md-4">
+            <div class="tile tile-medium tile-yellow" data-role="tile">
+                <span class="icon mif-calendar"></span>
+                <div class="tile-content">
+                    <h3 class="tile-title">Календарь</h3>
+                </div>
+            </div>
+        </div>
+        <div class="cell-md-4">
+            <div class="tile tile-medium tile-purple" data-role="tile">
+                <span class="icon mif-cog"></span>
+                <div class="tile-content">
+                    <h3 class="tile-title">Настройки</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Responsive Tiles -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Responsive Tiles</h2>
+            <p class="text-center">Эти tiles адаптируются под размер экрана</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3 cell-sm-6">
+            {% metroui5_tile "Адаптивный 1" size="medium" color="blue" icon="star" %}
+        </div>
+        <div class="cell-md-3 cell-sm-6">
+            {% metroui5_tile "Адаптивный 2" size="medium" color="green" icon="heart" %}
+        </div>
+        <div class="cell-md-3 cell-sm-6">
+            {% metroui5_tile "Адаптивный 3" size="medium" color="red" icon="like" %}
+        </div>
+        <div class="cell-md-3 cell-sm-6">
+            {% metroui5_tile "Адаптивный 4" size="medium" color="yellow" icon="smile" %}
+        </div>
+    </div>
+    
+    <!-- Tile Effects -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Эффекты Tiles</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-4">
+            <div class="tile tile-medium tile-blue" data-role="tile" data-effect="slideUp">
+                <span class="icon mif-rocket"></span>
+                <div class="tile-content">
+                    <h3 class="tile-title">Slide Up</h3>
+                    <div class="tile-content-text">Эффект появления снизу</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cell-md-4">
+            <div class="tile tile-medium tile-green" data-role="tile" data-effect="slideDown">
+                <span class="icon mif-arrow-down"></span>
+                <div class="tile-content">
+                    <h3 class="tile-title">Slide Down</h3>
+                    <div class="tile-content-text">Эффект появления сверху</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cell-md-4">
+            <div class="tile tile-medium tile-red" data-role="tile" data-effect="fadeIn">
+                <span class="icon mif-eye"></span>
+                <div class="tile-content">
+                    <h3 class="tile-title">Fade In</h3>
+                    <div class="tile-content-text">Эффект плавного появления</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Добавляем интерактивность для tiles
+document.addEventListener('DOMContentLoaded', function() {
+    // Находим все tiles с data-onclick
+    const tiles = document.querySelectorAll('[data-onclick]');
+    
+    tiles.forEach(tile => {
+        tile.addEventListener('click', function() {
+            const onclick = this.getAttribute('data-onclick');
+            if (onclick) {
+                eval(onclick);
+            }
+        });
+    });
+    
+    // Добавляем hover эффекты
+    const allTiles = document.querySelectorAll('.tile');
+    allTiles.forEach(tile => {
+        tile.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+        
+        tile.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+});
+</script>
+{% endblock %}

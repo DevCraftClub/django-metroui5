@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load metroui5 %}
+
+{% block content %}
+<div class="grid">
+    <div class="row">
+        <div class="cell-12">
+            <h1 class="text-center">Демонстрация компонентов MetroUI</h1>
+            <p class="text-center text-leader">
+                Все доступные UI компоненты и их варианты использования
+            </p>
+        </div>
+    </div>
+    
+    <!-- Buttons Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Кнопки</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <h4>Основные кнопки</h4>
+            <div class="button-group">
+                {% metroui5_button "Default" button_type="default" %}
+                {% metroui5_button "Primary" button_type="primary" %}
+                {% metroui5_button "Secondary" button_type="secondary" %}
+                {% metroui5_button "Success" button_type="success" %}
+                {% metroui5_button "Danger" button_type="danger" %}
+                {% metroui5_button "Warning" button_type="warning" %}
+                {% metroui5_button "Info" button_type="info" %}
+            </div>
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Outline кнопки</h4>
+            <div class="button-group">
+                {% metroui5_button "Default" button_type="default" outline=True %}
+                {% metroui5_button "Primary" button_type="primary" outline=True %}
+                {% metroui5_button "Secondary" button_type="secondary" outline=True %}
+                {% metroui5_button "Success" button_type="success" outline=True %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <h4>Размеры кнопок</h4>
+            <div class="button-group">
+                {% metroui5_button "Small" button_type="primary" size="sm" %}
+                {% metroui5_button "Normal" button_type="primary" %}
+                {% metroui5_button "Large" button_type="primary" size="lg" %}
+            </div>
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Кнопки с иконками</h4>
+            <div class="button-group">
+                <button class="button primary">
+                    <span class="mif-home"></span>
+                    Домой
+                </button>
+                <button class="button secondary">
+                    <span class="mif-cog"></span>
+                    Настройки
+                </button>
+                <button class="button success">
+                    <span class="mif-checkmark"></span>
+                    Готово
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cards Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Карточки</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-4">
+            {% metroui5_card 
+                header="Заголовок карточки" 
+                content="Это содержимое карточки с некоторым текстом для демонстрации."
+                footer="Подвал карточки" %}
+        </div>
+        
+        <div class="cell-md-4">
+            {% metroui5_card 
+                header="Карточка с кнопкой" 
+                content="Карточка с кнопкой в подвале для демонстрации."
+                footer="{% metroui5_button 'Действие' button_type='primary' %}" %}
+        </div>
+        
+        <div class="cell-md-4">
+            {% metroui5_card 
+                header="Простая карточка" 
+                content="Карточка только с заголовком и содержимым." %}
+        </div>
+    </div>
+    
+    <!-- Progress Bars Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Progress Bars</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            <h4>Загрузка</h4>
+            {% metroui5_progress 25 color="blue" %}
+        </div>
+        <div class="cell-md-3">
+            <h4>Обработка</h4>
+            {% metroui5_progress 50 color="green" %}
+        </div>
+        <div class="cell-md-3">
+            <h4>Почти готово</h4>
+            {% metroui5_progress 75 color="yellow" %}
+        </div>
+        <div class="cell-md-3">
+            <h4>Завершено</h4>
+            {% metroui5_progress 100 color="success" %}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <h4>Размеры Progress Bars</h4>
+            <div class="form-group">
+                <label>Мини</label>
+                {% metroui5_progress 60 color="blue" size="mini" %}
+            </div>
+            <div class="form-group">
+                <label>Маленький</label>
+                {% metroui5_progress 60 color="green" size="small" %}
+            </div>
+            <div class="form-group">
+                <label>Обычный</label>
+                {% metroui5_progress 60 color="red" %}
+            </div>
+            <div class="form-group">
+                <label>Большой</label>
+                {% metroui5_progress 60 color="purple" size="large" %}
+            </div>
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Цвета Progress Bars</h4>
+            <div class="form-group">
+                <label>Синий</label>
+                {% metroui5_progress 70 color="blue" %}
+            </div>
+            <div class="form-group">
+                <label>Зеленый</label>
+                {% metroui5_progress 70 color="green" %}
+            </div>
+            <div class="form-group">
+                <label>Красный</label>
+                {% metroui5_progress 70 color="red" %}
+            </div>
+            <div class="form-group">
+                <label>Желтый</label>
+                {% metroui5_progress 70 color="yellow" %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alerts Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Уведомления</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <h4>Типы уведомлений</h4>
+            {% metroui5_alert "Информационное сообщение" alert_type="info" %}
+            {% metroui5_alert "Успешное выполнение операции" alert_type="success" %}
+            {% metroui5_alert "Предупреждение о важной информации" alert_type="warning" %}
+            {% metroui5_alert "Ошибка при выполнении операции" alert_type="danger" %}
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Закрываемые уведомления</h4>
+            {% metroui5_alert "Это уведомление можно закрыть" alert_type="info" dismissible=True %}
+            {% metroui5_alert "Успешное выполнение с возможностью закрытия" alert_type="success" dismissible=True %}
+            {% metroui5_alert "Предупреждение с кнопкой закрытия" alert_type="warning" dismissible=True %}
+            {% metroui5_alert "Ошибка с возможностью закрытия" alert_type="danger" dismissible=True %}
+        </div>
+    </div>
+    
+    <!-- Grid System -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Grid система</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-1">
+            <div class="bg-blue fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-green fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-red fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-yellow fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-purple fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-pink fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-brown fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-gray fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-blue fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-green fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-red fg-white p-2 text-center">1</div>
+        </div>
+        <div class="cell-md-1">
+            <div class="bg-yellow fg-white p-2 text-center">1</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            <div class="bg-blue fg-white p-2 text-center">3</div>
+        </div>
+        <div class="cell-md-3">
+            <div class="bg-green fg-white p-2 text-center">3</div>
+        </div>
+        <div class="cell-md-3">
+            <div class="bg-red fg-white p-2 text-center">3</div>
+        </div>
+        <div class="cell-md-3">
+            <div class="bg-yellow fg-white p-2 text-center">3</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-4">
+            <div class="bg-purple fg-white p-2 text-center">4</div>
+        </div>
+        <div class="cell-md-4">
+            <div class="bg-pink fg-white p-2 text-center">4</div>
+        </div>
+        <div class="cell-md-4">
+            <div class="bg-brown fg-white p-2 text-center">4</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <div class="bg-gray fg-white p-2 text-center">6</div>
+        </div>
+        <div class="cell-md-6">
+            <div class="bg-blue fg-white p-2 text-center">6</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-8">
+            <div class="bg-green fg-white p-2 text-center">8</div>
+        </div>
+        <div class="cell-md-4">
+            <div class="bg-red fg-white p-2 text-center">4</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-12">
+            <div class="bg-yellow fg-white p-2 text-center">12</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

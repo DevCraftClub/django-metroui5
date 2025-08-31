@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load metroui5 %}
+
+{% block content %}
+<div class="grid">
+    <div class="row">
+        <div class="cell-12">
+            <h1 class="text-center">Демонстрация форм MetroUI</h1>
+            <p class="text-center text-leader">
+                Автоматическое рендеринг Django форм с MetroUI стилизацией
+            </p>
+        </div>
+    </div>
+    
+    <!-- Contact Form -->
+    <div class="row">
+        <div class="cell-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Форма контактов</h3>
+                </div>
+                <div class="card-content">
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="contact_submit" value="1">
+                        
+                        <!-- Рендеринг всей формы -->
+                        {% metroui5_form contact_form %}
+                        
+                        <div class="form-actions">
+                            {% metroui5_button "Отправить" button_type="primary" type="submit" %}
+                            {% metroui5_button "Очистить" button_type="secondary" type="reset" %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cell-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Форма профиля пользователя</h3>
+                </div>
+                <div class="card-content">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="profile_submit" value="1">
+                        
+                        <!-- Рендеринг отдельных полей -->
+                        <div class="form-group">
+                            {% metroui5_field profile_form.username %}
+                        </div>
+                        
+                        <div class="form-group">
+                            {% metroui5_field profile_form.first_name %}
+                        </div>
+                        
+                        <div class="form-group">
+                            {% metroui5_field profile_form.last_name %}
+                        </div>
+                        
+                        <div class="form-group">
+                            {% metroui5_field profile_form.email %}
+                        </div>
+                        
+                        <div class="form-group">
+                            {% metroui5_field profile_form.bio %}
+                        </div>
+                        
+                        <div class="form-group">
+                            {% metroui5_field profile_form.avatar %}
+                        </div>
+                        
+                        <div class="form-group">
+                            {% metroui5_field profile_form.is_active %}
+                        </div>
+                        
+                        <div class="form-actions">
+                            {% metroui5_button "Сохранить" button_type="success" type="submit" %}
+                            {% metroui5_button "Отмена" button_type="secondary" type="reset" %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Form Features -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Возможности форм MetroUI</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Автоматическая стилизация</h4>
+                </div>
+                <div class="card-content">
+                    <p>Все поля форм автоматически получают MetroUI стилизацию</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cell-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Валидация</h4>
+                </div>
+                <div class="card-content">
+                    <p>Ошибки валидации отображаются в MetroUI стиле</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cell-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Responsive</h4>
+                </div>
+                <div class="card-content">
+                    <p>Формы адаптируются под все размеры экрана</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Field Examples -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Примеры полей</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <h4>Размеры полей</h4>
+            <div class="form-group">
+                <label>Маленькое поле</label>
+                <input type="text" class="input-sm" placeholder="Small input">
+            </div>
+            <div class="form-group">
+                <label>Обычное поле</label>
+                <input type="text" class="input" placeholder="Normal input">
+            </div>
+            <div class="form-group">
+                <label>Большое поле</label>
+                <input type="text" class="input-lg" placeholder="Large input">
+            </div>
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Типы полей</h4>
+            <div class="form-group">
+                <label>Текстовое поле</label>
+                <input type="text" class="input" placeholder="Text input">
+            </div>
+            <div class="form-group">
+                <label>Email поле</label>
+                <input type="email" class="input" placeholder="Email input">
+            </div>
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" class="input" placeholder="Password input">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

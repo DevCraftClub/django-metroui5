@@ -1,0 +1,542 @@
+{% extends 'base.html' %}
+{% load metroui5 %}
+
+{% block content %}
+<div class="grid">
+    <div class="row">
+        <div class="cell-12">
+            <h1 class="text-center">Расширенные компоненты MetroUI</h1>
+            <p class="text-center text-leader">
+                Продвинутые UI компоненты для создания сложных интерфейсов
+            </p>
+        </div>
+    </div>
+    
+    <!-- Accordion Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Accordion</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            {% metroui5_accordion items=accordion_items %}
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Код для создания accordion:</h4>
+            <pre><code>
+{% metroui5_accordion items=accordion_items %}
+            </code></pre>
+            
+            <h4>Данные в Python:</h4>
+            <pre><code>
+accordion_items = [
+    {'title': 'Раздел 1', 'content': 'Содержимое первого раздела'},
+    {'title': 'Раздел 2', 'content': 'Содержимое второго раздела'},
+    {'title': 'Раздел 3', 'content': 'Содержимое третьего раздела'},
+]
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Tabs Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Tabs</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-8">
+            {% metroui5_tabs tabs=tabs_data %}
+        </div>
+        
+        <div class="cell-md-4">
+            <h4>Код для создания tabs:</h4>
+            <pre><code>
+{% metroui5_tabs tabs=tabs_data %}
+            </code></code>
+        </div>
+    </div>
+    
+    <!-- Table Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Table</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-8">
+            {% metroui5_table headers=table_headers rows=table_rows %}
+        </div>
+        
+        <div class="cell-md-4">
+            <h4>Код для создания table:</h4>
+            <pre><code>
+{% metroui5_table headers=table_headers rows=table_rows %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Navigation Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Navigation</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            {% metroui5_navigation items=navigation_items %}
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Код для создания navigation:</h4>
+            <pre><code>
+{% metroui5_navigation items=navigation_items %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Sidebar Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Sidebar</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            {% metroui5_sidebar items=sidebar_items %}
+        </div>
+        
+        <div class="cell-md-9">
+            <h4>Код для создания sidebar:</h4>
+            <pre><code>
+{% metroui5_sidebar items=sidebar_items %}
+            </code></pre>
+            
+            <h4>Основное содержимое</h4>
+            <p>Это основное содержимое страницы, которое работает вместе с sidebar.</p>
+            <p>Sidebar предоставляет навигацию по разделам сайта.</p>
+        </div>
+    </div>
+    
+    <!-- Dropdown Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Dropdown</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-4">
+            <h4>Простой dropdown:</h4>
+            {% metroui5_dropdown items=dropdown_items button_text="Выберите опцию" %}
+        </div>
+        
+        <div class="cell-md-4">
+            <h4>Dropdown с действиями:</h4>
+            {% metroui5_dropdown items=action_items button_text="Действия" %}
+        </div>
+        
+        <div class="cell-md-4">
+            <h4>Код для создания dropdown:</h4>
+            <pre><code>
+{% metroui5_dropdown items=dropdown_items button_text="Выберите опцию" %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Input Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Input компоненты</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            <h4>Текстовое поле:</h4>
+            {% metroui5_input input_type="text" placeholder="Введите текст" %}
+        </div>
+        
+        <div class="cell-md-3">
+            <h4>Email поле:</h4>
+            {% metroui5_input input_type="email" placeholder="Введите email" %}
+        </div>
+        
+        <div class="cell-md-3">
+            <h4>Пароль:</h4>
+            {% metroui5_input input_type="password" placeholder="Введите пароль" %}
+        </div>
+        
+        <div class="cell-md-3">
+            <h4>Поиск:</h4>
+            {% metroui5_input input_type="search" placeholder="Поиск..." %}
+        </div>
+    </div>
+    
+    <!-- List Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">List компоненты</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-4">
+            <h4>Маркированный список:</h4>
+            {% metroui5_list items=list_items list_type="ul" %}
+        </div>
+        
+        <div class="cell-md-4">
+            <h4>Нумерованный список:</h4>
+            {% metroui5_list items=list_items list_type="ol" %}
+        </div>
+        
+        <div class="cell-md-4">
+            <h4>Код для создания list:</h4>
+            <pre><code>
+{% metroui5_list items=list_items list_type="ul" %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Menu Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Menu</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            {% metroui5_menu items=menu_items %}
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Код для создания menu:</h4>
+            <pre><code>
+{% metroui5_menu items=menu_items %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Panel Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Panel</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-4">
+            {% metroui5_panel title="Заголовок панели" content="Содержимое панели с некоторым текстом для демонстрации." %}
+        </div>
+        
+        <div class="cell-md-4">
+            {% metroui5_panel content="Панель только с содержимым, без заголовка." %}
+        </div>
+        
+        <div class="cell-md-4">
+            <h4>Код для создания panel:</h4>
+            <pre><code>
+{% metroui5_panel title="Заголовок" content="Содержимое" %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Toolbar Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Toolbar</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-8">
+            {% metroui5_toolbar items=toolbar_items %}
+        </div>
+        
+        <div class="cell-md-4">
+            <h4>Код для создания toolbar:</h4>
+            <pre><code>
+{% metroui5_toolbar items=toolbar_items %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Modal Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Modal</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <button class="button primary" onclick="showModal()">
+                Открыть Modal
+            </button>
+            
+            {% metroui5_modal title="Пример Modal" content="Это содержимое модального окна. Здесь может быть любой HTML контент." %}
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Код для создания modal:</h4>
+            <pre><code>
+{% metroui5_modal title="Заголовок" content="Содержимое" %}
+            </code></pre>
+            
+            <h4>JavaScript для показа:</h4>
+            <pre><code>
+function showModal() {
+    Metro.getPlugin('#modal-id', 'modal').open();
+}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Breadcrumb Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Breadcrumb</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-8">
+            {% metroui5_breadcrumb items=breadcrumb_items %}
+        </div>
+        
+        <div class="cell-md-4">
+            <h4>Код для создания breadcrumb:</h4>
+            <pre><code>
+{% metroui5_breadcrumb items=breadcrumb_items %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Pagination Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Pagination</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <h4>Пагинация (страница 3 из 10):</h4>
+            {% metroui5_pagination current_page=3 total_pages=10 %}
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Код для создания pagination:</h4>
+            <pre><code>
+{% metroui5_pagination current_page=3 total_pages=10 %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Badge Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Badge</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-2">
+            {% metroui5_badge "1" badge_type="default" %}
+        </div>
+        <div class="cell-md-2">
+            {% metroui5_badge "2" badge_type="primary" %}
+        </div>
+        <div class="cell-md-2">
+            {% metroui5_badge "3" badge_type="success" %}
+        </div>
+        <div class="cell-md-2">
+            {% metroui5_badge "4" badge_type="warning" %}
+        </div>
+        <div class="cell-md-2">
+            {% metroui5_badge "5" badge_type="danger" %}
+        </div>
+        <div class="cell-md-2">
+            <h4>Код:</h4>
+            <pre><code>
+{% metroui5_badge "1" badge_type="primary" %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Avatar Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Avatar</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            <h4>Мини:</h4>
+            {% metroui5_avatar "https://via.placeholder.com/32x32" size="mini" %}
+        </div>
+        <div class="cell-md-3">
+            <h4>Маленький:</h4>
+            {% metroui5_avatar "https://via.placeholder.com/48x48" size="small" %}
+        </div>
+        <div class="cell-md-3">
+            <h4>Средний:</h4>
+            {% metroui5_avatar "https://via.placeholder.com/64x64" size="medium" %}
+        </div>
+        <div class="cell-md-3">
+            <h4>Большой:</h4>
+            {% metroui5_avatar "https://via.placeholder.com/96x96" size="large" %}
+        </div>
+    </div>
+    
+    <!-- Rating Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Rating</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-2">
+            <h4>1 звезда:</h4>
+            {% metroui5_rating 1 %}
+        </div>
+        <div class="cell-md-2">
+            <h4>2 звезды:</h4>
+            {% metroui5_rating 2 %}
+        </div>
+        <div class="cell-md-2">
+            <h4>3 звезды:</h4>
+            {% metroui5_rating 3 %}
+        </div>
+        <div class="cell-md-2">
+            <h4>4 звезды:</h4>
+            {% metroui5_rating 4 %}
+        </div>
+        <div class="cell-md-2">
+            <h4>5 звезд:</h4>
+            {% metroui5_rating 5 %}
+        </div>
+        <div class="cell-md-2">
+            <h4>Код:</h4>
+            <pre><code>
+{% metroui5_rating 4 %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Utility Components Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Утилитарные компоненты</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            <h4>Иконки:</h4>
+            {% metroui5_icon "home" %} Домой<br>
+            {% metroui5_icon "cog" %} Настройки<br>
+            {% metroui5_icon "user" %} Пользователь
+        </div>
+        
+        <div class="cell-md-3">
+            <h4>Grid система:</h4>
+            {% metroui5_grid 12 %}
+            {% metroui5_row %}
+            {% metroui5_cell "md-6" %}
+            <div class="bg-blue fg-white p-2 text-center">6</div>
+            {% endmetroui5_cell %}
+            {% metroui5_cell "md-6" %}
+            <div class="bg-green fg-white p-2 text-center">6</div>
+            {% endmetroui5_cell %}
+            {% endmetroui5_row %}
+            {% endmetroui5_grid %}
+        </div>
+        
+        <div class="cell-md-3">
+            <h4>Loading:</h4>
+            {% metroui5_loading %}
+            {% metroui5_spinner %}
+        </div>
+        
+        <div class="cell-md-3">
+            <h4>Код:</h4>
+            <pre><code>
+{% metroui5_icon "home" %}
+{% metroui5_loading %}
+            </code></pre>
+        </div>
+    </div>
+    
+    <!-- Advanced Components Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Продвинутые компоненты</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <h4>Stepper:</h4>
+            {% metroui5_stepper steps=stepper_steps %}
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Wizard:</h4>
+            {% metroui5_wizard steps=wizard_steps %}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            <h4>Tree:</h4>
+            {% metroui5_tree items=tree_items %}
+        </div>
+        
+        <div class="cell-md-6">
+            <h4>Код для продвинутых компонентов:</h4>
+            <pre><code>
+{% metroui5_stepper steps=stepper_steps %}
+{% metroui5_wizard steps=wizard_steps %}
+{% metroui5_tree items=tree_items %}
+            </code></pre>
+        </div>
+    </div>
+</div>
+
+<script>
+function showModal() {
+    // Показываем модальное окно
+    const modal = document.querySelector('.modal');
+    if (modal) {
+        modal.style.display = 'block';
+        modal.classList.add('active');
+    }
+}
+
+// Закрытие модального окна по клику на кнопку Close
+document.addEventListener('DOMContentLoaded', function() {
+    const closeButtons = document.querySelectorAll('[data-role="close"]');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+                modal.classList.remove('active');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

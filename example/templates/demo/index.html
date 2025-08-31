@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% load metroui5 %}
+
+{% block content %}
+<div class="grid">
+    <div class="row">
+        <div class="cell-12">
+            <h1 class="text-center">Django MetroUI5</h1>
+            <p class="text-center text-leader">
+                Современный UI фреймворк для Django приложений
+            </p>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <div class="row">
+        <div class="cell-12">
+            <div class="hero bg-blue fg-white">
+                <div class="hero-content text-center">
+                    <h1 class="text-shadow">Добро пожаловать в MetroUI5!</h1>
+                    <p class="text-leader">
+                        Создавайте красивые и современные веб-приложения с помощью MetroUI v5 и Django
+                    </p>
+                    <div class="button-group">
+                        <a href="{% url 'demo:forms' %}" class="button success large">
+                            <span class="mif-form"></span>
+                            Демо форм
+                        </a>
+                        <a href="{% url 'demo:components' %}" class="button primary large">
+                            <span class="mif-apps"></span>
+                            Компоненты
+                        </a>
+                        <a href="{% url 'demo:tiles' %}" class="button secondary large">
+                            <span class="mif-grid"></span>
+                            Tiles
+                        </a>
+                        <a href="{% url 'demo:advanced_components' %}" class="button warning large">
+                            <span class="mif-cog"></span>
+                            Расширенные
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Features Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Возможности MetroUI5</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-4">
+            {% metroui5_card 
+                header="🎨 Современный дизайн" 
+                content="MetroUI v5 предоставляет красивый и современный дизайн для ваших приложений." %}
+        </div>
+        
+        <div class="cell-md-4">
+            {% metroui5_card 
+                header="📱 Адаптивность" 
+                content="Все компоненты автоматически адаптируются под различные размеры экранов." %}
+        </div>
+        
+        <div class="cell-md-4">
+            {% metroui5_card 
+                header="⚡ Производительность" 
+                content="Легковесный фреймворк с быстрой загрузкой и отзывчивым интерфейсом." %}
+        </div>
+    </div>
+    
+    <!-- Components Preview -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Основные компоненты</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            {% metroui5_tile "Кнопки" size="small" color="blue" icon="checkmark" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Формы" size="small" color="green" icon="form" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Таблицы" size="small" color="red" icon="table" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Навигация" size="small" color="yellow" icon="menu" %}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            {% metroui5_tile "Tiles" size="small" color="purple" icon="grid" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Карточки" size="small" color="pink" icon="card" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Алерты" size="small" color="orange" icon="warning" %}
+        </div>
+        <div class="cell-md-3">
+            {% metroui5_tile "Прогресс" size="small" color="brown" icon="loop" %}
+        </div>
+    </div>
+    
+    <!-- Progress Bars Demo -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Progress Bars</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            <h4>Загрузка</h4>
+            {% metroui5_progress 25 color="blue" %}
+        </div>
+        <div class="cell-md-3">
+            <h4>Обработка</h4>
+            {% metroui5_progress 50 color="green" %}
+        </div>
+        <div class="cell-md-3">
+            <h4>Почти готово</h4>
+            {% metroui5_progress 75 color="yellow" %}
+        </div>
+        <div class="cell-md-3">
+            <h4>Завершено</h4>
+            {% metroui5_progress 100 color="success" %}
+        </div>
+    </div>
+    
+    <!-- Alerts Demo -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Уведомления</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-6">
+            {% metroui5_alert "Информационное сообщение о возможностях MetroUI5" alert_type="info" %}
+            {% metroui5_alert "Успешная интеграция с Django" alert_type="success" %}
+        </div>
+        <div class="cell-md-6">
+            {% metroui5_alert "Предупреждение о важных особенностях" alert_type="warning" %}
+            {% metroui5_alert "Ошибка при демонстрации" alert_type="danger" %}
+        </div>
+    </div>
+    
+    <!-- Quick Start Section -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Быстрый старт</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-8">
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>Установка и настройка</h3>
+                </div>
+                <div class="panel-content">
+                    <p>MetroUI5 легко интегрируется с вашими Django проектами:</p>
+                    <ol>
+                        <li>Установите пакет: <code>pip install django-metroui5</code></li>
+                        <li>Добавьте в INSTALLED_APPS: <code>'metroui5'</code></li>
+                        <li>Используйте template tags в ваших шаблонах</li>
+                        <li>Настройте стили под ваши потребности</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cell-md-4">
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>Примеры кода</h3>
+                </div>
+                <div class="panel-content">
+                    <p><strong>Включение CSS:</strong></p>
+                    <code>{% metroui5_css %}</code>
+                    
+                    <p><strong>Кнопка:</strong></p>
+                    <code>{% metroui5_button "Click me" %}</code>
+                    
+                    <p><strong>Tile:</strong></p>
+                    <code>{% metroui5_tile "Title" %}</code>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation Links -->
+    <div class="row">
+        <div class="cell-12">
+            <h2 class="text-center">Изучите все возможности</h2>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-md-3">
+            <a href="{% url 'demo:forms' %}" class="button primary outline large">
+                <span class="mif-form"></span>
+                Демонстрация форм
+            </a>
+        </div>
+        <div class="cell-md-3">
+            <a href="{% url 'demo:components' %}" class="button success outline large">
+                <span class="mif-apps"></span>
+                Основные компоненты
+            </a>
+        </div>
+        <div class="cell-md-3">
+            <a href="{% url 'demo:tiles' %}" class="button warning outline large">
+                <span class="mif-grid"></span>
+                MetroUI Tiles
+            </a>
+        </div>
+        <div class="cell-md-3">
+            <a href="{% url 'demo:advanced_components' %}" class="button danger outline large">
+                <span class="mif-cog"></span>
+                Расширенные компоненты
+            </a>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="row">
+        <div class="cell-12">
+            <hr>
+            <p class="text-center text-muted">
+                Django MetroUI5 - Создавайте красивые приложения с MetroUI v5! 🎨✨
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
