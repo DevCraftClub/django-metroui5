@@ -10,7 +10,7 @@ updates:
       interval: "weekly"
       day: "monday"
       time: "09:00"
-      timezone: "Europe/Moscow"
+      timezone: "Europe/Berlin"
     open-pull-requests-limit: 10
     reviewers:
       - "Gokujo"
@@ -54,7 +54,7 @@ updates:
       interval: "weekly"
       day: "tuesday"
       time: "09:00"
-      timezone: "Europe/Moscow"
+      timezone: "Europe/Berlin"
     open-pull-requests-limit: 5
     reviewers:
       - "Gokujo"
@@ -76,7 +76,7 @@ updates:
       interval: "weekly"
       day: "wednesday"
       time: "09:00"
-      timezone: "Europe/Moscow"
+      timezone: "Europe/Berlin"
     open-pull-requests-limit: 5
     reviewers:
       - "Gokujo"
@@ -102,7 +102,7 @@ updates:
       interval: "weekly"
       day: "friday"
       time: "09:00"
-      timezone: "Europe/Moscow"
+      timezone: "Europe/Berlin"
     open-pull-requests-limit: 8
     reviewers:
       - "Gokujo"
@@ -139,7 +139,7 @@ updates:
     schedule:
       interval: "daily"
       time: "06:00"
-      timezone: "Europe/Moscow"
+      timezone: "Europe/Berlin"
     open-pull-requests-limit: 5
     reviewers:
       - "Gokujo"
