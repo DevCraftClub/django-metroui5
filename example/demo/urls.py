@@ -14,4 +14,5 @@ urlpatterns = [
     path('tiles/', views.tiles_demo, name='tiles'),
     path('advanced-components/', views.advanced_components_demo, name='advanced_components'),
     path('themes/', views.themes_demo, name='themes'),
+    path('initials-avatars/', views.initials_avatars, name='initials_avatars'),
 ]

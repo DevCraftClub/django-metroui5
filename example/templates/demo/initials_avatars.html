@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ title }}</h1>
+    
+    <div class="row">
+        <div class="cell-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Initials Avatars Examples</h3>
+                </div>
+                <div class="card-content p-4">
+                    <div class="alert alert-info">
+                        <strong>Note:</strong> This demonstrates custom initials avatar functionality that generates actual image files from names using PIL (Pillow). This is not part of MetroUI core - it's custom development.
+                    </div>
+                    <p>This demonstrates the new initials avatar functionality that generates actual image files from names using PIL (Pillow).</p>
+                    
+                    <style>
+                    .avatar-figure {
+                        display: inline-block;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .avatar-figure img {
+                        display: block;
+                        border-radius: 50%;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                    }
+                    .avatar-figure img.avatar-img {
+                        transition: transform 0.2s ease;
+                    }
+                    .avatar-figure img.avatar-img:hover {
+                        transform: scale(1.05);
+                    }
+                    </style>
+                    
+                    <h4>Responsive Avatars (All Sizes Generated Automatically)</h4>
+                    <div class="grid">
+                        {% for avatar in avatars %}
+                        <div class="cell-3">
+                            <div class="text-center p-2">
+                                {{ avatar.html|safe }}
+                                <div class="mt-2">
+                                    <strong>{{ avatar.name }}</strong><br>
+                                    <small class="text-muted">{{ avatar.config }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <h4 class="mt-4">Custom File Paths</h4>
+                    <div class="grid">
+                        {% for avatar in avatars_files %}
+                        <div class="cell-3">
+                            <div class="text-center p-2">
+                                {{ avatar.html|safe }}
+                                <div class="mt-2">
+                                    <strong>{{ avatar.name }}</strong><br>
+                                    <small class="text-muted">{{ avatar.config }}</small>
+                                    {% if avatar.filepath %}
+                                    <br><small class="text-muted">File: {{ avatar.filepath }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="cell-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Usage Examples</h3>
+                </div>
+                <div class="card-content p-4">
+                    <h4>Basic Usage</h4>
+                    <pre><code>{% templatetag openblock %} avatar_initials "John Doe" {% templatetag closeblock %}</code></pre>
+                    
+                    <h4>With Custom Size</h4>
+                    <pre><code>{% templatetag openblock %} avatar_initials "Jane Smith" size="large" {% templatetag closeblock %}</code></pre>
+                    
+                    <h4>With Custom Colors</h4>
+                    <pre><code>{% templatetag openblock %} avatar_initials "Bob Wilson" bg_color="#e74c3c" text_color="white" {% templatetag closeblock %}</code></pre>
+                    
+                    <h4>Different Shapes</h4>
+                    <pre><code>{% templatetag openblock %} avatar_initials "Alice Brown" shape="rounded" {% templatetag closeblock %}</code></pre>
+                    
+                    <h4>Multiple Initials</h4>
+                    <pre><code>{% templatetag openblock %} avatar_initials "John Michael Smith" max_initials=3 {% templatetag closeblock %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="cell-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Features</h3>
+                </div>
+                <div class="card-content p-4">
+                    <ul>
+                        <li><strong>No External Dependencies:</strong> Uses pure HTML/CSS, no Cairo or other graphics libraries required</li>
+                        <li><strong>Consistent Colors:</strong> Automatically generates consistent background colors from names</li>
+                        <li><strong>Flexible Sizing:</strong> Supports small, medium, large, and xlarge sizes</li>
+                        <li><strong>Multiple Shapes:</strong> Circle, square, and rounded rectangle options</li>
+                        <li><strong>Smart Initials:</strong> Automatically extracts initials from full names</li>
+                        <li><strong>Accessible:</strong> Includes proper ARIA labels and titles</li>
+                        <li><strong>Responsive:</strong> Works well on all screen sizes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

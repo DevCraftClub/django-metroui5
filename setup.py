@@ -21,7 +21,7 @@ def read_requirements():
 
 setup(
 	name="django-metroui5",
-	version="0.1.1",
+	version="0.1.2",
 	author="Maxim Harder",
 	author_email="dev@devcraft.club",
 	description="MetroUI v5 integration for Django 4.1+",

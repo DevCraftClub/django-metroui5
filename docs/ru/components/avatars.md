@@ -1,94 +1,169 @@
 # Аватары
 
-Компонент для создания пользовательских аватаров, изображений профиля и заполнителей изображений с различными размерами и стилями.
+MetroUI предоставляет несколько типов компонентов аватаров для отображения изображений профиля пользователей, иконок или инициалов.
+
+## Аватары с инициалами
+
+Компонент аватара с инициалами генерирует фактические файлы изображений из имен с использованием PIL (Pillow), с поддержкой нескольких форматов и адаптивного дизайна. По умолчанию изображения автоматически генерируются для всех размеров и сохраняются в `/media/avatars/initials/{initial}/{size}.{format}`, с адаптивным HTML-выводом с использованием элементов `<figure>` и `<picture>`.
+
+> **⚠️ Уведомление о пользовательской разработке**: Функциональность `initials_avatar` является **пользовательской разработкой** и не является частью MetroUI core. Она предоставляет расширенные возможности генерации изображений, выходящие за рамки стандартной системы аватаров MetroUI.
 
 ## Базовое использование
 
-### Простой аватар
+### Аватар с инициалами (пользовательская разработка)
+
+````python
+from metroui5.components import render_initials_avatar
+
+# Базовый аватар с инициалами
+avatar_html = render_initials_avatar("Джон Доу")
+
+# Или используйте Django тег шаблона
+{% load metroui5 %}
+{% avatar_initials "Джон Доу" %}
+
+#### **Создание собственного тега шаблона**
+
+Для использования в Django шаблонах вам нужно создать собственный тег шаблона. Вот как:
+
+1. **Создайте директорию templatetags** в вашем приложении:
+```bash
+mkdir myapp/templatetags
+touch myapp/templatetags/__init__.py
+touch myapp/templatetags/avatar_tags.py
+````
+
+2. **Определите тег шаблона** в `avatar_tags.py`:
+
+```python
+from django import template
+from django.utils.safestring import mark_safe
+from metroui5.components import render_initials_avatar
+
+register = template.Library()
+
+@register.simple_tag
+def avatar_initials(name, **kwargs):
+    """Рендерит аватар с инициалами."""
+    return mark_safe(render_initials_avatar(name, **kwargs))
+```
+
+3. **Загрузите и используйте в шаблонах**:
+
+```django
+{% load avatar_tags %}
+
+{% avatar_initials "Джон Доу" %}
+{% avatar_initials "Джейн Смит" size="large" bg_color="#e74c3c" %}
+```
+
+````
+
+### Базовый аватар MetroUI (изображения)
 
 ```python
 from metroui5.components import render_avatar
 
 # Базовый аватар с изображением
-avatar_html = render_avatar(
-    src="/static/images/user.jpg",
-    alt="Джон Доу"
-)
-```
+avatar_html = render_avatar("/static/images/user.jpg")
+````
 
-### Аватар с инициалами
+### Аватар с иконкой MetroUI
 
 ```python
-# Аватар с инициалами пользователя
-avatar_html = render_avatar(
-    initials="ДД",
-    background_color="#007acc"
-)
-```
+from metroui5.components import render_icon_avatar
 
-### Аватар с иконкой
-
-```python
-# Аватар с иконкой по умолчанию
-avatar_html = render_avatar(
-    icon="user",
-    size="large"
-)
+# Аватар с иконкой
+avatar_html = render_icon_avatar("user", size="large")
 ```
 
 ## Вывод HTML
 
-### Базовый аватар
+### Аватар с инициалами (пользовательская разработка)
 
 ```html
 <!-- Ввод -->
-render_avatar(src="/static/images/user.jpg", alt="Джон Доу")
+render_initials_avatar("Джон Доу")
 
 <!-- Вывод -->
-<div class="avatar">
-	<img src="/static/images/user.jpg" alt="Джон Доу" class="avatar-image" />
-</div>
+<figure class="avatar-figure">
+	<picture>
+		<source
+			media="(max-width: 480px)"
+			srcset="/media/avatars/initials/ДД/small.png"
+		/>
+		<source
+			media="(max-width: 768px)"
+			srcset="/media/avatars/initials/ДД/medium.png"
+		/>
+		<source
+			media="(max-width: 1024px)"
+			srcset="/media/avatars/initials/ДД/large.png"
+		/>
+		<source
+			media="(min-width: 1025px)"
+			srcset="/media/avatars/initials/ДД/xlarge.png"
+		/>
+		<img
+			src="/media/avatars/initials/ДД/medium.png"
+			alt="Аватар для Джона Доу"
+			class="avatar-img"
+		/>
+	</picture>
+</figure>
 ```
 
-### Аватар с инициалами
+### Базовый аватар MetroUI (изображения)
 
 ```html
 <!-- Ввод -->
-render_avatar(initials="ДД", background_color="#007acc")
+render_avatar("/static/images/user.jpg")
 
 <!-- Вывод -->
-<div class="avatar avatar-initials" style="background-color: #007acc;">
-	<span class="avatar-text">ДД</span>
-</div>
+<img src="/static/images/user.jpg" alt="" />
 ```
 
-### Аватар с иконкой
+### Аватар с иконкой MetroUI
 
 ```html
 <!-- Ввод -->
-render_avatar(icon="user", size="large")
+render_icon_avatar("user", size="large")
 
 <!-- Вывод -->
-<div class="avatar avatar-icon avatar-large">
-	<span class="mif-user"></span>
-</div>
+<span class="mif-user mif-large"></span>
 ```
 
 ## Использование в Django шаблонах
 
 ### Использование тегов шаблонов
 
+**Примечание**: Функциональность `initials_avatar` является пользовательской разработкой и не является частью MetroUI core. Вы можете использовать её напрямую в Python коде или создать собственный тег шаблона.
+
+#### **Пользовательский тег шаблона (если вы создали один)**
+
+```html
+{% load avatar_tags %}
+
+<!-- Базовый аватар с инициалами -->
+{% avatar_initials "Джон Доу" %}
+
+<!-- С пользовательским размером -->
+{% avatar_initials "Джейн Смит" size="large" %}
+
+<!-- С пользовательскими цветами -->
+{% avatar_initials "Боб Уилсон" bg_color="#e74c3c" text_color="white" %}
+```
+
+#### **Стандартные теги MetroUI**
+
 ```html
 {% load metroui5 %}
 
-<!-- Базовый аватар -->
-{% metroui5_avatar src="/static/images/user.jpg" alt="Пользователь" %}
-
-<!-- Аватар с инициалами -->
-{% metroui5_avatar initials="ДД" background_color="#007acc" %}
+<!-- Базовый аватар с изображением -->
+{% metroui5_avatar "/static/images/user.jpg" %}
 
 <!-- Аватар с иконкой -->
-{% metroui5_avatar icon="user" size="medium" %}
+{% metroui5_icon_avatar "user" size="medium" %}
 ```
 
 ### Использование в представлениях
@@ -142,113 +217,58 @@ def profile_view(request):
 
 ## Параметры
 
-### `src` (необязательный)
+### **Параметры для `render_initials_avatar` (пользовательская разработка)**
 
-URL изображения аватара.
+| Параметр        | Тип    | По умолчанию                 | Описание                                                 |
+| --------------- | ------ | ---------------------------- | -------------------------------------------------------- |
+| `name`          | string | обязательный                 | Полное имя для генерации инициалов                       |
+| `size`          | string | "medium"                     | Размер аватара: "small", "medium", "large", "xlarge"     |
+| `bg_color`      | string | автоматически генерируется   | Цвет фона (hex код или название цвета)                   |
+| `text_color`    | string | "white"                      | Цвет текста (hex код или название цвета)                 |
+| `font_size`     | int    | автоматически рассчитывается | Размер шрифта в пикселях                                 |
+| `font_weight`   | string | "bold"                       | Жирность шрифта                                          |
+| `shape`         | string | "circle"                     | Форма аватара: "circle", "square", "rounded"             |
+| `max_initials`  | int    | 2                            | Максимальное количество инициалов для показа             |
+| `output_format` | string | "png"                        | Формат изображения: "png", "jpg", "webp"                 |
+| `save_path`     | string | None                         | Путь к файлу для сохранения сгенерированного изображения |
 
-**Пример**:
+### **Параметры для `render_icon_avatar` (MetroUI core)**
 
-```python
-avatar_html = render_avatar(src="/static/images/avatar.jpg")
-```
+| Параметр     | Тип    | По умолчанию | Описание                        |
+| ------------ | ------ | ------------ | ------------------------------- |
+| `icon_name`  | string | обязательный | Идентификатор иконки MetroUI    |
+| `size`       | string | None         | Множитель размера иконки (1-10) |
+| `bg_color`   | string | None         | Цвет фона                       |
+| `text_color` | string | None         | Цвет текста/иконки              |
 
-### `alt` (необязательный)
+### **Параметры для `render_avatar` (MetroUI core)**
 
-Альтернативный текст для изображения аватара.
+| Параметр    | Тип    | По умолчанию | Описание                |
+| ----------- | ------ | ------------ | ----------------------- |
+| `image_url` | string | обязательный | URL изображения аватара |
 
-**Пример**:
+## 🔗 **MetroUI Core vs Пользовательская разработка**
 
-```python
-avatar_html = render_avatar(src="/images/user.jpg", alt="Джон Доу")
-```
+### **Функции MetroUI Core**
 
-### `initials` (необязательный)
+Это стандартные функции аватаров MetroUI, которые поставляются с фреймворком:
 
-Текст для отображения, когда изображение недоступно.
+- **`render_avatar`**: Базовое отображение аватара с изображением (для существующих файлов изображений)
+- **`render_icon_avatar`**: Аватары на основе иконок с использованием шрифта иконок MetroUI
 
-**Пример**:
+### **Функции пользовательской разработки**
 
-```python
-avatar_html = render_avatar(initials="ДД")
-```
+Это дополнительные функции, которые вы разработали:
 
-### `icon` (необязательный)
+- **`render_initials_avatar`**: Расширенный аватар с инициалами с генерацией изображений
+- **`render_image_avatar`**: Простой рендерер тегов изображений
+- **`render_responsive_avatar`**: Генератор адаптивной HTML-структуры
 
-Иконка для отображения, когда нет изображения или инициалов.
+### **Стратегия интеграции**
 
-**По умолчанию**: `"user"`
-
-**Пример**:
-
-```python
-avatar_html = render_avatar(icon="person")
-```
-
-### `size` (необязательный)
-
-Размер аватара: small, medium, large, xlarge.
-
-**По умолчанию**: `"medium"`
-
-**Пример**:
-
-```python
-avatar_html = render_avatar(size="large")
-```
-
-### `shape` (необязательный)
-
-Форма аватара: circle, square, rounded.
-
-**По умолчанию**: `"circle"`
-
-**Пример**:
-
-```python
-avatar_html = render_avatar(shape="square")
-```
-
-### `background_color` (необязательный)
-
-Цвет фона для аватаров с инициалами или иконками.
-
-**Пример**:
-
-```python
-avatar_html = render_avatar(initials="ДД", background_color="#28a745")
-```
-
-### `text_color` (необязательный)
-
-Цвет текста для инициалов.
-
-**По умолчанию**: `"white"`
-
-**Пример**:
-
-```python
-avatar_html = render_avatar(initials="ДД", text_color="#000")
-```
-
-### `class` (необязательный)
-
-Дополнительные CSS классы для стилизации.
-
-**Пример**:
-
-```python
-avatar_html = render_avatar(class="avatar-bordered")
-```
-
-### `id` (необязательный)
-
-Уникальный идентификатор для элемента аватара.
-
-**Пример**:
-
-```python
-avatar_html = render_avatar(id="user-avatar")
-```
+- Используйте функции MetroUI core для стандартных элементов UI
+- Используйте пользовательские функции для расширенных требований к аватарам с инициалами
+- Комбинируйте оба для комплексных систем аватаров
 
 ## Расширенные примеры
 
@@ -260,26 +280,20 @@ def create_user_avatar(user, size="medium"):
 
     # Сначала попробовать изображение профиля
     if hasattr(user, 'profile') and user.profile.picture:
-        return render_avatar(
-            src=user.profile.picture.url,
-            alt=user.get_full_name(),
-            size=size
-        )
+        return render_avatar(user.profile.picture.url)
 
     # Резервный вариант с инициалами
     if user.first_name and user.last_name:
-        initials = f"{user.first_name[0]}{user.last_name[0]}".upper()
-        return render_avatar(
-            initials=initials,
-            background_color=generate_user_color(user.id),
+        return render_initials_avatar(
+            user.get_full_name(),
             size=size
         )
 
     # Финальный резервный вариант с иконкой
-    return render_avatar(
-        icon="user",
+    return render_icon_avatar(
+        "user",
         size=size,
-        background_color="#6c757d"
+        bg_color="#6c757d"
     )
 ```
 
@@ -298,10 +312,10 @@ def create_avatar_group(users, max_display=3):
     # Добавить индикатор переполнения
     if len(users) > max_display:
         overflow_count = len(users) - max_display
-        avatars.append(render_avatar(
-            initials=f"+{overflow_count}",
+        avatars.append(render_initials_avatar(
+            f"+{overflow_count}",
             size="small",
-            background_color="#dee2e6",
+            bg_color="#dee2e6",
             text_color="#495057"
         ))
 

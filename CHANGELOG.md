@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2025-09-02
+
+### Added
+
+- Custom initials avatar generation system with PIL (Pillow) integration
+- Responsive avatar output with automatic size generation (small, medium, large, xlarge)
+- Geologica font integration for professional avatar typography
+- Automatic file saving to `/media/avatars/initials/{initial}/{size}.{format}`
+- Support for multiple image formats (PNG, JPG, WebP)
+- Responsive HTML output using `<figure>` and `<picture>` elements
+- Comprehensive avatar documentation with usage examples
+- Custom development integration guide for Django templatetags
+
+### Changed
+
+- Consolidated parameter naming across avatar functions for consistency
+- Updated avatar documentation to reflect custom development nature
+- Improved text centering in generated avatar images
+- Enhanced font loading with fallback system
+
+### Fixed
+
+- Resolved parameter naming inconsistencies (`icon_size` → `size`, `background_color` → `bg_color`, `icon_color` → `text_color`)
+- Updated documentation to clarify MetroUI core vs custom development functions
+
 ## [0.1.1] - 2025-09-01
 
 ### Added

@@ -4,7 +4,7 @@ requires = ["setuptools>=77.0.3", "wheel"]
 
 [project]
 name = "django-metroui5"
-version = "0.1.1"
+version = "0.1.2"
 description = "MetroUI v5 integration for Django 4.1+"
 readme = "README.md"
 license = {text = "MIT"}
@@ -40,7 +40,8 @@ classifiers = [
 ]
 requires-python = ">=3.9"
 dependencies = [
-    "Django>=4.2",
+    "Django(>=4.2,<5.3)",
+    "pillow (>=11.3.0,<12.0.0)",
 ]
 
 [project.optional-dependencies]
@@ -52,7 +53,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/DevCraftClub/django-metroui5"
-"Documentation (Russian)" = "https://readme.devcraft.club"
+"Documentation (Russian)" = "https://github.com/DevCraftClub/django-metroui5/docs/ru/"
 "Documentation (English)" = "https://github.com/DevCraftClub/django-metroui5/docs/en/"
 Repository = "https://github.com/DevCraftClub/django-metroui5.git"
 "Bug Tracker" = "https://github.com/DevCraftClub/django-metroui5/issues"
