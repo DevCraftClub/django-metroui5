@@ -382,62 +382,7 @@ def metroui5_fluid_container(**kwargs):
 	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
-@register.simple_tag
-def metroui5_icon(icon_name, size=None, **kwargs):
-	"""Renders MetroUI icon."""
-	icon_classes = [f"mif-{icon_name}"]
-	if size:
-		icon_classes.append(f"mif-{size}")
 
-	attrs = {"class": " ".join(icon_classes)}
-	attrs.update(kwargs)
-
-	return mark_safe(render_tag("span", attrs=attrs, content=""))
-
-
-@register.simple_tag
-def metroui5_grid(columns=12, **kwargs):
-	"""Renders MetroUI grid container."""
-	attrs = {"class": f"grid grid-{columns}"}
-	attrs.update(kwargs)
-
-	return mark_safe(render_tag("div", attrs=attrs, content=""))
-
-
-@register.simple_tag
-def metroui5_row(**kwargs):
-	"""Renders MetroUI row."""
-	attrs = {"class": "row"}
-	attrs.update(kwargs)
-
-	return mark_safe(render_tag("div", attrs=attrs, content=""))
-
-
-@register.simple_tag
-def metroui5_cell(size, **kwargs):
-	"""Renders MetroUI cell."""
-	attrs = {"class": f"cell-{size}"}
-	attrs.update(kwargs)
-
-	return mark_safe(render_tag("div", attrs=attrs, content=""))
-
-
-@register.simple_tag
-def metroui5_container(**kwargs):
-	"""Renders MetroUI container."""
-	attrs = {"class": "container"}
-	attrs.update(kwargs)
-
-	return mark_safe(render_tag("div", attrs=attrs, content=""))
-
-
-@register.simple_tag
-def metroui5_fluid_container(**kwargs):
-	"""Renders MetroUI fluid container."""
-	attrs = {"class": "container-fluid"}
-	attrs.update(kwargs)
-
-	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
