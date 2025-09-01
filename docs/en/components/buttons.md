@@ -1,377 +1,581 @@
-# Кнопки (Buttons)
+# Buttons
 
-Компонент для создания интерактивных кнопок различных типов и размеров.
+Component for creating interactive buttons of various types and sizes.
 
-## Основное использование
+## Basic Usage
 
-### Простая кнопка
+### Simple Button
 
 ```python
 from metroui5.components import render_button
 
-# Базовая кнопка
-button = render_button("Нажми меня")
+# Basic button
+button = render_button("Click me")
 ```
 
-### Кнопка с типом
+### Button with Type
 
 ```python
-# Различные типы кнопок
-primary_button = render_button("Основная", button_type="primary")
-secondary_button = render_button("Вторичная", button_type="secondary")
-success_button = render_button("Успех", button_type="success")
-alert_button = render_button("Ошибка", button_type="alert")
+# Different button types
+primary_button = render_button("Primary", button_type="primary")
+secondary_button = render_button("Secondary", button_type="secondary")
+success_button = render_button("Success", button_type="success")
+alert_button = render_button("Error", button_type="alert")
 ```
 
-### Кнопка с размером
+### Button with Size
 
 ```python
-# Различные размеры
-small_button = render_button("Маленькая", size="small")
-default_button = render_button("Обычная", size="default")
-large_button = render_button("Большая", size="large")
+# Different sizes
+small_button = render_button("Small", size="small")
+default_button = render_button("Default", size="default")
+large_button = render_button("Large", size="large")
 ```
 
-## Параметры
+## Rendered Output
 
-### `content` (обязательный)
+### Basic Button
 
-Текст или содержимое кнопки.
+```html
+<!-- Input -->
+render_button("Click me")
+
+<!-- Output -->
+<button type="button" class="button">Click me</button>
+```
+
+### Primary Button
+
+```html
+<!-- Input -->
+render_button("Primary Button", button_type="primary")
+
+<!-- Output -->
+<button type="button" class="button primary">Primary Button</button>
+```
+
+### Button with Icon
+
+```html
+<!-- Input -->
+render_button("Save", button_type="success", icon="checkmark")
+
+<!-- Output -->
+<button type="button" class="button success">
+	<span class="mif-checkmark"></span>
+	Save
+</button>
+```
+
+## Django Template Usage
+
+### Using Template Tags
+
+```html
+{% load metroui5 %}
+
+<!-- Basic button -->
+{% metroui5_button "Click me" %}
+
+<!-- Primary button -->
+{% metroui5_button "Primary Button" button_type="primary" %}
+
+<!-- Button with icon -->
+{% metroui5_button "Save" button_type="success" icon="checkmark" %}
+
+<!-- Button with custom attributes -->
+{% metroui5_button "Custom" button_type="primary" class="my-button"
+id="save-btn" %}
+```
+
+### Using in Views
 
 ```python
-button = render_button("Текст кнопки")
+# views.py
+from metroui5.components import render_button
+
+def my_view(request):
+    # Create buttons in view
+    save_button = render_button(
+        "Save Changes",
+        button_type="primary",
+        icon="checkmark"
+    )
+
+    cancel_button = render_button(
+        "Cancel",
+        button_type="secondary",
+        outline=True
+    )
+
+    context = {
+        'save_button': save_button,
+        'cancel_button': cancel_button
+    }
+    return render(request, 'my_template.html', context)
 ```
 
-### `button_type` (опционально)
+### Using in Templates
 
-Тип кнопки, определяющий стиль и цвет. Доступные значения:
+```html
+<!-- my_template.html -->
+{% load metroui5 %}
 
-- `"default"` (по умолчанию) - стандартная
-- `"primary"` - основная (синяя)
-- `"secondary"` - вторичная (серая)
-- `"success"` - успех (зеленая)
-- `"alert"` - ошибка (красная)
-- `"warning"` - предупреждение (желтая)
+<!-- Direct HTML output -->
+{{ save_button|safe }} {{ cancel_button|safe }}
+
+<!-- Loop through buttons -->
+{% for button in action_buttons %} {{ button|safe }} {% endfor %}
+```
+
+### Form Buttons
 
 ```python
-button = render_button("Кнопка", button_type="primary")
+# views.py
+def form_view(request):
+    if request.method == 'POST':
+        form = MyForm(request.POST)
+        if form.is_valid():
+            # Process form
+            pass
+
+    # Create submit button
+    submit_button = render_button(
+        "Submit Form",
+        button_type="primary",
+        icon="checkmark"
+    )
+
+    context = {'submit_button': submit_button}
+    return render(request, 'form.html', context)
 ```
 
-### `size` (опционально)
+```html
+<!-- form.html -->
+{% load metroui5 %} {% block content %} {% if status_alert %} {{
+status_alert|safe }} {% endif %}
 
-Размер кнопки. Доступные значения:
+<form method="post">
+	<!-- Form fields -->
+	<div class="form-group">
+		<label>Name:</label>
+		<input type="text" name="name" class="input" required />
+	</div>
 
-- `"small"` - маленькая
-- `"default"` (по умолчанию) - обычная
-- `"large"` - большая
+	<!-- Submit button -->
+	<div class="form-actions">
+		{{ submit_button|safe }} {% metroui5_button "Reset" button_type="secondary"
+		type="reset" %}
+	</div>
+</form>
+{% endblock %}
+```
+
+## Parameters
+
+### `content` (required)
+
+Text or content of the button.
 
 ```python
-button = render_button("Кнопка", size="large")
+button = render_button("Button text")
 ```
 
-### `outline` (опционально)
+### `button_type` (optional)
 
-Если `True`, создает контурную кнопку. По умолчанию `False`.
+Button type that determines style and color. Available values:
+
+- `"default"` (default) - standard
+- `"primary"` - primary (blue)
+- `"secondary"` - secondary (gray)
+- `"success"` - success (green)
+- `"alert"` - error (red)
+- `"warning"` - warning (yellow)
 
 ```python
-button = render_button("Контурная", outline=True)
+button = render_button("Button", button_type="primary")
 ```
 
-### `icon` (опционально)
+### `size` (optional)
 
-Иконка для кнопки (имя иконки MetroUI).
+Button size. Available values:
+
+- `"small"` - small
+- `"default"` (default) - normal
+- `"large"` - large
 
 ```python
-button = render_button("С иконкой", icon="plus")
+button = render_button("Button", size="large")
 ```
 
-### `**attrs` (опционально)
+### `outline` (optional)
 
-Дополнительные HTML атрибуты.
+If `True`, creates an outline button. Default is `False`.
+
+```python
+button = render_button("Outline", outline=True)
+```
+
+### `icon` (optional)
+
+Icon for the button (MetroUI icon name).
+
+```python
+button = render_button("With icon", icon="plus")
+```
+
+### `**attrs` (optional)
+
+Additional HTML attributes.
 
 ```python
 button = render_button(
-	"Кастомная",
-	**{"class": "custom-btn", "id": "myButton", "onclick": "handleClick()"}
+    "Custom",
+    **{"class": "custom-btn", "id": "myButton", "onclick": "handleClick()"}
 )
 ```
 
-## Примеры использования
+## Usage Examples
 
-### В представлении
+### In Views
 
 ```python
 from metroui5.components import render_button
 
 
 def dashboard(request):
-	context = {
-		'action_buttons': [
-			render_button("Создать", button_type="primary", icon="plus"),
-			render_button("Редактировать", button_type="secondary", icon="edit"),
-			render_button("Удалить", button_type="alert", icon="trash"),
-		],
-		'size_buttons': [
-			render_button("Маленькая", size="small"),
-			render_button("Обычная", size="default"),
-			render_button("Большая", size="large"),
-		],
-		'outline_buttons': [
-			render_button("Основная", button_type="primary", outline=True),
-			render_button("Успех", button_type="success", outline=True),
-		]
-	}
-	return render(request, 'dashboard.html', context)
+    context = {
+        'action_buttons': [
+            render_button("Create", button_type="primary", icon="plus"),
+            render_button("Edit", button_type="secondary", icon="edit"),
+            render_button("Delete", button_type="alert", icon="trash"),
+        ],
+        'size_buttons': [
+            render_button("Small", size="small"),
+            render_button("Default", size="default"),
+            render_button("Large", size="large"),
+        ],
+        'outline_buttons': [
+            render_button("Primary", button_type="primary", outline=True),
+            render_button("Success", button_type="success", outline=True),
+        ]
+    }
+    return render(request, 'dashboard.html', context)
 ```
 
-### В шаблоне
+### In Templates
 
 ```html
+<!-- dashboard.html -->
 {% extends 'base.html' %} {% block content %}
-<h3>Действия</h3>
+<h3>Actions</h3>
 <div class="button-group">
-    {% for button in action_buttons %} {{ button|safe }} {% endfor %}
+	{% for button in action_buttons %} {{ button|safe }} {% endfor %}
 </div>
 
-<h3>Размеры</h3>
+<h3>Sizes</h3>
 <div class="button-group">
-    {% for button in size_buttons %} {{ button|safe }} {% endfor %}
+	{% for button in size_buttons %} {{ button|safe }} {% endfor %}
 </div>
 
-<h3>Контурные кнопки</h3>
+<h3>Outline Buttons</h3>
 <div class="button-group">
-    {% for button in outline_buttons %} {{ button|safe }} {% endfor %}
+	{% for button in outline_buttons %} {{ button|safe }} {% endfor %}
 </div>
 {% endblock %}
 ```
 
-### Кнопки для форм
-
-```python
-def form_view(request):
-	if request.method == 'POST':
-		form = MyForm(request.POST)
-		if form.is_valid():
-			# Обработка формы
-			pass
-	else:
-		form = MyForm()
-
-	submit_button = render_button(
-		"Отправить",
-		button_type="primary",
-		**{"type": "submit"}
-	)
-
-	cancel_button = render_button(
-		"Отмена",
-		button_type="secondary",
-		**{"type": "button", "onclick": "history.back()"}
-	)
-
-	context = {
-		'form': form,
-		'submit_button': submit_button,
-		'cancel_button': cancel_button,
-	}
-	return render(request, 'form.html', context)
-```
-
-### Интерактивные кнопки
-
-```python
-def interactive_view(request):
-	context = {
-		'modal_button': render_button(
-			"Открыть модальное окно",
-			button_type="primary",
-			**{
-				"data-role": "button",
-				"data-toggle": "modal",
-				"data-target": "#exampleModal"
-			}
-		),
-		'ajax_button': render_button(
-			"Загрузить данные",
-			button_type="success",
-			**{
-				"onclick": "loadData()",
-				"data-loading": "Загрузка..."
-			}
-		),
-		'toggle_button': render_button(
-			"Показать/скрыть",
-			button_type="secondary",
-			**{
-				"data-role": "button",
-				"data-toggle": "collapse",
-				"data-target": "#content"
-			}
-		)
-	}
-	return render(request, 'interactive.html', context)
-```
-
-## Кастомизация
-
-### Дополнительные CSS классы
-
-```python
-button = render_button(
-	"Кастомная кнопка",
-	**{"class": "btn-custom my-button"}
-)
-```
-
-### Атрибуты для JavaScript
-
-```python
-button = render_button(
-	"Интерактивная",
-	**{
-		"data-action": "save",
-		"data-id": "123",
-		"onclick": "handleButtonClick(this)"
-	}
-)
-```
-
-### Стилизация через CSS
+### Custom Styling
 
 ```css
-/* Кастомные стили для кнопок */
+/* Custom styles for buttons */
 .btn-custom {
-    border-radius: 20px;
-    text-transform: uppercase;
-    font-weight: bold;
+	border-radius: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .my-button {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease;
 }
 
 .my-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+	transform: translateY(-2px);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 ```
 
-## Группировка кнопок
-
-### Горизонтальная группа
+### Button Groups
 
 ```python
 def button_group_view(request):
-	context = {
-		'button_group': [
-			render_button("Левая", button_type="secondary"),
-			render_button("Центр", button_type="primary"),
-			render_button("Правая", button_type="secondary"),
-		]
-	}
-	return render(request, 'button_group.html', context)
+    context = {
+        'button_group': [
+            render_button("First", button_type="primary"),
+            render_button("Second", button_type="secondary"),
+            render_button("Third", button_type="success"),
+        ]
+    }
+    return render(request, 'button_group.html', context)
 ```
 
-### Вертикальная группа
-
 ```html
+<!-- button_group.html -->
 {% extends 'base.html' %} {% block content %}
 <div class="vertical-button-group">
-    {% for button in button_group %}
-    <div class="mb-2">{{ button|safe }}</div>
-    {% endfor %}
+	{% for button in button_group %}
+	<div class="mb-2">{{ button|safe }}</div>
+	{% endfor %}
 </div>
 {% endblock %}
 ```
 
-## Лучшие практики
+## Advanced Examples
 
-### 1. Используйте правильные типы
-
-- `primary` - для основного действия
-- `secondary` - для вторичных действий
-- `success` - для позитивных действий
-- `alert` - для деструктивных действий
-
-### 2. Выбирайте подходящие размеры
-
-- `small` - для компактных интерфейсов
-- `default` - для большинства случаев
-- `large` - для важных действий
-
-### 3. Добавляйте иконки для ясности
+### Dynamic Button Generation
 
 ```python
-# Хорошо
-button = render_button("Сохранить", icon="check", button_type="success")
+def dynamic_buttons_view(request):
+    # Generate buttons based on user permissions
+    buttons = []
 
-# Плохо
-button = render_button("Сохранить", button_type="success")
+    if request.user.is_staff:
+        buttons.append(render_button(
+            "Admin Panel",
+            button_type="primary",
+            icon="cog"
+        ))
+
+    if request.user.has_perm('app.create_project'):
+        buttons.append(render_button(
+            "New Project",
+            button_type="success",
+            icon="plus"
+        ))
+
+    if request.user.has_perm('app.delete_project'):
+        buttons.append(render_button(
+            "Delete Project",
+            button_type="alert",
+            icon="trash"
+        ))
+
+    context = {'buttons': buttons}
+    return render(request, 'dynamic_buttons.html', context)
 ```
 
-### 4. Используйте outline для вторичных действий
+### Conditional Button Display
 
 ```python
-# Основное действие
-primary_button = render_button("Сохранить", button_type="primary")
+def conditional_buttons_view(request):
+    user = request.user
 
-# Вторичное действие
-secondary_button = render_button("Отмена", button_type="secondary", outline=True)
+    # Base button
+    base_button = render_button(
+        "Welcome",
+        button_type="primary"
+    )
+
+    # Conditional buttons
+    conditional_buttons = []
+
+    if not user.email_verified:
+        conditional_buttons.append(render_button(
+            "Verify Email",
+            button_type="warning",
+            icon="mail"
+        ))
+
+    if user.is_new:
+        conditional_buttons.append(render_button(
+            "Complete Profile",
+            button_type="info",
+            icon="user"
+        ))
+
+    context = {
+        'base_button': base_button,
+        'conditional_buttons': conditional_buttons
+    }
+    return render(request, 'conditional_buttons.html', context)
 ```
 
-### 5. Группируйте связанные кнопки
+### Interactive Buttons
 
 ```python
-def form_actions(request):
-	context = {
-		'form_buttons': [
-			render_button("Сохранить", button_type="primary", icon="check"),
-			render_button("Сохранить как черновик", button_type="secondary", icon="save"),
-			render_button("Отмена", button_type="secondary", outline=True),
-		]
-	}
-	return render(request, 'form_actions.html', context)
+def interactive_buttons_view(request):
+    # Buttons with JavaScript functionality
+    interactive_buttons = [
+        render_button(
+            "Load Data",
+            button_type="primary",
+            icon="download",
+            **{"onclick": "loadData()", "data-loading": "Loading..."}
+        ),
+        render_button(
+            "Save Changes",
+            button_type="success",
+            icon="checkmark",
+            **{"onclick": "saveChanges()", "data-save": "true"}
+        ),
+        render_button(
+            "Reset Form",
+            button_type="secondary",
+            icon="refresh",
+            **{"onclick": "resetForm()", "type": "reset"}
+        )
+    ]
+
+    context = {'interactive_buttons': interactive_buttons}
+    return render(request, 'interactive_buttons.html', context)
 ```
 
-## Решение проблем
+## Button States
 
-### Кнопка не отображается
+### Loading State
 
-1. Проверьте, что функция `render_button` импортирована
-2. Убедитесь, что в шаблоне используется `|safe` фильтр
-3. Проверьте консоль браузера на ошибки
+```python
+def loading_button_view(request):
+    loading_button = render_button(
+        "Processing...",
+        button_type="primary",
+        icon="spinner",
+        **{"disabled": True, "class": "loading"}
+    )
 
-### Стили не применяются
+    context = {'loading_button': loading_button}
+    return render(request, 'loading_button.html', context)
+```
 
-1. Убедитесь, что MetroUI5 CSS загружен
-2. Проверьте, что нет конфликтующих CSS правил
-3. Используйте инспектор браузера для проверки применяемых стилей
+### Disabled State
 
-### JavaScript не работает
+```python
+def disabled_button_view(request):
+    disabled_button = render_button(
+        "Unavailable",
+        button_type="secondary",
+        **{"disabled": True, "title": "This action is not available"}
+    )
 
-1. Проверьте, что MetroUI5 JavaScript загружен
-2. Убедитесь, что нет конфликтов с другими скриптами
-3. Проверьте консоль браузера на ошибки
+    context = {'disabled_button': disabled_button}
+    return render(request, 'disabled_button.html', context)
+```
 
-### Кнопки не группируются
+## Best Practices
 
-1. Убедитесь, что кнопки находятся в одном контейнере
-2. Проверьте CSS классы для группировки
-3. Используйте MetroUI5 классы для группировки кнопок
+### 1. Consistent Button Styling
 
-## Связанные компоненты
+```python
+# Define consistent button styling
+BUTTON_STYLES = {
+    'primary': {'button_type': 'primary', 'icon': 'checkmark'},
+    'secondary': {'button_type': 'secondary', 'icon': 'arrow-right'},
+    'danger': {'button_type': 'alert', 'icon': 'trash'},
+    'success': {'button_type': 'success', 'icon': 'plus'}
+}
 
-- [Алерты](alerts.md) - для отображения сообщений
-- [Формы](forms.md) - для кнопок отправки
-- [Модальные окна](modals.md) - для кнопок открытия/закрытия
-- [Карточки](cards.md) - для размещения кнопок
+def create_consistent_button(text, style, **kwargs):
+    """Create a button with consistent styling."""
 
-## Следующие шаги
+    button_style = BUTTON_STYLES.get(style, BUTTON_STYLES['primary'])
+    button_style.update(kwargs)
 
-Теперь, когда вы освоили кнопки:
+    return render_button(text, **button_style)
 
-1. Изучите другие [компоненты](../) для создания полноценных интерфейсов
-2. Ознакомьтесь с [примерами](../../getting-started/examples.md)
-3. Изучите [API справочник](../../api-reference/) для детальной информации
-4. Создайте интерактивные формы и интерфейсы!
+# Usage
+def consistent_buttons_view(request):
+    context = {
+        'save_button': create_consistent_button("Save", "primary"),
+        'cancel_button': create_consistent_button("Cancel", "secondary"),
+        'delete_button': create_consistent_button("Delete", "danger"),
+        'add_button': create_consistent_button("Add", "success")
+    }
+    return render(request, 'consistent_buttons.html', context)
+```
+
+### 2. Button Accessibility
+
+```python
+def create_accessible_button(text, button_type="default", **kwargs):
+    """Create a button with proper accessibility attributes."""
+
+    # Add accessibility attributes
+    accessibility_attrs = {
+        'aria-label': kwargs.get('aria_label', text),
+        'role': 'button',
+        'tabindex': '0'
+    }
+
+    # Merge with existing attributes
+    if 'attrs' not in kwargs:
+        kwargs['attrs'] = {}
+    kwargs['attrs'].update(accessibility_attrs)
+
+    return render_button(text, button_type=button_type, **kwargs)
+
+# Usage
+def accessible_buttons_view(request):
+    context = {
+        'accessible_button': create_accessible_button(
+            "Submit",
+            button_type="primary",
+            aria_label="Submit the form"
+        )
+    }
+    return render(request, 'accessible_buttons.html', context)
+```
+
+### 3. Performance Optimization
+
+```python
+# Cache button HTML for repeated use
+from django.core.cache import cache
+
+def get_cached_button(button_key, text, **kwargs):
+    """Get cached button HTML to improve performance."""
+
+    cache_key = f"button_{button_key}"
+    button_html = cache.get(cache_key)
+
+    if not button_html:
+        button_html = render_button(text, **kwargs)
+        cache.set(cache_key, button_html, 3600)  # Cache for 1 hour
+
+    return button_html
+
+# Usage
+def optimized_buttons_view(request):
+    context = {
+        'submit_button': get_cached_button('submit', 'Submit', button_type='primary'),
+        'cancel_button': get_cached_button('cancel', 'Cancel', button_type='secondary')
+    }
+    return render(request, 'optimized_buttons.html', context)
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Button not displaying**: Check if `render_button` is imported and `|safe` filter is used
+2. **Styles not applying**: Ensure MetroUI5 CSS is loaded and no conflicting CSS rules
+3. **JavaScript not working**: Verify onclick handlers are properly set and JavaScript is loaded
+4. **Icon not showing**: Check if the icon name is correct and MetroUI icons CSS is loaded
+
+### Debug Mode
+
+```python
+# Enable debug mode for button issues
+METROUI5 = {
+    'button_debug': True,  # Enable button debugging
+    'button_logging': True,  # Log button rendering
+}
+```
+
+## Related Documentation
+
+- [Components](components.md) - Component rendering functions
+- [Template Tags](templatetags.md) - Django template integration
+- [Icons](icons.md) - Icon usage in buttons
+- [Forms](forms.md) - Form button integration
+- [CSS Utilities](css.md) - CSS class management

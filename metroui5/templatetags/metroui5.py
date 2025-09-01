@@ -13,7 +13,7 @@ from ..core import css_url, get_metroui5_setting, javascript_url, icons_css_url
 from ..css import merge_css_classes
 from ..forms import (
 	render_field, render_form, render_form_errors, render_formset, )
-from ..html import render_link_tag, render_script_tag
+from ..html import render_link_tag, render_script_tag, render_tag
 
 MESSAGE_ALERT_TYPES = {
 	message_constants.DEBUG: "warning", message_constants.INFO: "info",
@@ -51,19 +51,19 @@ def metroui5_icons_css_url():
 @register.simple_tag
 def metroui5_css():
 	"""Includes MetroUI CSS file."""
-	return render_link_tag(css_url())
+	return mark_safe(render_link_tag(css_url()))
 
 
 @register.simple_tag
 def metroui5_javascript():
 	"""Includes MetroUI JavaScript file."""
-	return render_script_tag(javascript_url())
+	return mark_safe(render_script_tag(javascript_url()))
 
 
 @register.simple_tag
 def metroui5_icons_css():
 	"""Includes MetroUI icons CSS file."""
-	return render_link_tag(icons_css_url())
+	return mark_safe(render_link_tag(icons_css_url()))
 
 
 @register.simple_tag
@@ -72,7 +72,7 @@ def metroui5_custom_css():
 	from metroui5.html import render_custom_css_files
 	from metroui5.core import custom_css_files
 
-	return render_custom_css_files(custom_css_files())
+	return mark_safe(render_custom_css_files(custom_css_files()))
 
 
 @register.simple_tag
@@ -81,7 +81,7 @@ def metroui5_custom_javascript():
 	from metroui5.html import render_custom_javascript_files
 	from metroui5.core import custom_javascript_files
 
-	return render_custom_javascript_files(custom_javascript_files())
+	return mark_safe(render_custom_javascript_files(custom_javascript_files()))
 
 
 @register.simple_tag
@@ -97,7 +97,7 @@ def metroui5_all_css():
 	if custom_css:
 		html += "\n" + custom_css
 
-	return html
+	return mark_safe(html)
 
 
 @register.simple_tag
@@ -113,7 +113,7 @@ def metroui5_all_javascript():
 	if custom_js:
 		html += "\n" + custom_js
 
-	return html
+	return mark_safe(html)
 
 
 @register.simple_tag
@@ -126,55 +126,55 @@ def metroui5_cdn_mode():
 @register.simple_tag
 def metroui5_form(form, **kwargs):
 	"""Renders form with MetroUI styling."""
-	return render_form(form, **kwargs)
+	return mark_safe(render_form(form, **kwargs))
 
 
 @register.simple_tag
 def metroui5_field(field, **kwargs):
 	"""Renders form field with MetroUI styling."""
-	return render_field(field, **kwargs)
+	return mark_safe(render_field(field, **kwargs))
 
 
 @register.simple_tag
 def metroui5_form_errors(form, **kwargs):
 	"""Renders form errors in MetroUI style."""
-	return render_form_errors(form, **kwargs)
+	return mark_safe(render_form_errors(form, **kwargs))
 
 
 @register.simple_tag
 def metroui5_formset(formset, **kwargs):
 	"""Renders formset with MetroUI styling."""
-	return render_formset(formset, **kwargs)
+	return mark_safe(render_formset(formset, **kwargs))
 
 
 @register.simple_tag
 def metroui5_button(content, **kwargs):
 	"""Renders MetroUI button."""
-	return render_button(content, **kwargs)
+	return mark_safe(render_button(content, **kwargs))
 
 
 @register.simple_tag
 def metroui5_tile(title, **kwargs):
 	"""Renders MetroUI tile."""
-	return render_tile(title, **kwargs)
+	return mark_safe(render_tile(title, **kwargs))
 
 
 @register.simple_tag
 def metroui5_card(**kwargs):
 	"""Renders MetroUI card."""
-	return render_card(**kwargs)
+	return mark_safe(render_card(**kwargs))
 
 
 @register.simple_tag
 def metroui5_progress(value, **kwargs):
 	"""Renders MetroUI progress bar."""
-	return render_progress(value, **kwargs)
+	return mark_safe(render_progress(value, **kwargs))
 
 
 @register.simple_tag
 def metroui5_alert(content, **kwargs):
 	"""Renders MetroUI alert."""
-	return render_alert(content, **kwargs)
+	return mark_safe(render_alert(content, **kwargs))
 
 
 @register.simple_tag
@@ -211,115 +211,115 @@ def metroui5_classes(*args):
 @register.simple_tag
 def metroui5_accordion(items, **kwargs):
 	"""Renders MetroUI accordion."""
-	return render_accordion(items, **kwargs)
+	return mark_safe(render_accordion(items, **kwargs))
 
 
 @register.simple_tag
 def metroui5_calendar(**kwargs):
 	"""Renders MetroUI calendar."""
-	return render_calendar(**kwargs)
+	return mark_safe(render_calendar(**kwargs))
 
 
 @register.simple_tag
 def metroui5_dialog(title, content, **kwargs):
 	"""Renders MetroUI dialog."""
-	return render_dialog(title, content, **kwargs)
+	return mark_safe(render_dialog(title, content, **kwargs))
 
 
 @register.simple_tag
 def metroui5_dropdown(items, button_text="Dropdown", **kwargs):
 	"""Renders MetroUI dropdown."""
-	return render_dropdown(items, button_text, **kwargs)
+	return mark_safe(render_dropdown(items, button_text, **kwargs))
 
 
 @register.simple_tag
 def metroui5_input(input_type="text", placeholder="", **kwargs):
 	"""Renders MetroUI input."""
-	return render_input(input_type, placeholder, **kwargs)
+	return mark_safe(render_input(input_type, placeholder, **kwargs))
 
 
 @register.simple_tag
 def metroui5_list(items, list_type="ul", **kwargs):
 	"""Renders MetroUI list."""
-	return render_list(items, list_type, **kwargs)
+	return mark_safe(render_list(items, list_type, **kwargs))
 
 
 @register.simple_tag
 def metroui5_menu(items, **kwargs):
 	"""Renders MetroUI menu."""
-	return render_menu(items, **kwargs)
+	return mark_safe(render_menu(items, **kwargs))
 
 
 @register.simple_tag
 def metroui5_navigation(items, **kwargs):
 	"""Renders MetroUI navigation."""
-	return render_navigation(items, **kwargs)
+	return mark_safe(render_navigation(items, **kwargs))
 
 
 @register.simple_tag
 def metroui5_panel(title=None, content=None, **kwargs):
 	"""Renders MetroUI panel."""
-	return render_panel(title, content, **kwargs)
+	return mark_safe(render_panel(title, content, **kwargs))
 
 
 @register.simple_tag
 def metroui5_sidebar(items, **kwargs):
 	"""Renders MetroUI sidebar."""
-	return render_sidebar(items, **kwargs)
+	return mark_safe(render_sidebar(items, **kwargs))
 
 
 @register.simple_tag
 def metroui5_table(headers, rows, **kwargs):
 	"""Renders MetroUI table."""
-	return render_table(headers, rows, **kwargs)
+	return mark_safe(render_table(headers, rows, **kwargs))
 
 
 @register.simple_tag
 def metroui5_tabs(tabs, **kwargs):
 	"""Renders MetroUI tabs."""
-	return render_tabs(tabs, **kwargs)
+	return mark_safe(render_tabs(tabs, **kwargs))
 
 
 @register.simple_tag
 def metroui5_toolbar(items, **kwargs):
 	"""Renders MetroUI toolbar."""
-	return render_toolbar(items, **kwargs)
+	return mark_safe(render_toolbar(items, **kwargs))
 
 
 @register.simple_tag
 def metroui5_modal(title, content, **kwargs):
 	"""Renders MetroUI modal."""
-	return render_modal(title, content, **kwargs)
+	return mark_safe(render_modal(title, content, **kwargs))
 
 
 @register.simple_tag
 def metroui5_breadcrumb(items, **kwargs):
 	"""Renders MetroUI breadcrumb."""
-	return render_breadcrumb(items, **kwargs)
+	return mark_safe(render_breadcrumb(items, **kwargs))
 
 
 @register.simple_tag
 def metroui5_pagination(current_page, total_pages, **kwargs):
 	"""Renders MetroUI pagination."""
-	return render_pagination(current_page, total_pages, **kwargs)
+	return mark_safe(render_pagination(current_page, total_pages, **kwargs))
 
 
 @register.simple_tag
 def metroui5_badge(content, badge_type="default", **kwargs):
 	"""Renders MetroUI badge."""
-	return render_badge(content, badge_type, **kwargs)
+	return mark_safe(render_badge(content, badge_type, **kwargs))
 
 
 @register.simple_tag
 def metroui5_avatar(image_url, size="medium", **kwargs):
 	"""Renders MetroUI avatar."""
-	return render_avatar(image_url, size, **kwargs)
+	return mark_safe(render_avatar(image_url, size, **kwargs))
 
 
 @register.simple_tag
 def metroui5_rating(value, max_value=5, **kwargs):
 	"""Renders MetroUI rating."""
-	return render_rating(value, max_value, **kwargs)
+	return mark_safe(render_rating(value, max_value, **kwargs))
 
 
 # Utility template tags
@@ -334,7 +334,7 @@ def metroui5_icon(icon_name, size=None, **kwargs):
 	attrs = {"class": " ".join(icon_classes)}
 	attrs.update(kwargs)
 
-	return render_tag("span", attrs=attrs, content="")
+	return mark_safe(render_tag("span", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -343,7 +343,7 @@ def metroui5_grid(columns=12, **kwargs):
 	attrs = {"class": f"grid grid-{columns}"}
 	attrs.update(kwargs)
 
-	return render_tag("div", attrs=attrs, content="")
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -352,7 +352,7 @@ def metroui5_row(**kwargs):
 	attrs = {"class": "row"}
 	attrs.update(kwargs)
 
-	return render_tag("div", attrs=attrs, content="")
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -361,7 +361,7 @@ def metroui5_cell(size, **kwargs):
 	attrs = {"class": f"cell-{size}"}
 	attrs.update(kwargs)
 
-	return render_tag("div", attrs=attrs, content="")
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -370,7 +370,7 @@ def metroui5_container(**kwargs):
 	attrs = {"class": "container"}
 	attrs.update(kwargs)
 
-	return render_tag("div", attrs=attrs, content="")
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -379,7 +379,65 @@ def metroui5_fluid_container(**kwargs):
 	attrs = {"class": "container-fluid"}
 	attrs.update(kwargs)
 
-	return render_tag("div", attrs=attrs, content="")
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
+
+
+@register.simple_tag
+def metroui5_icon(icon_name, size=None, **kwargs):
+	"""Renders MetroUI icon."""
+	icon_classes = [f"mif-{icon_name}"]
+	if size:
+		icon_classes.append(f"mif-{size}")
+
+	attrs = {"class": " ".join(icon_classes)}
+	attrs.update(kwargs)
+
+	return mark_safe(render_tag("span", attrs=attrs, content=""))
+
+
+@register.simple_tag
+def metroui5_grid(columns=12, **kwargs):
+	"""Renders MetroUI grid container."""
+	attrs = {"class": f"grid grid-{columns}"}
+	attrs.update(kwargs)
+
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
+
+
+@register.simple_tag
+def metroui5_row(**kwargs):
+	"""Renders MetroUI row."""
+	attrs = {"class": "row"}
+	attrs.update(kwargs)
+
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
+
+
+@register.simple_tag
+def metroui5_cell(size, **kwargs):
+	"""Renders MetroUI cell."""
+	attrs = {"class": f"cell-{size}"}
+	attrs.update(kwargs)
+
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
+
+
+@register.simple_tag
+def metroui5_container(**kwargs):
+	"""Renders MetroUI container."""
+	attrs = {"class": "container"}
+	attrs.update(kwargs)
+
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
+
+
+@register.simple_tag
+def metroui5_fluid_container(**kwargs):
+	"""Renders MetroUI fluid container."""
+	attrs = {"class": "container-fluid"}
+	attrs.update(kwargs)
+
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -388,7 +446,7 @@ def metroui5_app_bar(**kwargs):
 	attrs = {"class": "app-bar", "data-role": "appbar"}
 	attrs.update(kwargs)
 
-	return render_tag("div", attrs=attrs, content="")
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -397,7 +455,7 @@ def metroui5_notify(message, **kwargs):
 	attrs = {"class": "notify", "data-role": "notify"}
 	attrs.update(kwargs)
 
-	return render_tag("div", attrs=attrs, content=message)
+	return mark_safe(render_tag("div", attrs=attrs, content=message))
 
 
 @register.simple_tag
@@ -406,7 +464,7 @@ def metroui5_hint(text, **kwargs):
 	attrs = {"class": "hint", "data-role": "hint", "data-hint-text": text}
 	attrs.update(kwargs)
 
-	return render_tag("div", attrs=attrs, content="")
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -415,7 +473,7 @@ def metroui5_loading(**kwargs):
 	attrs = {"class": "loading", "data-role": "loading"}
 	attrs.update(kwargs)
 
-	return render_tag("div", attrs=attrs, content="")
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -424,7 +482,7 @@ def metroui5_spinner(**kwargs):
 	attrs = {"class": "spinner", "data-role": "spinner"}
 	attrs.update(kwargs)
 
-	return render_tag("div", attrs=attrs, content="")
+	return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -439,7 +497,7 @@ def metroui5_stepper(steps, **kwargs):
 		step_html = render_tag("div", {"class": f"step {step_class}"}, step)
 		stepper_items.append(step_html)
 
-	return render_tag("div", attrs=attrs, content="".join(stepper_items))
+	return mark_safe(render_tag("div", attrs=attrs, content="".join(stepper_items)))
 
 
 @register.simple_tag
@@ -460,7 +518,7 @@ def metroui5_tree(items, **kwargs):
 
 	tree_items = [render_tree_item(item) for item in items]
 
-	return render_tag("div", attrs=attrs, content=render_tag("ul", {}, "".join(tree_items)))
+	return mark_safe(render_tag("div", attrs=attrs, content=render_tag("ul", {}, "".join(tree_items))))
 
 
 @register.simple_tag
@@ -484,7 +542,7 @@ def metroui5_wizard(steps, **kwargs):
 	nav = render_tag("div", {"class": "wizard-nav"}, "".join(wizard_nav))
 	content = render_tag("div", {"class": "wizard-content"}, "".join(wizard_content))
 
-	return render_tag("div", attrs=attrs, content=nav + content)
+	return mark_safe(render_tag("div", attrs=attrs, content=nav + content))
 
 
 @register.simple_tag

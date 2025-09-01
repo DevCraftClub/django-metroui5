@@ -1,400 +1,499 @@
-# Карточки (Cards)
+# Cards
 
-Компонент для создания информационных карточек с заголовком, содержимым и подвалом.
+Component for creating information cards with header, content, and footer.
 
-## Основное использование
+## Basic Usage
 
-### Простая карточка
+### Simple Card
 
 ```python
 from metroui5.components import render_card
 
-# Базовая карточка
-card = render_card("Заголовок", "Содержимое карточки")
+# Basic card
+card = render_card("Title", "Card content")
 ```
 
-### Карточка с подвалом
+### Card with Footer
 
 ```python
-# Карточка с заголовком, содержимым и подвалом
+# Card with header, content, and footer
 card = render_card(
-	header="Заголовок карточки",
-	content="Основное содержимое карточки",
-	footer="Подвал карточки"
+    header="Card Title",
+    content="Main card content",
+    footer="Card footer"
 )
 ```
 
-### Карточка только с содержимым
+### Content-Only Card
 
 ```python
-# Карточка без заголовка и подвала
-card = render_card(content="Только содержимое")
+# Card without header and footer
+card = render_card(content="Content only")
 ```
 
-## Параметры
+## Parameters
 
-### `header` (опционально)
+### `header` (optional)
 
-Заголовок карточки. Если не указан, заголовок не отображается.
+Card header. If not specified, header is not displayed.
 
 ```python
-card = render_card(header="Заголовок", content="Содержимое")
+card = render_card(header="Title", content="Content")
 ```
 
-### `content` (опционально)
+### `content` (optional)
 
-Основное содержимое карточки. Если не указано, содержимое не отображается.
+Main card content. If not specified, content is not displayed.
 
 ```python
-card = render_card(header="Заголовок", content="Содержимое")
+card = render_card(header="Title", content="Content")
 ```
 
-### `footer` (опционально)
+### `footer` (optional)
 
-Подвал карточки. Если не указан, подвал не отображается.
-
-```python
-card = render_card(
-	header="Заголовок",
-	content="Содержимое",
-	footer="Подвал"
-)
-```
-
-### `**attrs` (опционально)
-
-Дополнительные HTML атрибуты.
+Card footer. If not specified, footer is not displayed.
 
 ```python
 card = render_card(
-	header="Заголовок",
-	content="Содержимое",
-	**{"class": "custom-card", "id": "myCard"}
+    header="Title",
+    content="Content",
+    footer="Footer"
 )
 ```
 
-## Примеры использования
+### `**attrs` (optional)
 
-### В представлении
+Additional HTML attributes.
+
+```python
+card = render_card(
+    header="Title",
+    content="Content",
+    **{"class": "custom-card", "id": "myCard"}
+)
+```
+
+## Usage Examples
+
+### In Views
 
 ```python
 from metroui5.components import render_card
 
 
 def dashboard(request):
-	context = {
-		'info_card': render_card(
-			header="Информация",
-			content="Это информационная карточка с важными данными.",
-			footer="Обновлено сегодня"
-		),
-		'stats_card': render_card(
-			header="Статистика",
-			content="""
+    context = {
+        'info_card': render_card(
+            header="Information",
+            content="This is an information card with important data.",
+            footer="Updated today"
+        ),
+        'stats_card': render_card(
+            header="Statistics",
+            content="""
                 <div class="row">
                     <div class="cell-md-6">
-                        <strong>Пользователи:</strong> 1,234
+                        <strong>Users:</strong> 1,234
                     </div>
                     <div class="cell-md-6">
-                        <strong>Заказы:</strong> 567
+                        <strong>Orders:</strong> 567
                     </div>
                 </div>
-            """
-		),
-		'action_card': render_card(
-			header="Действия",
-			content="Выберите действие для продолжения работы",
-			footer="Доступно 24/7"
-		)
-	}
-	return render(request, 'dashboard.html', context)
+            """,
+            footer="Last updated: 5 minutes ago"
+        ),
+        'action_card': render_card(
+            header="Quick Actions",
+            content="""
+                <div class="button-group">
+                    <button class="button primary">Create New</button>
+                    <button class="button secondary">Import Data</button>
+                </div>
+            """,
+            footer="Click any button to proceed"
+        )
+    }
+    return render(request, 'dashboard.html', context)
 ```
 
-### В шаблоне
+### In Templates
 
 ```html
-{% extends 'base.html' %} {% block content %}
+<!-- dashboard.html -->
+{% load metroui5 %} {% block content %}
 <div class="row">
-    <div class="cell-md-4">{{ info_card|safe }}</div>
-    <div class="cell-md-4">{{ stats_card|safe }}</div>
-    <div class="cell-md-4">{{ action_card|safe }}</div>
+	<!-- Information card -->
+	<div class="cell-md-4">{{ info_card|safe }}</div>
+
+	<!-- Statistics card -->
+	<div class="cell-md-4">{{ stats_card|safe }}</div>
+
+	<!-- Action card -->
+	<div class="cell-md-4">{{ action_card|safe }}</div>
 </div>
 {% endblock %}
 ```
 
-### Карточки с HTML содержимым
+### Using Template Tags
 
-```python
-def rich_content_view(request):
-	# Карточка с HTML содержимым
-	html_content = """
-        <div class="alert alert-info">
-            <strong>Внимание!</strong> Это важная информация.
-        </div>
-        <p>Дополнительный текст с <em>форматированием</em>.</p>
-        <ul>
-            <li>Пункт 1</li>
-            <li>Пункт 2</li>
-            <li>Пункт 3</li>
-        </ul>
-    """
+```html
+{% load metroui5 %}
 
-	rich_card = render_card(
-		header="Богатое содержимое",
-		content=html_content,
-		footer="HTML поддерживается"
-	)
+<!-- Basic card -->
+{% metroui5_card header="Card Title" content="Card content" %}
 
-	return render(request, 'rich_content.html', {'card': rich_card})
+<!-- Card with footer -->
+{% metroui5_card header="Important Notice" content="This is an important message
+for all users." footer="Please read carefully" %}
+
+<!-- Custom styled card -->
+{% metroui5_card header="Custom Card" content="This card has custom styling"
+class="card-custom" id="custom-card" %}
 ```
 
-### Карточки с кнопками в подвале
+## Advanced Examples
+
+### Dynamic Card Generation
 
 ```python
-from metroui5.components import render_card, render_button
+def dynamic_cards_view(request):
+    # Generate cards based on user permissions
+    cards = []
 
+    if request.user.is_staff:
+        cards.append(render_card(
+            header="Admin Panel",
+            content="Access to administrative functions",
+            footer="Restricted access"
+        ))
 
-def action_cards_view(request):
-	# Кнопки для подвала
-	action_buttons = [
-		render_button("Редактировать", button_type="secondary", size="small"),
-		render_button("Удалить", button_type="alert", size="small"),
-	]
+    if request.user.has_perm('app.view_reports'):
+        cards.append(render_card(
+            header="Reports",
+            content="View and generate reports",
+            footer="Data updated hourly"
+        ))
 
-	# Карточка с кнопками в подвале
-	action_card = render_card(
-		header="Управление",
-		content="Выберите действие для этого элемента",
-		footer=" ".join([btn for btn in action_buttons])
-	)
+    if request.user.has_perm('app.manage_users'):
+        cards.append(render_card(
+            header="User Management",
+            content="Manage user accounts and permissions",
+            footer="Real-time updates"
+        ))
 
-	return render(request, 'action_cards.html', {'card': action_card})
+    context = {'cards': cards}
+    return render(request, 'dynamic_cards.html', context)
 ```
 
-## Кастомизация
-
-### Дополнительные CSS классы
+### Conditional Card Content
 
 ```python
-card = render_card(
-	header="Кастомная карточка",
-	content="Содержимое",
-	**{"class": "card-custom my-card"}
-)
+def conditional_cards_view(request):
+    user = request.user
+
+    # Base card
+    base_card = render_card(
+        header=f"Welcome, {user.first_name}!",
+        content="Here's your personalized dashboard."
+    )
+
+    # Conditional cards based on user status
+    conditional_cards = []
+
+    if not user.email_verified:
+        conditional_cards.append(render_card(
+            header="Email Verification Required",
+            content="Please verify your email address to access all features.",
+            footer="Check your inbox"
+        ))
+
+    if user.is_new:
+        conditional_cards.append(render_card(
+            header="Getting Started",
+            content="Complete your profile setup to get the most out of our platform.",
+            footer="Takes only 2 minutes"
+        ))
+
+    if user.last_login and user.last_login.date() < timezone.now().date() - timedelta(days=7):
+        conditional_cards.append(render_card(
+            header="Welcome Back!",
+            content="We've missed you. Here's what's new since your last visit.",
+            footer="Stay updated"
+        ))
+
+    context = {
+        'base_card': base_card,
+        'conditional_cards': conditional_cards
+    }
+    return render(request, 'conditional_cards.html', context)
 ```
 
-### Атрибуты для JavaScript
+### Interactive Cards
 
 ```python
-card = render_card(
-	header="Интерактивная карточка",
-	content="Содержимое",
-	**{
-		"data-card-id": "123",
-		"data-type": "info",
-		"onclick": "handleCardClick(this)"
-	}
-)
+def interactive_cards_view(request):
+    # Cards with interactive elements
+    interactive_cards = [
+        render_card(
+            header="Settings",
+            content="""
+                <div class="form-group">
+                    <label>Notifications:</label>
+                    <input type="checkbox" data-role="switch" checked>
+                </div>
+                <div class="form-group">
+                    <label>Theme:</label>
+                    <select data-role="select">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+            """,
+            footer="<button class='button primary'>Save Changes</button>"
+        ),
+        render_card(
+            header="Quick Actions",
+            content="""
+                <div class="button-group">
+                    <button class="button primary" onclick="createProject()">New Project</button>
+                    <button class="button secondary" onclick="importData()">Import</button>
+                    <button class="button alert" onclick="exportData()">Export</button>
+                </div>
+            """,
+            footer="Click any button to proceed"
+        )
+    ]
+
+    context = {'interactive_cards': interactive_cards}
+    return render(request, 'interactive_cards.html', context)
 ```
 
-### Стилизация через CSS
+## Card Layouts
+
+### Grid Layout
+
+```html
+<!-- Grid layout for cards -->
+<div class="row">
+	<div class="cell-md-3">{{ card1|safe }}</div>
+	<div class="cell-md-3">{{ card2|safe }}</div>
+	<div class="cell-md-3">{{ card3|safe }}</div>
+	<div class="cell-md-3">{{ card4|safe }}</div>
+</div>
+```
+
+### Masonry Layout
+
+```html
+<!-- Masonry-style layout -->
+<div class="masonry-grid" data-role="masonry">
+	<div class="masonry-item">{{ tall_card|safe }}</div>
+	<div class="masonry-item">{{ wide_card|safe }}</div>
+	<div class="masonry-item">{{ small_card|safe }}</div>
+</div>
+```
+
+### Responsive Layout
+
+```html
+<!-- Responsive card layout -->
+<div class="row">
+	<div class="cell-sm-12 cell-md-6 cell-lg-4">{{ responsive_card1|safe }}</div>
+	<div class="cell-sm-12 cell-md-6 cell-lg-4">{{ responsive_card2|safe }}</div>
+	<div class="cell-sm-12 cell-md-12 cell-lg-4">{{ responsive_card3|safe }}</div>
+</div>
+```
+
+## Customization
+
+### Custom CSS Classes
 
 ```css
-/* Кастомные стили для карточек */
-.card-custom {
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+/* Custom card styles */
+.custom-card {
+	border-radius: 15px;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.my-card {
-    border-left: 4px solid #007bff;
+.custom-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
 }
 
-.my-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+.custom-card .card-header {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	border-radius: 15px 15px 0 0;
 }
 
-/* Стили для заголовка */
-.card-custom .card-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    font-weight: bold;
+.custom-card .card-content {
+	padding: 2rem;
+	line-height: 1.6;
 }
 
-/* Стили для подвала */
-.card-custom .card-footer {
-    background-color: #f8f9fa;
-    border-top: 1px solid #dee2e6;
+.custom-card .card-footer {
+	background-color: #f8f9fa;
+	border-top: 1px solid #e9ecef;
+	border-radius: 0 0 15px 15px;
 }
 ```
 
-## Группировка карточек
+### Custom JavaScript
 
-### Сетка карточек
+```javascript
+// Add custom card interactions
+document.addEventListener("DOMContentLoaded", function () {
+	// Add click handlers to cards
+	document.querySelectorAll(".card").forEach((card) => {
+		card.addEventListener("click", function () {
+			// Add click effect
+			this.style.transform = "scale(0.98)";
+			setTimeout(() => {
+				this.style.transform = "scale(1)";
+			}, 150);
+		});
+	});
+
+	// Add hover effects
+	document.querySelectorAll(".card").forEach((card) => {
+		card.addEventListener("mouseenter", function () {
+			this.style.boxShadow = "0 8px 25px rgba(0, 0, 0, 0.15)";
+		});
+
+		card.addEventListener("mouseleave", function () {
+			this.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.1)";
+		});
+	});
+});
+```
+
+## Best Practices
+
+### 1. Consistent Card Structure
 
 ```python
-def grid_cards_view(request):
-	# Создаем несколько карточек
-	cards = []
-	for i in range(6):
-		card = render_card(
-			header=f"Карточка {i + 1}",
-			content=f"Содержимое карточки номер {i + 1}",
-			footer=f"Подвал {i + 1}"
-		)
-		cards.append(card)
+# Define consistent card structure
+def create_consistent_card(title, content, footer=None, **kwargs):
+    """Create a card with consistent styling and structure."""
 
-	return render(request, 'grid_cards.html', {'cards': cards})
+    default_attrs = {
+        'class': 'card card-standard',
+        'data-card-type': 'standard'
+    }
+
+    # Merge with custom attributes
+    default_attrs.update(kwargs)
+
+    return render_card(
+        header=title,
+        content=content,
+        footer=footer,
+        **default_attrs
+    )
+
+# Usage
+def dashboard_view(request):
+    context = {
+        'welcome_card': create_consistent_card(
+            "Welcome Back!",
+            "We're glad to see you again.",
+            footer="Last login: 2 hours ago"
+        ),
+        'stats_card': create_consistent_card(
+            "Statistics",
+            "Your activity summary for today.",
+            footer="Updated every 5 minutes"
+        )
+    }
+    return render(request, 'dashboard.html', context)
 ```
 
-### Шаблон для сетки
-
-```html
-{% extends 'base.html' %} {% block content %}
-<div class="row">
-    {% for card in cards %}
-    <div class="cell-md-4 cell-lg-3">{{ card|safe }}</div>
-    {% endfor %}
-</div>
-{% endblock %}
-```
-
-## Лучшие практики
-
-### 1. Используйте заголовки для ясности
+### 2. Performance Optimization
 
 ```python
-# Хорошо
-card = render_card(
-	header="Статистика продаж",
-	content="Данные за текущий месяц"
-)
+# Cache expensive card content
+from django.core.cache import cache
 
-# Плохо
-card = render_card(content="Статистика продаж - данные за текущий месяц")
+def get_cached_card_content(user_id, card_type):
+    """Get cached card content to improve performance."""
+
+    cache_key = f"card_content_{user_id}_{card_type}"
+    content = cache.get(cache_key)
+
+    if not content:
+        # Generate expensive content
+        content = generate_expensive_content(user_id, card_type)
+
+        # Cache for 10 minutes
+        cache.set(cache_key, content, 600)
+
+    return content
+
+def optimized_cards_view(request):
+    user_id = request.user.id
+
+    # Get cached content
+    stats_content = get_cached_card_content(user_id, 'stats')
+    activity_content = get_cached_card_content(user_id, 'activity')
+
+    context = {
+        'stats_card': render_card(
+            header="Statistics",
+            content=stats_content,
+            footer="Cached data"
+        ),
+        'activity_card': render_card(
+            header="Recent Activity",
+            content=activity_content,
+            footer="Cached data"
+        )
+    }
+    return render(request, 'optimized_cards.html', context)
 ```
 
-### 2. Группируйте связанную информацию
+### 3. Accessibility
 
 ```python
-def user_profile_view(request):
-	# Карточка с основной информацией
-	profile_card = render_card(
-		header="Профиль пользователя",
-		content=f"""
-            <p><strong>Имя:</strong> {user.first_name} {user.last_name}</p>
-            <p><strong>Email:</strong> {user.email}</p>
-            <p><strong>Дата регистрации:</strong> {user.date_joined}</p>
-        """
-	)
+# Create accessible cards
+def create_accessible_card(title, content, footer=None, **kwargs):
+    """Create a card with proper accessibility attributes."""
 
-	# Карточка с настройками
-	settings_card = render_card(
-		header="Настройки",
-		content="Управление настройками профиля",
-		footer="Нажмите для изменения"
-	)
+    # Add accessibility attributes
+    accessibility_attrs = {
+        'role': 'article',
+        'aria-labelledby': f"card-{kwargs.get('id', 'default')}-header",
+        'aria-describedby': f"card-{kwargs.get('id', 'default')}-content"
+    }
 
-	context = {
-		'profile_card': profile_card,
-		'settings_card': settings_card,
-	}
-	return render(request, 'user_profile.html', context)
+    # Merge with existing attributes
+    if 'attrs' not in kwargs:
+        kwargs['attrs'] = {}
+    kwargs['attrs'].update(accessibility_attrs)
+
+    return render_card(
+        header=title,
+        content=content,
+        footer=footer,
+        **kwargs
+    )
+
+# Usage
+def accessible_cards_view(request):
+    context = {
+        'accessible_card': create_accessible_card(
+            "Important Information",
+            "This card is designed with accessibility in mind.",
+            footer="Accessible footer",
+            id="important-info"
+        )
+    }
+    return render(request, 'accessible_cards.html', context)
 ```
 
-### 3. Используйте подвал для действий
+## Related Documentation
 
-```python
-def product_card_view(request):
-	# Кнопки действий
-	action_buttons = [
-		render_button("Просмотр", button_type="primary", size="small"),
-		render_button("В корзину", button_type="success", size="small"),
-	]
-
-	# Карточка товара
-	product_card = render_card(
-		header=product.name,
-		content=f"""
-            <img src="{product.image.url}" alt="{product.name}" class="product-image">
-            <p><strong>Цена:</strong> ${product.price}</p>
-            <p>{product.description}</p>
-        """,
-		footer=" ".join([btn for btn in action_buttons])
-	)
-
-	return render(request, 'product.html', {'card': product_card})
-```
-
-### 4. Адаптируйте содержимое
-
-```python
-def responsive_cards_view(request):
-	# Различное содержимое для разных размеров экрана
-	mobile_content = "Краткая информация для мобильных устройств"
-	desktop_content = """
-        <div class="row">
-            <div class="cell-md-6">
-                <h4>Детальная информация</h4>
-                <p>Полное описание для больших экранов</p>
-            </div>
-            <div class="cell-md-6">
-                <h4>Дополнительные данные</h4>
-                <p>Дополнительная информация</p>
-            </div>
-        </div>
-    """
-
-	context = {
-		'mobile_card': render_card(
-			header="Информация",
-			content=mobile_content,
-			**{"class": "d-block d-md-none"}
-		),
-		'desktop_card': render_card(
-			header="Информация",
-			content=desktop_content,
-			**{"class": "d-none d-md-block"}
-		)
-	}
-
-	return render(request, 'responsive_cards.html', context)
-```
-
-## Решение проблем
-
-### Карточка не отображается
-
-1. Проверьте, что функция `render_card` импортирована
-2. Убедитесь, что в шаблоне используется `|safe` фильтр
-3. Проверьте консоль браузера на ошибки
-
-### Стили не применяются
-
-1. Убедитесь, что MetroUI5 CSS загружен
-2. Проверьте, что нет конфликтующих CSS правил
-3. Используйте инспектор браузера для проверки применяемых стилей
-
-### HTML не рендерится
-
-1. Убедитесь, что в шаблоне используется `|safe` фильтр
-2. Проверьте, что HTML разметка корректна
-3. Убедитесь, что нет конфликтов с Django template tags
-
-## Связанные компоненты
-
-- [Кнопки](buttons.md) - для действий в подвале карточек
-- [Алерты](alerts.md) - для важных сообщений в карточках
-- [Таблицы](tables.md) - для структурированных данных
-- [Плитки](tiles.md) - для компактного отображения информации
-
-## Следующие шаги
-
-Теперь, когда вы освоили карточки:
-
-1. Изучите другие [компоненты](../) для создания полноценных интерфейсов
-2. Ознакомьтесь с [примерами](../../getting-started/examples.md)
-3. Изучите [API справочник](../../api-reference/) для детальной информации
-4. Создайте информативные и красивые карточки!
+- [Components](components.md) - Component rendering functions
+- [Template Tags](templatetags.md) - Django template integration
+- [Layout](layout.md) - Page layout components
+- [CSS Utilities](css.md) - CSS class management

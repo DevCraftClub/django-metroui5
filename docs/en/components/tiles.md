@@ -1,416 +1,606 @@
-# Плитки (Tiles)
+# Tiles
 
-Компонент для создания информационных плиток с заголовком, содержимым и иконкой.
+Component for creating information tiles with title, content, and icon.
 
-## Основное использование
+## Basic Usage
 
-### Простая плитка
+### Simple Tile
 
 ```python
 from metroui5.components import render_tile
 
-# Базовая плитка
-tile = render_tile("Заголовок", "Содержимое")
+# Basic tile
+tile = render_tile("Title", "Content")
 ```
 
-### Плитка с цветом и размером
+### Tile with Color and Size
 
 ```python
-# Плитка с цветом и размером
+# Tile with color and size
 tile = render_tile(
-	title="Пользователи",
-	content="1,234",
-	color="blue",
-	size="medium"
+    title="Users",
+    content="1,234",
+    color="blue",
+    size="medium"
 )
 ```
 
-### Плитка с иконкой
+### Tile with Icon
 
 ```python
-# Плитка с иконкой
+# Tile with icon
 tile = render_tile(
-	title="Заказы",
-	content="567",
-	color="green",
-	size="large",
-	icon="cart"
+    title="Orders",
+    content="567",
+    color="green",
+    size="large",
+    icon="cart"
 )
 ```
 
-## Параметры
+## Parameters
 
-### `title` (обязательный)
+### `title` (required)
 
-Заголовок плитки.
-
-```python
-tile = render_tile("Заголовок плитки")
-```
-
-### `content` (опционально)
-
-Содержимое плитки. Если не указано, содержимое не отображается.
+Tile title.
 
 ```python
-tile = render_tile("Заголовок", "Содержимое")
+tile = render_tile("Tile Title")
 ```
 
-### `size` (опционально)
+### `content` (optional)
 
-Размер плитки. Доступные значения:
-
-- `"small"` - маленькая
-- `"medium"` (по умолчанию) - средняя
-- `"large"` - большая
+Tile content. If not specified, content is not displayed.
 
 ```python
-tile = render_tile("Заголовок", size="large")
+tile = render_tile("Title", "Content")
 ```
 
-### `color` (опционально)
+### `size` (optional)
 
-Цвет плитки. Доступные значения:
+Tile size. Available values:
 
-- `"blue"` (по умолчанию) - синий
-- `"green"` - зеленый
-- `"orange"` - оранжевый
-- `"red"` - красный
-- `"purple"` - фиолетовый
-- `"yellow"` - желтый
-- `"cyan"` - голубой
-- `"gray"` - серый
+- `"small"` - small
+- `"medium"` (default) - medium
+- `"large"` - large
 
 ```python
-tile = render_tile("Заголовок", color="green")
+tile = render_tile("Title", size="large")
 ```
 
-### `icon` (опционально)
+### `color` (optional)
 
-Иконка для плитки (имя иконки MetroUI).
+Tile color. Available values:
+
+- `"blue"` (default) - blue
+- `"green"` - green
+- `"orange"` - orange
+- `"red"` - red
+- `"purple"` - purple
+- `"yellow"` - yellow
+- `"cyan"` - cyan
+- `"gray"` - gray
 
 ```python
-tile = render_tile("Заголовок", icon="users")
+tile = render_tile("Title", color="green")
 ```
 
-### `**attrs` (опционально)
+### `icon` (optional)
 
-Дополнительные HTML атрибуты.
+Icon for the tile (MetroUI icon name).
+
+```python
+tile = render_tile("Title", icon="users")
+```
+
+### `**attrs` (optional)
+
+Additional HTML attributes.
 
 ```python
 tile = render_tile(
-	"Заголовок",
-	**{"class": "custom-tile", "id": "myTile"}
+    "Title",
+    **{"class": "custom-tile", "id": "myTile"}
 )
 ```
 
-## Примеры использования
+## Usage Examples
 
-### В представлении
+### In Views
 
 ```python
 from metroui5.components import render_tile
 
 
 def dashboard(request):
-	context = {
-		'stats_tiles': [
-			render_tile(
-				title="Пользователи",
-				content="1,234",
-				color="blue",
-				size="small",
-				icon="users"
-			),
-			render_tile(
-				title="Заказы",
-				content="567",
-				color="green",
-				size="small",
-				icon="cart"
-			),
-			render_tile(
-				title="Доход",
-				content="$12,345",
-				color="orange",
-				size="small",
-				icon="dollar"
-			),
-			render_tile(
-				title="Товары",
-				content="89",
-				color="red",
-				size="small",
-				icon="package"
-			)
-		]
-	}
-	return render(request, 'dashboard.html', context)
+    context = {
+        'stats_tiles': [
+            render_tile(
+                title="Users",
+                content="1,234",
+                color="blue",
+                size="small",
+                icon="users"
+            ),
+            render_tile(
+                title="Orders",
+                content="567",
+                color="green",
+                size="small",
+                icon="cart"
+            ),
+            render_tile(
+                title="Revenue",
+                content="$12,345",
+                color="orange",
+                size="small",
+                icon="dollar"
+            ),
+            render_tile(
+                title="Products",
+                content="89",
+                color="red",
+                size="small",
+                icon="package"
+            )
+        ]
+    }
+    return render(request, 'dashboard.html', context)
 ```
 
-### В шаблоне
+### In Templates
 
 ```html
 {% extends 'base.html' %} {% block content %}
 <div class="row">
-    {% for tile in stats_tiles %}
-    <div class="cell-md-3">{{ tile|safe }}</div>
-    {% endfor %}
+	{% for tile in stats_tiles %}
+	<div class="cell-md-3">{{ tile|safe }}</div>
+	{% endfor %}
 </div>
 {% endblock %}
 ```
 
-### Плитки с различными размерами
+### Tiles with Different Sizes
 
 ```python
 def size_examples_view(request):
-	context = {
-		'size_tiles': [
-			render_tile("Маленькая", "Small", size="small", color="blue"),
-			render_tile("Средняя", "Medium", size="medium", color="green"),
-			render_tile("Большая", "Large", size="large", color="orange"),
-		]
-	}
-	return render(request, 'size_examples.html', context)
+    context = {
+        'size_tiles': [
+            render_tile("Small", "Small content", size="small", color="blue"),
+            render_tile("Medium", "Medium content", size="medium", color="green"),
+            render_tile("Large", "Large content", size="large", color="orange"),
+        ]
+    }
+    return render(request, 'size_examples.html', context)
 ```
 
-### Плитки с различными цветами
+### Color Variations
 
 ```python
 def color_examples_view(request):
-	colors = ["blue", "green", "orange", "red", "purple", "yellow", "cyan", "gray"]
+    colors = ["blue", "green", "orange", "red", "purple", "yellow", "cyan", "gray"]
 
-	context = {
-		'color_tiles': [
-			render_tile(f"Цвет {color.title()}", color, color=color)
-			for color in colors
-		]
-	}
-	return render(request, 'color_examples.html', context)
+    context = {
+        'color_tiles': [
+            render_tile(f"{color.title()}", f"{color.title()} tile", color=color)
+            for color in colors
+        ]
+    }
+    return render(request, 'color_examples.html', context)
 ```
 
-## Кастомизация
-
-### Дополнительные CSS классы
+### Icon Variations
 
 ```python
-tile = render_tile(
-	"Кастомная плитка",
-	**{"class": "tile-custom my-tile"}
-)
+def icon_examples_view(request):
+    icons = ["users", "cart", "dollar", "package", "star", "heart", "home", "cog"]
+
+    context = {
+        'icon_tiles': [
+            render_tile(f"{icon.title()}", f"{icon.title()} tile", icon=icon)
+            for icon in icons
+        ]
+    }
+    return render(request, 'icon_examples.html', context)
 ```
 
-### Атрибуты для JavaScript
+## Advanced Examples
+
+### Dynamic Tile Generation
 
 ```python
-tile = render_tile(
-	"Интерактивная плитка",
-	**{
-		"data-tile-id": "123",
-		"data-type": "stat",
-		"onclick": "handleTileClick(this)"
-	}
-)
+def dynamic_tiles_view(request):
+    # Generate tiles based on user permissions
+    tiles = []
+
+    if request.user.is_staff:
+        tiles.append(render_tile(
+            title="Admin Panel",
+            content="Access to administrative functions",
+            color="red",
+            icon="cog"
+        ))
+
+    if request.user.has_perm('app.view_reports'):
+        tiles.append(render_tile(
+            title="Reports",
+            content="View and generate reports",
+            color="blue",
+            icon="chart"
+        ))
+
+    if request.user.has_perm('app.manage_users'):
+        tiles.append(render_tile(
+            title="User Management",
+            content="Manage user accounts and permissions",
+            color="green",
+            icon="users"
+        ))
+
+    context = {'tiles': tiles}
+    return render(request, 'dynamic_tiles.html', context)
 ```
 
-### Стилизация через CSS
-
-```css
-/* Кастомные стили для плиток */
-.tile-custom {
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.my-tile {
-    border: 2px solid transparent;
-}
-
-.my-tile:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    border-color: #007bff;
-}
-
-/* Стили для заголовка */
-.tile-custom .tile-title {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-/* Стили для содержимого */
-.tile-custom small {
-    font-size: 1.5em;
-    color: #666;
-}
-```
-
-## Группировка плиток
-
-### Сетка плиток
+### Conditional Tile Content
 
 ```python
-def grid_tiles_view(request):
-	# Создаем сетку плиток
-	tiles = []
-	for i in range(8):
-		tile = render_tile(
-			title=f"Плитка {i + 1}",
-			content=f"Контент {i + 1}",
-			color=["blue", "green", "orange", "red"][i % 4],
-			size="small"
-		)
-		tiles.append(tile)
+def conditional_tiles_view(request):
+    user = request.user
 
-	return render(request, 'grid_tiles.html', {'tiles': tiles})
+    # Base tile
+    base_tile = render_tile(
+        f"Welcome, {user.first_name}!",
+        "Here's your personalized dashboard."
+    )
+
+    # Conditional tiles based on user status
+    conditional_tiles = []
+
+    if not user.email_verified:
+        conditional_tiles.append(render_tile(
+            "Email Verification Required",
+            "Please verify your email address to access all features.",
+            color="warning",
+            icon="mail"
+        ))
+
+    if user.is_new:
+        conditional_tiles.append(render_tile(
+            "Getting Started",
+            "Complete your profile setup to get the most out of our platform.",
+            color="info",
+            icon="user"
+        ))
+
+    if user.last_login and user.last_login.date() < timezone.now().date() - timedelta(days=7):
+        conditional_tiles.append(render_tile(
+            "Welcome Back!",
+            "We've missed you. Here's what's new since your last visit.",
+            color="success",
+            icon="star"
+        ))
+
+    context = {
+        'base_tile': base_tile,
+        'conditional_tiles': conditional_tiles
+    }
+    return render(request, 'conditional_tiles.html', context)
 ```
 
-### Шаблон для сетки
+### Interactive Tiles
+
+```python
+def interactive_tiles_view(request):
+    # Tiles with interactive elements
+    interactive_tiles = [
+        render_tile(
+            "Settings",
+            "Click to access your account settings",
+            color="blue",
+            icon="cog",
+            **{"onclick": "openSettings()", "class": "clickable-tile"}
+        ),
+        render_tile(
+            "Notifications",
+            "Manage your notification preferences",
+            color="green",
+            icon="bell",
+            **{"onclick": "openNotifications()", "class": "clickable-tile"}
+        ),
+        render_tile(
+            "Help",
+            "Get help and support",
+            color="orange",
+            icon="question",
+            **{"onclick": "openHelp()", "class": "clickable-tile"}
+        )
+    ]
+
+    context = {'interactive_tiles': interactive_tiles}
+    return render(request, 'interactive_tiles.html', context)
+```
+
+## Tile Layouts
+
+### Grid Layout
 
 ```html
-{% extends 'base.html' %} {% block content %}
+<!-- Grid layout for tiles -->
 <div class="row">
-    {% for tile in tiles %}
-    <div class="cell-md-3 cell-lg-2">{{ tile|safe }}</div>
-    {% endfor %}
+	<div class="cell-md-3">{{ tile1|safe }}</div>
+	<div class="cell-md-3">{{ tile2|safe }}</div>
+	<div class="cell-md-3">{{ tile3|safe }}</div>
+	<div class="cell-md-3">{{ tile4|safe }}</div>
 </div>
-{% endblock %}
 ```
 
-### Плитки в карточке
+### Responsive Layout
 
-```python
-from metroui5.components import render_tile, render_card
-
-
-def tiles_in_card_view(request):
-	# Создаем плитки
-	tiles = [
-		render_tile("Пользователи", "1,234", "blue", "small"),
-		render_tile("Заказы", "567", "green", "small"),
-		render_tile("Доход", "$12,345", "orange", "small"),
-	]
-
-	# Размещаем плитки в карточке
-	tiles_html = "".join([f"<div class='cell-md-4'>{tile}</div>" for tile in tiles])
-
-	card = render_card(
-		header="Статистика",
-		content=f"<div class='row'>{tiles_html}</div>"
-	)
-
-	return render(request, 'tiles_in_card.html', {'card': card})
+```html
+<!-- Responsive tile layout -->
+<div class="row">
+	<div class="cell-sm-12 cell-md-6 cell-lg-4">{{ responsive_tile1|safe }}</div>
+	<div class="cell-sm-12 cell-md-6 cell-lg-4">{{ responsive_tile2|safe }}</div>
+	<div class="cell-sm-12 cell-md-12 cell-lg-4">{{ responsive_tile3|safe }}</div>
+</div>
 ```
 
-## Лучшие практики
+### Masonry Layout
 
-### 1. Используйте подходящие размеры
-
-```python
-# Хорошо - маленькие плитки для статистики
-stats_tiles = [
-	render_tile("Пользователи", "1,234", "blue", "small"),
-	render_tile("Заказы", "567", "green", "small"),
-]
-
-# Хорошо - большие плитки для важной информации
-feature_tiles = [
-	render_tile("Новая функция", "Описание", "orange", "large"),
-	render_tile("Обновление", "Детали", "green", "large"),
-]
+```html
+<!-- Masonry-style layout -->
+<div class="masonry-grid" data-role="masonry">
+	<div class="masonry-item">{{ tall_tile|safe }}</div>
+	<div class="masonry-item">{{ wide_tile|safe }}</div>
+	<div class="masonry-item">{{ small_tile|safe }}</div>
+</div>
 ```
 
-### 2. Выбирайте подходящие цвета
+## Customization
 
-```python
-# Хорошо - семантические цвета
-tiles = [
-	render_tile("Успех", "100%", "green"),  # Зеленый для успеха
-	render_tile("Внимание", "75%", "orange"),  # Оранжевый для предупреждения
-	render_tile("Ошибка", "25%", "red"),  # Красный для ошибки
-	render_tile("Информация", "50%", "blue"),  # Синий для информации
-]
+### Custom CSS Classes
+
+```css
+/* Custom tile styles */
+.custom-tile {
+	border-radius: 15px;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-tile:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.clickable-tile {
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.clickable-tile:hover {
+	transform: scale(1.05);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom color variations */
+.tile-custom-blue {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+}
+
+.tile-custom-green {
+	background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+	color: white;
+}
+
+.tile-custom-orange {
+	background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+	color: white;
+}
 ```
 
-### 3. Добавляйте иконки для ясности
+### Custom JavaScript
 
-```python
-# Хорошо
-tiles = [
-	render_tile("Пользователи", "1,234", "blue", icon="users"),
-	render_tile("Заказы", "567", "green", icon="cart"),
-	render_tile("Доход", "$12,345", "orange", icon="dollar"),
-]
+```javascript
+// Add custom tile interactions
+document.addEventListener("DOMContentLoaded", function () {
+	// Add click handlers to clickable tiles
+	document.querySelectorAll(".clickable-tile").forEach((tile) => {
+		tile.addEventListener("click", function () {
+			// Add click effect
+			this.style.transform = "scale(0.98)";
+			setTimeout(() => {
+				this.style.transform = "scale(1)";
+			}, 150);
+		});
+	});
 
-# Плохо
-tiles = [
-	render_tile("Пользователи", "1,234", "blue"),
-	render_tile("Заказы", "567", "green"),
-	render_tile("Доход", "$12,345", "orange"),
-]
-```
+	// Add hover effects
+	document.querySelectorAll(".tile").forEach((tile) => {
+		tile.addEventListener("mouseenter", function () {
+			this.style.boxShadow = "0 8px 25px rgba(0, 0, 0, 0.15)";
+		});
 
-### 4. Группируйте связанные плитки
+		tile.addEventListener("mouseleave", function () {
+			this.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.1)";
+		});
+	});
 
-```python
-def dashboard_tiles_view(request):
-	# Плитки статистики
-	stats_tiles = [
-		render_tile("Пользователи", "1,234", "blue", "small", "users"),
-		render_tile("Заказы", "567", "green", "small", "cart"),
-		render_tile("Доход", "$12,345", "orange", "small", "dollar"),
-		render_tile("Товары", "89", "red", "small", "package"),
-	]
+	// Add tile counter animation
+	document.querySelectorAll(".tile[data-counter]").forEach((tile) => {
+		const counter = tile.querySelector(".tile-content");
+		if (counter) {
+			const targetValue = parseInt(counter.textContent);
+			animateCounter(counter, 0, targetValue, 2000);
+		}
+	});
+});
 
-	# Плитки действий
-	action_tiles = [
-		render_tile("Создать", "Новый проект", "blue", "medium", "plus"),
-		render_tile("Импорт", "Загрузить данные", "green", "medium", "upload"),
-		render_tile("Экспорт", "Скачать отчет", "orange", "medium", "download"),
-	]
+function animateCounter(element, start, end, duration) {
+	const startTime = performance.now();
 
-	context = {
-		'stats_tiles': stats_tiles,
-		'action_tiles': action_tiles,
+	function updateCounter(currentTime) {
+		const elapsed = currentTime - startTime;
+		const progress = Math.min(elapsed / duration, 1);
+
+		const current = Math.floor(start + (end - start) * progress);
+		element.textContent = current.toLocaleString();
+
+		if (progress < 1) {
+			requestAnimationFrame(updateCounter);
+		}
 	}
 
-	return render(request, 'dashboard_tiles.html', context)
+	requestAnimationFrame(updateCounter);
+}
 ```
 
-## Решение проблем
+## Best Practices
 
-### Плитка не отображается
+### 1. Consistent Tile Structure
 
-1. Проверьте, что функция `render_tile` импортирована
-2. Убедитесь, что в шаблоне используется `|safe` фильтр
-3. Проверьте консоль браузера на ошибки
+```python
+# Define consistent tile structure
+def create_consistent_tile(title, content, color="blue", size="medium", **kwargs):
+    """Create a tile with consistent styling and structure."""
 
-### Стили не применяются
+    default_attrs = {
+        'class': 'tile tile-standard',
+        'data-tile-type': 'standard'
+    }
 
-1. Убедитесь, что MetroUI5 CSS загружен
-2. Проверьте, что нет конфликтующих CSS правил
-3. Используйте инспектор браузера для проверки применяемых стилей
+    # Merge with custom attributes
+    default_attrs.update(kwargs)
 
-### Иконки не отображаются
+    return render_tile(
+        title=title,
+        content=content,
+        color=color,
+        size=size,
+        **default_attrs
+    )
 
-1. Убедитесь, что CSS иконок MetroUI загружен
-2. Проверьте правильность названия иконки
-3. Убедитесь, что иконка существует в MetroUI
+# Usage
+def dashboard_view(request):
+    context = {
+        'welcome_tile': create_consistent_tile(
+            "Welcome Back!",
+            "We're glad to see you again.",
+            color="blue"
+        ),
+        'stats_tile': create_consistent_tile(
+            "Statistics",
+            "Your activity summary for today.",
+            color="green"
+        )
+    }
+    return render(request, 'dashboard.html', context)
+```
 
-## Связанные компоненты
+### 2. Performance Optimization
 
-- [Карточки](cards.md) - для группировки плиток
-- [Кнопки](buttons.md) - для действий в плитках
-- [Алерты](alerts.md) - для важных сообщений
-- [Таблицы](tables.md) - для структурированных данных
+```python
+# Cache expensive tile content
+from django.core.cache import cache
 
-## Следующие шаги
+def get_cached_tile_content(user_id, tile_type):
+    """Get cached tile content to improve performance."""
 
-Теперь, когда вы освоили плитки:
+    cache_key = f"tile_content_{user_id}_{tile_type}"
+    content = cache.get(cache_key)
 
-1. Изучите другие [компоненты](../) для создания полноценных интерфейсов
-2. Ознакомьтесь с [примерами](../../getting-started/examples.md)
-3. Изучите [API справочник](../../api-reference/) для детальной информации
-4. Создайте информативные и красивые плитки для ваших проектов!
+    if not content:
+        # Generate expensive content
+        content = generate_expensive_content(user_id, tile_type)
+
+        # Cache for 10 minutes
+        cache.set(cache_key, content, 600)
+
+    return content
+
+def optimized_tiles_view(request):
+    user_id = request.user.id
+
+    # Get cached content
+    stats_content = get_cached_tile_content(user_id, 'stats')
+    activity_content = get_cached_tile_content(user_id, 'activity')
+
+    context = {
+        'stats_tile': render_tile(
+            title="Statistics",
+            content=stats_content,
+            color="blue"
+        ),
+        'activity_tile': render_tile(
+            title="Recent Activity",
+            content=activity_content,
+            color="green"
+        )
+    }
+    return render(request, 'optimized_tiles.html', context)
+```
+
+### 3. Accessibility
+
+```python
+# Create accessible tiles
+def create_accessible_tile(title, content, **kwargs):
+    """Create a tile with proper accessibility attributes."""
+
+    # Add accessibility attributes
+    accessibility_attrs = {
+        'role': 'article',
+        'aria-labelledby': f"tile-{kwargs.get('id', 'default')}-title",
+        'aria-describedby': f"tile-{kwargs.get('id', 'default')}-content"
+    }
+
+    # Merge with existing attributes
+    if 'attrs' not in kwargs:
+        kwargs['attrs'] = {}
+    kwargs['attrs'].update(accessibility_attrs)
+
+    return render_tile(
+        title=title,
+        content=content,
+        **kwargs
+    )
+
+# Usage
+def accessible_tiles_view(request):
+    context = {
+        'accessible_tile': create_accessible_tile(
+            "Important Information",
+            "This tile is designed with accessibility in mind.",
+            id="important-info"
+        )
+    }
+    return render(request, 'accessible_tiles.html', context)
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Tile not displaying**: Check if `render_tile` is imported and `|safe` filter is used
+2. **Styles not applying**: Ensure MetroUI5 CSS is loaded and no conflicting CSS rules
+3. **Icons not showing**: Check if the icon name is correct and MetroUI icons CSS is loaded
+4. **Colors not working**: Verify that the color values are valid and CSS is properly loaded
+
+### Debug Mode
+
+```python
+# Enable debug mode for tile issues
+METROUI5 = {
+    'tile_debug': True,  # Enable tile debugging
+    'tile_logging': True,  # Log tile rendering
+}
+```
+
+## Related Documentation
+
+- [Components](components.md) - Component rendering functions
+- [Template Tags](templatetags.md) - Django template integration
+- [Icons](icons.md) - Icon usage in tiles
+- [Cards](cards.md) - Alternative to tiles for content display
+- [CSS Utilities](css.md) - CSS class management
