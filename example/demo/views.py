@@ -250,3 +250,134 @@ def themes_demo(request):
         'tree_items': tree_items,
     }
     return render(request, 'demo/advanced_components.html', context)
+
+
+def initials_avatars(request):
+	"""Demo page for initials avatars"""
+	from metroui5.components import render_initials_avatar
+	import os
+	from django.conf import settings
+	
+	# Sample names for demonstration
+	sample_names = [
+		"John Doe",
+		"Jane Smith",
+		"Robert Johnson",
+		"Maria Garcia",
+		"David Wilson",
+		"Sarah Brown",
+		"Michael Davis",
+		"Lisa Miller",
+		"James Taylor",
+		"Jennifer Anderson"
+	]
+	
+	# Generate avatars with different configurations
+	avatars = []
+	
+	# Basic avatars (saved to default path)
+	for name in sample_names[:5]:
+		avatars.append({
+			"name": name,
+			"html": render_initials_avatar(name),
+			"config": "Responsive avatar (all sizes generated automatically)",
+			"type": "file"
+		})
+	
+	# Different sizes
+	sizes = ["small", "medium", "large", "xlarge"]
+	for i, size in enumerate(sizes):
+		if i < len(sample_names):
+			avatars.append({
+				"name": sample_names[i],
+				"html": render_initials_avatar(sample_names[i], size=size),
+				"config": f"Size: {size}",
+				"type": "file"
+			})
+	
+	# Different shapes
+	shapes = ["circle", "square", "rounded"]
+	for i, shape in enumerate(shapes):
+		if i + 5 < len(sample_names):
+			avatars.append({
+				"name": sample_names[i + 5],
+				"html": render_initials_avatar(sample_names[i + 5], shape=shape),
+				"config": f"Shape: {shape}",
+				"type": "file"
+			})
+	
+	# Custom colors
+	custom_colors = [
+		("#e74c3c", "Red background"),
+		("#3498db", "Blue background"),
+		("#2ecc71", "Green background"),
+		("#f39c12", "Orange background"),
+		("#9b59b6", "Purple background")
+	]
+	
+	for i, (color, desc) in enumerate(custom_colors):
+		if i < len(sample_names):
+			avatars.append({
+				"name": sample_names[i],
+				"html": render_initials_avatar(sample_names[i], bg_color=color),
+				"config": desc,
+				"type": "file"
+			})
+	
+	# Multiple initials
+	long_names = ["John Michael Smith", "Maria Isabella Rodriguez", "Robert James Wilson Jr"]
+	for i, name in enumerate(long_names):
+		avatars.append({
+			"name": name,
+			"html": render_initials_avatar(name, max_initials=3),
+			"config": "3 initials",
+			"type": "file"
+		})
+	
+	# File-based avatars (save to disk)
+	avatars_files = []
+	avatars_dir = os.path.join(settings.MEDIA_ROOT, "avatars", "generated")
+	os.makedirs(avatars_dir, exist_ok=True)
+	
+	for i, name in enumerate(sample_names[:3]):
+		filename = f"avatar_{i+1}.png"
+		filepath = os.path.join(avatars_dir, filename)
+		
+		avatars_files.append({
+			"name": name,
+			"html": render_initials_avatar(
+				name, 
+				save_path=filepath,
+				output_format="png"
+			),
+			"config": f"Saved to file: {filename}",
+			"type": "file",
+			"filepath": filepath
+		})
+	
+	# Different formats
+	formats = ["png", "jpg", "webp"]
+	for i, fmt in enumerate(formats):
+		if i < len(sample_names):
+			filename = f"avatar_{fmt}.{fmt}"
+			filepath = os.path.join(avatars_dir, filename)
+			
+			avatars_files.append({
+				"name": sample_names[i],
+				"html": render_initials_avatar(
+					sample_names[i], 
+					save_path=filepath,
+					output_format=fmt
+				),
+				"config": f"Format: {fmt.upper()}",
+				"type": "file",
+				"filepath": filepath
+			})
+	
+	context = {
+		"avatars": avatars,
+		"avatars_files": avatars_files,
+		"title": "Initials Avatars Demo"
+	}
+	
+	return render(request, "demo/initials_avatars.html", context)
