@@ -327,7 +327,7 @@ def metroui5_rating(value, max_value=5, **kwargs):
 @register.simple_tag
 def metroui5_icon(icon_name, size=None, **kwargs):
 	"""Renders MetroUI icon."""
-	icon_classes = ["mif", icon_name]
+	icon_classes = [f"mif-{icon_name}"]
 	if size:
 		icon_classes.append(f"mif-{size}")
 
