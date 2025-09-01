@@ -1,14 +1,19 @@
 {
-	"version": "180.1.0",
+	"version": "0.1.1",
 	"status": "dev",
-	"dle": [
-		"17.x",
-		"18.0"
+	"python": [
+		"3.9",
+		"3.10",
+		"3.11",
+		"3.12",
+		"3.13"
 	],
-	"php": [
-		"8.3"
+	"django": [
+		"4.2",
+		"5.0",
+		"5.1",
+		"5.2"
 	],
-	"mhadmin": "173.3.5",
-	"name": "Название проекта",
-	"description": "Описание проекта"
+	"name": "Django MetroUI v5 implementation",
+	"description": "MetroUI5 Django integration package providing UI components, form rendering, and template tags for modern web applications"
 }

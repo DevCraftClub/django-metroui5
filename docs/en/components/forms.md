@@ -1,481 +1,411 @@
-# Формы (Forms)
+# Forms
 
-Компонент для рендеринга Django форм с MetroUI5 стилями.
+Component for rendering Django forms with MetroUI5 styles.
 
-## Основное использование
+## Basic Usage
 
-### Рендеринг формы
+### Form Rendering
 
 ```python
 from metroui5.forms import render_form
 
-# Рендеринг формы с MetroUI5 стилями
+# Render form with MetroUI5 styles
 form_html = render_form(form)
 ```
 
-### Форма с параметрами
+### Form with Parameters
 
 ```python
-# Форма с дополнительными параметрами
+# Form with additional parameters
 form_html = render_form(
-	form,
-	layout='horizontal',
-	submit_text="Отправить",
-	submit_class="btn btn-primary"
+    form,
+    layout='horizontal',
+    submit_text="Submit",
+    submit_class="btn btn-primary"
 )
 ```
 
-## Параметры
+## Parameters
 
-### `form` (обязательный)
+### `form` (required)
 
-Django форма для рендеринга.
+Django form to render.
 
 ```python
 from django import forms
 
 
 class ContactForm(forms.Form):
-	name = forms.CharField(max_length=100)
-	email = forms.EmailField()
-	message = forms.CharField(widget=forms.Textarea)
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)
 
 
-# Рендеринг формы
+# Render form
 form = ContactForm()
 form_html = render_form(form)
 ```
 
-### `layout` (опционально)
+### `layout` (optional)
 
-Макет формы. Доступные значения:
+Form layout. Available values:
 
-- `"vertical"` (по умолчанию) - вертикальное расположение
-- `"horizontal"` - горизонтальное расположение
+- `"vertical"` (default) - vertical arrangement
+- `"horizontal"` - horizontal arrangement
 
 ```python
 form_html = render_form(form, layout='horizontal')
 ```
 
-### `submit_text` (опционально)
+### `submit_text` (optional)
 
-Текст кнопки отправки. По умолчанию "Submit".
-
-```python
-form_html = render_form(form, submit_text="Отправить сообщение")
-```
-
-### `submit_class` (опционально)
-
-CSS классы для кнопки отправки.
+Submit button text. Default is "Submit".
 
 ```python
-form_html = render_form(
-	form,
-	submit_class="btn btn-primary btn-lg"
-)
+form_html = render_form(form, submit_text="Send Message")
 ```
 
-### `**kwargs` (опционально)
+### `submit_class` (optional)
 
-Дополнительные параметры для рендерера.
+CSS classes for submit button.
 
 ```python
 form_html = render_form(
-	form,
-	label_class="custom-label",
-	field_class="custom-field",
-	help_text_class="custom-help"
+    form,
+    submit_class="btn btn-primary btn-lg"
 )
 ```
 
-## Примеры использования
+### `**kwargs` (optional)
 
-### В представлении
+Additional parameters for renderer.
+
+```python
+form_html = render_form(
+    form,
+    label_class="custom-label",
+    field_class="custom-field",
+    help_text_class="custom-help"
+)
+```
+
+## Usage Examples
+
+### In Views
 
 ```python
 from django.shortcuts import render
 from metroui5.forms import render_form
 from .forms import ContactForm
 
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Process form
+            return redirect('success')
+    else:
+        form = ContactForm()
 
-def contact_form(request):
-	if request.method == 'POST':
-		form = ContactForm(request.POST)
-		if form.is_valid():
-			# Обработка формы
-			return redirect('success')
-	else:
-		form = ContactForm()
+    # Render form with MetroUI5 styling
+    form_html = render_form(
+        form,
+        layout='horizontal',
+        submit_text="Send Message",
+        submit_class="btn btn-primary btn-lg"
+    )
 
-	# Рендерим форму с MetroUI5 стилями
-	form_html = render_form(
-		form,
-		layout='horizontal',
-		submit_text="Отправить сообщение",
-		submit_class="btn btn-primary"
-	)
-
-	return render(request, 'contact.html', {'form': form_html})
+    context = {'form_html': form_html}
+    return render(request, 'contact.html', context)
 ```
 
-### В шаблоне
+### In Templates
 
 ```html
-{% extends 'base.html' %} {% block content %}
-<h2>Свяжитесь с нами</h2>
+<!-- contact.html -->
+{% load metroui5 %} {% block content %}
+<h1>Contact Us</h1>
 
-{{ form|safe }} {% endblock %}
+<!-- Direct HTML output -->
+{{ form_html|safe }} {% endblock %}
 ```
 
-### Рендеринг отдельного поля
+## Field Rendering
+
+### Rendering Individual Field
 
 ```python
 from metroui5.forms import render_field
 
+def field_view(request):
+    form = ContactForm()
 
-def custom_form_view(request):
-	form = ContactForm()
+    # Render individual fields
+    name_field = render_field(
+        form['name'],
+        label_class="custom-label",
+        field_class="custom-input"
+    )
 
-	# Рендерим только определенные поля
-	name_field = render_field(
-		form['name'],
-		placeholder="Введите ваше имя",
-		label_class="custom-label"
-	)
+    email_field = render_field(
+        form['email'],
+        placeholder="Enter your email",
+        help_text="We'll never share your email"
+    )
 
-	email_field = render_field(
-		form['email'],
-		placeholder="Введите email",
-		label_class="custom-label"
-	)
-
-	context = {
-		'name_field': name_field,
-		'email_field': email_field,
-	}
-
-	return render(request, 'custom_form.html', context)
+    context = {
+        'name_field': name_field,
+        'email_field': email_field
+    }
+    return render(request, 'field.html', context)
 ```
 
-### Рендеринг ошибок формы
+### Field with Custom Styling
+
+```python
+def styled_field_view(request):
+    form = ContactForm()
+
+    # Custom styled field
+    styled_field = render_field(
+        form['message'],
+        label_class="form-label-large",
+        field_class="form-control-custom",
+        help_text_class="help-text-styled",
+        wrapper_class="field-wrapper-custom"
+    )
+
+    context = {'styled_field': styled_field}
+    return render(request, 'styled_field.html', context)
+```
+
+## Form Errors
+
+### Rendering Form Errors
 
 ```python
 from metroui5.forms import render_form_errors
 
+def error_view(request):
+    form = ContactForm(request.POST)
 
-def form_with_errors(request):
-	if request.method == 'POST':
-		form = ContactForm(request.POST)
-		if form.is_valid():
-			# Обработка формы
-			pass
-		else:
-			# Рендерим ошибки
-			errors_html = render_form_errors(form)
-	else:
-		form = ContactForm()
-		errors_html = None
+    if form.is_valid():
+        # Process form
+        pass
+    else:
+        # Render form errors
+        error_html = render_form_errors(form)
 
-	form_html = render_form(form)
-
-	context = {
-		'form': form_html,
-		'errors': errors_html,
-	}
-
-	return render(request, 'form_with_errors.html', context)
+    context = {'error_html': error_html}
+    return render(request, 'error.html', context)
 ```
 
-## Кастомизация
-
-### Дополнительные CSS классы
+### Custom Error Styling
 
 ```python
-form_html = render_form(
-	form,
-	**{
-		"form_class": "custom-form",
-		"label_class": "custom-label",
-		"field_class": "custom-field",
-		"help_text_class": "custom-help"
-	}
-)
+def custom_error_view(request):
+    form = ContactForm(request.POST)
+
+    if not form.is_valid():
+        # Custom error styling
+        error_html = render_form_errors(
+            form,
+            error_class="alert alert-danger",
+            error_wrapper_class="error-container"
+        )
+
+    context = {'error_html': error_html}
+    return render(request, 'custom_error.html', context)
 ```
 
-### Атрибуты для JavaScript
+## Formset Rendering
+
+### Basic Formset
 
 ```python
-form_html = render_form(
-	form,
-	**{
-		"form_attrs": {
-			"data-form-id": "contact",
-			"data-ajax": "true"
-		},
-		"submit_attrs": {
-			"onclick": "validateForm()",
-			"data-loading": "Отправка..."
-		}
-	}
-)
+from metroui5.forms import render_formset
+from django.forms import formset_factory
+
+def formset_view(request):
+    ContactFormSet = formset_factory(ContactForm, extra=3)
+
+    if request.method == 'POST':
+        formset = ContactFormSet(request.POST)
+        if formset.is_valid():
+            # Process formset
+            pass
+    else:
+        formset = ContactFormSet()
+
+    # Render formset
+    formset_html = render_formset(
+        formset,
+        layout='horizontal',
+        submit_text="Submit All"
+    )
+
+    context = {'formset_html': formset_html}
+    return render(request, 'formset.html', context)
 ```
 
-### Стилизация через CSS
+### Formset with Management
 
-```css
-/* Кастомные стили для форм */
-.custom-form {
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+```python
+def managed_formset_view(request):
+    ContactFormSet = formset_factory(ContactForm, extra=2, max_num=5)
+
+    if request.method == 'POST':
+        formset = ContactFormSet(request.POST)
+        if formset.is_valid():
+            # Process formset
+            pass
+    else:
+        formset = ContactFormSet()
+
+    # Render with management form
+    formset_html = render_formset(
+        formset,
+        show_management_form=True,
+        management_form_class="management-form"
+    )
+
+    context = {'formset_html': formset_html}
+    return render(request, 'managed_formset.html', context)
+```
+
+## Advanced Examples
+
+### Dynamic Form Generation
+
+```python
+def dynamic_form_view(request):
+    # Dynamic form fields based on user permissions
+    fields = ['name', 'email']  # Basic fields
+
+    if request.user.is_staff:
+        fields.extend(['phone', 'company'])
+
+    if request.user.has_perm('app.can_see_sensitive'):
+        fields.append('ssn')
+
+    # Create dynamic form
+    class DynamicContactForm(forms.Form):
+        pass
+
+    for field_name in fields:
+        if field_name == 'email':
+            DynamicContactForm.base_fields[field_name] = forms.EmailField()
+        elif field_name == 'phone':
+            DynamicContactForm.base_fields[field_name] = forms.CharField(max_length=20)
+        elif field_name == 'ssn':
+            DynamicContactForm.base_fields[field_name] = forms.CharField(max_length=11)
+        else:
+            DynamicContactForm.base_fields[field_name] = forms.CharField(max_length=100)
+
+    form = DynamicContactForm()
+    form_html = render_form(form)
+
+    context = {'form_html': form_html}
+    return render(request, 'dynamic_form.html', context)
+```
+
+### Conditional Form Rendering
+
+```python
+def conditional_form_view(request):
+    user_type = request.GET.get('type', 'individual')
+
+    if user_type == 'business':
+        form_class = BusinessContactForm
+        submit_text = "Submit Business Inquiry"
+        layout = 'horizontal'
+    else:
+        form_class = IndividualContactForm
+        submit_text = "Submit Personal Inquiry"
+        layout = 'vertical'
+
+    form = form_class()
+    form_html = render_form(
+        form,
+        layout=layout,
+        submit_text=submit_text,
+        submit_class=f"btn btn-{user_type}"
+    )
+
+    context = {'form_html': form_html}
+    return render(request, 'conditional_form.html', context)
+```
+
+## Best Practices
+
+### 1. Consistent Styling
+
+```python
+# Define consistent form styling
+FORM_STYLING = {
+    'layout': 'horizontal',
+    'label_class': 'form-label',
+    'field_class': 'form-control',
+    'help_text_class': 'form-help',
+    'error_class': 'form-error'
 }
 
-.custom-label {
-    font-weight: bold;
-    color: #495057;
-    margin-bottom: 0.5rem;
-}
+def consistent_form_view(request):
+    form = ContactForm()
+    form_html = render_form(form, **FORM_STYLING)
 
-.custom-field {
-    border: 2px solid #dee2e6;
-    border-radius: 4px;
-    padding: 0.75rem;
-    transition: border-color 0.3s ease;
-}
-
-.custom-field:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.custom-help {
-    font-size: 0.875rem;
-    color: #6c757d;
-    margin-top: 0.25rem;
-}
+    context = {'form_html': form_html}
+    return render(request, 'consistent_form.html', context)
 ```
 
-## Макеты форм
-
-### Вертикальный макет (по умолчанию)
+### 2. Error Handling
 
 ```python
-form_html = render_form(form, layout='vertical')
+def robust_form_view(request):
+    try:
+        if request.method == 'POST':
+            form = ContactForm(request.POST)
+            if form.is_valid():
+                # Process form
+                return redirect('success')
+        else:
+            form = ContactForm()
+
+        form_html = render_form(form)
+
+    except Exception as e:
+        # Handle rendering errors gracefully
+        form_html = f'<div class="alert alert-danger">Form unavailable: {str(e)}</div>'
+
+    context = {'form_html': form_html}
+    return render(request, 'robust_form.html', context)
 ```
 
-Результат:
-
-```html
-
-<form method="post">
-    <div class="form-group">
-        <label for="id_name">Имя:</label>
-        <input type="text" name="name" id="id_name" class="form-control"/>
-        <div class="help-text">Введите ваше имя</div>
-    </div>
-
-    <div class="form-group">
-        <label for="id_email">Email:</label>
-        <input type="email" name="email" id="id_email" class="form-control"/>
-        <div class="help-text">Введите ваш email</div>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Отправить</button>
-</form>
-```
-
-### Горизонтальный макет
+### 3. Performance Optimization
 
 ```python
-form_html = render_form(form, layout='horizontal')
+from django.core.cache import cache
+
+def cached_form_view(request):
+    cache_key = f"form_{request.user.id}"
+
+    # Try to get cached form
+    form_html = cache.get(cache_key)
+
+    if not form_html:
+        form = ContactForm()
+        form_html = render_form(form)
+
+        # Cache for 5 minutes
+        cache.set(cache_key, form_html, 300)
+
+    context = {'form_html': form_html}
+    return render(request, 'cached_form.html', context)
 ```
 
-Результат:
+## Related Documentation
 
-```html
-
-<form method="post">
-    <div class="form-group row">
-        <label for="id_name" class="col-sm-2 col-form-label">Имя:</label>
-        <div class="col-sm-10">
-            <input type="text" name="name" id="id_name" class="form-control"/>
-            <div class="help-text">Введите ваше имя</div>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="id_email" class="col-sm-2 col-form-label">Email:</label>
-        <div class="col-sm-10">
-            <input type="email" name="email" id="id_email" class="form-control"/>
-            <div class="help-text">Введите ваш email</div>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <div class="col-sm-10 offset-sm-2">
-            <button type="submit" class="btn btn-primary">Отправить</button>
-        </div>
-    </div>
-</form>
-```
-
-## Работа с ошибками
-
-### Отображение ошибок поля
-
-```python
-from metroui5.forms import render_field
-
-
-def field_with_errors(request):
-	form = ContactForm(request.POST or None)
-
-	if form.is_valid():
-		# Обработка формы
-		pass
-
-	# Рендерим поле с ошибками
-	name_field = render_field(
-		form['name'],
-		show_errors=True,
-		error_class="alert alert-danger"
-	)
-
-	return render(request, 'field_with_errors.html', {'field': name_field})
-```
-
-### Кастомные сообщения об ошибках
-
-```python
-def custom_error_messages(request):
-	form = ContactForm(request.POST or None)
-
-	if form.is_valid():
-		# Обработка формы
-		pass
-
-	# Рендерим форму с кастомными сообщениями об ошибках
-	form_html = render_form(
-		form,
-		error_class="alert alert-danger",
-		error_icon="exclamation-triangle"
-	)
-
-	return render(request, 'custom_errors.html', {'form': form_html})
-```
-
-## Лучшие практики
-
-### 1. Используйте подходящие макеты
-
-```python
-# Хорошо - горизонтальный макет для длинных форм
-long_form = render_form(
-	form_with_many_fields,
-	layout='horizontal'
-)
-
-# Хорошо - вертикальный макет для коротких форм
-short_form = render_form(
-	simple_form,
-	layout='vertical'
-)
-```
-
-### 2. Добавляйте понятные тексты кнопок
-
-```python
-# Хорошо
-form_html = render_form(
-	form,
-	submit_text="Сохранить изменения",
-	submit_class="btn btn-success"
-)
-
-# Плохо
-form_html = render_form(form, submit_text="Submit")
-```
-
-### 3. Группируйте связанные поля
-
-```python
-def grouped_form_view(request):
-	form = ComplexForm()
-
-	# Группируем поля по категориям
-	personal_fields = [form['first_name'], form['last_name'], form['email']]
-	address_fields = [form['street'], form['city'], form['zip_code']]
-
-	personal_html = "".join([render_field(field) for field in personal_fields])
-	address_html = "".join([render_field(field) for field in address_fields])
-
-	context = {
-		'personal_section': render_field_group("Личная информация", personal_html),
-		'address_section': render_field_group("Адрес", address_html),
-	}
-
-	return render(request, 'grouped_form.html', context)
-```
-
-### 4. Обрабатывайте валидацию
-
-```python
-def form_validation_view(request):
-	if request.method == 'POST':
-		form = ContactForm(request.POST)
-		if form.is_valid():
-			# Обработка успешной валидации
-			messages.success(request, "Форма успешно отправлена!")
-			return redirect('success')
-		else:
-			# Обработка ошибок валидации
-			messages.error(request, "Пожалуйста, исправьте ошибки в форме.")
-	else:
-		form = ContactForm()
-
-	form_html = render_form(
-		form,
-		submit_text="Отправить",
-		submit_class="btn btn-primary"
-	)
-
-	return render(request, 'form_validation.html', {'form': form_html})
-```
-
-## Решение проблем
-
-### Форма не отображается
-
-1. Проверьте, что функция `render_form` импортирована
-2. Убедитесь, что в шаблоне используется `|safe` фильтр
-3. Проверьте, что форма передана в контекст
-
-### Стили не применяются
-
-1. Убедитесь, что MetroUI5 CSS загружен
-2. Проверьте, что нет конфликтующих CSS правил
-3. Используйте инспектор браузера для проверки применяемых стилей
-
-### Ошибки валидации не отображаются
-
-1. Убедитесь, что форма содержит данные (POST)
-2. Проверьте, что `show_errors=True` установлен
-3. Убедитесь, что форма имеет ошибки валидации
-
-## Связанные компоненты
-
-- [Кнопки](buttons.md) - для кнопок отправки
-- [Алерты](alerts.md) - для отображения ошибок
-- [Карточки](cards.md) - для группировки форм
-- [Поля ввода](inputs.md) - для отдельных полей
-
-## Следующие шаги
-
-Теперь, когда вы освоили формы:
-
-1. Изучите другие [компоненты](../) для создания полноценных интерфейсов
-2. Ознакомьтесь с [примерами](../../getting-started/examples.md)
-3. Изучите [API справочник](../../api-reference/) для детальной информации
-4. Создайте интерактивные и красивые формы!
+- [Components](components.md) - Component rendering functions
+- [Template Tags](templatetags.md) - Django template integration
+- [HTML Utilities](html.md) - HTML generation utilities
+- [CSS Utilities](css.md) - CSS class management

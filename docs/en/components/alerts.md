@@ -34,6 +34,53 @@ dismissible_alert = render_alert(
 )
 ```
 
+## Rendered Output
+
+### Basic Alert
+
+```html
+<!-- Input -->
+render_alert("This is an alert message")
+
+<!-- Output -->
+<div class="alert alert-info" role="alert">This is an alert message</div>
+```
+
+### Dismissible Alert
+
+```html
+<!-- Input -->
+render_alert("This alert can be dismissed", alert_type="warning",
+dismissible=True)
+
+<!-- Output -->
+<div class="alert alert-warning alert-dismissible" role="alert">
+	This alert can be dismissed
+	<button
+		type="button"
+		class="button button-mini"
+		data-role="close"
+		aria-label="Close"
+	>
+		&times;
+	</button>
+</div>
+```
+
+### Alert with Icon
+
+```html
+<!-- Input -->
+render_alert("Success! Operation completed.", alert_type="success",
+icon="checkmark")
+
+<!-- Output -->
+<div class="alert alert-success" role="alert">
+	<span class="mif-checkmark"></span>
+	Success! Operation completed.
+</div>
+```
+
 ## Parameters
 
 ### `content` (required)
@@ -111,6 +158,97 @@ info_alert|safe }} {{ warning_alert|safe }}
 
 <h2>Main content</h2>
 <p>Page content...</p>
+{% endblock %}
+```
+
+## Django Template Usage
+
+### Using Template Tags
+
+```html
+{% load metroui5 %}
+
+<!-- Basic alert -->
+{% metroui5_alert "This is an alert message" alert_type="info" %}
+
+<!-- Dismissible alert -->
+{% metroui5_alert "This alert can be dismissed" alert_type="warning"
+dismissible=True %}
+
+<!-- Alert with custom classes -->
+{% metroui5_alert "Custom styled alert" alert_type="success"
+class="alert-custom" %}
+```
+
+### Using in Views
+
+```python
+# views.py
+from metroui5.components import render_alert
+
+def my_view(request):
+    # Create alert in view
+    alert_html = render_alert(
+        "Welcome to our application!",
+        alert_type="success",
+        dismissible=True
+    )
+
+    context = {
+        'alert_html': alert_html,
+        'user_alerts': [
+            render_alert("Profile updated successfully", "success"),
+            render_alert("Please verify your email", "warning"),
+        ]
+    }
+    return render(request, 'my_template.html', context)
+```
+
+```html
+<!-- my_template.html -->
+{% load metroui5 %}
+
+<!-- Direct HTML output -->
+{{ alert_html|safe }}
+
+<!-- Loop through alerts -->
+{% for alert in user_alerts %} {{ alert|safe }} {% endfor %}
+```
+
+### Conditional Alerts
+
+```python
+# views.py
+def dashboard_view(request):
+    alerts = []
+
+    if not request.user.email_verified:
+        alerts.append(render_alert(
+            "Please verify your email address",
+            alert_type="warning",
+            dismissible=True
+        ))
+
+    if request.user.is_new:
+        alerts.append(render_alert(
+            "Welcome! Complete your profile setup.",
+            alert_type="info",
+            dismissible=True
+        ))
+
+    context = {'alerts': alerts}
+    return render(request, 'dashboard.html', context)
+```
+
+```html
+<!-- dashboard.html -->
+{% load metroui5 %} {% block content %}
+<!-- Display conditional alerts -->
+{% for alert in alerts %} {{ alert|safe }} {% endfor %}
+
+<!-- Main dashboard content -->
+<h1>Dashboard</h1>
+<!-- ... -->
 {% endblock %}
 ```
 
