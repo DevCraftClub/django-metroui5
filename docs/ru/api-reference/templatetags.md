@@ -1,14 +1,14 @@
-# Шаблонные теги (Template Tags)
+# Теги шаблонов
 
-API справочник для шаблонных тегов MetroUI5 Django.
+Справочник API для тегов шаблонов MetroUI5 Django.
 
 ## Обзор
 
-Модуль `templatetags` содержит шаблонные теги Django для подключения MetroUI5 ресурсов и компонентов в шаблонах.
+Модуль `templatetags` содержит теги шаблонов Django для подключения ресурсов и компонентов MetroUI5 в шаблонах.
 
 ## Загрузка тегов
 
-В начале каждого шаблона загружайте теги MetroUI5:
+В начале каждого шаблона загрузите теги MetroUI5:
 
 ```html
 {% load metroui5 %}
@@ -23,30 +23,28 @@ API справочник для шаблонных тегов MetroUI5 Django.
 #### Использование
 
 ```html
-
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{% block title %}Заголовок{% endblock %}</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{% block title %}Заголовок{% endblock %}</title>
 
-    {% metroui5_css %}
+	{% metroui5_css %}
 </head>
 ```
 
 #### Результат
 
 ```html
-
 <link
-        href="/static/metroui5/css/metro.all.css"
-        rel="stylesheet"
-        type="text/css"
+	href="/static/metroui5/css/metro.all.css"
+	rel="stylesheet"
+	type="text/css"
 />
 ```
 
 #### Параметры
 
-Тег не принимает параметры.
+Этот тег не принимает параметры.
 
 ### `{% metroui5_javascript %}`
 
@@ -55,24 +53,22 @@ API справочник для шаблонных тегов MetroUI5 Django.
 #### Использование
 
 ```html
-
 <body>
-<div class="container">{% block content %} {% endblock %}</div>
+	<div class="container">{% block content %} {% endblock %}</div>
 
-{% metroui5_javascript %}
+	{% metroui5_javascript %}
 </body>
 ```
 
 #### Результат
 
 ```html
-
 <script src="/static/metroui5/js/metro.all.js"></script>
 ```
 
 #### Параметры
 
-Тег не принимает параметры.
+Этот тег не принимает параметры.
 
 ### `{% metroui5_icons %}`
 
@@ -81,30 +77,28 @@ API справочник для шаблонных тегов MetroUI5 Django.
 #### Использование
 
 ```html
-
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{% block title %}Заголовок{% endblock %}</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{% block title %}Заголовок{% endblock %}</title>
 
-    {% metroui5_css %} {% metroui5_icons %}
+	{% metroui5_css %} {% metroui5_icons %}
 </head>
 ```
 
 #### Результат
 
 ```html
-
 <link
-        href="/static/metroui5/icons/icons.css"
-        rel="stylesheet"
-        type="text/css"
+	href="/static/metroui5/icons/icons.css"
+	rel="stylesheet"
+	type="text/css"
 />
 ```
 
 #### Параметры
 
-Тег не принимает параметры.
+Этот тег не принимает параметры.
 
 ### `{% metroui5_theme %}`
 
@@ -113,26 +107,24 @@ API справочник для шаблонных тегов MetroUI5 Django.
 #### Использование
 
 ```html
-
 <head>
-    {% metroui5_css %} {% metroui5_theme %}
+	{% metroui5_css %} {% metroui5_theme %}
 </head>
 ```
 
 #### Результат
 
 ```html
-
 <link
-        href="/static/metroui5/themes/dark.css"
-        rel="stylesheet"
-        type="text/css"
+	href="/static/metroui5/themes/dark.css"
+	rel="stylesheet"
+	type="text/css"
 />
 ```
 
 #### Параметры
 
-Тег не принимает параметры.
+Этот тег не принимает параметры.
 
 ## Полный базовый шаблон
 
@@ -140,50 +132,50 @@ API справочник для шаблонных тегов MetroUI5 Django.
 {% load metroui5 %}
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{% block title %}Заголовок{% endblock %}</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}Заголовок{% endblock %}</title>
 
-    {% metroui5_css %} {% metroui5_icons %} {% metroui5_theme %} {% block
-    extra_css %}{% endblock %}
-</head>
-<body>
-<div class="container">{% block content %} {% endblock %}</div>
+		{% metroui5_css %} {% metroui5_icons %} {% metroui5_theme %} {% block
+		extra_css %}{% endblock %}
+	</head>
+	<body>
+		<div class="container">{% block content %} {% endblock %}</div>
 
-{% metroui5_javascript %} {% block extra_js %}{% endblock %}
-</body>
+		{% metroui5_javascript %} {% block extra_js %}{% endblock %}
+	</body>
 </html>
 ```
 
 ## Расширенные возможности
 
-### Подключение кастомных CSS файлов
+### Подключение пользовательских CSS файлов
 
 ```html
 {% load metroui5 %}
 
 <head>
-    {% metroui5_css %}
+	{% metroui5_css %}
 
-    <!-- Кастомные CSS файлы -->
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'css/theme.css' %}" rel="stylesheet" type="text/css"/>
+	<!-- Пользовательские CSS файлы -->
+	<link href="{% static 'css/custom.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'css/theme.css' %}" rel="stylesheet" type="text/css" />
 </head>
 ```
 
-### Подключение кастомных JavaScript файлов
+### Подключение пользовательских JavaScript файлов
 
 ```html
 {% load metroui5 %}
 
 <body>
-<!-- Основное содержимое -->
-{% block content %}{% endblock %} {% metroui5_javascript %}
+	<!-- Основной контент -->
+	{% block content %}{% endblock %} {% metroui5_javascript %}
 
-<!-- Кастомные JavaScript файлы -->
-<script src="{% static 'js/custom.js' %}"></script>
-<script src="{% static 'js/plugins.js' %}"></script>
+	<!-- Пользовательские JavaScript файлы -->
+	<script src="{% static 'js/custom.js' %}"></script>
+	<script src="{% static 'js/plugins.js' %}"></script>
 </body>
 ```
 
@@ -193,13 +185,13 @@ API справочник для шаблонных тегов MetroUI5 Django.
 {% load metroui5 %}
 
 <head>
-    {% metroui5_css %} {% if debug %}
-    <!-- Дополнительные стили для разработки -->
-    <link href="{% static 'css/debug.css' %}" rel="stylesheet" type="text/css"/>
-    {% endif %} {% if user.is_authenticated %}
-    <!-- Стили для авторизованных пользователей -->
-    <link href="{% static 'css/user.css' %}" rel="stylesheet" type="text/css"/>
-    {% endif %}
+	{% metroui5_css %} {% if debug %}
+	<!-- Дополнительные стили для разработки -->
+	<link href="{% static 'css/debug.css' %}" rel="stylesheet" type="text/css" />
+	{% endif %} {% if user.is_authenticated %}
+	<!-- Стили для аутентифицированных пользователей -->
+	<link href="{% static 'css/user.css' %}" rel="stylesheet" type="text/css" />
+	{% endif %}
 </head>
 ```
 
@@ -217,7 +209,7 @@ METROUI5 = {
 }
 ```
 
-### CDN настройки
+### Настройки CDN
 
 ```python
 METROUI5 = {
@@ -227,7 +219,7 @@ METROUI5 = {
 }
 ```
 
-### Кастомные файлы
+### Пользовательские файлы
 
 ```python
 METROUI5 = {
@@ -249,12 +241,12 @@ METROUI5 = {
 ```html
 <!-- Хорошо -->
 <head>
-    {% metroui5_css %} {% metroui5_icons %}
+	{% metroui5_css %} {% metroui5_icons %}
 </head>
 
 <!-- Плохо -->
 <body>
-{% metroui5_css %} {% metroui5_icons %}
+	{% metroui5_css %} {% metroui5_icons %}
 </body>
 ```
 
@@ -263,13 +255,13 @@ METROUI5 = {
 ```html
 <!-- Хорошо -->
 <body>
-<!-- Содержимое -->
-{% metroui5_javascript %}
+	<!-- Контент -->
+	{% metroui5_javascript %}
 </body>
 
 <!-- Плохо -->
 <head>
-    {% metroui5_javascript %}
+	{% metroui5_javascript %}
 </head>
 ```
 
@@ -279,17 +271,17 @@ METROUI5 = {
 {% load metroui5 %}
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{% block title %}Заголовок{% endblock %}</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}Заголовок{% endblock %}</title>
 
-    {% metroui5_css %} {% metroui5_icons %} {% block extra_css %}{% endblock %}
-</head>
-<body>
-{% block content %}{% endblock %} {% metroui5_javascript %} {% block
-extra_js %}{% endblock %}
-</body>
+		{% metroui5_css %} {% metroui5_icons %} {% block extra_css %}{% endblock %}
+	</head>
+	<body>
+		{% block content %}{% endblock %} {% metroui5_javascript %} {% block
+		extra_js %}{% endblock %}
+	</body>
 </html>
 ```
 
@@ -302,32 +294,32 @@ extra_js %}{% endblock %}
 <!-- child.html -->
 {% extends 'base.html' %} {% block extra_css %}
 <link
-        href="{% static 'css/page-specific.css' %}"
-        rel="stylesheet"
-        type="text/css"
+	href="{% static 'css/page-specific.css' %}"
+	rel="stylesheet"
+	type="text/css"
 />
 {% endblock %}
 ```
 
-## Решение проблем
+## Устранение неполадок
 
 ### Теги не загружаются
 
 1. Убедитесь, что `metroui5` добавлен в `INSTALLED_APPS`
 2. Проверьте, что `{% load metroui5 %}` указан в начале шаблона
-3. Перезапустите Django сервер
+3. Перезапустите сервер Django
 
 ### Ресурсы не загружаются
 
 1. Проверьте настройки `METROUI5` в `settings.py`
 2. Убедитесь, что статические файлы настроены правильно
-3. Выполните `python manage.py collectstatic`
+3. Запустите `python manage.py collectstatic`
 
 ### Ошибки в консоли браузера
 
 1. Проверьте, что все теги загружены в правильном порядке
 2. Убедитесь, что нет конфликтов с другими CSS/JS файлами
-3. Проверьте Network вкладку в DevTools
+3. Проверьте вкладку Network в DevTools
 
 ## Тестирование
 
@@ -384,13 +376,13 @@ class TemplateTagsIntegrationTestCase(TestCase):
 		"""Тест рендеринга базового шаблона"""
 		response = self.client.get(reverse('home'))
 
-		# Проверяем, что CSS подключен
+		# Проверка подключения CSS
 		self.assertContains(response, 'metro.all.css')
 
-		# Проверяем, что JavaScript подключен
+		# Проверка подключения JavaScript
 		self.assertContains(response, 'metro.all.js')
 
-		# Проверяем, что иконки подключены
+		# Проверка подключения иконок
 		self.assertContains(response, 'icons.css')
 ```
 
@@ -402,9 +394,9 @@ class TemplateTagsIntegrationTestCase(TestCase):
 
 ## Следующие шаги
 
-Теперь, когда вы освоили шаблонные теги:
+Теперь, когда вы освоили теги шаблонов:
 
 1. Изучите [основные функции](core.md) для понимания настроек
 2. Ознакомьтесь с [HTML утилитами](html.md) для генерации HTML
 3. Изучите [компоненты](components.md) для создания UI
-4. Создайте собственные шаблонные теги для специфических задач!
+4. Создайте свои собственные теги шаблонов для конкретных задач!
