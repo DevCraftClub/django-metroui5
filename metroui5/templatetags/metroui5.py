@@ -10,6 +10,7 @@ from ..components import (
     render_progress,
     render_accordion,
     render_action_button,
+    render_activity,
     render_calendar,
     render_dialog,
     render_dropdown,
@@ -28,6 +29,10 @@ from ..components import (
     render_pagination,
     render_badge,
     render_avatar,
+    render_initials_avatar,
+    render_icon_avatar,
+    render_image_avatar,
+    render_responsive_avatar,
     render_rating,
 )
 
@@ -234,6 +239,12 @@ def metroui5_accordion(items, **kwargs):
 def metroui5_action_button(actions, main_icon="mif-plus", **kwargs):
     """Renders MetroUI action button with expandable sub-actions."""
     return mark_safe(render_action_button(actions, main_icon, **kwargs))
+
+
+@register.simple_tag
+def metroui5_activity(**kwargs):
+    """Renders MetroUI activity component with animated loading indicators."""
+    return mark_safe(render_activity(**kwargs))
 
 
 @register.simple_tag

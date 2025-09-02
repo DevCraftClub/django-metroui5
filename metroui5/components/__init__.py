@@ -1,0 +1,82 @@
+"""
+MetroUI5 Components Package
+
+This package contains all the render functions for MetroUI5 components,
+organized into separate modules for better maintainability.
+"""
+
+# Import all render functions from their respective modules
+from .alert import render_alert
+from .avatar import (
+    render_avatar,
+    render_initials_avatar,
+    render_icon_avatar,
+    render_image_avatar,
+    render_responsive_avatar
+)
+from .badge import render_badge
+from .breadcrumb import render_breadcrumb
+from .button import render_button
+from .calendar import render_calendar
+from .card import render_card
+from .dialog import render_dialog
+from .dropdown import render_dropdown
+from .input import render_input, render_material_input
+from .list import render_list
+from .menu import render_menu
+from .modal import render_modal
+from .navigation import render_navigation
+from .pagination import render_pagination
+from .panel import render_panel
+from .progress import render_progress
+from .rating import render_rating
+from .sidebar import render_sidebar
+from .table import render_table
+from .tabs import render_tabs
+from .tile import render_tile
+from .toolbar import render_toolbar
+from .accordion import render_accordion
+from .action_button import render_action_button
+from .activity import render_activity
+
+# Export all render functions
+__all__ = [
+    # Core components
+    'render_alert',
+    'render_button',
+    'render_tile',
+    'render_card',
+    'render_progress',
+    
+    # Layout components
+    'render_accordion',
+    'render_action_button',
+    'render_activity',
+    'render_calendar',
+    'render_dialog',
+    'render_dropdown',
+    'render_input',
+    'render_material_input',
+    'render_list',
+    'render_menu',
+    'render_navigation',
+    'render_panel',
+    'render_sidebar',
+    'render_table',
+    'render_tabs',
+    'render_toolbar',
+    'render_modal',
+    
+    # Navigation components
+    'render_breadcrumb',
+    'render_pagination',
+    
+    # Content components
+    'render_badge',
+    'render_avatar',
+    'render_initials_avatar',
+    'render_icon_avatar',
+    'render_image_avatar',
+    'render_responsive_avatar',
+    'render_rating',
+]
