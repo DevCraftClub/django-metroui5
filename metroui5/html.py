@@ -112,7 +112,7 @@ def render_script_tag(url, **attrs):
 			attrs['type'] = 'text/javascript'
 
 	attrs['src'] = src
-	return render_tag("script", attrs, close=True)
+	return render_tag("script", attrs, content="", close=True)
 
 
 def render_custom_css_files(css_files):
