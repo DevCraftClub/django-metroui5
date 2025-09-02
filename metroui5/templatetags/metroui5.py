@@ -2,8 +2,8 @@
 MetroUI components for Django.
 """
 
-from .css import merge_css_classes
-from .html import render_tag
+from ..css import merge_css_classes
+from ..html import render_tag
 
 
 def render_alert(content, alert_type="info", dismissible=False, **attrs):
