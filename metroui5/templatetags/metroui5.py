@@ -34,6 +34,7 @@ from ..components import (
     render_modal,
     render_breadcrumb,
     render_bulls,
+    render_button_group,
     render_pagination,
     render_badge,
     render_avatar,
@@ -406,6 +407,12 @@ def metroui5_box(content="", title=None, secondary_title=None, **kwargs):
 def metroui5_bulls(bull_type="success", size=16, **kwargs):
     """Renders MetroUI bulls component."""
     return mark_safe(render_bulls(bull_type, size, **kwargs))
+
+
+@register.simple_tag
+def metroui5_button_group(buttons, mode="one", **kwargs):
+    """Renders MetroUI button group component."""
+    return mark_safe(render_button_group(buttons, mode, **kwargs))
 
 
 @register.simple_tag

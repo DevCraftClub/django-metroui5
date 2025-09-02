@@ -1,0 +1,359 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Button Group Component Demo</h1>
+    <p>This page demonstrates the MetroUI Button Group component functionality based on the <a href="https://v5.metroui.org.ua/components/button-group/" target="_blank">official MetroUI v5 documentation</a>.</p>
+
+    <h2>Basic Button Group</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Default Button Group</h3>
+            {% metroui5_button_group basic_buttons %}
+        </div>
+    </div>
+
+    <h2>Selection Modes</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Single Selection Mode (Default)</h3>
+            <p>Only one button can be active at a time (radio button behavior)</p>
+            {% metroui5_button_group single_selection_buttons mode="one" %}
+        </div>
+        <div class="cell-6">
+            <h3>Multiple Selection Mode</h3>
+            <p>Multiple buttons can be active (checkbox behavior)</p>
+            {% metroui5_button_group multiple_selection_buttons mode="multi" %}
+        </div>
+    </div>
+
+    <h2>Required Button Selection</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>At Least One Button Must Be Selected</h3>
+            <p>Prevents deselecting all buttons in the group</p>
+            {% metroui5_button_group required_buttons mode="one" required_button=True %}
+        </div>
+    </div>
+
+    <h2>Custom Active Class</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Custom Active Styling</h3>
+            <style>
+                .highlighted {
+                    background-color: #2196F3 !important;
+                    color: white !important;
+                }
+            </style>
+            {% metroui5_button_group custom_active_buttons mode="one" cls_active="highlighted" %}
+        </div>
+    </div>
+
+    <h2>Different Button Configurations</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>With Disabled Buttons</h3>
+            {% metroui5_button_group disabled_buttons mode="one" %}
+        </div>
+        <div class="cell-6">
+            <h3>Mixed Active States</h3>
+            {% metroui5_button_group mixed_buttons mode="multi" %}
+        </div>
+    </div>
+
+    <h2>Custom Target Elements</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Using Spans Instead of Buttons</h3>
+            <style>
+                .option {
+                    display: inline-block;
+                    padding: 8px 16px;
+                    margin: 2px;
+                    border: 1px solid #ccc;
+                    cursor: pointer;
+                    background-color: #f5f5f5;
+                }
+                .option.active {
+                    background-color: #2196F3;
+                    color: white;
+                }
+            </style>
+            {% metroui5_button_group custom_target_buttons mode="one" targets=".option" %}
+        </div>
+    </div>
+
+    <h2>Complex Examples</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Size Selection</h3>
+            {% metroui5_button_group size_buttons mode="one" %}
+        </div>
+        <div class="cell-6">
+            <h3>Color Selection</h3>
+            {% metroui5_button_group color_buttons mode="multi" %}
+        </div>
+    </div>
+
+    <h2>Component Parameters</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>buttons</code></td>
+                        <td>list</td>
+                        <td>[]</td>
+                        <td>List of button configurations (dicts with 'text', 'active', 'disabled' keys or strings)</td>
+                    </tr>
+                    <tr>
+                        <td><code>mode</code></td>
+                        <td>string</td>
+                        <td>"one"</td>
+                        <td>Selection mode ("one" for single selection, "multi" for multiple selection)</td>
+                    </tr>
+                    <tr>
+                        <td><code>targets</code></td>
+                        <td>string</td>
+                        <td>"button"</td>
+                        <td>Selector for elements that should behave as buttons in the group</td>
+                    </tr>
+                    <tr>
+                        <td><code>cls_active</code></td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class to apply to active buttons</td>
+                    </tr>
+                    <tr>
+                        <td><code>required_button</code></td>
+                        <td>boolean</td>
+                        <td>False</td>
+                        <td>Whether at least one button must be active</td>
+                    </tr>
+                    <tr>
+                        <td><code>onButtonClick</code></td>
+                        <td>function</td>
+                        <td>Metro.noop</td>
+                        <td>Event handler triggered when a button is clicked</td>
+                    </tr>
+                    <tr>
+                        <td><code>onButtonGroupCreate</code></td>
+                        <td>function</td>
+                        <td>Metro.noop</td>
+                        <td>Event handler triggered when the button group is created</td>
+                    </tr>
+                    <tr>
+                        <td><code>cls_button_group</code></td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for the button group container</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>Button Configuration Structure</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>text</code></td>
+                        <td>string</td>
+                        <td>Yes</td>
+                        <td>Display text for the button</td>
+                    </tr>
+                    <tr>
+                        <td><code>active</code></td>
+                        <td>boolean</td>
+                        <td>No</td>
+                        <td>Whether the button is initially active</td>
+                    </tr>
+                    <tr>
+                        <td><code>disabled</code></td>
+                        <td>boolean</td>
+                        <td>No</td>
+                        <td>Whether the button is disabled</td>
+                    </tr>
+                    <tr>
+                        <td><code>attrs</code></td>
+                        <td>dict</td>
+                        <td>No</td>
+                        <td>Additional HTML attributes for the button</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>CSS Variables</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Default (Light)</th>
+                        <th>Dark Mode</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--button-group-active-background</code></td>
+                        <td>#989898</td>
+                        <td>#4b4b4b</td>
+                        <td>Background color of active buttons</td>
+                    </tr>
+                    <tr>
+                        <td><code>--button-group-active-color</code></td>
+                        <td>#fff</td>
+                        <td>#fff</td>
+                        <td>Text color of active buttons</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>Available CSS Classes</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Base Classes</h3>
+            <ul>
+                <li><code>.button-group</code> - The main container class for the button group</li>
+            </ul>
+        </div>
+        <div class="cell-6">
+            <h3>State Classes</h3>
+            <ul>
+                <li><code>.active</code> - Applied to active buttons within the group</li>
+                <li><code>.js-active</code> - Applied to buttons activated via JavaScript</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>API Methods</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>destroy()</code></td>
+                        <td>Removes the component and its event handlers</td>
+                        <td><code>buttonGroup.destroy()</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>Events</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>onButtonClick</code></td>
+                        <td>Triggered when a button in the group is clicked</td>
+                    </tr>
+                    <tr>
+                        <td><code>onButtonGroupCreate</code></td>
+                        <td>Triggered when the button group is created</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>Global Configuration</h2>
+    <div class="row">
+        <div class="cell-12">
+            <p>You can set global defaults for all Button Group components:</p>
+            <pre><code>Metro.buttonGroupSetup({
+    clsActive: "highlighted",
+    mode: Metro.groupMode.MULTI
+});</code></pre>
+        </div>
+    </div>
+
+    <h2>HTML Structure</h2>
+    <div class="row">
+        <div class="cell-12">
+            <pre><code>&lt;div class="button-group" data-role="button-group" data-mode="one" data-targets="button"&gt;
+    &lt;button&gt;Option 1&lt;/button&gt;
+    &lt;button class="active"&gt;Option 2&lt;/button&gt;
+    &lt;button&gt;Option 3&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            <p>Where:</p>
+            <ul>
+                <li><code>data-role="button-group"</code> - Identifies the element as a button group component</li>
+                <li><code>data-mode</code> - Selection mode ("one" for single, "multi" for multiple)</li>
+                <li><code>data-targets</code> - Selector for button elements (default: "button")</li>
+                <li><code>data-cls-active</code> - Custom active class (optional)</li>
+                <li><code>data-required-button</code> - Whether at least one button must be active</li>
+                <li><code>data-on-button-click</code> - Click event handler (optional)</li>
+                <li><code>data-on-button-group-create</code> - Creation event handler (optional)</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Accessibility</h2>
+    <div class="row">
+        <div class="cell-12">
+            <ul>
+                <li>Use semantic button elements when possible for proper keyboard and screen reader support</li>
+                <li>Ensure there is sufficient color contrast between active and inactive states</li>
+                <li>Consider adding ARIA attributes to clarify the role and state of the button group</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Best Practices</h2>
+    <div class="row">
+        <div class="cell-12">
+            <ul>
+                <li>Use button groups for related options where users need to make a selection</li>
+                <li>Clearly indicate the active state with visual cues</li>
+                <li>For single-selection mode, consider making one option selected by default</li>
+                <li>Keep the number of options in a button group reasonable (typically 2-5)</li>
+                <li>Use consistent styling for button groups throughout your application</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

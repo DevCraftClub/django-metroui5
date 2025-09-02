@@ -567,3 +567,78 @@ def button_demo(request):
 		'page_title': 'Button Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/button_demo.html', context)
+
+
+def button_group_demo(request):
+	"""Demo page for button group component."""
+	# Sample button group data
+	basic_buttons = ['Option 1', 'Option 2', 'Option 3']
+	
+	single_selection_buttons = [
+		{'text': 'Option 1', 'active': False},
+		{'text': 'Option 2', 'active': True},
+		{'text': 'Option 3', 'active': False}
+	]
+	
+	multiple_selection_buttons = [
+		{'text': 'Option 1', 'active': False},
+		{'text': 'Option 2', 'active': True},
+		{'text': 'Option 3', 'active': True}
+	]
+	
+	required_buttons = [
+		{'text': 'Option 1', 'active': True},
+		{'text': 'Option 2', 'active': False},
+		{'text': 'Option 3', 'active': False}
+	]
+	
+	custom_active_buttons = [
+		{'text': 'Option 1', 'active': False},
+		{'text': 'Option 2', 'active': True},
+		{'text': 'Option 3', 'active': False}
+	]
+	
+	disabled_buttons = [
+		{'text': 'Option 1', 'active': False},
+		{'text': 'Option 2', 'active': True, 'disabled': True},
+		{'text': 'Option 3', 'active': False}
+	]
+	
+	mixed_buttons = [
+		{'text': 'Option 1', 'active': True},
+		{'text': 'Option 2', 'active': False},
+		{'text': 'Option 3', 'active': True}
+	]
+	
+	custom_target_buttons = [
+		{'text': 'Option 1', 'active': False},
+		{'text': 'Option 2', 'active': True},
+		{'text': 'Option 3', 'active': False}
+	]
+	
+	size_buttons = [
+		{'text': 'Small', 'active': False},
+		{'text': 'Medium', 'active': True},
+		{'text': 'Large', 'active': False}
+	]
+	
+	color_buttons = [
+		{'text': 'Red', 'active': True},
+		{'text': 'Green', 'active': False},
+		{'text': 'Blue', 'active': True}
+	]
+	
+	context = {
+		'page_title': 'Button Group Component - MetroUI5 Demo',
+		'basic_buttons': basic_buttons,
+		'single_selection_buttons': single_selection_buttons,
+		'multiple_selection_buttons': multiple_selection_buttons,
+		'required_buttons': required_buttons,
+		'custom_active_buttons': custom_active_buttons,
+		'disabled_buttons': disabled_buttons,
+		'mixed_buttons': mixed_buttons,
+		'custom_target_buttons': custom_target_buttons,
+		'size_buttons': size_buttons,
+		'color_buttons': color_buttons,
+	}
+	return render(request, 'demo/button_group_demo.html', context)
