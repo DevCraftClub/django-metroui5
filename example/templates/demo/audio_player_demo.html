@@ -1,0 +1,568 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Audio Player Demo{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>MetroUI Audio Player Component</h1>
+    <p>This demo showcases the MetroUI v5 Audio Player component that provides a customizable audio player with various controls and features.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-12">
+                <h2>Basic Usage</h2>
+                <p>Basic audio player with default controls:</p>
+                <div class="example-container">
+                    <audio data-role="audio-player" data-src="audio/sample.mp3"></audio>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Custom Controls</h2>
+                <p>Audio player with specific controls enabled/disabled:</p>
+                <div class="example-container">
+                    <audio data-role="audio-player"
+                           data-src="audio/sample.mp3"
+                           data-show-loop="false"
+                           data-show-stop="false"
+                           data-show-volume="false"
+                           data-show-info="false">
+                    </audio>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Custom Icons</h2>
+                <p>Audio player with custom control icons:</p>
+                <div class="example-container">
+                    <audio data-role="audio-player"
+                           data-src="audio/sample.mp3"
+                           data-loop-icon="<span class='mif-loop2 fg-orange'></span>"
+                           data-mute-icon="<span class='mif-volume-mute2 fg-red'></span>"
+                           data-volume-low-icon="<span class='mif-volume-low fg-yellow'></span>"
+                           data-volume-medium-icon="<span class='mif-volume-medium fg-green'></span>"
+                           data-volume-high-icon="<span class='mif-volume-high fg-red'></span>"
+                           data-play-icon="<span class='mif-play fg-blue'></span>"
+                           data-stop-icon="<span class='mif-stop fg-red'></span>">
+                    </audio>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Light Theme</h2>
+                <p>Audio player with light color scheme:</p>
+                <div class="example-container">
+                    <audio data-role="audio-player" data-src="audio/sample.mp3" class="light"></audio>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Auto Play and Loop</h2>
+                <p>Audio player with auto play and loop enabled:</p>
+                <div class="example-container">
+                    <audio data-role="audio-player"
+                           data-src="audio/sample.mp3"
+                           data-loop="true"
+                           data-autoplay="true"
+                           data-volume="0.5">
+                    </audio>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Event Handlers</h2>
+                <p>Audio player with JavaScript event callbacks:</p>
+                <div class="example-container">
+                    <audio data-role="audio-player"
+                           data-src="audio/sample.mp3"
+                           data-on-play="handlePlay(this)"
+                           data-on-pause="handlePause(this)"
+                           data-on-stop="handleStop(this)"
+                           data-on-end="handleEnd(this)"
+                           data-on-metadata="handleMetadata(this)"
+                           data-on-time="handleTime(this)"
+                           data-on-audio-create="handleAudioCreate(this)">
+                    </audio>
+                </div>
+                <div id="event-output" class="bg-lightGray p-2 mt-2" style="min-height: 50px; border-radius: 4px;">
+                    <small class="text-muted">Event callbacks will appear here...</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Template Tag Usage</h2>
+                <p>Using the Django template tag:</p>
+                <div class="example-container">
+                    {% metroui5_audio_player "audio/sample.mp3" %}
+                    {% metroui5_audio_player "audio/sample.mp3" show_loop=True show_volume=True volume=0.8 class="light" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>API Methods</h2>
+                <p>Example of programmatic control using API methods:</p>
+                <div class="example-container">
+                    <audio id="api-audio-player" data-role="audio-player" data-src="audio/sample.mp3"></audio>
+                    <div class="mt-2">
+                        <button class="button" onclick="playAudio()">Play</button>
+                        <button class="button" onclick="pauseAudio()">Pause</button>
+                        <button class="button" onclick="resumeAudio()">Resume</button>
+                        <button class="button" onclick="stopAudio()">Stop</button>
+                        <button class="button" onclick="setVolume(0.3)">Volume 30%</button>
+                        <button class="button" onclick="setVolume(0.7)">Volume 70%</button>
+                        <button class="button" onclick="toggleLoop()">Toggle Loop</button>
+                        <button class="button" onclick="muteAudio()">Mute</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Component Parameters</h2>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>src</td>
+                            <td>string</td>
+                            <td>""</td>
+                            <td>Path to the audio file</td>
+                        </tr>
+                        <tr>
+                            <td>show_loop</td>
+                            <td>boolean</td>
+                            <td>true</td>
+                            <td>Show or hide loop control</td>
+                        </tr>
+                        <tr>
+                            <td>show_play</td>
+                            <td>boolean</td>
+                            <td>true</td>
+                            <td>Show or hide play control</td>
+                        </tr>
+                        <tr>
+                            <td>show_stop</td>
+                            <td>boolean</td>
+                            <td>true</td>
+                            <td>Show or hide stop control</td>
+                        </tr>
+                        <tr>
+                            <td>show_stream</td>
+                            <td>boolean</td>
+                            <td>true</td>
+                            <td>Show or hide stream control</td>
+                        </tr>
+                        <tr>
+                            <td>show_volume</td>
+                            <td>boolean</td>
+                            <td>true</td>
+                            <td>Show or hide volume control</td>
+                        </tr>
+                        <tr>
+                            <td>show_info</td>
+                            <td>boolean</td>
+                            <td>true</td>
+                            <td>Show or hide info display</td>
+                        </tr>
+                        <tr>
+                            <td>loop</td>
+                            <td>boolean</td>
+                            <td>false</td>
+                            <td>Enable looping audio</td>
+                        </tr>
+                        <tr>
+                            <td>autoplay</td>
+                            <td>boolean</td>
+                            <td>false</td>
+                            <td>Start playback automatically</td>
+                        </tr>
+                        <tr>
+                            <td>volume</td>
+                            <td>number</td>
+                            <td>1.0</td>
+                            <td>Initial volume (0.0 to 1.0)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Custom Icons Parameters</h2>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>loop_icon</td>
+                            <td>string</td>
+                            <td>Custom icon for loop control</td>
+                        </tr>
+                        <tr>
+                            <td>play_icon</td>
+                            <td>string</td>
+                            <td>Custom icon for play control</td>
+                        </tr>
+                        <tr>
+                            <td>pause_icon</td>
+                            <td>string</td>
+                            <td>Custom icon for pause control</td>
+                        </tr>
+                        <tr>
+                            <td>stop_icon</td>
+                            <td>string</td>
+                            <td>Custom icon for stop control</td>
+                        </tr>
+                        <tr>
+                            <td>mute_icon</td>
+                            <td>string</td>
+                            <td>Custom icon for mute control</td>
+                        </tr>
+                        <tr>
+                            <td>volume_low_icon</td>
+                            <td>string</td>
+                            <td>Custom icon for low volume</td>
+                        </tr>
+                        <tr>
+                            <td>volume_medium_icon</td>
+                            <td>string</td>
+                            <td>Custom icon for medium volume</td>
+                        </tr>
+                        <tr>
+                            <td>volume_high_icon</td>
+                            <td>string</td>
+                            <td>Custom icon for high volume</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Events</h2>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>on_play</td>
+                            <td>Triggered when playback starts</td>
+                        </tr>
+                        <tr>
+                            <td>on_pause</td>
+                            <td>Triggered when playback is paused</td>
+                        </tr>
+                        <tr>
+                            <td>on_stop</td>
+                            <td>Triggered when playback stops</td>
+                        </tr>
+                        <tr>
+                            <td>on_end</td>
+                            <td>Triggered when playback ends</td>
+                        </tr>
+                        <tr>
+                            <td>on_metadata</td>
+                            <td>Triggered when metadata is loaded</td>
+                        </tr>
+                        <tr>
+                            <td>on_time</td>
+                            <td>Triggered during playback to update current time</td>
+                        </tr>
+                        <tr>
+                            <td>on_audio_create</td>
+                            <td>Triggered when audio player is created</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>API Methods</h2>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>play()</td>
+                            <td>Start playback</td>
+                        </tr>
+                        <tr>
+                            <td>play(src)</td>
+                            <td>Start playback of a specific audio source</td>
+                        </tr>
+                        <tr>
+                            <td>pause()</td>
+                            <td>Pause playback</td>
+                        </tr>
+                        <tr>
+                            <td>resume()</td>
+                            <td>Resume playback</td>
+                        </tr>
+                        <tr>
+                            <td>stop()</td>
+                            <td>Stop playback</td>
+                        </tr>
+                        <tr>
+                            <td>volume()</td>
+                            <td>Get the current volume</td>
+                        </tr>
+                        <tr>
+                            <td>volume(vol)</td>
+                            <td>Set the volume</td>
+                        </tr>
+                        <tr>
+                            <td>loop()</td>
+                            <td>Toggle looping</td>
+                        </tr>
+                        <tr>
+                            <td>mute()</td>
+                            <td>Mute the audio</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Supported Audio Formats</h2>
+                <p>The audio player component uses the HTML5 Audio API and supports:</p>
+                <ul>
+                    <li><strong>MP3</strong> - Most widely supported format</li>
+                    <li><strong>WAV</strong> - Uncompressed audio format</li>
+                    <li><strong>OGG</strong> - Open source audio format</li>
+                    <li><strong>M4A</strong> - Apple's audio format</li>
+                    <li><strong>WebM</strong> - Web-optimized audio format</li>
+                    <li><strong>AAC</strong> - Advanced Audio Coding format</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Usage Examples</h2>
+                <h3>Basic HTML Usage:</h3>
+                <pre><code>&lt;!-- Simple audio player --&gt;
+&lt;audio data-role="audio-player" data-src="audio/sample.mp3"&gt;&lt;/audio&gt;
+
+&lt;!-- Audio player with custom controls --&gt;
+&lt;audio data-role="audio-player"
+       data-src="audio/sample.mp3"
+       data-show-loop="false"
+       data-show-stop="false"
+       data-show-volume="false"
+       data-show-info="false"&gt;
+&lt;/audio&gt;
+
+&lt;!-- Audio player with custom icons --&gt;
+&lt;audio data-role="audio-player"
+       data-src="audio/sample.mp3"
+       data-loop-icon="&lt;span class='mif-loop2 fg-orange'&gt;&lt;/span&gt;"
+       data-mute-icon="&lt;span class='mif-volume-mute2 fg-red'&gt;&lt;/span&gt;"
+       data-play-icon="&lt;span class='mif-play fg-blue'&gt;&lt;/span&gt;"&gt;
+&lt;/audio&gt;</code></pre>
+
+                <h3>Django Template Usage:</h3>
+                <pre><code>{% load metroui5 %}
+
+{% metroui5_audio_player "audio/sample.mp3" %}
+{% metroui5_audio_player "audio/sample.mp3" show_loop=True show_volume=True volume=0.8 class="light" %}</code></pre>
+
+                <h3>JavaScript Usage:</h3>
+                <pre><code>// Access the audio player
+var player = Metro.getPlugin('audio', 'audio-player');
+
+// Control playback
+player.play();
+player.pause();
+player.resume();
+player.stop();
+
+// Control volume
+player.volume(0.5);  // Set volume to 50%
+var currentVolume = player.volume();  // Get current volume
+
+// Toggle features
+player.loop();  // Toggle looping
+player.mute();  // Mute/unmute
+
+// Event handling
+$('#my-audio-player').on('play', function() {
+    console.log('Audio started playing');
+});
+
+$('#my-audio-player').on('pause', function() {
+    console.log('Audio paused');
+});
+
+$('#my-audio-player').on('end', function() {
+    console.log('Audio finished playing');
+});</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+#event-output {
+    font-family: monospace;
+    font-size: 12px;
+}
+</style>
+
+<script>
+// Event handler functions for demo
+function handlePlay(audio) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Audio started playing</div>';
+}
+
+function handlePause(audio) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Audio paused</div>';
+}
+
+function handleStop(audio) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Audio stopped</div>';
+}
+
+function handleEnd(audio) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Audio finished playing</div>';
+}
+
+function handleMetadata(audio) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Metadata loaded</div>';
+}
+
+function handleTime(audio) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Time updated</div>';
+}
+
+function handleAudioCreate(audio) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Audio player created</div>';
+}
+
+// API methods example
+let audioPlayerInstance = null;
+
+$(document).ready(function() {
+    // Initialize the audio player
+    Metro.makePlugin("#api-audio-player", "audio-player");
+    audioPlayerInstance = Metro.getPlugin("#api-audio-player", "audio-player");
+});
+
+function playAudio() {
+    if (audioPlayerInstance) {
+        audioPlayerInstance.play();
+        console.log("Audio started playing via API");
+    }
+}
+
+function pauseAudio() {
+    if (audioPlayerInstance) {
+        audioPlayerInstance.pause();
+        console.log("Audio paused via API");
+    }
+}
+
+function resumeAudio() {
+    if (audioPlayerInstance) {
+        audioPlayerInstance.resume();
+        console.log("Audio resumed via API");
+    }
+}
+
+function stopAudio() {
+    if (audioPlayerInstance) {
+        audioPlayerInstance.stop();
+        console.log("Audio stopped via API");
+    }
+}
+
+function setVolume(volume) {
+    if (audioPlayerInstance) {
+        audioPlayerInstance.volume(volume);
+        console.log("Volume set to " + (volume * 100) + "% via API");
+    }
+}
+
+function toggleLoop() {
+    if (audioPlayerInstance) {
+        audioPlayerInstance.loop();
+        console.log("Loop toggled via API");
+    }
+}
+
+function muteAudio() {
+    if (audioPlayerInstance) {
+        audioPlayerInstance.mute();
+        console.log("Audio muted/unmuted via API");
+    }
+}
+
+// Clear event output
+function clearEventOutput() {
+    document.getElementById('event-output').innerHTML = '<small class="text-muted">Event callbacks will appear here...</small>';
+}
+
+// Add clear button
+$(document).ready(function() {
+    const clearBtn = $('<button class="button small">Clear Output</button>');
+    clearBtn.on('click', clearEventOutput);
+    $('#event-output').after(clearBtn);
+});
+</script>
+{% endblock %}
