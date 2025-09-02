@@ -8,20 +8,31 @@ from ..html import render_tag
 def render_activity(**attrs):
 	"""
 	Renders MetroUI activity component with animated loading indicators.
-
-	References:
-		Documentation: https://v5.metroui.org.ua/components/activity/
-
+	
+	For more details, see the `official documentation <https://v5.metroui.org.ua/components/activity/>`_.
+	
+	You can also reference specific sections:
+	- `Basic Usage <https://v5.metroui.org.ua/components/activity/#usage>`_
+	- `Plugin Parameters <https://v5.metroui.org.ua/components/activity/#plugin-parameters>`_
+	- `API Methods <https://v5.metroui.org.ua/components/activity/#api-methods>`_
+	- `Styling with CSS Variables <https://v5.metroui.org.ua/components/activity/#styling-with-css-variables>`_
+	
 	Args:
 		**attrs: Additional HTML attributes including:
-			# Activity Parameters
-			- activity_deferred: Deferred initialization time in milliseconds (number)
-			- type: Type of activity indicator (string) - Options: "ring", "metro", "square", "cycle", "simple", "atom", "bars"
-			- style: Style of the activity indicator (string) - Options: "", "dark", "color"
-			- size: Size of the activity indicator in pixels (number)
-			- radius: Radius for the "simple" type activity indicator (number)
-			- on_activity_create: Callback function triggered when the activity indicator is created (string)
-			- cls_activity: Additional CSS class for the activity container (string)
+			activity_deferred (int): Deferred initialization time in milliseconds
+			type (str): Type of activity indicator - Options: "ring", "metro", "square", "cycle", "simple", "atom", "bars"
+			style (str): Style of the activity indicator - Options: "", "dark", "color"
+			size (int): Size of the activity indicator in pixels
+			radius (int): Radius for the "simple" type activity indicator
+			on_activity_create (str): Callback function triggered when the activity indicator is created
+			cls_activity (str): Additional CSS class for the activity container
+		
+	Returns:
+		str: Rendered HTML div element with activity indicator functionality
+		
+	References:
+		.. _MetroUI Activity: https://v5.metroui.org.ua/components/activity/
+		.. _MetroUI Documentation: https://v5.metroui.org.ua/
 	"""
 	# Extract activity-specific attributes
 	activity_attrs = {}

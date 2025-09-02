@@ -8,26 +8,37 @@ from ..html import render_tag
 def render_action_button(actions, main_icon="mif-plus", **attrs):
 	"""
 	Renders MetroUI action button component with expandable sub-actions.
-
-	References:
-		Documentation: https://v5.metroui.org.ua/components/action-button/
-
+	
+	For more details, see the `official documentation <https://v5.metroui.org.ua/components/action-button/>`_.
+	
+	You can also reference specific sections:
+	- `Basic Usage <https://v5.metroui.org.ua/components/action-button/#usage>`_
+	- `Plugin Parameters <https://v5.metroui.org.ua/components/action-button/#plugin-parameters>`_
+	- `API Methods <https://v5.metroui.org.ua/components/action-button/#api-methods>`_
+	- `Styling with CSS Variables <https://v5.metroui.org.ua/components/action-button/#styling-with-css-variables>`_
+	
 	Args:
 		actions: List of dictionaries with 'icon', 'href', 'title', and optional 'onclick' keys
-		main_icon: Icon class for the main action button (string)
+		main_icon: Icon class for the main action button
 		**attrs: Additional HTML attributes including:
-			# Action Button Parameters
-			- rotate: Add rotation effect to main button (boolean)
-			- main_href: URL for main button (string)
-			- main_title: Title/tooltip for main button (string)
-			- main_onclick: JavaScript onclick handler for main button (string)
-			- cls_action_button: Additional CSS class for action button container (string)
-			- cls_main_action: Additional CSS class for main action button (string)
-			- cls_actions: Additional CSS class for actions container (string)
-			- cls_sub_action: Additional CSS class for sub-action items (string)
-			- onClick: Callback function triggered when the main button is clicked (string)
-			- onActionClick: Callback function triggered when a sub-action is clicked (string)
-			- onActionButtonCreate: Callback function triggered when the action button is created (string)
+			rotate (bool): Add rotation effect to main button
+			main_href (str): URL for main button
+			main_title (str): Title/tooltip for main button
+			main_onclick (str): JavaScript onclick handler for main button
+			cls_action_button (str): Additional CSS class for action button container
+			cls_main_action (str): Additional CSS class for main action button
+			cls_actions (str): Additional CSS class for actions container
+			cls_sub_action (str): Additional CSS class for sub-action items
+			onClick (str): Callback function triggered when the main button is clicked
+			onActionClick (str): Callback function triggered when a sub-action is clicked
+			onActionButtonCreate (str): Callback function triggered when the action button is created
+		
+	Returns:
+		str: Rendered HTML div element with action button functionality
+		
+	References:
+		.. _MetroUI Action Button: https://v5.metroui.org.ua/components/action-button/
+		.. _MetroUI Documentation: https://v5.metroui.org.ua/
 	"""
 	# Extract action button-specific attributes
 	action_attrs = {}

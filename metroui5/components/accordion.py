@@ -8,27 +8,38 @@ from ..html import render_tag
 def render_accordion(items, **attrs):
 	"""
 	Renders MetroUI accordion component with advanced features.
-
-	References:
-		Documentation: https://v5.metroui.org.ua/components/accordion/
-
+	
+	For more details, see the `official documentation <https://v5.metroui.org.ua/components/accordion/>`_.
+	
+	You can also reference specific sections:
+	- `Basic Usage <https://v5.metroui.org.ua/components/accordion/#usage>`_
+	- `Plugin Parameters <https://v5.metroui.org.ua/components/accordion/#plugin-parameters>`_
+	- `API Methods <https://v5.metroui.org.ua/components/accordion/#api-methods>`_
+	- `Styling with CSS Variables <https://v5.metroui.org.ua/components/accordion/#styling-with-css-variables>`_
+	
 	Args:
 		items: List of dictionaries with 'title', 'content', and optional 'active' keys
 		**attrs: Additional HTML attributes including:
-			# Accordion Parameters
-			- accordion_deferred: Deferred initialization time in milliseconds (number)
-			- show_marker: Show/hide marker (arrow) in the heading (boolean)
-			- material: Use material design style (boolean)
-			- duration: Animation duration for expanding/collapsing (number)
-			- one_frame: Allow only one frame to be open at a time (boolean)
-			- show_active: Show active frames on initialization (boolean)
-			- cls_frame: Additional CSS class for frames (string)
-			- cls_heading: Additional CSS class for headings (string)
-			- cls_content: Additional CSS class for content (string)
-			- cls_accordion: Additional CSS class for the accordion container (string)
-			- cls_active_frame: Additional CSS class for active frames (string)
-			- cls_active_frame_heading: Additional CSS class for active frame headings (string)
-			- cls_active_frame_content: Additional CSS class for active frame content (string)
+			accordion_deferred (int): Deferred initialization time in milliseconds
+			show_marker (bool): Show/hide marker (arrow) in the heading
+			material (bool): Use material design style
+			duration (int): Animation duration for expanding/collapsing
+			one_frame (bool): Allow only one frame to be open at a time
+			show_active (bool): Show active frames on initialization
+			cls_frame (str): Additional CSS class for frames
+			cls_heading (str): Additional CSS class for headings
+			cls_content (str): Additional CSS class for content
+			cls_accordion (str): Additional CSS class for the accordion container
+			cls_active_frame (str): Additional CSS class for active frames
+			cls_active_frame_heading (str): Additional CSS class for active frame headings
+			cls_active_frame_content (str): Additional CSS class for active frame content
+		
+	Returns:
+		str: Rendered HTML div element with accordion functionality
+		
+	References:
+		.. _MetroUI Accordion: https://v5.metroui.org.ua/components/accordion/
+		.. _MetroUI Documentation: https://v5.metroui.org.ua/
 	"""
 	# Extract accordion-specific attributes
 	accordion_attrs = {}

@@ -8,22 +8,33 @@ from ..html import render_tag
 def render_adblock_detection(**attrs):
 	"""
 	Renders MetroUI adblock detection component.
-
-	References:
-		Documentation: https://v5.metroui.org.ua/components/adblock/
-
+	
+	For more details, see the `official documentation <https://v5.metroui.org.ua/components/adblock/>`_.
+	
+	You can also reference specific sections:
+	- `Basic Usage <https://v5.metroui.org.ua/components/adblock/#usage>`_
+	- `Plugin Parameters <https://v5.metroui.org.ua/components/adblock/#plugin-parameters>`_
+	- `API Methods <https://v5.metroui.org.ua/components/adblock/#api-methods>`_
+	- `Events <https://v5.metroui.org.ua/components/adblock/#events>`_
+	
 	Args:
 		**attrs: Additional HTML attributes including:
-			# Adblock Detection Parameters
-			- adblock_deferred: Deferred initialization time in milliseconds (number)
-			- check_interval: Interval in milliseconds to check for ad blockers (number)
-			- fire_once: Whether to fire the alert event only once (boolean/number)
-			- check_stop: Number of checks before stopping even if no ad blocker is detected (number)
-			- localhost: Whether to check for ad blockers on localhost (boolean)
-			- on_alert: Callback function triggered when an ad blocker is detected (string)
-			- on_fishing_start: Callback function triggered when the detection starts (string)
-			- on_fishing_done: Callback function triggered when the detection is done (string)
-			- cls_adblock: Additional CSS class for the adblock detection container (string)
+			adblock_deferred (int): Deferred initialization time in milliseconds
+			check_interval (int): Interval in milliseconds to check for ad blockers
+			fire_once (bool|int): Whether to fire the alert event only once (boolean) or a specific number of times (number)
+			check_stop (int): Number of checks before stopping even if no ad blocker is detected
+			localhost (bool): Whether to check for ad blockers on localhost
+			on_alert (str): Callback function triggered when an ad blocker is detected
+			on_fishing_start (str): Callback function triggered when the detection starts
+			on_fishing_done (str): Callback function triggered when the detection is done
+			cls_adblock (str): Additional CSS class for the adblock detection container
+		
+	Returns:
+		str: Rendered HTML div element with adblock detection functionality
+		
+	References:
+		.. _MetroUI Adblock Detection: https://v5.metroui.org.ua/components/adblock/
+		.. _MetroUI Documentation: https://v5.metroui.org.ua/
 	"""
 	# Extract adblock-specific attributes
 	adblock_attrs = {}
