@@ -8,22 +8,33 @@ from ..html import render_tag
 def render_analog_clock(**attrs):
 	"""
 	Renders MetroUI analog clock component.
-
-	References:
-		Documentation: https://v5.metroui.org.ua/components/analog-clock/
-
+	
+	For more details, see the `official documentation <https://v5.metroui.org.ua/components/analog-clock/>`_.
+	
+	You can also reference specific sections:
+	- `Basic Usage <https://v5.metroui.org.ua/components/analog-clock/#usage>`_
+	- `Plugin Parameters <https://v5.metroui.org.ua/components/analog-clock/#plugin-parameters>`_
+	- `API Methods <https://v5.metroui.org.ua/components/analog-clock/#api-methods>`_
+	- `Styling with CSS Variables <https://v5.metroui.org.ua/components/analog-clock/#styling-with-css-variables>`_
+	
 	Args:
 		**attrs: Additional HTML attributes including:
-			# Analog Clock Parameters
-			- icon: Custom icon to display on the clock (HTML content) (string)
-			- show_numbers: Whether to show numbers on the clock face instead of dashes (boolean)
-			- show_moon: Whether to show the current moon phase (boolean)
-			- show_day: Whether to show the day and month display (boolean)
-			- show_digital_clock: Whether to show the digital clock (boolean)
-			- time_format: Time format (12 or 24 hour) (number)
-			- on_analog_clock_create: Callback function triggered when the clock is created (string)
-			- cls_analog_clock: Additional CSS class for the analog clock container (string)
-			- size: Size modifier (xs, sm, md, lg, xl) (string)
+			icon (str): Custom icon to display on the clock (HTML content)
+			show_numbers (bool): Whether to show numbers on the clock face instead of dashes
+			show_moon (bool): Whether to show the current moon phase
+			show_day (bool): Whether to show the day and month display
+			show_digital_clock (bool): Whether to show the digital clock
+			time_format (int): Time format (12 or 24 hour)
+			on_analog_clock_create (str): Callback function triggered when the clock is created
+			cls_analog_clock (str): Additional CSS class for the analog clock container
+			size (str): Size modifier (xs, sm, md, lg, xl)
+		
+	Returns:
+		str: Rendered HTML div element with analog clock functionality
+		
+	References:
+		.. _MetroUI Analog Clock: https://v5.metroui.org.ua/components/analog-clock/
+		.. _MetroUI Documentation: https://v5.metroui.org.ua/
 	"""
 	# Extract analog clock-specific attributes
 	clock_attrs = {}
