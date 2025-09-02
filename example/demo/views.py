@@ -442,3 +442,11 @@ def action_button_demo(request):
 		'extended_action_items': extended_action_items,
 	}
 	return render(request, 'demo/action_button_demo.html', context)
+
+
+def activity_demo(request):
+	"""Demo page for activity components."""
+	context = {
+		'page_title': 'Activity Components - MetroUI5 Demo',
+	}
+	return render(request, 'demo/activity_demo.html', context)
