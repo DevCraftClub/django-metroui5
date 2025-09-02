@@ -166,31 +166,246 @@ def render_progress(value, max_value=100, color="blue", size="default", **attrs)
 
 def render_accordion(items, **attrs):
 	"""
-	Renders MetroUI accordion component.
+	Renders MetroUI accordion component with advanced features.
 
 	Args:
-		items: List of dictionaries with 'title' and 'content' keys
-		**attrs: Additional HTML attributes
+		items: List of dictionaries with 'title', 'content', and optional 'active' keys
+		**attrs: Additional HTML attributes including:
+			# Accordion Parameters
+			- accordion_deferred: Deferred initialization time in milliseconds (number)
+			- show_marker: Show/hide marker (arrow) in the heading (boolean)
+			- material: Use material design style (boolean)
+			- duration: Animation duration for expanding/collapsing (number)
+			- one_frame: Allow only one frame to be open at a time (boolean)
+			- show_active: Show active frames on initialization (boolean)
+			- cls_frame: Additional CSS class for frames (string)
+			- cls_heading: Additional CSS class for headings (string)
+			- cls_content: Additional CSS class for content (string)
+			- cls_accordion: Additional CSS class for the accordion container (string)
+			- cls_active_frame: Additional CSS class for active frames (string)
+			- cls_active_frame_heading: Additional CSS class for active frame headings (string)
+			- cls_active_frame_content: Additional CSS class for active frame content (string)
 	"""
+	# Extract accordion-specific attributes
+	accordion_attrs = {}
+	standard_attrs = {}
+	
+	# Accordion-specific parameters
+	accordion_params = [
+		'accordion_deferred', 'show_marker', 'material', 'duration', 'one_frame',
+		'show_active', 'cls_frame', 'cls_heading', 'cls_content', 'cls_accordion',
+		'cls_active_frame', 'cls_active_frame_heading', 'cls_active_frame_content'
+	]
+	
+	# Separate accordion attributes from standard HTML attributes
+	for key, value in attrs.items():
+		if key in accordion_params:
+			accordion_attrs[key] = value
+		else:
+			standard_attrs[key] = value
+	
+	# Build base attributes
 	default_attrs = {
-		"class": "accordion",
 		"data-role": "accordion"
 	}
-
-	# Merge with custom attributes
-	final_attrs = {**default_attrs, **attrs}
-
+	
+	# Add accordion-specific data attributes
+	if accordion_attrs.get('accordion_deferred'):
+		default_attrs["data-accordion-deferred"] = str(accordion_attrs['accordion_deferred'])
+	
+	if accordion_attrs.get('show_marker') is not None:
+		default_attrs["data-show-marker"] = "true" if accordion_attrs['show_marker'] else "false"
+	
+	if accordion_attrs.get('material'):
+		default_attrs["data-material"] = "true"
+	
+	if accordion_attrs.get('duration'):
+		default_attrs["data-duration"] = str(accordion_attrs['duration'])
+	
+	if accordion_attrs.get('one_frame') is not None:
+		default_attrs["data-one-frame"] = "true" if accordion_attrs['one_frame'] else "false"
+	
+	if accordion_attrs.get('show_active') is not None:
+		default_attrs["data-show-active"] = "true" if accordion_attrs['show_active'] else "false"
+	
+	# Build CSS classes
+	css_classes = ["accordion"]
+	
+	if accordion_attrs.get('material'):
+		css_classes.append("material")
+	
+	if accordion_attrs.get('cls_accordion'):
+		css_classes.append(accordion_attrs['cls_accordion'])
+	
+	default_attrs["class"] = " ".join(css_classes)
+	
+	# Merge with custom standard attributes
+	final_attrs = {**default_attrs, **standard_attrs}
+	
+	# Generate accordion frames
 	accordion_items = []
 	for i, item in enumerate(items):
-		item_html = render_tag(
+		# Determine if this frame should be active
+		is_active = item.get('active', False)
+		
+		# Build frame classes
+		frame_classes = ["frame"]
+		if is_active:
+			frame_classes.append("active")
+		if accordion_attrs.get('cls_frame'):
+			frame_classes.append(accordion_attrs['cls_frame'])
+		if is_active and accordion_attrs.get('cls_active_frame'):
+			frame_classes.append(accordion_attrs['cls_active_frame'])
+		
+		# Build heading classes
+		heading_classes = ["heading"]
+		if accordion_attrs.get('cls_heading'):
+			heading_classes.append(accordion_attrs['cls_heading'])
+		if is_active and accordion_attrs.get('cls_active_frame_heading'):
+			heading_classes.append(accordion_attrs['cls_active_frame_heading'])
+		
+		# Build content classes
+		content_classes = ["content"]
+		if accordion_attrs.get('cls_content'):
+			content_classes.append(accordion_attrs['cls_content'])
+		if is_active and accordion_attrs.get('cls_active_frame_content'):
+			content_classes.append(accordion_attrs['cls_active_frame_content'])
+		
+		# Create frame HTML
+		frame_html = render_tag(
 			"div",
-			{"class": "accordion-frame"},
-			render_tag("a", {"class": "accordion-title", "href": "#"}, item.get('title', '')) +
-			render_tag("div", {"class": "accordion-content"}, item.get('content', ''))
+			{"class": " ".join(frame_classes)},
+			render_tag("div", {"class": " ".join(heading_classes)}, item.get('title', '')) +
+			render_tag("div", {"class": " ".join(content_classes)}, item.get('content', ''))
 		)
-		accordion_items.append(item_html)
-
+		accordion_items.append(frame_html)
+	
 	return render_tag("div", attrs=final_attrs, content="".join(accordion_items))
+
+
+def render_action_button(actions, main_icon="mif-plus", **attrs):
+	"""
+	Renders MetroUI action button component with expandable sub-actions.
+
+	Args:
+		actions: List of dictionaries with 'icon', 'href', 'title', and optional 'onclick' keys
+		main_icon: Icon class for the main action button (string)
+		**attrs: Additional HTML attributes including:
+			# Action Button Parameters
+			- rotate: Add rotation effect to main button (boolean)
+			- main_href: URL for main button (string)
+			- main_title: Title/tooltip for main button (string)
+			- main_onclick: JavaScript onclick handler for main button (string)
+			- cls_action_button: Additional CSS class for action button container (string)
+			- cls_main_action: Additional CSS class for main action button (string)
+			- cls_actions: Additional CSS class for actions container (string)
+			- cls_sub_action: Additional CSS class for sub-action items (string)
+			- onClick: Callback function triggered when the main button is clicked (string)
+			- onActionClick: Callback function triggered when a sub-action is clicked (string)
+			- onActionButtonCreate: Callback function triggered when the action button is created (string)
+	"""
+	# Extract action button-specific attributes
+	action_attrs = {}
+	standard_attrs = {}
+	
+	# Action button-specific parameters
+	action_params = [
+		'rotate', 'main_href', 'main_title', 'main_onclick', 'cls_action_button',
+		'cls_main_action', 'cls_actions', 'cls_sub_action', 'onClick', 'onActionClick',
+		'onActionButtonCreate'
+	]
+	
+	# Separate action button attributes from standard HTML attributes
+	for key, value in attrs.items():
+		if key in action_params:
+			action_attrs[key] = value
+		else:
+			standard_attrs[key] = value
+	
+	# Build base attributes
+	default_attrs = {
+		"data-role": "action-button"
+	}
+	
+	# Add action button-specific data attributes
+	if action_attrs.get('onClick'):
+		default_attrs["data-on-click"] = action_attrs['onClick']
+	
+	if action_attrs.get('onActionClick'):
+		default_attrs["data-on-action-click"] = action_attrs['onActionClick']
+	
+	if action_attrs.get('onActionButtonCreate'):
+		default_attrs["data-on-action-button-create"] = action_attrs['onActionButtonCreate']
+	
+	# Build CSS classes
+	css_classes = ["action-button"]
+	
+	if action_attrs.get('cls_action_button'):
+		css_classes.append(action_attrs['cls_action_button'])
+	
+	default_attrs["class"] = " ".join(css_classes)
+	
+	# Merge with custom standard attributes
+	final_attrs = {**default_attrs, **standard_attrs}
+	
+	# Build main action button
+	main_button_classes = ["main-action"]
+	if action_attrs.get('rotate'):
+		main_button_classes.append("rotate")
+	if action_attrs.get('cls_main_action'):
+		main_button_classes.append(action_attrs['cls_main_action'])
+	
+	main_button_attrs = {"class": " ".join(main_button_classes)}
+	
+	if action_attrs.get('main_href'):
+		main_button_attrs["href"] = action_attrs['main_href']
+	
+	if action_attrs.get('main_title'):
+		main_button_attrs["title"] = action_attrs['main_title']
+	
+	if action_attrs.get('main_onclick'):
+		main_button_attrs["onclick"] = action_attrs['main_onclick']
+	
+	main_button = render_tag(
+		"button",
+		main_button_attrs,
+		render_tag("span", {"class": "icon"}, render_tag("span", {"class": main_icon}))
+	)
+	
+	# Build sub-actions
+	actions_classes = ["actions"]
+	if action_attrs.get('cls_actions'):
+		actions_classes.append(action_attrs['cls_actions'])
+	
+	sub_actions = []
+	for action in actions:
+		sub_action_classes = ["sub-action"]
+		if action_attrs.get('cls_sub_action'):
+			sub_action_classes.append(action_attrs['cls_sub_action'])
+		
+		action_attrs_dict = {"class": " ".join(sub_action_classes)}
+		
+		if action.get('href'):
+			action_attrs_dict["href"] = action['href']
+		
+		if action.get('title'):
+			action_attrs_dict["title"] = action['title']
+		
+		if action.get('onclick'):
+			action_attrs_dict["onclick"] = action['onclick']
+		
+		action_icon = action.get('icon', 'mif-circle')
+		action_content = render_tag("span", {"class": action_icon})
+		
+		sub_action = render_tag("li", {}, render_tag("a", action_attrs_dict, action_content))
+		sub_actions.append(sub_action)
+	
+	actions_list = render_tag("ul", {"class": " ".join(actions_classes)}, "".join(sub_actions))
+	
+	# Combine main button and actions
+	content = main_button + actions_list
+	
+	return render_tag("div", attrs=final_attrs, content=content)
 
 
 def render_calendar(**attrs):
