@@ -1,0 +1,345 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Badge Demo{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>MetroUI Badge Component</h1>
+    <p>This demo showcases the MetroUI v5 Badge component that provides a simple way to add small, customizable badges to your UI elements.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-12">
+                <h2>Basic Usage</h2>
+                <p>Basic badge with default styling:</p>
+                <div class="example-container">
+                    <span class="badge">New</span>
+                    <span class="badge">5</span>
+                    <span class="badge">Alert</span>
+                    <span class="badge">Status</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Corner Positioning</h2>
+                <p>Badge positioned in the top-right corner of a relative-positioned parent:</p>
+                <div class="example-container">
+                    <div style="position: relative; width: 100px; height: 100px; background-color: #f0f0f0; display: inline-block; margin: 10px;">
+                        <span class="badge corner">8</span>
+                        <div style="padding: 20px; text-align: center;">Box 1</div>
+                    </div>
+                    <div style="position: relative; width: 100px; height: 100px; background-color: #e0e0e0; display: inline-block; margin: 10px;">
+                        <span class="badge corner">12</span>
+                        <div style="padding: 20px; text-align: center;">Box 2</div>
+                    </div>
+                    <div style="position: relative; width: 100px; height: 100px; background-color: #d0d0d0; display: inline-block; margin: 10px;">
+                        <span class="badge corner">99+</span>
+                        <div style="padding: 20px; text-align: center;">Box 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Corner Outside Positioning</h2>
+                <p>Badge positioned outside the parent element in the top-right corner:</p>
+                <div class="example-container">
+                    <div style="position: relative; width: 100px; height: 100px; background-color: #f0f0f0; display: inline-block; margin: 10px;">
+                        <span class="badge corner-outside">15</span>
+                        <div style="padding: 20px; text-align: center;">Box 1</div>
+                    </div>
+                    <div style="position: relative; width: 100px; height: 100px; background-color: #e0e0e0; display: inline-block; margin: 10px;">
+                        <span class="badge corner-outside">3</span>
+                        <div style="padding: 20px; text-align: center;">Box 2</div>
+                    </div>
+                    <div style="position: relative; width: 100px; height: 100px; background-color: #d0d0d0; display: inline-block; margin: 10px;">
+                        <span class="badge corner-outside">!</span>
+                        <div style="padding: 20px; text-align: center;">Box 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Template Tag Usage</h2>
+                <p>Using the Django template tag:</p>
+                <div class="example-container">
+                    {% metroui5_badge "Template Badge" %}
+                    {% metroui5_badge "Corner Badge" corner=True %}
+                    {% metroui5_badge "Outside Badge" corner_outside=True %}
+                    {% metroui5_badge "Custom Badge" cls_badge="custom-badge" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Custom Styling with CSS Variables</h2>
+                <p>Badges with custom CSS variable styling:</p>
+                <div class="example-container">
+                    <span class="badge custom-badge-blue">Blue Badge</span>
+                    <span class="badge custom-badge-green">Green Badge</span>
+                    <span class="badge custom-badge-red">Red Badge</span>
+                    <span class="badge custom-badge-purple">Purple Badge</span>
+                </div>
+                
+                <style>
+                .custom-badge-blue {
+                    --badge-background: #2196F3;
+                    --badge-color: white;
+                    --badge-border-radius: 12px;
+                }
+                
+                .custom-badge-green {
+                    --badge-background: #4CAF50;
+                    --badge-color: white;
+                    --badge-border-radius: 8px;
+                }
+                
+                .custom-badge-red {
+                    --badge-background: #F44336;
+                    --badge-color: white;
+                    --badge-border-radius: 16px;
+                }
+                
+                .custom-badge-purple {
+                    --badge-background: #9C27B0;
+                    --badge-color: white;
+                    --badge-border-radius: 20px;
+                }
+                </style>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Real-world Examples</h2>
+                <p>Common use cases for badges:</p>
+                <div class="example-container">
+                    <!-- Notification badges on buttons -->
+                    <button class="button">
+                        Messages
+                        <span class="badge corner">5</span>
+                    </button>
+                    
+                    <button class="button">
+                        Notifications
+                        <span class="badge corner-outside">12</span>
+                    </button>
+                    
+                    <!-- Status indicators -->
+                    <div style="display: inline-block; margin: 10px;">
+                        <span class="badge">Online</span>
+                        <span class="badge">Active</span>
+                        <span class="badge">New</span>
+                    </div>
+                    
+                    <!-- Count indicators -->
+                    <div style="display: inline-block; margin: 10px;">
+                        <span class="badge">Items: 25</span>
+                        <span class="badge">Users: 1,234</span>
+                        <span class="badge">Views: 99+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Component Parameters</h2>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>content</td>
+                            <td>string</td>
+                            <td>""</td>
+                            <td>Badge content/text</td>
+                        </tr>
+                        <tr>
+                            <td>corner</td>
+                            <td>boolean</td>
+                            <td>false</td>
+                            <td>Position the badge in the top-right corner of a relative-positioned parent</td>
+                        </tr>
+                        <tr>
+                            <td>corner_outside</td>
+                            <td>boolean</td>
+                            <td>false</td>
+                            <td>Position the badge outside the parent element in the top-right corner</td>
+                        </tr>
+                        <tr>
+                            <td>cls_badge</td>
+                            <td>string</td>
+                            <td>""</td>
+                            <td>Additional CSS class for the badge</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>CSS Variables</h2>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Default (Light)</th>
+                            <th>Dark Mode</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>--badge-background</td>
+                            <td>#F8F8F8</td>
+                            <td>#2b2d30</td>
+                            <td>Background color of the badge</td>
+                        </tr>
+                        <tr>
+                            <td>--badge-color</td>
+                            <td>#191919</td>
+                            <td>#F8F8F8</td>
+                            <td>Text color of the badge</td>
+                        </tr>
+                        <tr>
+                            <td>--badge-border-radius</td>
+                            <td>4px</td>
+                            <td>4px</td>
+                            <td>Border radius of the badge</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Available CSS Classes</h2>
+                <h3>Base Classes</h3>
+                <ul>
+                    <li><code>.badge</code> - The main class for creating a badge</li>
+                </ul>
+                
+                <h3>Modifiers</h3>
+                <ul>
+                    <li><code>.corner</code> - Positions the badge in the top-right corner of a relative-positioned parent</li>
+                    <li><code>.corner-outside</code> - Positions the badge outside the parent element in the top-right corner</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Usage Examples</h2>
+                <h3>Basic HTML Usage:</h3>
+                <pre><code>&lt;!-- Basic usage --&gt;
+&lt;span class="badge"&gt;New&lt;/span&gt;
+
+&lt;!-- Badge in corner position --&gt;
+&lt;div style="position: relative; width: 100px; height: 100px; background-color: #f0f0f0;"&gt;
+    &lt;span class="badge corner"&gt;8&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Badge outside corner position --&gt;
+&lt;div style="position: relative; width: 100px; height: 100px; background-color: #f0f0f0;"&gt;
+    &lt;span class="badge corner-outside"&gt;12&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+
+                <h3>Django Template Usage:</h3>
+                <pre><code>{% load metroui5 %}
+
+{% metroui5_badge "New" %}
+{% metroui5_badge "8" corner=True %}
+{% metroui5_badge "12" corner_outside=True %}
+{% metroui5_badge "Custom" cls_badge="custom-badge" %}</code></pre>
+
+                <h3>Python Usage:</h3>
+                <pre><code>from metroui5.components import render_badge
+
+# Basic badge
+html = render_badge("New")
+
+# Corner badge
+html = render_badge("8", corner=True)
+
+# Outside corner badge
+html = render_badge("12", corner_outside=True)
+
+# Custom styled badge
+html = render_badge("Custom", cls_badge="custom-badge")</code></pre>
+
+                <h3>Custom Styling:</h3>
+                <pre><code>/* Custom styling for badges */
+.custom-badge {
+    --badge-background: #2196F3;
+    --badge-color: white;
+    --badge-border-radius: 12px;
+}
+
+/* Notification badge */
+.notification-badge {
+    --badge-background: #F44336;
+    --badge-color: white;
+    --badge-border-radius: 50%;
+    font-size: 10px;
+    min-width: 18px;
+    height: 18px;
+    line-height: 18px;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Additional Information</h2>
+                <p>The Badges component:</p>
+                <ul>
+                    <li>Is purely CSS-based with no JavaScript functionality</li>
+                    <li>Automatically adapts to both light and dark themes</li>
+                    <li>Uses flexbox for proper text alignment and centering</li>
+                    <li>Has a default small font size (10px) and padding for compact display</li>
+                    <li>Can be positioned relative to parent elements using the corner classes</li>
+                    <li>Supports custom styling through CSS variables</li>
+                    <li>Is perfect for notification counts, status indicators, and labels</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+.example-container .badge {
+    margin: 5px;
+}
+
+/* Custom badge styles for demo */
+.custom-badge {
+    --badge-background: #FF9800;
+    --badge-color: white;
+    --badge-border-radius: 8px;
+}
+</style>
+{% endblock %}

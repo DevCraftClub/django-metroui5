@@ -490,3 +490,11 @@ def audio_player_demo(request):
 		'page_title': 'Audio Player Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/audio_player_demo.html', context)
+
+
+def badge_demo(request):
+	"""Demo page for badge component."""
+	context = {
+		'page_title': 'Badge Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/badge_demo.html', context)

@@ -382,9 +382,9 @@ def metroui5_pagination(current_page, total_pages, **kwargs):
 
 
 @register.simple_tag
-def metroui5_badge(content, badge_type="default", **kwargs):
+def metroui5_badge(content, corner=False, corner_outside=False, **kwargs):
     """Renders MetroUI badge."""
-    return mark_safe(render_badge(content, badge_type, **kwargs))
+    return mark_safe(render_badge(content, corner, corner_outside, **kwargs))
 
 
 @register.simple_tag

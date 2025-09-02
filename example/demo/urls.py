@@ -25,4 +25,5 @@ urlpatterns = [
     path('app-bar-demo/', views.app_bar_demo, name='app_bar_demo'),
     path('audio-button-demo/', views.audio_button_demo, name='audio_button_demo'),
     path('audio-player-demo/', views.audio_player_demo, name='audio_player_demo'),
+    path('badge-demo/', views.badge_demo, name='badge_demo'),
 ]
