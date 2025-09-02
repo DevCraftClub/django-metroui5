@@ -514,3 +514,40 @@ def box_demo(request):
 		'page_title': 'Box Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/box_demo.html', context)
+
+
+def breadcrumb_demo(request):
+	"""Demo page for breadcrumb component."""
+	# Sample breadcrumb data
+	breadcrumb_items = [
+		{'text': 'Home', 'href': '/', 'icon': 'mif-home'},
+		{'text': 'Library', 'href': '/library'},
+		{'text': 'Data', 'href': '/data'},
+		{'text': 'Bootstrap', 'href': '/bootstrap'}
+	]
+	
+	simple_items = ['Home', 'Library', 'Data', 'Bootstrap']
+	
+	mixed_items = [
+		{'text': 'Home', 'href': '/', 'icon': 'mif-home'},
+		{'text': 'Products', 'href': '/products', 'icon': 'mif-package'},
+		{'text': 'Electronics', 'href': '/products/electronics'},
+		{'text': 'Smartphones', 'href': '/products/electronics/smartphones'},
+		{'text': 'iPhone 15', 'href': '/products/electronics/smartphones/iphone-15'}
+	]
+	
+	custom_divider_items = [
+		{'text': 'Home', 'href': '/', 'divider': '›'},
+		{'text': 'Library', 'href': '/library', 'divider': '›'},
+		{'text': 'Data', 'href': '/data', 'divider': '›'},
+		{'text': 'Bootstrap', 'href': '/bootstrap'}
+	]
+	
+	context = {
+		'page_title': 'Breadcrumb Component - MetroUI5 Demo',
+		'breadcrumb_items': breadcrumb_items,
+		'simple_items': simple_items,
+		'mixed_items': mixed_items,
+		'custom_divider_items': custom_divider_items,
+	}
+	return render(request, 'demo/breadcrumb_demo.html', context)

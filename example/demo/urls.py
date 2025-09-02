@@ -28,4 +28,5 @@ urlpatterns = [
     path('badge-demo/', views.badge_demo, name='badge_demo'),
     path('bar3d-demo/', views.bar3d_demo, name='bar3d_demo'),
     path('box-demo/', views.box_demo, name='box_demo'),
+    path('breadcrumb-demo/', views.breadcrumb_demo, name='breadcrumb_demo'),
 ]
