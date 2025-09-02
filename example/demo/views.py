@@ -381,3 +381,19 @@ def initials_avatars(request):
 	}
 	
 	return render(request, "demo/initials_avatars.html", context)
+
+
+def advanced_inputs(request):
+	"""Demo page for advanced input components."""
+	context = {
+		'page_title': 'Advanced Inputs - MetroUI5 Demo',
+	}
+	return render(request, 'demo/advanced_inputs.html', context)
+
+
+def input_comparison(request):
+	"""Demo page comparing simple input vs material input components."""
+	context = {
+		'page_title': 'Input Components Comparison - MetroUI5 Demo',
+	}
+	return render(request, 'demo/input_comparison.html', context)
