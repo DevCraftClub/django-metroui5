@@ -559,3 +559,11 @@ def bulls_demo(request):
 		'page_title': 'Bulls Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/bulls_demo.html', context)
+
+
+def button_demo(request):
+	"""Demo page for button component."""
+	context = {
+		'page_title': 'Button Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/button_demo.html', context)

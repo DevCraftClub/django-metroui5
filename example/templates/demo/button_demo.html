@@ -1,0 +1,520 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Button Component Demo</h1>
+    <p>This page demonstrates the MetroUI Button component functionality based on the <a href="https://v5.metroui.org.ua/components/button/" target="_blank">official MetroUI v5 documentation</a>.</p>
+
+    <h2>Basic Buttons</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Standard Buttons</h3>
+            <div class="row">
+                <div class="cell-3">
+                    {% metroui5_button "Standard Button" %}
+                </div>
+                <div class="cell-3">
+                    {% metroui5_button "Primary" color="primary" %}
+                </div>
+                <div class="cell-3">
+                    {% metroui5_button "Secondary" color="secondary" %}
+                </div>
+                <div class="cell-3">
+                    {% metroui5_button "Success" color="success" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Button Variants</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Different Button Styles</h3>
+            <div class="row">
+                <div class="cell-3">
+                    <h4>Default</h4>
+                    {% metroui5_button "Default Button" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Flat Button</h4>
+                    {% metroui5_button "Flat Button" variant="flat-button" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Outline</h4>
+                    {% metroui5_button "Outline Button" outline=True %}
+                </div>
+                <div class="cell-3">
+                    <h4>Link Style</h4>
+                    {% metroui5_button "Link Button" link=True %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Button Sizes</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>All Available Sizes</h3>
+            <div class="row">
+                <div class="cell-2">
+                    <h4>Mini</h4>
+                    {% metroui5_button "Mini" size="mini" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Small</h4>
+                    {% metroui5_button "Small" size="small" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Medium</h4>
+                    {% metroui5_button "Medium" size="medium" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Default</h4>
+                    {% metroui5_button "Default" size="default" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Large</h4>
+                    {% metroui5_button "Large" size="large" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Button Shapes</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Different Button Shapes</h3>
+            <div class="row">
+                <div class="cell-4">
+                    <h4>Pill Button</h4>
+                    {% metroui5_button "Pill Button" shape="pill-button" %}
+                </div>
+                <div class="cell-4">
+                    <h4>Square Button</h4>
+                    {% metroui5_button shape="square" icon="mif-home" %}
+                </div>
+                <div class="cell-4">
+                    <h4>Circular Button</h4>
+                    {% metroui5_button shape="cycle" icon="mif-plus" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Button States</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Different Button States</h3>
+            <div class="row">
+                <div class="cell-6">
+                    <h4>Disabled Button</h4>
+                    {% metroui5_button "Disabled Button" disabled=True %}
+                </div>
+                <div class="cell-6">
+                    <h4>Loading Button</h4>
+                    {% metroui5_button "Loading" loading=True %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Button Effects</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Visual Effects</h3>
+            <div class="row">
+                <div class="cell-6">
+                    <h4>Shadow Effect</h4>
+                    {% metroui5_button "Shadow Button" shadow=True %}
+                </div>
+                <div class="cell-6">
+                    <h4>Shift Effect</h4>
+                    {% metroui5_button "Shift Button" shift=True %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Color Variants</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Accent Colors</h3>
+            <div class="row">
+                <div class="cell-2">
+                    {% metroui5_button "Primary" color="primary" %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Secondary" color="secondary" %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Success" color="success" %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Warning" color="warning" %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Alert" color="alert" %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Info" color="info" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Outline Color Variants</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Outline Style with Colors</h3>
+            <div class="row">
+                <div class="cell-2">
+                    {% metroui5_button "Primary" color="primary" outline=True %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Secondary" color="secondary" outline=True %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Success" color="success" outline=True %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Warning" color="warning" outline=True %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Alert" color="alert" outline=True %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Info" color="info" outline=True %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Buttons with Icons</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Icon Integration</h3>
+            <div class="row">
+                <div class="cell-3">
+                    <h4>Icon Left</h4>
+                    {% metroui5_button "Home" icon="mif-home" icon_position="left" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Icon Right</h4>
+                    {% metroui5_button "Next" icon="mif-arrow-right" icon_position="right" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Square with Icon</h4>
+                    {% metroui5_button shape="square" icon="mif-settings" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Circular with Icon</h4>
+                    {% metroui5_button shape="cycle" icon="mif-plus" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Combined Examples</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Complex Button Combinations</h3>
+            <div class="row">
+                <div class="cell-3">
+                    <h4>Large Primary with Icon</h4>
+                    {% metroui5_button "Save" color="primary" size="large" icon="mif-floppy-disk" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Pill Success with Shadow</h4>
+                    {% metroui5_button "Success" color="success" shape="pill-button" shadow=True %}
+                </div>
+                <div class="cell-3">
+                    <h4>Outline Warning Large</h4>
+                    {% metroui5_button "Warning" color="warning" outline=True size="large" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Loading Primary</h4>
+                    {% metroui5_button "Processing" color="primary" loading=True %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Component Parameters</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>content</code></td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Button text content</td>
+                    </tr>
+                    <tr>
+                        <td><code>variant</code></td>
+                        <td>string</td>
+                        <td>"default"</td>
+                        <td>Button variant (default, flat-button, outline, link)</td>
+                    </tr>
+                    <tr>
+                        <td><code>size</code></td>
+                        <td>string</td>
+                        <td>"default"</td>
+                        <td>Button size (mini, small, medium, default, large)</td>
+                    </tr>
+                    <tr>
+                        <td><code>shape</code></td>
+                        <td>string</td>
+                        <td>null</td>
+                        <td>Button shape (pill-button, square, cycle)</td>
+                    </tr>
+                    <tr>
+                        <td><code>color</code></td>
+                        <td>string</td>
+                        <td>null</td>
+                        <td>Button color (primary, secondary, success, warning, alert, info)</td>
+                    </tr>
+                    <tr>
+                        <td><code>outline</code></td>
+                        <td>boolean</td>
+                        <td>False</td>
+                        <td>Apply outline style (transparent background with colored border)</td>
+                    </tr>
+                    <tr>
+                        <td><code>flat</code></td>
+                        <td>boolean</td>
+                        <td>False</td>
+                        <td>Apply flat style (transparent background and border)</td>
+                    </tr>
+                    <tr>
+                        <td><code>link</code></td>
+                        <td>boolean</td>
+                        <td>False</td>
+                        <td>Apply link style (looks like a link)</td>
+                    </tr>
+                    <tr>
+                        <td><code>shadow</code></td>
+                        <td>boolean</td>
+                        <td>False</td>
+                        <td>Apply shadow effect</td>
+                    </tr>
+                    <tr>
+                        <td><code>shift</code></td>
+                        <td>boolean</td>
+                        <td>False</td>
+                        <td>Apply shift effect (moves when clicked)</td>
+                    </tr>
+                    <tr>
+                        <td><code>loading</code></td>
+                        <td>boolean</td>
+                        <td>False</td>
+                        <td>Show loading state with spinner</td>
+                    </tr>
+                    <tr>
+                        <td><code>disabled</code></td>
+                        <td>boolean</td>
+                        <td>False</td>
+                        <td>Disable the button</td>
+                    </tr>
+                    <tr>
+                        <td><code>icon</code></td>
+                        <td>string</td>
+                        <td>null</td>
+                        <td>Icon class (e.g., 'mif-home', 'mif-plus')</td>
+                    </tr>
+                    <tr>
+                        <td><code>icon_position</code></td>
+                        <td>string</td>
+                        <td>"left"</td>
+                        <td>Icon position ('left' or 'right')</td>
+                    </tr>
+                    <tr>
+                        <td><code>cls_button</code></td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for the button</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>CSS Variables</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Default (Light)</th>
+                        <th>Dark Mode</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--button-border-radius</code></td>
+                        <td>4px</td>
+                        <td>4px</td>
+                        <td>Border radius for standard buttons</td>
+                    </tr>
+                    <tr>
+                        <td><code>--button-pill-radius</code></td>
+                        <td>36px</td>
+                        <td>36px</td>
+                        <td>Border radius for pill buttons</td>
+                    </tr>
+                    <tr>
+                        <td><code>--button-size</code></td>
+                        <td>36px</td>
+                        <td>36px</td>
+                        <td>Height of the button</td>
+                    </tr>
+                    <tr>
+                        <td><code>--button-font-size</code></td>
+                        <td>14px</td>
+                        <td>14px</td>
+                        <td>Font size of the button text</td>
+                    </tr>
+                    <tr>
+                        <td><code>--button-background</code></td>
+                        <td>#ebebeb</td>
+                        <td>#2b2d30</td>
+                        <td>Background color of the button</td>
+                    </tr>
+                    <tr>
+                        <td><code>--button-background-hover</code></td>
+                        <td>#dadada</td>
+                        <td>#333439</td>
+                        <td>Background color on hover</td>
+                    </tr>
+                    <tr>
+                        <td><code>--button-color</code></td>
+                        <td>#191919</td>
+                        <td>#f3fcff</td>
+                        <td>Text color of the button</td>
+                    </tr>
+                    <tr>
+                        <td><code>--button-border-color</code></td>
+                        <td>#ebebeb</td>
+                        <td>#4e5157</td>
+                        <td>Border color of the button</td>
+                    </tr>
+                    <tr>
+                        <td><code>--button-disabled-opacity</code></td>
+                        <td>.65</td>
+                        <td>.25</td>
+                        <td>Opacity for disabled buttons</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>Available CSS Classes</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Base Classes</h3>
+            <ul>
+                <li><code>.button</code> - Standard button</li>
+                <li><code>.flat-button</code> - Button with flat appearance</li>
+            </ul>
+            
+            <h3>Size Modifiers</h3>
+            <ul>
+                <li><code>.mini</code> - Very small button (height: 20px)</li>
+                <li><code>.small</code> - Small button (height: 26px)</li>
+                <li><code>.medium</code> - Medium-sized button (height: 30px)</li>
+                <li><code>.large</code> - Large button (height: 54px)</li>
+            </ul>
+            
+            <h3>Shape Modifiers</h3>
+            <ul>
+                <li><code>.pill-button</code> - Button with fully rounded sides</li>
+                <li><code>.square</code> - Square button (equal width and height)</li>
+                <li><code>.cycle</code> - Circular button</li>
+            </ul>
+        </div>
+        <div class="cell-6">
+            <h3>Style Modifiers</h3>
+            <ul>
+                <li><code>.outline</code> - Button with transparent background and colored border</li>
+                <li><code>.flat</code> - Button with transparent background and border</li>
+                <li><code>.link</code> - Button that looks like a link</li>
+                <li><code>.shadow</code> - Button with shadow effect</li>
+                <li><code>.shift</code> - Button that shifts position when clicked</li>
+            </ul>
+            
+            <h3>State Classes</h3>
+            <ul>
+                <li><code>.disabled</code> - Visually disabled button</li>
+                <li><code>.loading</code> - Button in loading state</li>
+            </ul>
+            
+            <h3>Color Classes</h3>
+            <ul>
+                <li><code>.primary</code> - Blue accent</li>
+                <li><code>.secondary</code> - Gray accent</li>
+                <li><code>.success</code> - Green accent</li>
+                <li><code>.warning</code> - Yellow accent</li>
+                <li><code>.alert</code> - Red accent</li>
+                <li><code>.info</code> - Light blue accent</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>HTML Structure</h2>
+    <div class="row">
+        <div class="cell-12">
+            <pre><code>&lt;button class="button [size] [color] [shape] [effects]" type="button"&gt;
+    [icon] [content]
+&lt;/button&gt;</code></pre>
+            <p>Where:</p>
+            <ul>
+                <li><code>[size]</code> is one of: mini, small, medium, large</li>
+                <li><code>[color]</code> is one of: primary, secondary, success, warning, alert, info</li>
+                <li><code>[shape]</code> is one of: pill-button, square, cycle</li>
+                <li><code>[effects]</code> can include: outline, shadow, shift, loading, disabled</li>
+                <li><code>[icon]</code> is optional: <code>&lt;span class="icon mif-{icon-name}"&gt;&lt;/span&gt;</code></li>
+                <li><code>[content]</code> is the button text</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Accessibility</h2>
+    <div class="row">
+        <div class="cell-12">
+            <ul>
+                <li>Native button elements (<code>&lt;button&gt;</code>) are used for proper keyboard and screen reader support</li>
+                <li>Disabled state is properly conveyed with the <code>disabled</code> attribute</li>
+                <li>Loading state includes appropriate ARIA attributes</li>
+                <li>When using links as buttons, proper roles are applied</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Best Practices</h2>
+    <div class="row">
+        <div class="cell-12">
+            <ul>
+                <li>Use native <code>&lt;button&gt;</code> elements when the action will trigger functionality within the page</li>
+                <li>Use <code>&lt;a&gt;</code> elements styled as buttons when the action navigates to a new page</li>
+                <li>Always provide descriptive text for buttons to improve accessibility</li>
+                <li>Consider using icons alongside text for better visual recognition</li>
+                <li>Use color variants consistently throughout your application</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
