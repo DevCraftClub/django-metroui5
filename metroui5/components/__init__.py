@@ -38,6 +38,7 @@ from .toolbar import render_toolbar
 from .accordion import render_accordion
 from .action_button import render_action_button
 from .activity import render_activity
+from .adblock import render_adblock_detection
 
 # Export all render functions
 __all__ = [
@@ -52,6 +53,7 @@ __all__ = [
     'render_accordion',
     'render_action_button',
     'render_activity',
+    'render_adblock_detection',
     'render_calendar',
     'render_dialog',
     'render_dropdown',

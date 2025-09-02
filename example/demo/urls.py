@@ -20,4 +20,5 @@ urlpatterns = [
     path('accordion-demo/', views.accordion_demo, name='accordion_demo'),
     path('action-button-demo/', views.action_button_demo, name='action_button_demo'),
     path('activity-demo/', views.activity_demo, name='activity_demo'),
+    path('adblock-demo/', views.adblock_demo, name='adblock_demo'),
 ]
