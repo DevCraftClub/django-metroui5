@@ -30,4 +30,5 @@ urlpatterns = [
     path('box-demo/', views.box_demo, name='box_demo'),
     path('breadcrumb-demo/', views.breadcrumb_demo, name='breadcrumb_demo'),
     path('bulls-demo/', views.bulls_demo, name='bulls_demo'),
+    path('button-demo/', views.button_demo, name='button_demo'),
 ]
