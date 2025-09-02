@@ -42,6 +42,7 @@ from .adblock import render_adblock_detection
 from .analog_clock import render_analog_clock
 from .app_bar import render_app_bar
 from .audio_button import render_audio_button
+from .audio_player import render_audio_player
 
 # Export all render functions
 __all__ = [
@@ -60,6 +61,7 @@ __all__ = [
     'render_analog_clock',
     'render_app_bar',
     'render_audio_button',
+    'render_audio_player',
     'render_calendar',
     'render_dialog',
     'render_dropdown',

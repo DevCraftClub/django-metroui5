@@ -15,6 +15,7 @@ from ..components import (
     render_analog_clock,
     render_app_bar,
     render_audio_button,
+    render_audio_player,
     render_calendar,
     render_dialog,
     render_dropdown,
@@ -276,6 +277,12 @@ def metroui5_app_bar(**kwargs):
 def metroui5_audio_button(content="", **kwargs):
     """Renders MetroUI audio button component."""
     return mark_safe(render_audio_button(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_audio_player(src="", **kwargs):
+    """Renders MetroUI audio player component."""
+    return mark_safe(render_audio_player(src, **kwargs))
 
 
 @register.simple_tag

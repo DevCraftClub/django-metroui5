@@ -482,3 +482,11 @@ def audio_button_demo(request):
 		'page_title': 'Audio Button Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/audio_button_demo.html', context)
+
+
+def audio_player_demo(request):
+	"""Demo page for audio player component."""
+	context = {
+		'page_title': 'Audio Player Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/audio_player_demo.html', context)
