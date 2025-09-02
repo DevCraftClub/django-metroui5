@@ -506,3 +506,11 @@ def bar3d_demo(request):
 		'page_title': 'Bar3d Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/bar3d_demo.html', context)
+
+
+def box_demo(request):
+	"""Demo page for box component."""
+	context = {
+		'page_title': 'Box Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/box_demo.html', context)

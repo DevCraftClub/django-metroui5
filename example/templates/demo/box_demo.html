@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Box Component Demo</h1>
+    <p>This page demonstrates the MetroUI Box component functionality.</p>
+
+    <h2>Basic Usage</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Simple Box</h3>
+            {% metroui5_box "Content inside the box..." %}
+        </div>
+        <div class="cell-6">
+            <h3>Box with Title</h3>
+            {% metroui5_box "Content inside the box..." title="Box Title" %}
+        </div>
+    </div>
+
+    <h2>Advanced Usage</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Box with Primary and Secondary Titles</h3>
+            {% metroui5_box "Content inside the box..." title="Primary Title" secondary_title="Secondary Title" %}
+        </div>
+        <div class="cell-6">
+            <h3>Custom Styled Box</h3>
+            {% metroui5_box "Custom styled box content..." title="Custom Styled Box" cls_box="custom-box" cls="highlight" %}
+        </div>
+    </div>
+
+    <h2>Multiple Boxes</h2>
+    <div class="row">
+        <div class="cell-4">
+            {% metroui5_box "First box content..." title="First Box" %}
+        </div>
+        <div class="cell-4">
+            {% metroui5_box "Second box content..." title="Second Box" %}
+        </div>
+        <div class="cell-4">
+            {% metroui5_box "Third box content..." title="Third Box" %}
+        </div>
+    </div>
+
+    <h2>Box with Rich Content</h2>
+    <div class="row">
+        <div class="cell-12">
+            {% metroui5_box %}
+                <div class="box-title">Rich Content Box</div>
+                <p>This box contains rich HTML content including:</p>
+                <ul>
+                    <li>Lists</li>
+                    <li><strong>Bold text</strong></li>
+                    <li><em>Italic text</em></li>
+                    <li><a href="#">Links</a></li>
+                </ul>
+                <div class="box-title-secondary">Secondary Section</div>
+                <p>More content in the secondary section...</p>
+            {% endmetroui5_box %}
+        </div>
+    </div>
+
+    <h2>Custom CSS Variables Example</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Default Styling</h3>
+            {% metroui5_box "Default box styling..." title="Default Box" %}
+        </div>
+        <div class="cell-6">
+            <h3>Custom CSS Variables</h3>
+            <style>
+                .custom-styled-box {
+                    --box-border-radius: 4px;
+                    --box-border-color: #2196F3;
+                    --box-background: #E3F2FD;
+                    --box-color: #0D47A1;
+                }
+            </style>
+            {% metroui5_box "Custom styled box with CSS variables..." title="Custom Styled Box" cls_box="custom-styled-box" %}
+        </div>
+    </div>
+
+    <h2>Component Parameters</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>content</code></td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Main content of the box</td>
+                    </tr>
+                    <tr>
+                        <td><code>title</code></td>
+                        <td>string</td>
+                        <td>None</td>
+                        <td>Primary title for the box</td>
+                    </tr>
+                    <tr>
+                        <td><code>secondary_title</code></td>
+                        <td>string</td>
+                        <td>None</td>
+                        <td>Secondary title for the box</td>
+                    </tr>
+                    <tr>
+                        <td><code>cls_box</code></td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for the box container</td>
+                    </tr>
+                    <tr>
+                        <td><code>cls</code></td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>General additional CSS classes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>CSS Variables</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Default (Light)</th>
+                        <th>Dark Mode</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--box-border-radius</code></td>
+                        <td>10px</td>
+                        <td>10px</td>
+                        <td>Border radius of the box</td>
+                    </tr>
+                    <tr>
+                        <td><code>--box-border-color</code></td>
+                        <td>var(--border-color)</td>
+                        <td>var(--border-color)</td>
+                        <td>Border color of the box</td>
+                    </tr>
+                    <tr>
+                        <td><code>--box-background</code></td>
+                        <td>#ffffff</td>
+                        <td>var(--default-background)</td>
+                        <td>Background color of the box</td>
+                    </tr>
+                    <tr>
+                        <td><code>--box-color</code></td>
+                        <td>#191919</td>
+                        <td>var(--default-color)</td>
+                        <td>Text color inside the box</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>Available CSS Classes</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Base Classes</h3>
+            <ul>
+                <li><code>.box</code> - The main container with padding, border, and rounded corners</li>
+            </ul>
+        </div>
+        <div class="cell-6">
+            <h3>Elements</h3>
+            <ul>
+                <li><code>.box-title</code> - Primary title with bottom border</li>
+                <li><code>.box-title-secondary</code> - Secondary title (smaller than primary)</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Additional Information</h2>
+    <div class="row">
+        <div class="cell-12">
+            <ul>
+                <li>Is purely CSS-based with no JavaScript functionality</li>
+                <li>Automatically adapts to both light and dark themes</li>
+                <li>Has internal padding of 1.5rem</li>
+                <li>Creates automatic spacing between multiple boxes (1rem margin)</li>
+                <li>Provides proper spacing for titles (0.5rem margin at the bottom)</li>
+                <li>Adds 2rem top margin to secondary titles that follow other elements</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
