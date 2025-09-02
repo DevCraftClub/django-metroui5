@@ -450,3 +450,11 @@ def activity_demo(request):
 		'page_title': 'Activity Components - MetroUI5 Demo',
 	}
 	return render(request, 'demo/activity_demo.html', context)
+
+
+def adblock_demo(request):
+	"""Demo page for adblock detection component."""
+	context = {
+		'page_title': 'Adblock Detection Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/adblock_demo.html', context)

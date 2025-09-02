@@ -11,6 +11,7 @@ from ..components import (
     render_accordion,
     render_action_button,
     render_activity,
+    render_adblock_detection,
     render_calendar,
     render_dialog,
     render_dropdown,
@@ -245,6 +246,12 @@ def metroui5_action_button(actions, main_icon="mif-plus", **kwargs):
 def metroui5_activity(**kwargs):
     """Renders MetroUI activity component with animated loading indicators."""
     return mark_safe(render_activity(**kwargs))
+
+
+@register.simple_tag
+def metroui5_adblock_detection(**kwargs):
+    """Renders MetroUI adblock detection component."""
+    return mark_safe(render_adblock_detection(**kwargs))
 
 
 @register.simple_tag
