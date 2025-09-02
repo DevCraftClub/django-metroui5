@@ -32,4 +32,5 @@ urlpatterns = [
     path('bulls-demo/', views.bulls_demo, name='bulls_demo'),
     path('button-demo/', views.button_demo, name='button_demo'),
     path('button-group-demo/', views.button_group_demo, name='button_group_demo'),
+    path('calendar-demo/', views.calendar_demo, name='calendar_demo'),
 ]

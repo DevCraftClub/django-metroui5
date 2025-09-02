@@ -642,3 +642,11 @@ def button_group_demo(request):
 		'color_buttons': color_buttons,
 	}
 	return render(request, 'demo/button_group_demo.html', context)
+
+
+def calendar_demo(request):
+	"""Demo page for calendar component."""
+	context = {
+		'page_title': 'Calendar Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/calendar_demo.html', context)

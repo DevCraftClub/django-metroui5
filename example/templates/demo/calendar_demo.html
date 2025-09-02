@@ -1,0 +1,692 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Calendar Component Demo</h1>
+    <p>This page demonstrates the MetroUI Calendar component functionality based on the <a href="https://v5.metroui.org.ua/components/calendar/" target="_blank">official MetroUI v5 documentation</a>.</p>
+
+    <h2>Basic Calendar</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Default Calendar</h3>
+            {% metroui5_calendar %}
+        </div>
+    </div>
+
+    <h2>Calendar Modes</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Static Calendar (Non-interactive)</h3>
+            {% metroui5_calendar static=True %}
+        </div>
+        <div class="cell-6">
+            <h3>Read-only Calendar</h3>
+            {% metroui5_calendar readonly=True %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-6">
+            <h3>Compact Calendar</h3>
+            {% metroui5_calendar compact=True %}
+        </div>
+        <div class="cell-6">
+            <h3>Wide Calendar</h3>
+            {% metroui5_calendar wide=True %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-6">
+            <h3>Picker Mode</h3>
+            {% metroui5_calendar picker_mode=True %}
+        </div>
+        <div class="cell-6">
+            <h3>Day Border Calendar</h3>
+            {% metroui5_calendar day_border=True %}
+        </div>
+    </div>
+
+    <h2>Calendar with Time Selection</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Time Selection Enabled</h3>
+            {% metroui5_calendar show_time=True %}
+        </div>
+        <div class="cell-6">
+            <h3>Calendar with Initial Time</h3>
+            {% metroui5_calendar show_time=True initial_time="14:30" %}
+        </div>
+    </div>
+
+    <h2>Calendar with Date Constraints</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Minimum Date Constraint</h3>
+            {% metroui5_calendar min_date="2023-01-01" %}
+        </div>
+        <div class="cell-6">
+            <h3>Maximum Date Constraint</h3>
+            {% metroui5_calendar max_date="2023-12-31" %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-6">
+            <h3>Date Range Constraint</h3>
+            {% metroui5_calendar min_date="2023-01-01" max_date="2023-12-31" %}
+        </div>
+        <div class="cell-6">
+            <h3>Excluded Dates</h3>
+            {% metroui5_calendar exclude="2023-12-25,2023-12-26" %}
+        </div>
+    </div>
+
+    <h2>Calendar with Events</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Calendar with Event Dates</h3>
+            {% metroui5_calendar events="2023-12-25,2023-12-31,2024-01-01" %}
+        </div>
+    </div>
+
+    <h2>Calendar with Multiple Date Selection</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Multiple Selection Enabled</h3>
+            {% metroui5_calendar multi_select=True %}
+        </div>
+        <div class="cell-6">
+            <h3>Multiple Selection with Preset</h3>
+            {% metroui5_calendar multi_select=True preset="2023-12-25,2023-12-31" %}
+        </div>
+    </div>
+
+    <h2>Calendar with Special Dates</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Calendar with Special Dates</h3>
+            {% metroui5_calendar special="2023-12-25,2023-12-31" %}
+        </div>
+    </div>
+
+    <h2>Calendar with Week Configuration</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Week Starts on Monday</h3>
+            {% metroui5_calendar week_start=1 %}
+        </div>
+        <div class="cell-6">
+            <h3>Week Day Click Enabled</h3>
+            {% metroui5_calendar week_day_click=True %}
+        </div>
+    </div>
+
+    <h2>Calendar with Ripple Effect</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Default Ripple Effect</h3>
+            {% metroui5_calendar ripple=True %}
+        </div>
+        <div class="cell-6">
+            <h3>Custom Ripple Color</h3>
+            {% metroui5_calendar ripple=True ripple_color="#2196F3" %}
+        </div>
+    </div>
+
+    <h2>Calendar with Ghost Days</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Show Ghost Days from Previous/Next Months</h3>
+            {% metroui5_calendar show_ghost=True %}
+        </div>
+    </div>
+
+    <h2>Complex Calendar Examples</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Full Featured Calendar</h3>
+            {% metroui5_calendar show="2023-12-25" show_time=True initial_time="14:30" events="2023-12-25,2023-12-31" ripple=True %}
+        </div>
+        <div class="cell-6">
+            <h3>Constrained Calendar with Events</h3>
+            {% metroui5_calendar min_date="2023-01-01" max_date="2023-12-31" events="2023-12-25,2023-12-31" special="2023-12-25" %}
+        </div>
+    </div>
+
+    <h2>Component Parameters</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>show</code></td>
+                        <td>string/object</td>
+                        <td>null</td>
+                        <td>Date to show in calendar</td>
+                    </tr>
+                    <tr>
+                        <td><code>week_start</code></td>
+                        <td>int</td>
+                        <td>null</td>
+                        <td>First day of week (0 for Sunday, 1 for Monday, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td><code>static</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, calendar becomes non-interactive</td>
+                    </tr>
+                    <tr>
+                        <td><code>readonly</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, calendar is read-only</td>
+                    </tr>
+                    <tr>
+                        <td><code>show_ghost</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, shows ghost days from previous/next months</td>
+                    </tr>
+                    <tr>
+                        <td><code>events</code></td>
+                        <td>string/list</td>
+                        <td>null</td>
+                        <td>Array or comma-separated string of dates with events</td>
+                    </tr>
+                    <tr>
+                        <td><code>show_time</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, enables time selection</td>
+                    </tr>
+                    <tr>
+                        <td><code>initial_time</code></td>
+                        <td>string</td>
+                        <td>null</td>
+                        <td>Initial time in "HH:MM" format</td>
+                    </tr>
+                    <tr>
+                        <td><code>compact</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, shows compact calendar</td>
+                    </tr>
+                    <tr>
+                        <td><code>wide</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, shows wide calendar</td>
+                    </tr>
+                    <tr>
+                        <td><code>picker_mode</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, enables picker mode for date selection</td>
+                    </tr>
+                    <tr>
+                        <td><code>day_border</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, shows day borders</td>
+                    </tr>
+                    <tr>
+                        <td><code>ripple</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, enables ripple effect</td>
+                    </tr>
+                    <tr>
+                        <td><code>ripple_color</code></td>
+                        <td>string</td>
+                        <td>"#cccccc"</td>
+                        <td>Color for ripple effect</td>
+                    </tr>
+                    <tr>
+                        <td><code>exclude</code></td>
+                        <td>string/list</td>
+                        <td>null</td>
+                        <td>Array or comma-separated string of dates to exclude</td>
+                    </tr>
+                    <tr>
+                        <td><code>preset</code></td>
+                        <td>string/list</td>
+                        <td>null</td>
+                        <td>Array or comma-separated string of preset selected dates</td>
+                    </tr>
+                    <tr>
+                        <td><code>min_date</code></td>
+                        <td>string</td>
+                        <td>null</td>
+                        <td>Minimum selectable date</td>
+                    </tr>
+                    <tr>
+                        <td><code>max_date</code></td>
+                        <td>string</td>
+                        <td>null</td>
+                        <td>Maximum selectable date</td>
+                    </tr>
+                    <tr>
+                        <td><code>week_day_click</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, enables clicking on week days</td>
+                    </tr>
+                    <tr>
+                        <td><code>week_number_click</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, enables clicking on week numbers</td>
+                    </tr>
+                    <tr>
+                        <td><code>multi_select</code></td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>If true, enables multiple date selection</td>
+                    </tr>
+                    <tr>
+                        <td><code>special</code></td>
+                        <td>string/list</td>
+                        <td>null</td>
+                        <td>Array or comma-separated string of special dates</td>
+                    </tr>
+                    <tr>
+                        <td><code>format</code></td>
+                        <td>string</td>
+                        <td>METRO_DATE_FORMAT</td>
+                        <td>Format for date output</td>
+                    </tr>
+                    <tr>
+                        <td><code>input_format</code></td>
+                        <td>string</td>
+                        <td>null</td>
+                        <td>Format for date input</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>Event Callbacks</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>onCancel</code></td>
+                        <td>Triggered when cancel button is clicked</td>
+                    </tr>
+                    <tr>
+                        <td><code>onToday</code></td>
+                        <td>Triggered when today button is clicked</td>
+                    </tr>
+                    <tr>
+                        <td><code>onClear</code></td>
+                        <td>Triggered when clear button is clicked</td>
+                    </tr>
+                    <tr>
+                        <td><code>onDone</code></td>
+                        <td>Triggered when done button is clicked</td>
+                    </tr>
+                    <tr>
+                        <td><code>onDayClick</code></td>
+                        <td>Triggered when a day is clicked</td>
+                    </tr>
+                    <tr>
+                        <td><code>onDrawDay</code></td>
+                        <td>Triggered when a day is drawn</td>
+                    </tr>
+                    <tr>
+                        <td><code>onDrawMonth</code></td>
+                        <td>Triggered when a month is drawn</td>
+                    </tr>
+                    <tr>
+                        <td><code>onDrawYear</code></td>
+                        <td>Triggered when a year is drawn</td>
+                    </tr>
+                    <tr>
+                        <td><code>onWeekDayClick</code></td>
+                        <td>Triggered when a week day is clicked</td>
+                    </tr>
+                    <tr>
+                        <td><code>onWeekNumberClick</code></td>
+                        <td>Triggered when a week number is clicked</td>
+                    </tr>
+                    <tr>
+                        <td><code>onMonthChange</code></td>
+                        <td>Triggered when month is changed</td>
+                    </tr>
+                    <tr>
+                        <td><code>onYearChange</code></td>
+                        <td>Triggered when year is changed</td>
+                    </tr>
+                    <tr>
+                        <td><code>onTimeChange</code></td>
+                        <td>Triggered when time is changed</td>
+                    </tr>
+                    <tr>
+                        <td><code>onHoursChange</code></td>
+                        <td>Triggered when hours are changed</td>
+                    </tr>
+                    <tr>
+                        <td><code>onMinutesChange</code></td>
+                        <td>Triggered when minutes are changed</td>
+                    </tr>
+                    <tr>
+                        <td><code>onCalendarCreate</code></td>
+                        <td>Triggered when calendar is created</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>API Methods</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Parameters</th>
+                        <th>Return</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>getTime</code></td>
+                        <td>asString (boolean)</td>
+                        <td>Array or String</td>
+                        <td>Gets current time as array [hours, minutes] or string "HH:MM"</td>
+                    </tr>
+                    <tr>
+                        <td><code>setTime</code></td>
+                        <td>time (Array or String)</td>
+                        <td>Object</td>
+                        <td>Sets current time from array [hours, minutes] or string "HH:MM"</td>
+                    </tr>
+                    <tr>
+                        <td><code>getPreset</code></td>
+                        <td>-</td>
+                        <td>Array</td>
+                        <td>Gets preset dates</td>
+                    </tr>
+                    <tr>
+                        <td><code>getSelected</code></td>
+                        <td>-</td>
+                        <td>Array</td>
+                        <td>Gets selected dates</td>
+                    </tr>
+                    <tr>
+                        <td><code>getExcluded</code></td>
+                        <td>-</td>
+                        <td>Array</td>
+                        <td>Gets excluded dates</td>
+                    </tr>
+                    <tr>
+                        <td><code>getToday</code></td>
+                        <td>-</td>
+                        <td>Object</td>
+                        <td>Gets today's date</td>
+                    </tr>
+                    <tr>
+                        <td><code>getCurrent</code></td>
+                        <td>-</td>
+                        <td>Object</td>
+                        <td>Gets current date shown in calendar</td>
+                    </tr>
+                    <tr>
+                        <td><code>clearSelected</code></td>
+                        <td>-</td>
+                        <td>Object</td>
+                        <td>Clears all selected dates</td>
+                    </tr>
+                    <tr>
+                        <td><code>toDay</code></td>
+                        <td>-</td>
+                        <td>Object</td>
+                        <td>Sets calendar to today's date</td>
+                    </tr>
+                    <tr>
+                        <td><code>setExclude</code></td>
+                        <td>exclude (Array or String)</td>
+                        <td>Object</td>
+                        <td>Sets excluded dates</td>
+                    </tr>
+                    <tr>
+                        <td><code>setPreset</code></td>
+                        <td>preset (Array or String)</td>
+                        <td>Object</td>
+                        <td>Sets preset selected dates</td>
+                    </tr>
+                    <tr>
+                        <td><code>setSpecial</code></td>
+                        <td>special (Array or String)</td>
+                        <td>Object</td>
+                        <td>Sets special dates</td>
+                    </tr>
+                    <tr>
+                        <td><code>showDate</code></td>
+                        <td>date (String or Object)</td>
+                        <td>Object</td>
+                        <td>Shows specified date</td>
+                    </tr>
+                    <tr>
+                        <td><code>setShow</code></td>
+                        <td>show (String or Object)</td>
+                        <td>Object</td>
+                        <td>Sets date to show</td>
+                    </tr>
+                    <tr>
+                        <td><code>setMinDate</code></td>
+                        <td>date (String or Object)</td>
+                        <td>Object</td>
+                        <td>Sets minimum selectable date</td>
+                    </tr>
+                    <tr>
+                        <td><code>setMaxDate</code></td>
+                        <td>date (String or Object)</td>
+                        <td>Object</td>
+                        <td>Sets maximum selectable date</td>
+                    </tr>
+                    <tr>
+                        <td><code>destroy</code></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Destroys the calendar component</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>CSS Variables</h2>
+    <div class="row">
+        <div class="cell-12">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Default (Light)</th>
+                        <th>Dark Mode</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--calendar-background</code></td>
+                        <td>#ffffff</td>
+                        <td>#2b2d30</td>
+                        <td>Background color of the calendar</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-header-background</code></td>
+                        <td>#fafafa</td>
+                        <td>#43454a</td>
+                        <td>Background color of the calendar header</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-header-color</code></td>
+                        <td>#191919</td>
+                        <td>#dfe1e5</td>
+                        <td>Text color of the calendar header</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-weekday-background</code></td>
+                        <td>#f8f8f7</td>
+                        <td>#414245</td>
+                        <td>Background color of weekday row</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-weekday-color</code></td>
+                        <td>#191919</td>
+                        <td>#dfe1e5</td>
+                        <td>Text color of weekday row</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-border-color</code></td>
+                        <td>#dddddd</td>
+                        <td>#414245</td>
+                        <td>Border color of the calendar</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-color</code></td>
+                        <td>#191919</td>
+                        <td>#dfe1e5</td>
+                        <td>Text color of the calendar</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-day-border-color</code></td>
+                        <td>#e8e8e8</td>
+                        <td>#4a4d51</td>
+                        <td>Border color of days</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-exclude-day-background</code></td>
+                        <td>#ffffff</td>
+                        <td>#2b2d30</td>
+                        <td>Background color of excluded days</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-exclude-day-color</code></td>
+                        <td>#aaa</td>
+                        <td>#818181</td>
+                        <td>Text color of excluded days</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-today-day-background</code></td>
+                        <td>#56c30f</td>
+                        <td>#56c30f</td>
+                        <td>Background color of today</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-today-day-color</code></td>
+                        <td>#fff</td>
+                        <td>#fff</td>
+                        <td>Text color of today</td>
+                    </tr>
+                    <tr>
+                        <td><code>--calendar-border-radius</code></td>
+                        <td>6px</td>
+                        <td>6px</td>
+                        <td>Border radius of the calendar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2>Available CSS Classes</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Base Classes</h3>
+            <ul>
+                <li><code>.calendar</code> - Main calendar container</li>
+                <li><code>.compact</code> - Compact calendar</li>
+                <li><code>.day-border</code> - Calendar with day borders</li>
+            </ul>
+        </div>
+        <div class="cell-6">
+            <h3>Component Classes</h3>
+            <ul>
+                <li><code>.calendar-header</code> - Calendar header</li>
+                <li><code>.calendar-content</code> - Calendar content area</li>
+                <li><code>.calendar-footer</code> - Calendar footer</li>
+                <li><code>.calendar-time</code> - Time selection area</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-12">
+            <h3>State Classes</h3>
+            <ul>
+                <li><code>.selected</code> - Selected date</li>
+                <li><code>.excluded</code> - Excluded date</li>
+                <li><code>.today</code> - Today's date</li>
+                <li><code>.special</code> - Special date</li>
+                <li><code>.outside</code> - Date outside current month</li>
+                <li><code>.weekend</code> - Weekend date</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>HTML Structure</h2>
+    <div class="row">
+        <div class="cell-12">
+            <pre><code>&lt;div class="calendar [modifiers]" data-role="calendar" [data-attributes]&gt;&lt;/div&gt;</code></pre>
+            <p>Where:</p>
+            <ul>
+                <li><code>[modifiers]</code> can include: compact, wide, day-border</li>
+                <li><code>[data-attributes]</code> include all the configuration options as data attributes</li>
+                <li>The calendar content is generated dynamically by MetroUI JavaScript</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Accessibility</h2>
+    <div class="row">
+        <div class="cell-12">
+            <ul>
+                <li>Proper ARIA roles and attributes for interactive elements</li>
+                <li>Keyboard navigation support</li>
+                <li>Screen reader friendly structure</li>
+                <li>High contrast support through CSS variables</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Best Practices</h2>
+    <div class="row">
+        <div class="cell-12">
+            <ul>
+                <li>Use appropriate date formats for your target audience</li>
+                <li>Provide clear visual indication of selected dates</li>
+                <li>Use the <code>minDate</code> and <code>maxDate</code> options to limit date selection when appropriate</li>
+                <li>Consider using the <code>exclude</code> option for dates that should not be selectable</li>
+                <li>Implement appropriate event handlers to respond to user interactions</li>
+                <li>Use CSS variables for consistent styling across your application</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
