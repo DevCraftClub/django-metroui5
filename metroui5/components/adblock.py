@@ -9,7 +9,8 @@ def render_adblock_detection(**attrs):
 	"""
 	Renders MetroUI adblock detection component.
 
-	Link: https://v5.metroui.org.ua/components/adblock/
+	References:
+		Documentation: https://v5.metroui.org.ua/components/adblock/
 
 	Args:
 		**attrs: Additional HTML attributes including:

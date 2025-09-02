@@ -9,7 +9,8 @@ def render_action_button(actions, main_icon="mif-plus", **attrs):
 	"""
 	Renders MetroUI action button component with expandable sub-actions.
 
-	Link: https://v5.metroui.org.ua/components/action-button/
+	References:
+		Documentation: https://v5.metroui.org.ua/components/action-button/
 
 	Args:
 		actions: List of dictionaries with 'icon', 'href', 'title', and optional 'onclick' keys

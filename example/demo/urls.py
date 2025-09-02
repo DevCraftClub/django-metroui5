@@ -23,4 +23,5 @@ urlpatterns = [
     path('adblock-demo/', views.adblock_demo, name='adblock_demo'),
     path('analog-clock-demo/', views.analog_clock_demo, name='analog_clock_demo'),
     path('app-bar-demo/', views.app_bar_demo, name='app_bar_demo'),
+    path('audio-button-demo/', views.audio_button_demo, name='audio_button_demo'),
 ]

@@ -9,7 +9,8 @@ def render_activity(**attrs):
 	"""
 	Renders MetroUI activity component with animated loading indicators.
 
-	Link: https://v5.metroui.org.ua/components/activity/
+	References:
+		Documentation: https://v5.metroui.org.ua/components/activity/
 
 	Args:
 		**attrs: Additional HTML attributes including:

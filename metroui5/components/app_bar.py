@@ -8,30 +8,42 @@ from ..html import render_tag
 def render_app_bar(brand=None, menu_items=None, **attrs):
 	"""
 	Renders MetroUI app bar component.
-
-	Link: https://v5.metroui.org.ua/components/app-bar/
-
+	
+	For more details, see the `official documentation <https://v5.metroui.org.ua/components/app-bar/>`_.
+	
+	You can also reference specific sections:
+	- `Basic Usage <https://v5.metroui.org.ua/components/app-bar/#usage>`_
+	- `Plugin Parameters <https://v5.metroui.org.ua/components/app-bar/#plugin-parameters>`_
+	- `API Methods <https://v5.metroui.org.ua/components/app-bar/#api-methods>`_
+	- `Responsive Behavior <https://v5.metroui.org.ua/components/app-bar/#responsive-behavior>`_
+	
 	Args:
 		brand: Brand information (dict with 'text', 'href', 'icon' keys)
 		menu_items: List of menu items (list of dicts with 'text', 'href', 'icon' keys)
 		**attrs: Additional HTML attributes including:
-			# App Bar Parameters
-			- appbar_deferred: Deferred initialization time in milliseconds (number)
-			- expand: If true, the app bar will always be expanded (boolean)
-			- expand_point: Media query string at which the app bar will expand (string)
-			- duration: Animation duration for menu open/close in milliseconds (number)
-			- check_hamburger_color: If true, hamburger color will be set dependent on app-bar background color (boolean)
-			- on_menu_open: Callback function triggered when menu is opened (string)
-			- on_menu_close: Callback function triggered when menu is closed (string)
-			- on_before_menu_open: Callback function triggered before menu is opened (string)
-			- on_before_menu_close: Callback function triggered before menu is closed (string)
-			- on_menu_collapse: Callback function triggered when menu is collapsed (string)
-			- on_menu_expand: Callback function triggered when menu is expanded (string)
-			- on_app_bar_create: Callback function triggered when app bar is created (string)
-			- cls_app_bar: Additional CSS class for the app bar container (string)
-			- cls_brand: Additional CSS class for the brand element (string)
-			- cls_menu: Additional CSS class for the menu container (string)
-			- cls_menu_item: Additional CSS class for menu items (string)
+			appbar_deferred (int): Deferred initialization time in milliseconds
+			expand (bool): If true, the app bar will always be expanded
+			expand_point (str): Media query string at which the app bar will expand
+			duration (int): Animation duration for menu open/close in milliseconds
+			check_hamburger_color (bool): If true, hamburger color will be set dependent on app-bar background color
+			on_menu_open (str): Callback function triggered when menu is opened
+			on_menu_close (str): Callback function triggered when menu is closed
+			on_before_menu_open (str): Callback function triggered before menu is opened
+			on_before_menu_close (str): Callback function triggered before menu is closed
+			on_menu_collapse (str): Callback function triggered when menu is collapsed
+			on_menu_expand (str): Callback function triggered when menu is expanded
+			on_app_bar_create (str): Callback function triggered when app bar is created
+			cls_app_bar (str): Additional CSS class for the app bar container
+			cls_brand (str): Additional CSS class for the brand element
+			cls_menu (str): Additional CSS class for the menu container
+			cls_menu_item (str): Additional CSS class for menu items
+		
+	Returns:
+		str: Rendered HTML nav element with app bar functionality
+		
+	References:
+		.. _MetroUI App Bar: https://v5.metroui.org.ua/components/app-bar/
+		.. _MetroUI Documentation: https://v5.metroui.org.ua/
 	"""
 	# Extract app bar-specific attributes
 	appbar_attrs = {}

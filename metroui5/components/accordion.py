@@ -9,7 +9,8 @@ def render_accordion(items, **attrs):
 	"""
 	Renders MetroUI accordion component with advanced features.
 
-	Link: https://v5.metroui.org.ua/components/accordion/
+	References:
+		Documentation: https://v5.metroui.org.ua/components/accordion/
 
 	Args:
 		items: List of dictionaries with 'title', 'content', and optional 'active' keys

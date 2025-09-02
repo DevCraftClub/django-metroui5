@@ -474,3 +474,11 @@ def app_bar_demo(request):
 		'page_title': 'App Bar Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/app_bar_demo.html', context)
+
+
+def audio_button_demo(request):
+	"""Demo page for audio button component."""
+	context = {
+		'page_title': 'Audio Button Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/audio_button_demo.html', context)
