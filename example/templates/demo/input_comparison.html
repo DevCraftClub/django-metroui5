@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Input Components Comparison - MetroUI5 Demo{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Input Components Comparison</h1>
+    <p>Comparing MetroUI v5 Simple Input vs Material Input components.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Simple Input Components</h2>
+                <p>Standard MetroUI input with advanced features like autocomplete, masks, and validation.</p>
+                
+                <h3>Basic Simple Input</h3>
+                {% metroui5_input "text" "Enter your name" label="Name:" %}
+                
+                <h3>Input with Clear Button</h3>
+                {% metroui5_input "text" "Search..." label="Search:" clear_button=True %}
+                
+                <h3>Input with Autocomplete</h3>
+                {% metroui5_input "text" "Type fruit name" label="Fruit:" autocomplete="apple,banana,cherry" %}
+                
+                <h3>Input with Mask</h3>
+                {% metroui5_input "text" "Enter phone" label="Phone:" mask="(999) 999-9999" %}
+                
+                <h3>Input with Validation States</h3>
+                {% metroui5_input "email" "Enter email" label="Email:" error=True error_message="Invalid email format" %}
+                
+                <h3>Input with Prepend/Append</h3>
+                {% metroui5_input "text" "Enter amount" label="Price:" prepend="$" append=".00" %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Material Input Components</h2>
+                <p>Material design input with floating labels, animations, and modern aesthetics.</p>
+                
+                <h3>Basic Material Input</h3>
+                {% metroui5_material_input "text" "Enter your name" label="Name" %}
+                
+                <h3>Material Input with Informer</h3>
+                {% metroui5_material_input "text" "Enter email" label="Email" informer="We will never share your email" %}
+                
+                <h3>Material Input with Icon</h3>
+                {% metroui5_material_input "text" "Search..." label="Search" icon="🔍" %}
+                
+                <h3>Material Input with Permanent Label</h3>
+                {% metroui5_material_input "text" "Enter text" label="Permanent Label" permanent_label=True %}
+                
+                <h3>Material Input with Buttons</h3>
+                {% metroui5_material_input "password" "Enter password" label="Password" reveal_button=True clear_button=True %}
+                
+                <h3>Material Input with Custom Styling</h3>
+                {% metroui5_material_input "text" "Custom style" label="Custom" cls_component="my-material" cls_label="my-label" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Feature Comparison</h2>
+                <div class="table-container">
+                    <table class="table striped">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Simple Input</th>
+                                <th>Material Input</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Floating Labels</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Informer Text</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Material Design</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Autocomplete</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td>Input Masks</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td>Prepend/Append</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td>History</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td>Random Generator</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td>Action Buttons</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Validation States</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Custom Styling</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h3>Simple Input Usage</h3>
+                <div class="accordion" data-role="accordion">
+                    <div class="accordion-frame">
+                        <a class="accordion-title" href="#">Basic Input</a>
+                        <div class="accordion-content">
+                            <pre><code>{% metroui5_input "text" "Enter your name" label="Name:" %}</code></pre>
+                        </div>
+                    </div>
+                    <div class="accordion-frame">
+                        <a class="accordion-title" href="#">Input with Autocomplete</a>
+                        <div class="accordion-content">
+                            <pre><code>{% metroui5_input "text" "Type fruit name" label="Fruit:" autocomplete="apple,banana,cherry" %}</code></pre>
+                        </div>
+                    </div>
+                    <div class="accordion-frame">
+                        <a class="accordion-title" href="#">Input with Mask</a>
+                        <div class="accordion-content">
+                            <pre><code>{% metroui5_input "text" "Enter phone" label="Phone:" mask="(999) 999-9999" %}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h3>Material Input Usage</h3>
+                <div class="accordion" data-role="accordion">
+                    <div class="accordion-frame">
+                        <a class="accordion-title" href="#">Basic Material Input</a>
+                        <div class="accordion-content">
+                            <pre><code>{% metroui5_material_input "text" "Enter your name" label="Name" %}</code></pre>
+                        </div>
+                    </div>
+                    <div class="accordion-frame">
+                        <a class="accordion-title" href="#">Material Input with Informer</a>
+                        <div class="accordion-content">
+                            <pre><code>{% metroui5_material_input "text" "Enter email" label="Email" informer="We will never share your email" %}</code></pre>
+                        </div>
+                    </div>
+                    <div class="accordion-frame">
+                        <a class="accordion-title" href="#">Material Input with Icon</a>
+                        <div class="accordion-content">
+                            <pre><code>{% metroui5_material_input "text" "Search..." label="Search" icon="🔍" %}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

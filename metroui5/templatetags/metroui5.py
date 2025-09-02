@@ -13,6 +13,7 @@ from ..components import (
     render_dialog,
     render_dropdown,
     render_input,
+    render_material_input,
     render_list,
     render_menu,
     render_navigation,
@@ -248,8 +249,14 @@ def metroui5_dropdown(items, button_text="Dropdown", **kwargs):
 
 @register.simple_tag
 def metroui5_input(input_type="text", placeholder="", **kwargs):
-    """Renders MetroUI input."""
+    """Renders MetroUI input with advanced features."""
     return mark_safe(render_input(input_type, placeholder, **kwargs))
+
+
+@register.simple_tag
+def metroui5_material_input(input_type="text", placeholder="", **kwargs):
+    """Renders MetroUI material input with material design features."""
+    return mark_safe(render_material_input(input_type, placeholder, **kwargs))
 
 
 @register.simple_tag
@@ -340,7 +347,7 @@ def metroui5_rating(value, max_value=5, **kwargs):
 @register.simple_tag
 def metroui5_icon(icon_name, size=None, **kwargs):
     """Renders MetroUI icon."""
-    icon_classes = ["mif", icon_name]
+    icon_classes = [f"mif-{icon_name}"]
     if size:
         icon_classes.append(f"mif-{size}")
     attrs = {"class": " ".join(icon_classes)}
