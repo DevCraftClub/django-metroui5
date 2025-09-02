@@ -466,3 +466,11 @@ def analog_clock_demo(request):
 		'page_title': 'Analog Clock Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/analog_clock_demo.html', context)
+
+
+def app_bar_demo(request):
+	"""Demo page for app bar component."""
+	context = {
+		'page_title': 'App Bar Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/app_bar_demo.html', context)

@@ -1,0 +1,385 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}App Bar Demo{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>MetroUI App Bar Component</h1>
+    <p>This demo showcases the MetroUI v5 App Bar component that provides a responsive navigation bar with hamburger menu support.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-12">
+                <h2>Basic Usage</h2>
+                <p>Basic app bar with brand and menu items:</p>
+                <div class="example-container">
+                    {% metroui5_app_bar %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Brand and Menu</h2>
+                <p>App bar with brand logo and navigation menu:</p>
+                <div class="example-container">
+                    <div data-role="app-bar" class="app-bar">
+                        <a href="#" class="brand">
+                            <span class="icon"><span class="mif-home"></span></span>
+                            <span class="caption">MyApp</span>
+                        </a>
+                        <ul class="app-bar-menu">
+                            <li><a href="#" class="app-bar-item">Home</a></li>
+                            <li><a href="#" class="app-bar-item">Products</a></li>
+                            <li><a href="#" class="app-bar-item">Services</a></li>
+                            <li><a href="#" class="app-bar-item">About</a></li>
+                            <li><a href="#" class="app-bar-item">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Icons</h2>
+                <p>App bar with icons for brand and menu items:</p>
+                <div class="example-container">
+                    <div data-role="app-bar" class="app-bar">
+                        <a href="#" class="brand">
+                            <span class="icon"><span class="mif-rocket"></span></span>
+                            <span class="caption">SpaceApp</span>
+                        </a>
+                        <ul class="app-bar-menu">
+                            <li><a href="#" class="app-bar-item">
+                                <span class="icon"><span class="mif-home"></span></span>
+                                Home
+                            </a></li>
+                            <li><a href="#" class="app-bar-item">
+                                <span class="icon"><span class="mif-rocket"></span></span>
+                                Launch
+                            </a></li>
+                            <li><a href="#" class="app-bar-item">
+                                <span class="icon"><span class="mif-cog"></span></span>
+                                Settings
+                            </a></li>
+                            <li><a href="#" class="app-bar-item">
+                                <span class="icon"><span class="mif-user"></span></span>
+                                Profile
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Always Expanded</h2>
+                <p>App bar that is always expanded (no hamburger menu):</p>
+                <div class="example-container">
+                    <div data-role="app-bar" data-expand="true" class="app-bar">
+                        <a href="#" class="brand">
+                            <span class="icon"><span class="mif-apple"></span></span>
+                            <span class="caption">TechCorp</span>
+                        </a>
+                        <ul class="app-bar-menu">
+                            <li><a href="#" class="app-bar-item">Home</a></li>
+                            <li><a href="#" class="app-bar-item">Products</a></li>
+                            <li><a href="#" class="app-bar-item">Services</a></li>
+                            <li><a href="#" class="app-bar-item">About</a></li>
+                            <li><a href="#" class="app-bar-item">Contact</a></li>
+                            <li><a href="#" class="app-bar-item">Blog</a></li>
+                            <li><a href="#" class="app-bar-item">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Custom Styling</h2>
+                <p>App bar with custom CSS styling:</p>
+                <div class="example-container">
+                    <div data-role="app-bar" class="app-bar custom-app-bar">
+                        <a href="#" class="brand">
+                            <span class="icon"><span class="mif-palette"></span></span>
+                            <span class="caption">DesignStudio</span>
+                        </a>
+                        <ul class="app-bar-menu">
+                            <li><a href="#" class="app-bar-item">Portfolio</a></li>
+                            <li><a href="#" class="app-bar-item">Services</a></li>
+                            <li><a href="#" class="app-bar-item">Team</a></li>
+                            <li><a href="#" class="app-bar-item">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <style>
+                .custom-app-bar {
+                    --appbar-background: #3498db;
+                    --appbar-color: #ffffff;
+                    --appbar-item-color: #ffffff;
+                    --appbar-item-background-hover: rgba(255, 255, 255, 0.2);
+                    --appbar-item-color-hover: #ffffff;
+                }
+                </style>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Responsive Behavior</h2>
+                <p>App bar with custom expand point for responsive behavior:</p>
+                <div class="example-container">
+                    <div data-role="app-bar" data-expand-point="md" class="app-bar">
+                        <a href="#" class="brand">
+                            <span class="icon"><span class="mif-mobile"></span></span>
+                            <span class="caption">ResponsiveApp</span>
+                        </a>
+                        <ul class="app-bar-menu">
+                            <li><a href="#" class="app-bar-item">Home</a></li>
+                            <li><a href="#" class="app-bar-item">Features</a></li>
+                            <li><a href="#" class="app-bar-item">Pricing</a></li>
+                            <li><a href="#" class="app-bar-item">About</a></li>
+                            <li><a href="#" class="app-bar-item">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p><small>This app bar will expand at medium screen sizes and above (md breakpoint).</small></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>JavaScript Integration</h2>
+                <p>Example of programmatic creation and API methods:</p>
+                <pre><code>// Initialize app-bar on an existing element
+Metro.makePlugin("#myAppBar", "app-bar");
+
+// Access the app-bar object
+const appBar = Metro.getPlugin("#myAppBar", "app-bar");
+
+// Open the app bar menu
+appBar.open();
+
+// Close the app bar menu
+appBar.close();
+
+// Destroy the app bar
+appBar.destroy();
+
+// Event handling
+$(window).on("menu-open", function() {
+    console.log("Menu opened!");
+});
+
+$(window).on("menu-close", function() {
+    console.log("Menu closed!");
+});</code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Component Parameters</h2>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>appbar_deferred</td>
+                            <td>number</td>
+                            <td>0</td>
+                            <td>Deferred initialization time in milliseconds</td>
+                        </tr>
+                        <tr>
+                            <td>expand</td>
+                            <td>boolean</td>
+                            <td>false</td>
+                            <td>If true, the app bar will always be expanded</td>
+                        </tr>
+                        <tr>
+                            <td>expand_point</td>
+                            <td>string</td>
+                            <td>null</td>
+                            <td>Media query string at which the app bar will expand</td>
+                        </tr>
+                        <tr>
+                            <td>duration</td>
+                            <td>number</td>
+                            <td>100</td>
+                            <td>Animation duration for menu open/close in milliseconds</td>
+                        </tr>
+                        <tr>
+                            <td>check_hamburger_color</td>
+                            <td>boolean</td>
+                            <td>false</td>
+                            <td>If true, hamburger color will be set dependent on app-bar background color</td>
+                        </tr>
+                        <tr>
+                            <td>on_menu_open</td>
+                            <td>function</td>
+                            <td>Metro.noop</td>
+                            <td>Callback function triggered when menu is opened</td>
+                        </tr>
+                        <tr>
+                            <td>on_menu_close</td>
+                            <td>function</td>
+                            <td>Metro.noop</td>
+                            <td>Callback function triggered when menu is closed</td>
+                        </tr>
+                        <tr>
+                            <td>on_app_bar_create</td>
+                            <td>function</td>
+                            <td>Metro.noop</td>
+                            <td>Callback function triggered when app bar is created</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>CSS Variables for Customization</h2>
+                <p>You can customize the app bar appearance using CSS variables:</p>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Default (Light)</th>
+                            <th>Dark Mode</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>--appbar-background</td>
+                            <td>#ffffff</td>
+                            <td>#1e1f22</td>
+                            <td>Background color of the app bar</td>
+                        </tr>
+                        <tr>
+                            <td>--appbar-color</td>
+                            <td>#191919</td>
+                            <td>#dbdfe7</td>
+                            <td>Text color of the app bar</td>
+                        </tr>
+                        <tr>
+                            <td>--appbar-item-color</td>
+                            <td>#191919</td>
+                            <td>#dbdfe7</td>
+                            <td>Text color of app bar items</td>
+                        </tr>
+                        <tr>
+                            <td>--appbar-item-color-hover</td>
+                            <td>#000000</td>
+                            <td>#ffffff</td>
+                            <td>Text color of app bar items on hover</td>
+                        </tr>
+                        <tr>
+                            <td>--appbar-item-background-hover</td>
+                            <td>#e8e8e8</td>
+                            <td>#2b2d30</td>
+                            <td>Background color of app bar items on hover</td>
+                        </tr>
+                        <tr>
+                            <td>--appbar-border-radius</td>
+                            <td>4px</td>
+                            <td>4px</td>
+                            <td>Border radius of app bar items</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Available CSS Classes</h2>
+                <h3>Base Classes</h3>
+                <ul>
+                    <li><code>.app-bar</code> - The main container class (automatically added)</li>
+                    <li><code>.app-bar-menu</code> - The menu container</li>
+                    <li><code>.app-bar-item</code> - Items within the app bar</li>
+                    <li><code>.app-bar-item-static</code> - Static items that don't have hover effects</li>
+                    <li><code>.brand</code> - For branding elements</li>
+                    <li><code>.app-bar-button</code> - Button styling</li>
+                    <li><code>.hamburger</code> - The hamburger menu button</li>
+                </ul>
+                
+                <h3>State Classes</h3>
+                <ul>
+                    <li><code>.collapsed</code> - Applied to the menu when it's collapsed</li>
+                    <li><code>.opened</code> - Applied to the menu when it's opened</li>
+                    <li><code>.app-bar-expand</code> - Applied to the app bar when it's expanded</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Accessibility Features</h2>
+                <p>The App Bar component includes ARIA attributes for improved accessibility:</p>
+                <ul>
+                    <li>The hamburger button has <code>aria-label</code>, <code>aria-expanded</code>, and <code>aria-controls</code> attributes</li>
+                    <li>Menu items have appropriate roles and tabindex attributes</li>
+                    <li>Keyboard navigation is supported (Enter/Space to toggle menu)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+.example-container .app-bar {
+    margin: 0;
+}
+</style>
+
+<script>
+// Example event handling
+$(window).on("menu-open", function() {
+    console.log("Menu opened!");
+});
+
+$(window).on("menu-close", function() {
+    console.log("Menu closed!");
+});
+
+$(window).on("app-bar-create", function() {
+    console.log("App bar created!");
+});
+
+// Example of programmatic creation
+$(document).ready(function() {
+    // Initialize app-bar on an existing element
+    Metro.makePlugin("#myAppBar", "app-bar");
+    
+    // Access the app-bar object
+    const appBar = Metro.getPlugin("#myAppBar", "app-bar");
+    
+    // You can control it programmatically
+    // appBar.open();
+    // appBar.close();
+    // appBar.destroy();
+});
+</script>
+{% endblock %}
