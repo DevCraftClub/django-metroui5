@@ -458,3 +458,11 @@ def adblock_demo(request):
 		'page_title': 'Adblock Detection Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/adblock_demo.html', context)
+
+
+def analog_clock_demo(request):
+	"""Demo page for analog clock component."""
+	context = {
+		'page_title': 'Analog Clock Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/analog_clock_demo.html', context)
