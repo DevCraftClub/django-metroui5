@@ -33,6 +33,7 @@ from ..components import (
     render_toolbar,
     render_modal,
     render_breadcrumb,
+    render_bulls,
     render_pagination,
     render_badge,
     render_avatar,
@@ -399,6 +400,12 @@ def metroui5_bar3d(**kwargs):
 def metroui5_box(content="", title=None, secondary_title=None, **kwargs):
     """Renders MetroUI box component."""
     return mark_safe(render_box(content, title, secondary_title, **kwargs))
+
+
+@register.simple_tag
+def metroui5_bulls(bull_type="success", size=16, **kwargs):
+    """Renders MetroUI bulls component."""
+    return mark_safe(render_bulls(bull_type, size, **kwargs))
 
 
 @register.simple_tag

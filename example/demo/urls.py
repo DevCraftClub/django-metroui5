@@ -29,4 +29,5 @@ urlpatterns = [
     path('bar3d-demo/', views.bar3d_demo, name='bar3d_demo'),
     path('box-demo/', views.box_demo, name='box_demo'),
     path('breadcrumb-demo/', views.breadcrumb_demo, name='breadcrumb_demo'),
+    path('bulls-demo/', views.bulls_demo, name='bulls_demo'),
 ]

@@ -551,3 +551,11 @@ def breadcrumb_demo(request):
 		'custom_divider_items': custom_divider_items,
 	}
 	return render(request, 'demo/breadcrumb_demo.html', context)
+
+
+def bulls_demo(request):
+	"""Demo page for bulls component."""
+	context = {
+		'page_title': 'Bulls Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/bulls_demo.html', context)
