@@ -498,3 +498,11 @@ def badge_demo(request):
 		'page_title': 'Badge Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/badge_demo.html', context)
+
+
+def bar3d_demo(request):
+	"""Demo page for bar3d component."""
+	context = {
+		'page_title': 'Bar3d Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/bar3d_demo.html', context)

@@ -16,6 +16,7 @@ from ..components import (
     render_app_bar,
     render_audio_button,
     render_audio_player,
+    render_bar3d,
     render_calendar,
     render_dialog,
     render_dropdown,
@@ -385,6 +386,12 @@ def metroui5_pagination(current_page, total_pages, **kwargs):
 def metroui5_badge(content, corner=False, corner_outside=False, **kwargs):
     """Renders MetroUI badge."""
     return mark_safe(render_badge(content, corner, corner_outside, **kwargs))
+
+
+@register.simple_tag
+def metroui5_bar3d(**kwargs):
+    """Renders MetroUI bar3d component."""
+    return mark_safe(render_bar3d(**kwargs))
 
 
 @register.simple_tag
