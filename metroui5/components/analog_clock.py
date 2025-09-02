@@ -9,7 +9,8 @@ def render_analog_clock(**attrs):
 	"""
 	Renders MetroUI analog clock component.
 
-	Link: https://v5.metroui.org.ua/components/analog-clock/
+	References:
+		Documentation: https://v5.metroui.org.ua/components/analog-clock/
 
 	Args:
 		**attrs: Additional HTML attributes including:
