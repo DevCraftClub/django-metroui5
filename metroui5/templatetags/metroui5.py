@@ -9,6 +9,7 @@ from ..components import (
     render_card,
     render_progress,
     render_accordion,
+    render_action_button,
     render_calendar,
     render_dialog,
     render_dropdown,
@@ -227,6 +228,12 @@ def metroui5_classes(*args):
 def metroui5_accordion(items, **kwargs):
     """Renders MetroUI accordion."""
     return mark_safe(render_accordion(items, **kwargs))
+
+
+@register.simple_tag
+def metroui5_action_button(actions, main_icon="mif-plus", **kwargs):
+    """Renders MetroUI action button with expandable sub-actions."""
+    return mark_safe(render_action_button(actions, main_icon, **kwargs))
 
 
 @register.simple_tag

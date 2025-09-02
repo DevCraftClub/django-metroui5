@@ -17,4 +17,6 @@ urlpatterns = [
     path('initials-avatars/', views.initials_avatars, name='initials_avatars'),
     path('advanced-inputs/', views.advanced_inputs, name='advanced_inputs'),
     path('input-comparison/', views.input_comparison, name='input_comparison'),
+    path('accordion-demo/', views.accordion_demo, name='accordion_demo'),
+    path('action-button-demo/', views.action_button_demo, name='action_button_demo'),
 ]

@@ -397,3 +397,48 @@ def input_comparison(request):
 		'page_title': 'Input Components Comparison - MetroUI5 Demo',
 	}
 	return render(request, 'demo/input_comparison.html', context)
+
+
+def accordion_demo(request):
+	"""Demo page for accordion components."""
+	accordion_items = [
+		{'title': 'Section 1', 'content': 'This is the content for section 1. It can contain any HTML content including <strong>bold text</strong> and <em>italic text</em>.'},
+		{'title': 'Section 2', 'content': 'This is the content for section 2. You can include <a href="#">links</a> and other interactive elements.'},
+		{'title': 'Section 3 (Initially Open)', 'content': 'This section is initially open. It demonstrates the active state functionality.', 'active': True},
+		{'title': 'Section 4', 'content': 'This is section 4 with more content to demonstrate the accordion functionality.'},
+		{'title': 'Section 5', 'content': 'Final section with additional content to show the full accordion behavior.'}
+	]
+	
+	context = {
+		'page_title': 'Accordion Components - MetroUI5 Demo',
+		'accordion_items': accordion_items,
+	}
+	return render(request, 'demo/accordion_demo.html', context)
+
+
+def action_button_demo(request):
+	"""Demo page for action button components."""
+	action_items = [
+		{'icon': 'mif-home', 'href': '#', 'title': 'Home'},
+		{'icon': 'mif-user', 'href': '#', 'title': 'User Profile'},
+		{'icon': 'mif-cog', 'href': '#', 'title': 'Settings'},
+		{'icon': 'mif-search', 'href': '#', 'title': 'Search'}
+	]
+	
+	extended_action_items = [
+		{'icon': 'mif-home', 'href': '#', 'title': 'Home'},
+		{'icon': 'mif-user', 'href': '#', 'title': 'User'},
+		{'icon': 'mif-cog', 'href': '#', 'title': 'Settings'},
+		{'icon': 'mif-search', 'href': '#', 'title': 'Search'},
+		{'icon': 'mif-mail', 'href': '#', 'title': 'Mail'},
+		{'icon': 'mif-phone', 'href': '#', 'title': 'Phone'},
+		{'icon': 'mif-camera', 'href': '#', 'title': 'Camera'},
+		{'icon': 'mif-location', 'href': '#', 'title': 'Location'}
+	]
+	
+	context = {
+		'page_title': 'Action Button Components - MetroUI5 Demo',
+		'action_items': action_items,
+		'extended_action_items': extended_action_items,
+	}
+	return render(request, 'demo/action_button_demo.html', context)
