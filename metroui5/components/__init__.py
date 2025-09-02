@@ -47,6 +47,7 @@ from .bar3d import render_bar3d
 from .box import render_box
 from .breadcrumb import render_breadcrumb
 from .bulls import render_bulls
+from .button_group import render_button_group
 
 # Export all render functions
 __all__ = [
@@ -96,4 +97,5 @@ __all__ = [
     'render_responsive_avatar',
     'render_rating',
     'render_bulls',
+    'render_button_group',
 ]
