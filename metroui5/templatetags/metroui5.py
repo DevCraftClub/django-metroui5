@@ -12,6 +12,7 @@ from ..components import (
     render_action_button,
     render_activity,
     render_adblock_detection,
+    render_analog_clock,
     render_calendar,
     render_dialog,
     render_dropdown,
@@ -252,6 +253,12 @@ def metroui5_activity(**kwargs):
 def metroui5_adblock_detection(**kwargs):
     """Renders MetroUI adblock detection component."""
     return mark_safe(render_adblock_detection(**kwargs))
+
+
+@register.simple_tag
+def metroui5_analog_clock(**kwargs):
+    """Renders MetroUI analog clock component."""
+    return mark_safe(render_analog_clock(**kwargs))
 
 
 @register.simple_tag

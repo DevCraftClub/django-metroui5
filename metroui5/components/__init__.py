@@ -39,6 +39,7 @@ from .accordion import render_accordion
 from .action_button import render_action_button
 from .activity import render_activity
 from .adblock import render_adblock_detection
+from .analog_clock import render_analog_clock
 
 # Export all render functions
 __all__ = [
@@ -54,6 +55,7 @@ __all__ = [
     'render_action_button',
     'render_activity',
     'render_adblock_detection',
+    'render_analog_clock',
     'render_calendar',
     'render_dialog',
     'render_dropdown',
