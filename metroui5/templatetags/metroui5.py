@@ -13,6 +13,7 @@ from ..components import (
     render_activity,
     render_adblock_detection,
     render_analog_clock,
+    render_app_bar,
     render_calendar,
     render_dialog,
     render_dropdown,
@@ -259,6 +260,15 @@ def metroui5_adblock_detection(**kwargs):
 def metroui5_analog_clock(**kwargs):
     """Renders MetroUI analog clock component."""
     return mark_safe(render_analog_clock(**kwargs))
+
+
+@register.simple_tag
+def metroui5_app_bar(**kwargs):
+    """Renders MetroUI app bar component."""
+    # Extract brand and menu_items from kwargs if they exist
+    brand = kwargs.pop('brand', None)
+    menu_items = kwargs.pop('menu_items', None)
+    return mark_safe(render_app_bar(brand, menu_items, **kwargs))
 
 
 @register.simple_tag
