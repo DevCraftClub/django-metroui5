@@ -44,6 +44,7 @@ from .app_bar import render_app_bar
 from .audio_button import render_audio_button
 from .audio_player import render_audio_player
 from .bar3d import render_bar3d
+from .box import render_box
 
 # Export all render functions
 __all__ = [
@@ -64,6 +65,7 @@ __all__ = [
     'render_audio_button',
     'render_audio_player',
     'render_bar3d',
+    'render_box',
     'render_calendar',
     'render_dialog',
     'render_dropdown',
