@@ -23,6 +23,7 @@ from ..components import (
     render_carousel,
     render_card,
     render_catalog_menu,
+    render_charms,
     render_dialog,
     render_dropdown,
     render_input,
@@ -213,6 +214,12 @@ def metroui5_carousel(**kwargs):
 def metroui5_catalog_menu(**kwargs):
     """Renders MetroUI catalog menu."""
     return mark_safe(render_catalog_menu(**kwargs))
+
+
+@register.simple_tag
+def metroui5_charms(**kwargs):
+    """Renders MetroUI charms."""
+    return mark_safe(render_charms(**kwargs))
 
 
 @register.simple_tag

@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Charms Component Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Charms Component Demo</h1>
+    <p>This demo showcases the MetroUI Charms component with various configurations and features.</p>
+
+    <h2>Basic Charms (Right Side)</h2>
+    <div class="example">
+        {% metroui5_charms content='<div class="charm-tile"><span class="icon mif-home"></span><span class="caption">Home</span></div><div class="charm-tile"><span class="icon mif-cog"></span><span class="caption">Settings</span></div><div class="charm-tile"><span class="icon mif-user"></span><span class="caption">Profile</span></div>' %}
+        
+        <button class="button" onclick="Metro.charms.open('#charms-component')">Open Charms</button>
+        <button class="button" onclick="Metro.charms.close('#charms-component')">Close Charms</button>
+        <button class="button" onclick="Metro.charms.toggle('#charms-component')">Toggle Charms</button>
+    </div>
+
+    <h2>Charms with Custom Position (Left Side)</h2>
+    <div class="example">
+        {% metroui5_charms position="left" content='<div class="charm-notify"><span class="icon mif-bell"></span><span class="title">New Notification</span><span class="content">You have 3 new messages</span><span class="secondary">5 minutes ago</span></div><div class="charm-notify"><span class="icon mif-mail"></span><span class="title">Email</span><span class="content">New email from John Doe</span><span class="secondary">10 minutes ago</span></div>' %}
+        
+        <button class="button" onclick="Metro.charms.open('#charms-component')">Open Left Charms</button>
+    </div>
+
+    <h2>Charms with Custom Opacity</h2>
+    <div class="example">
+        {% metroui5_charms opacity=0.8 content='<div class="charm-tile"><span class="icon mif-star"></span><span class="caption">Favorites</span></div><div class="charm-tile"><span class="icon mif-heart"></span><span class="caption">Liked</span></div><div class="charm-tile"><span class="icon mif-bookmark"></span><span class="caption">Bookmarks</span></div>' %}
+        
+        <button class="button" onclick="Metro.charms.open('#charms-component')">Open Semi-Transparent Charms</button>
+    </div>
+
+    <h2>Top Position Charms</h2>
+    <div class="example">
+        {% metroui5_charms position="top" content='<div class="charm-tile"><span class="icon mif-search"></span><span class="caption">Search</span></div><div class="charm-tile"><span class="icon mif-filter"></span><span class="caption">Filter</span></div><div class="charm-tile"><span class="icon mif-sort"></span><span class="caption">Sort</span></div>' %}
+        
+        <button class="button" onclick="Metro.charms.open('#charms-component')">Open Top Charms</button>
+    </div>
+
+    <h2>Bottom Position Charms</h2>
+    <div class="example">
+        {% metroui5_charms position="bottom" content='<div class="charm-notify"><span class="icon mif-info"></span><span class="title">System Info</span><span class="content">System is running smoothly</span><span class="secondary">All systems operational</span></div><div class="charm-notify"><span class="icon mif-warning"></span><span class="title">Warning</span><span class="content">Low disk space detected</span><span class="secondary">Please free up some space</span></div>' %}
+        
+        <button class="button" onclick="Metro.charms.open('#charms-component')">Open Bottom Charms</button>
+    </div>
+
+    <h2>Charms with Custom CSS Classes</h2>
+    <div class="example">
+        {% metroui5_charms clsCharms="custom-charms" content='<div class="charm-tile"><span class="icon mif-palette"></span><span class="caption">Themes</span></div><div class="charm-tile"><span class="icon mif-language"></span><span class="caption">Language</span></div>' %}
+        
+        <button class="button" onclick="Metro.charms.open('#charms-component')">Open Custom Styled Charms</button>
+    </div>
+
+    <h2>Charms with Callbacks</h2>
+    <div class="example">
+        {% metroui5_charms onCharmCreate="console.log('Charms created')" onOpen="console.log('Charms opened')" onClose="console.log('Charms closed')" content='<div class="charm-tile"><span class="icon mif-power"></span><span class="caption">Power</span></div><div class="charm-tile"><span class="icon mif-exit"></span><span class="caption">Logout</span></div>' %}
+        
+        <button class="button" onclick="Metro.charms.open('#charms-component')">Open Charms with Callbacks</button>
+        <p><small>Check browser console for callback messages</small></p>
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example">
+        <h3>Basic Charms</h3>
+        <pre><code>{% verbatim %}{% metroui5_charms content='<div class="charm-tile"><span class="icon mif-home"></span><span class="caption">Home</span></div>' %}{% endverbatim %}</code></pre>
+
+        <h3>Charms with Position</h3>
+        <pre><code>{% verbatim %}{% metroui5_charms position="left" content='<div class="charm-notify"><span class="icon mif-bell"></span><span class="title">Notification</span><span class="content">Content here</span></div>' %}{% endverbatim %}</code></pre>
+
+        <h3>Charms with Opacity and Callbacks</h3>
+        <pre><code>{% verbatim %}{% metroui5_charms position="top" opacity=0.8 onOpen="handleOpen()" content='<div class="charm-tile"><span class="icon mif-search"></span><span class="caption">Search</span></div>' %}{% endverbatim %}</code></pre>
+    </div>
+
+    <h2>JavaScript API Examples</h2>
+    <div class="example">
+        <h3>Controlling Charms Programmatically</h3>
+        <pre><code>// Open charms
+Metro.charms.open('#my-charms');
+
+// Close charms
+Metro.charms.close('#my-charms');
+
+// Toggle charms state
+Metro.charms.toggle('#my-charms');
+
+// Close all open charms
+Metro.charms.closeAll();
+
+// Check if charms is open
+const isOpen = Metro.charms.isOpen('#my-charms');
+
+// Set opacity
+Metro.charms.opacity('#my-charms', 0.8);</code></pre>
+        
+        <button class="button" onclick="Metro.charms.closeAll()">Close All Charms</button>
+        <button class="button" onclick="alert('Charms open: ' + Metro.charms.isOpen('#charms-component'))">Check if Open</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Custom styling for charms demo */
+.custom-charms {
+    background-color: rgba(0, 123, 255, 0.9);
+    color: white;
+}
+
+.custom-charms .charm-tile {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin: 8px;
+    padding: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.custom-charms .charm-tile:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.custom-charms .charm-tile .icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.custom-charms .charm-tile .caption {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Example styling for charm elements */
+.charm-tile {
+    display: inline-block;
+    text-align: center;
+    padding: 16px;
+    margin: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.charm-tile:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.charm-tile .icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+    color: #007bff;
+}
+
+.charm-tile .caption {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.charm-notify {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.charm-notify .icon {
+    font-size: 20px;
+    color: #007bff;
+    margin-right: 8px;
+}
+
+.charm-notify .title {
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.charm-notify .content {
+    color: #666;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.charm-notify .secondary {
+    font-size: 12px;
+    color: #999;
+    display: block;
+}
+
+/* Demo buttons */
+.example button {
+    margin: 4px;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Example of programmatic initialization
+    const charmsElements = document.querySelectorAll('[data-role="charms"]');
+    
+    charmsElements.forEach((charms, index) => {
+        // Initialize charms programmatically
+        const charmsInstance = Metro.makePlugin(charms, 'charms');
+        
+        if (charmsInstance) {
+            console.log(`Charms ${index + 1} initialized successfully`);
+        }
+    });
+    
+    // Example of global configuration
+    Metro.charmsSetup({
+        onCharmCreate: function() {
+            console.log('Charms has been created');
+        }
+    });
+    
+    // Add click handlers for charm tiles
+    document.querySelectorAll('.charm-tile').forEach(tile => {
+        tile.addEventListener('click', function() {
+            const caption = this.querySelector('.caption').textContent;
+            alert(`Clicked on: ${caption}`);
+        });
+    });
+    
+    // Add click handlers for charm notifications
+    document.querySelectorAll('.charm-notify').forEach(notify => {
+        notify.addEventListener('click', function() {
+            const title = this.querySelector('.title').textContent;
+            alert(`Notification clicked: ${title}`);
+        });
+    });
+});
+</script>
+{% endblock %}

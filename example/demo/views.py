@@ -814,6 +814,14 @@ def catalog_menu_demo(request):
 	return render(request, 'demo/catalog_menu_demo.html', context)
 
 
+def charms_demo(request):
+	"""Charms component demo page."""
+	context = {
+		'page_title': 'Charms Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/charms_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {
