@@ -23,6 +23,7 @@ from .carousel import render_carousel
 from .card import render_card
 from .catalog_menu import render_catalog_menu
 from .charms import render_charms
+from .chart_card import render_chart_card
 from .dialog import render_dialog
 from .dropdown import render_dropdown
 from .input import render_input, render_material_input
@@ -79,6 +80,7 @@ __all__ = [
     'render_card',
     'render_catalog_menu',
     'render_charms',
+    'render_chart_card',
     'render_dialog',
     'render_dropdown',
     'render_input',
