@@ -3,7 +3,7 @@
 
 {% block title %}Activity Components - MetroUI5 Demo{% endblock %}
 
-{% block content %}
+{% block page_content %}
 <div class="container">
     <h1>Activity Components</h1>
     <p>Demonstrating the MetroUI v5 Activity component with animated loading indicators.</p>
@@ -40,8 +40,6 @@
                             <h4>Atom</h4>
                             {% metroui5_activity type="atom" %}
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="cell-md-2">
                             <h4>Bars</h4>
                             {% metroui5_activity type="bars" %}
@@ -61,10 +59,6 @@
                         <div class="cell-md-4">
                             <h4>Default Style</h4>
                             {% metroui5_activity type="ring" %}
-                        </div>
-                        <div class="cell-md-4">
-                            <h4>Dark Style</h4>
-                            {% metroui5_activity type="ring" style="dark" %}
                         </div>
                         <div class="cell-md-4">
                             <h4>Color Style</h4>
@@ -351,6 +345,8 @@
     padding: 20px;
     background-color: #f8f9fa;
 }
+
+
 
 /* Center activity indicators in their containers */
 .activity {

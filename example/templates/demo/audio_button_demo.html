@@ -3,7 +3,7 @@
 
 {% block title %}Audio Button Demo{% endblock %}
 
-{% block content %}
+{% block page_content %}
 <div class="container">
     <h1>MetroUI Audio Button Component</h1>
     <p>This demo showcases the MetroUI v5 Audio Button component that allows you to create buttons that play audio when clicked.</p>
@@ -14,9 +14,7 @@
                 <h2>Basic Usage</h2>
                 <p>Basic audio button with sound file:</p>
                 <div class="example-container">
-                    <button class="button" data-role="audio-button" data-audio-src="sounds/click.mp3">
-                        Click Me
-                    </button>
+                    {% metroui5_audio_button "Click Me" audio_src="https://cdn.bensound.com/bensound-prism.mp3" %}
                 </div>
             </div>
         </div>
@@ -24,13 +22,9 @@
         <div class="row">
             <div class="cell-12">
                 <h2>With Custom Volume</h2>
-                <p>Audio button with custom volume level:</p>
+                <p>Audio button with custom volume level (0.8):</p>
                 <div class="example-container">
-                    <button class="button success" data-role="audio-button"
-                            data-audio-src="sounds/success.mp3"
-                            data-audio-volume="0.8">
-                        Success Sound
-                    </button>
+                    {% metroui5_audio_button "Success Sound" audio_src="https://cdn.bensound.com/bensound-prism.mp3" audio_volume="0.8" class="button success" %}
                 </div>
             </div>
         </div>
@@ -40,21 +34,11 @@
                 <h2>Different Button Styles</h2>
                 <p>Audio buttons with different MetroUI button styles:</p>
                 <div class="example-container">
-                    <button class="button primary" data-role="audio-button" data-audio-src="sounds/click.mp3">
-                        Primary
-                    </button>
-                    <button class="button secondary" data-role="audio-button" data-audio-src="sounds/click.mp3">
-                        Secondary
-                    </button>
-                    <button class="button success" data-role="audio-button" data-audio-src="sounds/success.mp3">
-                        Success
-                    </button>
-                    <button class="button alert" data-role="audio-button" data-audio-src="sounds/error.mp3">
-                        Alert
-                    </button>
-                    <button class="button warning" data-role="audio-button" data-audio-src="sounds/warning.mp3">
-                        Warning
-                    </button>
+                    {% metroui5_audio_button "Primary" audio_src="https://cdn.bensound.com/bensound-prism.mp3" class="button primary" %}
+                    {% metroui5_audio_button "Secondary" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" class="button secondary" %}
+                    {% metroui5_audio_button "Success" audio_src="https://cdn.bensound.com/bensound-keepitreal.mp3" class="button success" %}
+                    {% metroui5_audio_button "Alert" audio_src="https://cdn.bensound.com/bensound-prism.mp3" class="button alert" %}
+                    {% metroui5_audio_button "Warning" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" class="button warning" %}
                 </div>
             </div>
         </div>
@@ -64,18 +48,8 @@
                 <h2>With Event Callbacks</h2>
                 <p>Audio buttons with JavaScript event callbacks:</p>
                 <div class="example-container">
-                    <button class="button" data-role="audio-button"
-                            data-audio-src="sounds/notification.mp3"
-                            data-audio-volume="0.7"
-                            data-on-audio-start="handleAudioStart(this)"
-                            data-on-audio-end="handleAudioEnd(this)">
-                        Play with Callbacks
-                    </button>
-                    <button class="button" data-role="audio-button"
-                            data-audio-src="sounds/click.mp3"
-                            data-on-audio-button-create="handleAudioButtonCreate(this)">
-                        Button with Create Callback
-                    </button>
+                    {% metroui5_audio_button "Play with Callbacks" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" audio_volume="0.7" on_audio_start="handleAudioStart(this)" on_audio_end="handleAudioEnd(this)" %}
+                    {% metroui5_audio_button "Button with Create Callback" audio_src="https://cdn.bensound.com/bensound-keepitreal.mp3" on_audio_button_create="handleAudioButtonCreate(this)" %}
                 </div>
                 <div id="callback-output" class="bg-lightGray p-2 mt-2" style="min-height: 50px; border-radius: 4px;">
                     <small class="text-muted">Callback events will appear here...</small>
@@ -85,11 +59,23 @@
 
         <div class="row">
             <div class="cell-12">
+                <h2>Multiple Sound Options</h2>
+                <p>Audio buttons with different sound files to demonstrate variety:</p>
+                <div class="example-container">
+                    {% metroui5_audio_button "Prism Sound" audio_src="https://cdn.bensound.com/bensound-prism.mp3" %}
+                    {% metroui5_audio_button "Slow Life Sound" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" %}
+                    {% metroui5_audio_button "Keep It Real Sound" audio_src="https://cdn.bensound.com/bensound-keepitreal.mp3" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
                 <h2>Template Tag Usage</h2>
                 <p>Using the Django template tag:</p>
                 <div class="example-container">
-                    {% metroui5_audio_button "Template Tag Button" audio_src="sounds/click.mp3" %}
-                    {% metroui5_audio_button "Template Tag with Volume" audio_src="sounds/success.mp3" audio_volume="0.9" class="button success" %}
+                    {% metroui5_audio_button "Template Tag Button" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" %}
+                    {% metroui5_audio_button "Template Tag with Volume" audio_src="https://cdn.bensound.com/bensound-keepitreal.mp3" audio_volume="0.9" class="button success" %}
                 </div>
             </div>
         </div>
@@ -114,9 +100,7 @@
                 <h2>API Methods</h2>
                 <p>Example of programmatic control using API methods:</p>
                 <div class="example-container">
-                    <button id="api-audio-button" class="button" data-role="audio-button" data-audio-src="sounds/click.mp3">
-                        API Controlled Button
-                    </button>
+                    {% metroui5_audio_button "API Controlled Button" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" id="api-audio-button" %}
                     <button class="button" onclick="playAudio()">
                         Play Audio
                     </button>
@@ -130,174 +114,19 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="cell-12">
-                <h2>Component Parameters</h2>
-                <table class="table striped">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Default</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>audio_volume</td>
-                            <td>number</td>
-                            <td>0.5</td>
-                            <td>Volume level for the audio (0.0 to 1.0)</td>
-                        </tr>
-                        <tr>
-                            <td>audio_src</td>
-                            <td>string</td>
-                            <td>""</td>
-                            <td>Path to the audio file</td>
-                        </tr>
-                        <tr>
-                            <td>on_audio_start</td>
-                            <td>function</td>
-                            <td>Metro.noop</td>
-                            <td>Triggered when audio starts playing</td>
-                        </tr>
-                        <tr>
-                            <td>on_audio_end</td>
-                            <td>function</td>
-                            <td>Metro.noop</td>
-                            <td>Triggered when audio finishes playing</td>
-                        </tr>
-                        <tr>
-                            <td>on_audio_button_create</td>
-                            <td>function</td>
-                            <td>Metro.noop</td>
-                            <td>Triggered when audio button is created</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        
 
         <div class="row">
             <div class="cell-12">
-                <h2>Events</h2>
-                <table class="table striped">
-                    <thead>
-                        <tr>
-                            <th>Event</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>on_audio_start</td>
-                            <td>Triggered when audio starts playing</td>
-                        </tr>
-                        <tr>
-                            <td>on_audio_end</td>
-                            <td>Triggered when audio finishes playing</td>
-                        </tr>
-                        <tr>
-                            <td>on_audio_button_create</td>
-                            <td>Triggered when audio button is created</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="cell-12">
-                <h2>API Methods</h2>
-                <table class="table striped">
-                    <thead>
-                        <tr>
-                            <th>Method</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>play(callback)</td>
-                            <td>Plays the audio. The callback function receives the audio element as a parameter.</td>
-                        </tr>
-                        <tr>
-                            <td>stop(callback)</td>
-                            <td>Stops the audio and resets it to the beginning. The callback function receives the audio element as a parameter.</td>
-                        </tr>
-                        <tr>
-                            <td>destroy()</td>
-                            <td>Destroys the audio button component.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="cell-12">
-                <h2>Supported Audio Formats</h2>
-                <p>The audio button component uses the HTML5 Audio API, so it supports audio formats that are compatible with the user's browser:</p>
-                <ul>
-                    <li><strong>MP3</strong> - Most widely supported format</li>
-                    <li><strong>WAV</strong> - Uncompressed audio format</li>
-                    <li><strong>OGG</strong> - Open source audio format</li>
-                    <li><strong>M4A</strong> - Apple's audio format</li>
-                    <li><strong>WebM</strong> - Web-optimized audio format</li>
-                </ul>
-                <p><strong>Note:</strong> For better user experience, it's recommended to use short sound files to avoid delays.</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="cell-12">
-                <h2>Usage Examples</h2>
-                <h3>Basic HTML Usage:</h3>
-                <pre><code>&lt;!-- Simple audio button --&gt;
-&lt;button class="button" data-role="audio-button" data-audio-src="sounds/click.mp3"&gt;
-    Click Me
-&lt;/button&gt;
-
-&lt;!-- Audio button with custom volume --&gt;
-&lt;button class="button success" data-role="audio-button"
-        data-audio-src="sounds/success.mp3"
-        data-audio-volume="0.8"&gt;
-    Success
-&lt;/button&gt;</code></pre>
-
+                
                 <h3>Django Template Usage:</h3>
-                <pre><code>{% load metroui5 %}
+                <pre><code>&lbrace;% load metroui5 %}
 
-{% metroui5_audio_button "Click Me" audio_src="sounds/click.mp3" %}
-{% metroui5_audio_button "Success" audio_src="sounds/success.mp3" audio_volume="0.8" class="button success" %}</code></pre>
+&lbrace;% metroui5_audio_button "Prism Sound" audio_src="https://cdn.bensound.com/bensound-prism.mp3" %}
+&lbrace;% metroui5_audio_button "Slow Life" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" audio_volume="0.8" class="button success" %}
+&lbrace;% metroui5_audio_button "Keep It Real" audio_src="https://cdn.bensound.com/bensound-keepitreal.mp3" class="button warning" %}</code></pre>
 
-                <h3>JavaScript Usage:</h3>
-                <pre><code>// Play sound on some event
-$("#my-element").on("click", function(){
-    Metro.playSound("sounds/notification.mp3");
-});
-
-// Play sound with options
-Metro.playSound({
-    audioSrc: "sounds/success.mp3",
-    audioVolume: 0.7,
-    onAudioStart: function(src) {
-        console.log("Audio started: " + src);
-    },
-    onAudioEnd: function() {
-        console.log("Audio ended");
-    }
-});
-
-// API methods
-const audioButton = Metro.getPlugin('#my-audio-button', 'audio-button');
-audioButton.play(function(audio){
-    console.log("Audio started playing");
-});
-audioButton.stop(function(audio){
-    console.log("Audio stopped");
-});
-audioButton.destroy();</code></pre>
+            
             </div>
         </div>
     </div>
@@ -341,12 +170,12 @@ function handleAudioButtonCreate(button) {
 
 // Metro.playSound utility examples
 function playSoundExample() {
-    Metro.playSound("sounds/click.mp3");
+    Metro.playSound("https://cdn.bensound.com/bensound-keepitreal.mp3");
 }
 
 function playSoundWithOptions() {
     Metro.playSound({
-        audioSrc: "sounds/success.mp3",
+        audioSrc: "https://cdn.bensound.com/bensound-slowlife.mp3",
         audioVolume: 0.7,
         onAudioStart: function(src) {
             console.log("Audio started: " + src);
@@ -364,7 +193,7 @@ function playSoundWithOptions() {
 // API methods example
 let audioButtonInstance = null;
 
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     // Initialize the audio button
     Metro.makePlugin("#api-audio-button", "audio-button");
     audioButtonInstance = Metro.getPlugin("#api-audio-button", "audio-button");
@@ -405,10 +234,16 @@ function clearCallbackOutput() {
 }
 
 // Add clear button
-$(document).ready(function() {
-    const clearBtn = $('<button class="button small">Clear Output</button>');
-    clearBtn.on('click', clearCallbackOutput);
-    $('#callback-output').after(clearBtn);
+document.addEventListener('DOMContentLoaded', function() {
+    const clearBtn = document.createElement('button');
+    clearBtn.className = 'button small';
+    clearBtn.textContent = 'Clear Output';
+    clearBtn.addEventListener('click', clearCallbackOutput);
+    
+    const callbackOutput = document.getElementById('callback-output');
+    if (callbackOutput && callbackOutput.parentNode) {
+        callbackOutput.parentNode.insertBefore(clearBtn, callbackOutput.nextSibling);
+    }
 });
 </script>
 {% endblock %}

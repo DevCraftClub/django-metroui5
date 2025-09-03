@@ -1,107 +1,28 @@
 {% extends 'metroui5/layout/base.html' %}
 {% load metroui5 %}
 
-{% block app_title %}Django MetroUI5 Demo{% endblock %}
+{% block title %}Django MetroUI5 Demo{% endblock %}
 
-{% block app_bar_right %}
-<a href="{% url 'demo:index' %}" class="app-bar-element">
-    <span class="mif-home"></span>
-    Главная
-</a>
-<a href="{% url 'demo:forms' %}" class="app-bar-element">
-    <span class="mif-form"></span>
-    Формы
-</a>
-<a href="{% url 'demo:components' %}" class="app-bar-element">
-    <span class="mif-apps"></span>
-    Компоненты
-</a>
-<a href="{% url 'demo:tiles' %}" class="app-bar-element">
-    <span class="mif-grid"></span>
-    Tiles
-</a>
-<a href="{% url 'demo:advanced_components' %}" class="app-bar-element">
-    <span class="mif-cog"></span>
-    Расширенные
-</a>
-<a href="{% url 'demo:themes' %}" class="app-bar-element">
-    <span class="mif-palette"></span>
-    Темы
-</a>
-<a href="{% url 'demo:initials_avatars' %}" class="app-bar-element">
-    <span class="mif-user"></span>
-    Initials Avatars
-</a>
-<a href="{% url 'demo:advanced_inputs' %}" class="app-bar-element">
-    <span class="mif-keyboard"></span>
-    Advanced Inputs
-</a>
-<a href="{% url 'demo:input_comparison' %}" class="app-bar-element">
-    <span class="mif-compare"></span>
-    Input Comparison
-</a>
-<a href="{% url 'demo:accordion_demo' %}" class="app-bar-element">
-    <span class="mif-list"></span>
-    Accordion Demo
-</a>
-<a href="{% url 'demo:action_button_demo' %}" class="app-bar-element">
-    <span class="mif-plus"></span>
-    Action Button Demo
-</a>
-<a href="{% url 'demo:activity_demo' %}" class="app-bar-element">
-    <span class="mif-spinner"></span>
-    Activity Demo
-</a>
-<a href="{% url 'demo:adblock_demo' %}" class="app-bar-element">
-    <span class="mif-shield"></span>
-    Adblock Detection Demo
-</a>
-<a href="{% url 'demo:analog_clock_demo' %}" class="app-bar-element">
-    <span class="mif-clock"></span>
-    Analog Clock Demo
-</a>
-<a href="{% url 'demo:app_bar_demo' %}" class="app-bar-element">
-    <span class="mif-menu"></span>
-    App Bar Demo
-</a>
-<a href="{% url 'demo:audio_button_demo' %}" class="app-bar-element">
-    <span class="mif-volume-high"></span>
-    Audio Button Demo
-</a>
-<a href="{% url 'demo:audio_player_demo' %}" class="app-bar-element">
-    <span class="mif-music-note"></span>
-    Audio Player Demo
-</a>
-<a href="{% url 'demo:badge_demo' %}" class="app-bar-element">
-    <span class="mif-bookmark"></span>
-    Badge Demo
-</a>
-<a href="{% url 'demo:bar3d_demo' %}" class="app-bar-element">
-    <span class="mif-chart"></span>
-    Bar3d Demo
-</a>
-<a href="{% url 'demo:box_demo' %}" class="app-bar-element">
-    <span class="mif-folder"></span>
-    Box Demo
-</a>
-<a href="{% url 'demo:breadcrumb_demo' %}" class="app-bar-element">
-    <span class="mif-arrow-right"></span>
-    Breadcrumb Demo
-</a>
-<a href="{% url 'demo:bulls_demo' %}" class="app-bar-element">
-    <span class="mif-checkmark"></span>
-    Bulls Demo
-</a>
-<a href="{% url 'demo:button_demo' %}" class="app-bar-element">
-    <span class="mif-play"></span>
-    Button Demo
-</a>
-<a href="{% url 'demo:button_group_demo' %}" class="app-bar-element">
-    <span class="mif-menu"></span>
-    Button Group Demo
-</a>
-<a href="{% url 'demo:calendar_demo' %}" class="app-bar-element">
-    <span class="mif-calendar"></span>
-    Calendar Demo
-</a>
+{% block content %}
+<!-- App Bar -->
+{% metroui5_app_bar brand=app_bar_brand menu_items=app_bar_menu_items static_items=app_bar_static_items expand=True %}
+
+<!-- Main Content -->
+<div class="container">
+    {% block page_content %}
+    <h1>Django MetroUI5 Demo</h1>
+    <p>Welcome to the MetroUI5 Django demo site!</p>
+    {% endblock %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize MetroUI components
+    if (typeof Metro !== 'undefined') {
+        Metro.init();
+    }
+});
+</script>
 {% endblock %}

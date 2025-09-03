@@ -3,7 +3,7 @@
 
 {% block title %}Badge Demo{% endblock %}
 
-{% block content %}
+{% block page_content %}
 <div class="container">
     <h1>MetroUI Badge Component</h1>
     <p>This demo showcases the MetroUI v5 Badge component that provides a simple way to add small, customizable badges to your UI elements.</p>
@@ -14,10 +14,10 @@
                 <h2>Basic Usage</h2>
                 <p>Basic badge with default styling:</p>
                 <div class="example-container">
-                    <span class="badge">New</span>
-                    <span class="badge">5</span>
-                    <span class="badge">Alert</span>
-                    <span class="badge">Status</span>
+                    {% metroui5_badge "New" %}
+                    {% metroui5_badge "5" %}
+                    {% metroui5_badge "Alert" %}
+                    {% metroui5_badge "Status" %}
                 </div>
             </div>
         </div>
@@ -28,15 +28,15 @@
                 <p>Badge positioned in the top-right corner of a relative-positioned parent:</p>
                 <div class="example-container">
                     <div style="position: relative; width: 100px; height: 100px; background-color: #f0f0f0; display: inline-block; margin: 10px;">
-                        <span class="badge corner">8</span>
+                        {% metroui5_badge "8" corner=True %}
                         <div style="padding: 20px; text-align: center;">Box 1</div>
                     </div>
                     <div style="position: relative; width: 100px; height: 100px; background-color: #e0e0e0; display: inline-block; margin: 10px;">
-                        <span class="badge corner">12</span>
+                        {% metroui5_badge "12" corner=True %}
                         <div style="padding: 20px; text-align: center;">Box 2</div>
                     </div>
                     <div style="position: relative; width: 100px; height: 100px; background-color: #d0d0d0; display: inline-block; margin: 10px;">
-                        <span class="badge corner">99+</span>
+                        {% metroui5_badge "99+" corner=True %}
                         <div style="padding: 20px; text-align: center;">Box 3</div>
                     </div>
                 </div>
@@ -49,30 +49,17 @@
                 <p>Badge positioned outside the parent element in the top-right corner:</p>
                 <div class="example-container">
                     <div style="position: relative; width: 100px; height: 100px; background-color: #f0f0f0; display: inline-block; margin: 10px;">
-                        <span class="badge corner-outside">15</span>
+                        {% metroui5_badge "15" corner_outside=True %}
                         <div style="padding: 20px; text-align: center;">Box 1</div>
                     </div>
                     <div style="position: relative; width: 100px; height: 100px; background-color: #e0e0e0; display: inline-block; margin: 10px;">
-                        <span class="badge corner-outside">3</span>
+                        {% metroui5_badge "3" corner_outside=True %}
                         <div style="padding: 20px; text-align: center;">Box 2</div>
                     </div>
                     <div style="position: relative; width: 100px; height: 100px; background-color: #d0d0d0; display: inline-block; margin: 10px;">
-                        <span class="badge corner-outside">!</span>
+                        {% metroui5_badge "!" corner_outside=True %}
                         <div style="padding: 20px; text-align: center;">Box 3</div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="cell-12">
-                <h2>Template Tag Usage</h2>
-                <p>Using the Django template tag:</p>
-                <div class="example-container">
-                    {% metroui5_badge "Template Badge" %}
-                    {% metroui5_badge "Corner Badge" corner=True %}
-                    {% metroui5_badge "Outside Badge" corner_outside=True %}
-                    {% metroui5_badge "Custom Badge" cls_badge="custom-badge" %}
                 </div>
             </div>
         </div>
@@ -82,10 +69,10 @@
                 <h2>Custom Styling with CSS Variables</h2>
                 <p>Badges with custom CSS variable styling:</p>
                 <div class="example-container">
-                    <span class="badge custom-badge-blue">Blue Badge</span>
-                    <span class="badge custom-badge-green">Green Badge</span>
-                    <span class="badge custom-badge-red">Red Badge</span>
-                    <span class="badge custom-badge-purple">Purple Badge</span>
+                    {% metroui5_badge "Blue Badge" cls_badge="custom-badge-blue" %}
+                    {% metroui5_badge "Green Badge" cls_badge="custom-badge-green" %}
+                    {% metroui5_badge "Red Badge" cls_badge="custom-badge-red" %}
+                    {% metroui5_badge "Purple Badge" cls_badge="custom-badge-purple" %}
                 </div>
                 
                 <style>
@@ -124,26 +111,26 @@
                     <!-- Notification badges on buttons -->
                     <button class="button">
                         Messages
-                        <span class="badge corner">5</span>
+                        {% metroui5_badge "5" corner=True %}
                     </button>
                     
                     <button class="button">
                         Notifications
-                        <span class="badge corner-outside">12</span>
+                        {% metroui5_badge "12" corner_outside=True %}
                     </button>
                     
                     <!-- Status indicators -->
                     <div style="display: inline-block; margin: 10px;">
-                        <span class="badge">Online</span>
-                        <span class="badge">Active</span>
-                        <span class="badge">New</span>
+                        {% metroui5_badge "Online" %}
+                        {% metroui5_badge "Active" %}
+                        {% metroui5_badge "New" %}
                     </div>
                     
                     <!-- Count indicators -->
                     <div style="display: inline-block; margin: 10px;">
-                        <span class="badge">Items: 25</span>
-                        <span class="badge">Users: 1,234</span>
-                        <span class="badge">Views: 99+</span>
+                        {% metroui5_badge "Items: 25" %}
+                        {% metroui5_badge "Users: 1,234" %}
+                        {% metroui5_badge "Views: 99+" %}
                     </div>
                 </div>
             </div>
@@ -246,27 +233,26 @@
         <div class="row">
             <div class="cell-12">
                 <h2>Usage Examples</h2>
-                <h3>Basic HTML Usage:</h3>
-                <pre><code>&lt;!-- Basic usage --&gt;
-&lt;span class="badge"&gt;New&lt;/span&gt;
-
-&lt;!-- Badge in corner position --&gt;
-&lt;div style="position: relative; width: 100px; height: 100px; background-color: #f0f0f0;"&gt;
-    &lt;span class="badge corner"&gt;8&lt;/span&gt;
-&lt;/div&gt;
-
-&lt;!-- Badge outside corner position --&gt;
-&lt;div style="position: relative; width: 100px; height: 100px; background-color: #f0f0f0;"&gt;
-    &lt;span class="badge corner-outside"&gt;12&lt;/span&gt;
-&lt;/div&gt;</code></pre>
-
                 <h3>Django Template Usage:</h3>
-                <pre><code>{% load metroui5 %}
+                <pre><code>&lbrace;% load metroui5 %}
 
-{% metroui5_badge "New" %}
-{% metroui5_badge "8" corner=True %}
-{% metroui5_badge "12" corner_outside=True %}
-{% metroui5_badge "Custom" cls_badge="custom-badge" %}</code></pre>
+&lbrace;% metroui5_badge "New" %}
+&lbrace;% metroui5_badge "5" %}
+&lbrace;% metroui5_badge "Alert" %}
+&lbrace;% metroui5_badge "Status" %}
+
+&lbrace;% metroui5_badge "8" corner=True %}
+&lbrace;% metroui5_badge "12" corner=True %}
+&lbrace;% metroui5_badge "99+" corner=True %}
+
+&lbrace;% metroui5_badge "15" corner_outside=True %}
+&lbrace;% metroui5_badge "3" corner_outside=True %}
+&lbrace;% metroui5_badge "!" corner_outside=True %}
+
+&lbrace;% metroui5_badge "Blue Badge" cls_badge="custom-badge-blue" %}
+&lbrace;% metroui5_badge "Green Badge" cls_badge="custom-badge-green" %}
+&lbrace;% metroui5_badge "Red Badge" cls_badge="custom-badge-red" %}
+&lbrace;% metroui5_badge "Purple Badge" cls_badge="custom-badge-purple" %}</code></pre>
 
                 <h3>Python Usage:</h3>
                 <pre><code>from metroui5.components import render_badge

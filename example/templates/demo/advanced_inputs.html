@@ -3,7 +3,7 @@
 
 {% block title %}Advanced Input Components - MetroUI5 Demo{% endblock %}
 
-{% block content %}
+{% block page_content %}
 <div class="container">
     <h1>Advanced Input Components</h1>
     <p>Demonstrating the enhanced MetroUI v5 Input component with all advanced features.</p>
@@ -54,13 +54,13 @@
                 <h3>Input Masks</h3>
                 
                 <h4>Phone Number Mask</h4>
-                {% metroui5_input "text" "Enter phone number" label="Phone:" mask="(999) 999-9999" %}
+                {% metroui5_input "text" "Enter phone number" label="Phone:" mask="(___) ___-____" mask_pattern="[0-9]" %}
                 
                 <h4>Date Mask</h4>
-                {% metroui5_input "text" "Enter date" label="Date:" mask="99/99/9999" %}
+                {% metroui5_input "text" "Enter date" label="Date:" mask="__/__/____" mask_pattern="[0-9]" %}
                 
                 <h4>Credit Card Mask</h4>
-                {% metroui5_input "text" "Enter card number" label="Card:" mask="9999 9999 9999 9999" %}
+                {% metroui5_input "text" "Enter card number" label="Card:" mask="____ ____ ____ ____" mask_pattern="[0-9]" %}
             </div>
             
             <div class="cell-md-6">
@@ -119,13 +119,13 @@
                 {% metroui5_input "file" "Choose image" label="Upload Image:" accept=".jpg,.png,.gif" multiple=True %}
                 
                 <h4>Combined Features</h4>
-                {% metroui5_input "text" "Enter phone" label="Phone:" mask="(999) 999-9999" material=True required=True %}
+                {% metroui5_input "text" "Enter phone" label="Phone:" mask="(___) ___-____" mask_pattern="[0-9]" material=True required=True %}
                 
                 <h4>Custom Button Icons</h4>
                 {% metroui5_input "text" "Enter text" label="Custom Icons:" clear_button=True clear_button_icon="🗑️" search_button=True search_button_icon="🔍" %}
                 
                 <h4>Advanced Mask Parameters</h4>
-                {% metroui5_input "text" "Enter phone" label="Advanced Mask:" mask="(999) 999-9999" mask_placeholder="_" mask_editable_start=1 %}
+                {% metroui5_input "text" "Enter phone" label="Advanced Mask:" mask="(___) ___-____" mask_pattern="[0-9]" mask_placeholder="_" mask_editable_start=1 %}
                 
                 <h4>Autocomplete with URL Key</h4>
                 {% metroui5_input "text" "Search users" label="User Search:" autocomplete_url="/api/users" autocomplete_url_key="name" %}
@@ -171,7 +171,7 @@
             <div class="accordion-frame">
                 <a class="accordion-title" href="#">Input with Mask</a>
                 <div class="accordion-content">
-                    <pre><code>{% metroui5_input "text" "Enter phone" label="Phone:" mask="(999) 999-9999" %}</code></pre>
+                    <pre><code>{% metroui5_input "text" "Enter phone" label="Phone:" mask="(___) ___-____" mask_pattern="[0-9]" %}</code></pre>
                 </div>
             </div>
             <div class="accordion-frame">
@@ -189,7 +189,7 @@
             <div class="accordion-frame">
                 <a class="accordion-title" href="#">Combined Features</a>
                 <div class="accordion-content">
-                    <pre><code>{% metroui5_input "text" "Enter phone" label="Phone:" mask="(999) 999-9999" material=True required=True %}</code></pre>
+                    <pre><code>{% metroui5_input "text" "Enter phone" label="Phone:" mask="(___) ___-____" mask_pattern="[0-9]" material=True required=True %}</code></pre>
                 </div>
             </div>
             <div class="accordion-frame">
@@ -201,7 +201,7 @@
             <div class="accordion-frame">
                 <a class="accordion-title" href="#">Advanced Mask Parameters</a>
                 <div class="accordion-content">
-                    <pre><code>{% metroui5_input "text" "Enter phone" label="Advanced Mask:" mask="(999) 999-9999" mask_placeholder="_" mask_editable_start=1 %}</code></pre>
+                    <pre><code>{% metroui5_input "text" "Enter phone" label="Advanced Mask:" mask="(___) ___-____" mask_pattern="[0-9]" mask_placeholder="_" mask_editable_start=1 %}</code></pre>
                 </div>
             </div>
             <div class="accordion-frame">
