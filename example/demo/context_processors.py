@@ -48,7 +48,9 @@ def app_bar_data(request):
                     {'text': 'Bulls', 'href': '/bulls-demo/', 'icon': 'mif-checkmark'},
                     {'text': 'Button', 'href': '/button-demo/', 'icon': 'mif-play'},
                     {'text': 'Button Group', 'href': '/button-group-demo/', 'icon': 'mif-menu'},
-                    {'text': 'Calendar', 'href': '/calendar-demo/', 'icon': 'mif-calendar'}
+                    {'text': 'Calendar', 'href': '/calendar-demo/', 'icon': 'mif-calendar'},
+                    {'text': 'Calendar Picker', 'href': '/calendar-picker-demo/', 'icon': 'mif-calendar'},
+                    {'text': 'Card', 'href': '/card-demo/', 'icon': 'mif-credit-card'}
                 ]
             },
             {

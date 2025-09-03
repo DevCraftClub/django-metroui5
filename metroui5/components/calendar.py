@@ -271,11 +271,11 @@ def render_calendar(show=None, **attrs):
 			onCalendarCreate (str): Callback when calendar is created
 			cls_calendar (str): Additional CSS class for the calendar container
 		
-	Returns:
-		str: Rendered HTML div element with calendar functionality
-		
-	References:
-		.. _MetroUI Calendar: https://v5.metroui.org.ua/components/calendar/
-		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+		Returns:
+			str: Rendered HTML div element with calendar functionality
+			
+		References:
+			.. _MetroUI Calendar: https://v5.metroui.org.ua/components/calendar/
+			.. _MetroUI Documentation: https://v5.metroui.org.ua/
 	"""
 	return _calendar_component.render(show, **attrs)

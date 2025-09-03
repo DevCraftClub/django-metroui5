@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Card Component Demo{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Card Component Demo</h1>
+    <p>This demo showcases the MetroUI Card component with various configurations and features.</p>
+
+    <h2>Basic Card</h2>
+    <div class="example">
+        {% metroui5_card header="Card Title" content="Card content goes here..." footer="<button class='button'>Action</button>" %}
+    </div>
+
+    <h2>Card with Header Buttons</h2>
+    <div class="example">
+        {% metroui5_card header='{"text": "Header", "buttons": [{"icon": "mif-rocket"}, {"icon": "mif-share"}, {"icon": "mif-cross"}]}' content="Lorem Ipsum is simply dummy text of the printing and typesetting industry." footer="<button class='button primary'>Ok</button><button class='button'>Cancel</button>" %}
+    </div>
+
+    <h2>Image Header Card</h2>
+    <div class="example">
+        {% metroui5_card image_header=True header_background="https://via.placeholder.com/400x200/1976D2/ffffff?text=Header+Image" content="Card content goes here..." footer="<button class='button'>Action</button>" %}
+    </div>
+
+    <h2>Flexible Card</h2>
+    <div class="example">
+        {% metroui5_card flex_card=True content="This card can expand to fill available space. It's useful for dynamic content that needs to adapt to different screen sizes." %}
+    </div>
+
+    <h2>Card with Avatar and Date</h2>
+    <div class="example">
+        {% metroui5_card header='{"text": "John Doe", "buttons": [{"icon": "mif-rocket"}]}' header_avatar="https://via.placeholder.com/40x40/4CAF50/ffffff?text=JD" header_date="2024-01-15" content="User profile information goes here. This card demonstrates how to include avatars, dates, and action buttons in the header." footer="<button class='button primary'>View Profile</button>" %}
+    </div>
+
+    <h2>Card with Custom CSS Classes</h2>
+    <div class="example">
+        {% metroui5_card header="Custom Styled Card" cls_header="bg-cyan fg-white" content="This card has custom CSS classes applied to different sections." cls_content="bg-lightCyan" footer="<button class='button success'>Custom Footer</button>" cls_footer="bg-lightGreen" %}
+    </div>
+
+    <h2>Multiple Cards Layout</h2>
+    <div class="example">
+        <div class="grid">
+            <div class="cell-md-4">
+                {% metroui5_card header="Product 1" content="Description of product 1" footer="<button class='button primary'>Buy Now</button>" %}
+            </div>
+            <div class="cell-md-4">
+                {% metroui5_card header="Product 2" content="Description of product 2" footer="<button class='button primary'>Buy Now</button>" %}
+            </div>
+            <div class="cell-md-4">
+                {% metroui5_card header="Product 3" content="Description of product 3" footer="<button class='button primary'>Buy Now</button>" %}
+            </div>
+        </div>
+    </div>
+
+    <h2>Card with Complex Header</h2>
+    <div class="example">
+        {% metroui5_card header='{"text": "Project Dashboard", "buttons": [{"icon": "mif-cog", "class": "button primary"}, {"icon": "mif-share", "class": "button"}, {"icon": "mif-cross", "class": "button alert"}]}' content="This card demonstrates a complex header with multiple action buttons and different button styles." footer="<button class='button success'>Save Changes</button><button class='button'>Cancel</button>" %}
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example">
+        <h3>Basic Card</h3>
+        <pre><code>{% verbatim %}{% metroui5_card header="Card Title" content="Card content" footer="<button class='button'>Action</button>" %}{% endverbatim %}</code></pre>
+
+        <h3>Image Header Card</h3>
+        <pre><code>{% verbatim %}{% metroui5_card image_header=True header_background="image.jpg" content="Content" %}{% endverbatim %}</code></pre>
+
+        <h3>Flexible Card</h3>
+        <pre><code>{% verbatim %}{% metroui5_card flex_card=True content="Flexible content" %}{% endverbatim %}</code></pre>
+
+        <h3>Card with Header Buttons</h3>
+        <pre><code>{% verbatim %}{% metroui5_card header="Header" header_buttons='[{"icon": "mif-rocket"}, {"icon": "mif-share"}]' content="Content" %}{% endverbatim %}</code></pre>
+    </div>
+</div>
+{% endblock %}

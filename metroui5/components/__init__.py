@@ -18,6 +18,7 @@ from .badge import render_badge
 from .breadcrumb import render_breadcrumb
 from .button import render_button
 from .calendar import render_calendar
+from .calendar_picker import render_calendar_picker
 from .card import render_card
 from .dialog import render_dialog
 from .dropdown import render_dropdown
@@ -70,6 +71,7 @@ __all__ = [
     'render_bar3d',
     'render_box',
     'render_calendar',
+    'render_calendar_picker',
     'render_dialog',
     'render_dropdown',
     'render_input',
