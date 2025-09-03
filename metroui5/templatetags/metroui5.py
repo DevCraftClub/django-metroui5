@@ -20,6 +20,7 @@ from ..components import (
     render_box,
     render_calendar,
     render_calendar_picker,
+    render_carousel,
     render_dialog,
     render_dropdown,
     render_input,
@@ -198,6 +199,12 @@ def metroui5_tile(title, **kwargs):
 def metroui5_card(**kwargs):
     """Renders MetroUI card."""
     return mark_safe(render_card(**kwargs))
+
+
+@register.simple_tag
+def metroui5_carousel(**kwargs):
+    """Renders MetroUI carousel."""
+    return mark_safe(render_carousel(**kwargs))
 
 
 @register.simple_tag
