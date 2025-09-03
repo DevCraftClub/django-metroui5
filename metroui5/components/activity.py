@@ -24,11 +24,11 @@ class ActivityComponent(SimpleComponent):
 			base_css_class="activity",
 			tag_name="div",
 			component_params=[
-				'activity_deferred', 'type', 'style', 'size', 'radius', 
-				'on_activity_create', 'cls_activity'
+				'activityDeferred', 'type', 'style', 'size', 'radius', 
+				'onActivityCreate', 'cls_activity'
 			],
 			data_attr_mapping={
-				'activity_deferred': 'data-activity-deferred',
+				'activityDeferred': 'data-activity-deferred',
 				'type': 'data-type',
 				'style': 'data-style',
 				'size': 'data-size',
@@ -43,12 +43,12 @@ class ActivityComponent(SimpleComponent):
 		
 		Args:
 			**attrs: Additional HTML attributes including:
-				activity_deferred (int): Deferred initialization time in milliseconds
+				activityDeferred (int): Deferred initialization time in milliseconds
 				type (str): Type of activity indicator - Options: "ring", "metro", "square", "cycle", "simple", "atom", "bars"
 				style (str): Style of the activity indicator - Options: "", "dark", "color"
 				size (int): Size of the activity indicator in pixels
 				radius (int): Radius for the "simple" type activity indicator
-				on_activity_create (str): Callback function triggered when the activity indicator is created
+				onActivityCreate (str): Callback function triggered when the activity indicator is created
 				cls_activity (str): Additional CSS class for the activity container
 			
 		Returns:
@@ -68,8 +68,8 @@ class ActivityComponent(SimpleComponent):
 		data_attrs = self.build_data_attributes(component_attrs, self.data_attr_mapping)
 		
 		# Add activity-specific data attributes
-		if component_attrs.get('on_activity_create'):
-			data_attrs["data-on-activity-create"] = component_attrs['on_activity_create']
+		if component_attrs.get('onActivityCreate'):
+			data_attrs["data-on-activity-create"] = component_attrs['onActivityCreate']
 		
 		# Build final attributes
 		final_attrs = {
@@ -79,7 +79,7 @@ class ActivityComponent(SimpleComponent):
 			**standard_attrs
 		}
 		
-		return self.render_component(self.tag_name, final_attrs, close=False)
+		return self.render_component(self.tag_name, final_attrs, close=True)
 
 
 # Create component instance
@@ -100,12 +100,12 @@ def render_activity(**attrs):
 	
 	Args:
 		**attrs: Additional HTML attributes including:
-			activity_deferred (int): Deferred initialization time in milliseconds
+			activityDeferred (int): Deferred initialization time in milliseconds
 			type (str): Type of activity indicator - Options: "ring", "metro", "square", "cycle", "simple", "atom", "bars"
 			style (str): Style of the activity indicator - Options: "", "dark", "color"
 			size (int): Size of the activity indicator in pixels
 			radius (int): Radius for the "simple" type activity indicator
-			on_activity_create (str): Callback function triggered when the activity indicator is created
+			onActivityCreate (str): Callback function triggered when the activity indicator is created
 			cls_activity (str): Additional CSS class for the activity container
 		
 	Returns:

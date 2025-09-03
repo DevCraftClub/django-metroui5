@@ -87,14 +87,6 @@ def advanced_components_demo(request):
             'content': 'Легко настраивайте цвета, размеры и стили компонентов под ваши потребности.'
         }
     ]
-
-
-def themes_demo(request):
-    """Демонстрация тем MetroUI 5."""
-    context = {
-        'page_title': 'Демонстрация тем',
-    }
-    return render(request, 'demo/themes.html', context)
     
     # Data for tabs
     # Данные для tabs
@@ -250,6 +242,14 @@ def themes_demo(request):
         'tree_items': tree_items,
     }
     return render(request, 'demo/advanced_components.html', context)
+
+
+def themes_demo(request):
+    """Демонстрация тем MetroUI 5."""
+    context = {
+        'page_title': 'Демонстрация тем',
+    }
+    return render(request, 'demo/themes.html', context)
 
 
 def initials_avatars(request):
@@ -470,8 +470,138 @@ def analog_clock_demo(request):
 
 def app_bar_demo(request):
 	"""Demo page for app bar component."""
+	
+	# Basic brand data
+	brand_data = {
+		'text': 'Brand',
+		'href': '#'
+	}
+	
+	# Brand with icon
+	brand_with_icon_data = {
+		'text': 'Brand',
+		'href': '#',
+		'icon': '<img src="path/to/logo.png">'
+	}
+	
+	# Advanced brand data
+	advanced_brand_data = {
+		'text': 'MetroUI5 Demo',
+		'href': '#',
+		'icon': '<span class="mif-crown mif-3x"></span>'
+	}
+	
+	# Responsive brand data
+	responsive_brand_data = {
+		'text': 'ResponsiveApp',
+		'href': '#',
+		'icon': 'mif-mobile'
+	}
+	
+	# Custom brand data
+	custom_brand_data = {
+		'text': 'DesignStudio',
+		'href': '#',
+		'icon': 'mif-palette'
+	}
+	
+	# Callback brand data
+	callback_brand_data = {
+		'text': 'CallbackDemo',
+		'href': '#',
+		'icon': 'mif-cog'
+	}
+	
+	# Basic menu items
+	basic_menu_items = [
+		{'text': 'Home', 'href': '#'},
+		{'text': 'About', 'href': '#'},
+		{'text': 'Contact', 'href': '#'}
+	]
+	
+	# Extended menu items
+	extended_menu_items = [
+		{'text': 'Home', 'href': '#'},
+		{'text': 'Products', 'href': '#'},
+		{'text': 'Services', 'href': '#'},
+		{'text': 'About', 'href': '#'},
+		{'text': 'Contact', 'href': '#'}
+	]
+	
+	# Advanced menu items with dropdown
+	advanced_menu_items = [
+		{'text': 'Home', 'href': '#'},
+		{
+			'text': 'About',
+			'href': '#',
+			'dropdown': [
+				{'text': 'Home', 'href': '#'},
+				{'text': 'About', 'href': '#'},
+				{'text': 'Contact', 'href': '#'}
+			]
+		},
+		{'text': 'Contact', 'href': '#'}
+	]
+	
+	# Responsive menu items
+	responsive_menu_items = [
+		{'text': 'Home', 'href': '#'},
+		{'text': 'Features', 'href': '#'},
+		{'text': 'Pricing', 'href': '#'},
+		{'text': 'About', 'href': '#'},
+		{'text': 'Contact', 'href': '#'}
+	]
+	
+	# Custom menu items
+	custom_menu_items = [
+		{'text': 'Portfolio', 'href': '#'},
+		{'text': 'Services', 'href': '#'},
+		{'text': 'Team', 'href': '#'},
+		{'text': 'Contact', 'href': '#'}
+	]
+	
+	# Callback menu items
+	callback_menu_items = [
+		{'text': 'Home', 'href': '#'},
+		{'text': 'About', 'href': '#'},
+		{'text': 'Contact', 'href': '#'}
+	]
+	
+	# Advanced static items
+	advanced_static_items = [
+		{
+			'content': '<input data-role="input" class="small" data-prepend="<span class=\'mif-search\'></span>"/>',
+			'ml_auto': True
+		},
+		{
+			'content': '<button class="small square ml-1"><span class="mif-run"></span></button>',
+			'ml_auto': True
+		},
+		{
+			'content': '<button class="small ml-1">Logout</button>',
+			'ml_auto': True
+		},
+		{
+			'content': '<input type="checkbox" data-role="theme-switcher"/>',
+			'no_hover': True
+		}
+	]
+	
 	context = {
 		'page_title': 'App Bar Component - MetroUI5 Demo',
+		'brand_data': brand_data,
+		'brand_with_icon_data': brand_with_icon_data,
+		'advanced_brand_data': advanced_brand_data,
+		'responsive_brand_data': responsive_brand_data,
+		'custom_brand_data': custom_brand_data,
+		'callback_brand_data': callback_brand_data,
+		'basic_menu_items': basic_menu_items,
+		'extended_menu_items': extended_menu_items,
+		'advanced_menu_items': advanced_menu_items,
+		'responsive_menu_items': responsive_menu_items,
+		'custom_menu_items': custom_menu_items,
+		'callback_menu_items': callback_menu_items,
+		'advanced_static_items': advanced_static_items,
 	}
 	return render(request, 'demo/app_bar_demo.html', context)
 
@@ -650,3 +780,11 @@ def calendar_demo(request):
 		'page_title': 'Calendar Component - MetroUI5 Demo',
 	}
 	return render(request, 'demo/calendar_demo.html', context)
+
+
+def test_demo(request):
+	"""Test demo page to check layout."""
+	context = {
+		'page_title': 'Test Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/test_demo.html', context)

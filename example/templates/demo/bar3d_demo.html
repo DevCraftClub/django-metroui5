@@ -3,7 +3,7 @@
 
 {% block title %}Bar3d Demo{% endblock %}
 
-{% block content %}
+{% block page_content %}
 <div class="container">
     <h1>MetroUI Bar3d Component</h1>
     <p>This demo showcases the MetroUI v5 Bar3d component that creates a 3D bar chart visualization. It displays a value as a growing bar in a 3D perspective, with customizable colors and animations.</p>
@@ -73,57 +73,6 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="cell-12">
-                <h2>Custom Styling with CSS Variables</h2>
-                <p>Bar3d with custom CSS variable styling:</p>
-                <div class="example-container">
-                    <div style="display: flex; gap: 20px; align-items: end;">
-                        <div class="custom-bar3d-1">
-                            {% metroui5_bar3d value=60 height=200 %}
-                        </div>
-                        <div class="custom-bar3d-2">
-                            {% metroui5_bar3d value=80 height=200 %}
-                        </div>
-                        <div class="custom-bar3d-3">
-                            {% metroui5_bar3d value=40 height=200 %}
-                        </div>
-                    </div>
-                </div>
-                
-                <style>
-                .custom-bar3d-1 {
-                    --bar-height: 200px;
-                    --bar-width: 40px;
-                    --bar-value-color: #ffffff;
-                    --bar-top-color: rgba(52, 152, 219, 0.8);
-                    --bar-left-color: rgba(41, 128, 185, 0.8);
-                    --bar-right-color: rgba(31, 97, 141, 0.8);
-                    --bar-bottom-color: rgba(21, 67, 96, 0.2);
-                }
-                
-                .custom-bar3d-2 {
-                    --bar-height: 200px;
-                    --bar-width: 50px;
-                    --bar-value-color: #ffffff;
-                    --bar-top-color: rgba(231, 76, 60, 0.8);
-                    --bar-left-color: rgba(192, 57, 43, 0.8);
-                    --bar-right-color: rgba(154, 46, 35, 0.8);
-                    --bar-bottom-color: rgba(115, 34, 26, 0.2);
-                }
-                
-                .custom-bar3d-3 {
-                    --bar-height: 200px;
-                    --bar-width: 35px;
-                    --bar-value-color: #ffffff;
-                    --bar-top-color: rgba(46, 204, 113, 0.8);
-                    --bar-left-color: rgba(39, 174, 96, 0.8);
-                    --bar-right-color: rgba(31, 139, 77, 0.8);
-                    --bar-bottom-color: rgba(23, 105, 58, 0.2);
-                }
-                </style>
-            </div>
-        </div>
 
         <div class="row">
             <div class="cell-12">
@@ -337,11 +286,11 @@
 &lt;/div&gt;</code></pre>
 
                 <h3>Django Template Usage:</h3>
-                <pre><code>{% load metroui5 %}
+                <pre><code>&lbrace;% load metroui5 %}
 
-{% metroui5_bar3d %}
-{% metroui5_bar3d value=75 bar_color="#00d153" value_suffix="%" %}
-{% metroui5_bar3d height=250 value=60 animation_duration=500 %}</code></pre>
+&lbrace;% metroui5_bar3d %}
+&lbrace;% metroui5_bar3d value=75 bar_color="#00d153" value_suffix="%" %}
+&lbrace;% metroui5_bar3d height=250 value=60 animation_duration=500 %}</code></pre>
 
                 <h3>Python Usage:</h3>
                 <pre><code>from metroui5.components import render_bar3d

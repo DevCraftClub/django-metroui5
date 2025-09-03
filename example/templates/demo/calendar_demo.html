@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load metroui5 %}
 
-{% block title %}{{ page_title }}{% endblock %}
+{% block page_title %}{{ page_title }}{% endblock %}
 
-{% block content %}
-<div class="container">
+{% block page_content %}
     <h1>Calendar Component Demo</h1>
     <p>This page demonstrates the MetroUI Calendar component functionality based on the <a href="https://v5.metroui.org.ua/components/calendar/" target="_blank">official MetroUI v5 documentation</a>.</p>
 
@@ -688,5 +687,4 @@
             </ul>
         </div>
     </div>
-</div>
 {% endblock %}

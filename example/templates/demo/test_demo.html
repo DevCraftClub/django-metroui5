@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block page_title %}Test Demo{% endblock %}
+
+{% block page_content %}
+    <h1>Test Demo Page</h1>
+    <p>This is a simple test page to check if the layout is working.</p>
+    
+    <div class="row">
+        <div class="cell-6">
+            <h3>Basic Calendar</h3>
+            {% metroui5_calendar %}
+        </div>
+        <div class="cell-6">
+            <h3>Calendar with Date</h3>
+            {% metroui5_calendar show="2023-12-25" %}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="cell-12">
+            <h3>Test Content</h3>
+            <p>If you can see this text, the template is working correctly.</p>
+            <p>The calendar components above should be rendered by MetroUI JavaScript.</p>
+        </div>
+    </div>
+{% endblock %}

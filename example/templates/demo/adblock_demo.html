@@ -3,7 +3,7 @@
 
 {% block title %}Adblock Detection Demo{% endblock %}
 
-{% block content %}
+{% block page_content %}
 <div class="container">
     <h1>MetroUI Adblock Detection Component</h1>
     <p>This demo showcases the MetroUI v5 Adblock Detection component that can detect if users have ad blockers enabled.</p>
@@ -13,7 +13,7 @@
             <div class="cell-12">
                 <h2>Basic Usage</h2>
                 <p>Basic adblock detection with default settings:</p>
-                {% metroui5_adblock_detection %}
+                <pre><code>&lbrace;% metroui5_adblock_detection %}</code></pre>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
             <div class="cell-12">
                 <h2>Custom Configuration</h2>
                 <p>Adblock detection with custom parameters:</p>
-                {% metroui5_adblock_detection check_interval=2000 fire_once=true localhost=false on_alert="handleAdblock()" %}
+                <pre><code>&lbrace;% metroui5_adblock_detection check_interval=2000 fire_once=true localhost=false on_alert="handleAdblock()" %}</code></pre>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
             <div class="cell-12">
                 <h2>Advanced Configuration</h2>
                 <p>Adblock detection with all parameters configured:</p>
-                {% metroui5_adblock_detection 
+                <pre><code>&lbrace;% metroui5_adblock_detection 
                     adblock_deferred=1000 
                     check_interval=1500 
                     fire_once=false 
@@ -38,142 +38,11 @@
                     on_alert="showAdblockMessage()" 
                     on_fishing_start="startDetection()" 
                     on_fishing_done="stopDetection()" 
-                    cls_adblock="custom-adblock" %}
+                    cls_adblock="custom-adblock" %}</code></pre>
             </div>
         </div>
 
-        <div class="row">
-            <div class="cell-12">
-                <h2>JavaScript Event Handlers</h2>
-                <p>Example JavaScript functions to handle adblock detection events:</p>
-                <pre><code>// Listen for adblock detection events
-$(window).on("adblock-alert", function() {
-    console.log("Ad blocker detected!");
-    // Show alternative content or message
-    showAdblockMessage();
-});
-
-$(window).on("fishing-start", function() {
-    console.log("Adblock detection started");
-});
-
-$(window).on("fishing-done", function() {
-    console.log("Adblock detection completed");
-});
-
-// Example callback functions
-function handleAdblock() {
-    alert("Ad blocker detected! Please disable it to see ads.");
-}
-
-function showAdblockMessage() {
-    // Show a custom message or alternative content
-    document.getElementById('adblock-message').style.display = 'block';
-}
-
-function startDetection() {
-    console.log("Starting adblock detection...");
-}
-
-function stopDetection() {
-    console.log("Adblock detection finished.");
-}</code></pre>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="cell-12">
-                <h2>Global Configuration</h2>
-                <p>You can also configure adblock detection globally:</p>
-                <pre><code>// Configure adblock detection globally
-Metro.adblockSetup({
-    checkInterval: 2000,
-    fireOnce: true,
-    localhost: false,
-    onAlert: function() {
-        console.log("Ad blocker detected!");
-    }
-});</code></pre>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="cell-12">
-                <h2>API Methods</h2>
-                <p>The Adblock component provides these API methods:</p>
-                <pre><code>// Manually start the adblock detection
-Metro.Adblock.bite();
-
-// Start checking for ad blockers
-Metro.Adblock.fishing();</code></pre>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="cell-12">
-                <h2>Component Parameters</h2>
-                <table class="table striped">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Type</th>
-                            <th>Default</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>adblock_deferred</td>
-                            <td>number</td>
-                            <td>0</td>
-                            <td>Deferred initialization time in milliseconds</td>
-                        </tr>
-                        <tr>
-                            <td>check_interval</td>
-                            <td>number</td>
-                            <td>1000</td>
-                            <td>Interval in milliseconds to check for ad blockers</td>
-                        </tr>
-                        <tr>
-                            <td>fire_once</td>
-                            <td>boolean/number</td>
-                            <td>true</td>
-                            <td>Whether to fire the alert event only once</td>
-                        </tr>
-                        <tr>
-                            <td>check_stop</td>
-                            <td>number</td>
-                            <td>10</td>
-                            <td>Number of checks before stopping</td>
-                        </tr>
-                        <tr>
-                            <td>localhost</td>
-                            <td>boolean</td>
-                            <td>false</td>
-                            <td>Whether to check for ad blockers on localhost</td>
-                        </tr>
-                        <tr>
-                            <td>on_alert</td>
-                            <td>function</td>
-                            <td>Metro.noop</td>
-                            <td>Callback when ad blocker is detected</td>
-                        </tr>
-                        <tr>
-                            <td>on_fishing_start</td>
-                            <td>function</td>
-                            <td>Metro.noop</td>
-                            <td>Callback when detection starts</td>
-                        </tr>
-                        <tr>
-                            <td>on_fishing_done</td>
-                            <td>function</td>
-                            <td>Metro.noop</td>
-                            <td>Callback when detection is done</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    
     </div>
 </div>
 
@@ -182,35 +51,39 @@ Metro.Adblock.fishing();</code></pre>
     <strong>Ad Blocker Detected!</strong> Please consider disabling your ad blocker to support our site.
 </div>
 
-<script>
-// Example event handlers
-$(window).on("adblock-alert", function() {
-    console.log("Ad blocker detected!");
-    showAdblockMessage();
-});
 
-$(window).on("fishing-start", function() {
-    console.log("Adblock detection started");
-});
-
-$(window).on("fishing-done", function() {
-    console.log("Adblock detection completed");
-});
-
-function handleAdblock() {
-    alert("Ad blocker detected! Please disable it to see ads.");
-}
-
-function showAdblockMessage() {
-    document.getElementById('adblock-message').style.display = 'block';
-}
-
-function startDetection() {
-    console.log("Starting adblock detection...");
-}
-
-function stopDetection() {
-    console.log("Adblock detection finished.");
-}
-</script>
 {% endblock %}
+
+{% block extra_js %}
+<script>
+    // Example event handlers
+    $(window).on("adblock-alert", function() {
+        console.log("Ad blocker detected!");
+        showAdblockMessage();
+    });
+    
+    $(window).on("fishing-start", function() {
+        console.log("Adblock detection started");
+    });
+    
+    $(window).on("fishing-done", function() {
+        console.log("Adblock detection completed");
+    });
+    
+    function handleAdblock() {
+        alert("Ad blocker detected! Please disable it to see ads.");
+    }
+    
+    function showAdblockMessage() {
+        document.getElementById('adblock-message').style.display = 'block';
+    }
+    
+    function startDetection() {
+        console.log("Starting adblock detection...");
+    }
+    
+    function stopDetection() {
+        console.log("Adblock detection finished.");
+    }
+    </script>
+    {% endblock %}

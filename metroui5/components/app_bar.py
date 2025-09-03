@@ -31,13 +31,14 @@ class AppBarComponent(ComplexComponent):
 			]
 		)
 	
-	def render(self, brand=None, menu_items=None, **attrs):
+	def render(self, brand=None, menu_items=None, static_items=None, **attrs):
 		"""
 		Renders MetroUI app bar component.
 		
 		Args:
 			brand: Brand information (dict with 'text', 'href', 'icon' keys)
 			menu_items: List of menu items (list of dicts with 'text', 'href', 'icon' keys)
+			static_items: List of static items for the right side (list of dicts)
 			**attrs: Additional HTML attributes including:
 				appbar_deferred (int): Deferred initialization time in milliseconds
 				expand (bool): If true, the app bar will always be expanded
@@ -70,7 +71,7 @@ class AppBarComponent(ComplexComponent):
 		base_attrs = self.build_base_attributes(component_attrs, cls_attrs, standard_attrs)
 		
 		# Add data-role attribute
-		base_attrs["data-role"] = "app-bar"
+		base_attrs["data-role"] = "appbar"
 		
 		# Add app bar-specific data attributes
 		if component_attrs.get('appbar_deferred'):
@@ -113,29 +114,25 @@ class AppBarComponent(ComplexComponent):
 		# Build app bar content
 		app_bar_content = ""
 		
-		# Add brand element
+		# Add brand element (static item on the left)
 		if brand:
-			brand_classes = ["brand"]
+			brand_classes = ["app-bar-item-static", "no-hover"]
 			if component_attrs.get('cls_brand'):
 				brand_classes.append(component_attrs['cls_brand'])
-			
-			brand_attrs = {"class": " ".join(brand_classes)}
-			if brand.get('href'):
-				brand_attrs["href"] = brand['href']
 			
 			brand_content = ""
 			if brand.get('icon'):
 				if isinstance(brand['icon'], str) and brand['icon'].startswith('<'):
 					# HTML content
-					brand_content += f'<span class="icon">{brand["icon"]}</span>'
+					brand_content += brand["icon"]
 				else:
 					# Icon class
-					brand_content += f'<span class="icon"><span class="{brand["icon"]}"></span></span>'
+					brand_content += f'<span class="{brand["icon"]}"></span>'
 			
 			if brand.get('text'):
 				brand_content += f'<span class="caption">{brand["text"]}</span>'
 			
-			app_bar_content += render_tag("a", brand_attrs, brand_content)
+			app_bar_content += render_tag("div", {"class": " ".join(brand_classes)}, brand_content)
 		
 		# Add menu items
 		if menu_items:
@@ -145,23 +142,55 @@ class AppBarComponent(ComplexComponent):
 			
 			menu_list_items = []
 			for item in menu_items:
-				item_classes = ["app-bar-item"]
-				if component_attrs.get('cls_menu_item'):
-					item_classes.append(component_attrs['cls_menu_item'])
-				
-				item_attrs = {"class": " ".join(item_classes)}
-				if item.get('href'):
-					item_attrs["href"] = item['href']
-				
-				item_content = ""
-				if item.get('icon'):
-					item_content += f'<span class="icon"><span class="{item["icon"]}"></span></span>'
-				if item.get('text'):
-					item_content += item['text']
-				
-				menu_list_items.append(render_tag("li", {}, render_tag("a", item_attrs, item_content)))
+				# Check if item has dropdown
+				if item.get('dropdown'):
+					# Create dropdown menu item
+					item_content = ""
+					if item.get('icon'):
+						item_content += f'<span class="icon"><span class="{item["icon"]}"></span></span>'
+					if item.get('text'):
+						item_content += item['text']
+					
+					# Create dropdown menu
+					dropdown_items = []
+					for dropdown_item in item['dropdown']:
+						dropdown_item_content = ""
+						if dropdown_item.get('icon'):
+							dropdown_item_content += f'<span class="icon"><span class="{dropdown_item["icon"]}"></span></span>'
+						if dropdown_item.get('text'):
+							dropdown_item_content += dropdown_item['text']
+						
+						dropdown_item_attrs = {"href": dropdown_item.get('href', '#')}
+						dropdown_items.append(render_tag("li", {}, render_tag("a", dropdown_item_attrs, dropdown_item_content)))
+					
+					dropdown_menu = render_tag("ul", {"class": "d-menu", "data-role": "dropdown"}, "".join(dropdown_items))
+					menu_list_items.append(render_tag("li", {}, render_tag("a", {"href": item.get('href', '#'), "class": "dropdown-caret"}, item_content) + dropdown_menu))
+				else:
+					# Regular menu item
+					item_content = ""
+					if item.get('icon'):
+						item_content += f'<span class="icon"><span class="{item["icon"]}"></span></span>'
+					if item.get('text'):
+						item_content += item['text']
+					
+					item_attrs = {"href": item.get('href', '#')}
+					menu_list_items.append(render_tag("li", {}, render_tag("a", item_attrs, item_content)))
 			
 			app_bar_content += render_tag("ul", {"class": " ".join(menu_classes)}, "".join(menu_list_items))
+		
+		# Add static items (right side)
+		if static_items:
+			for static_item in static_items:
+				static_classes = ["app-bar-item-static"]
+				if static_item.get('no_hover'):
+					static_classes.append("no-hover")
+				if static_item.get('ml_auto'):
+					static_classes.append("ml-auto")
+				if static_item.get('cls'):
+					static_classes.append(static_item['cls'])
+				
+				static_content = static_item.get('content', '')
+				app_bar_content += render_tag("div", {"class": " ".join(static_classes)}, static_content)
 		
 		return render_tag("nav", attrs=base_attrs, content=app_bar_content)
 
@@ -170,7 +199,7 @@ class AppBarComponent(ComplexComponent):
 _app_bar_component = AppBarComponent()
 
 
-def render_app_bar(brand=None, menu_items=None, **attrs):
+def render_app_bar(brand=None, menu_items=None, static_items=None, **attrs):
 	"""
 	Renders MetroUI app bar component.
 	
@@ -210,4 +239,4 @@ def render_app_bar(brand=None, menu_items=None, **attrs):
 		.. _MetroUI App Bar: https://v5.metroui.org.ua/components/app-bar/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
 	"""
-	return _app_bar_component.render(brand, menu_items, **attrs)
+	return _app_bar_component.render(brand, menu_items, static_items, **attrs)

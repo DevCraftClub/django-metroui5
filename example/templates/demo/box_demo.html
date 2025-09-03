@@ -3,7 +3,7 @@
 
 {% block title %}{{ page_title }}{% endblock %}
 
-{% block content %}
+{% block page_content %}
 <div class="container">
     <h1>Box Component Demo</h1>
     <p>This page demonstrates the MetroUI Box component functionality.</p>
@@ -48,18 +48,7 @@
     <h2>Box with Rich Content</h2>
     <div class="row">
         <div class="cell-12">
-            {% metroui5_box %}
-                <div class="box-title">Rich Content Box</div>
-                <p>This box contains rich HTML content including:</p>
-                <ul>
-                    <li>Lists</li>
-                    <li><strong>Bold text</strong></li>
-                    <li><em>Italic text</em></li>
-                    <li><a href="#">Links</a></li>
-                </ul>
-                <div class="box-title-secondary">Secondary Section</div>
-                <p>More content in the secondary section...</p>
-            {% endmetroui5_box %}
+            {% metroui5_box '<div class="box-title">Rich Content Box</div><p>This box contains rich HTML content including:</p><ul><li>Lists</li><li><strong>Bold text</strong></li><li><em>Italic text</em></li><li><a href="#">Links</a></li></ul><div class="box-title-secondary">Secondary Section</div><p>More content in the secondary section...</p>' %}
         </div>
     </div>
 

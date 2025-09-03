@@ -271,10 +271,11 @@ def metroui5_analog_clock(**kwargs):
 @register.simple_tag
 def metroui5_app_bar(**kwargs):
     """Renders MetroUI app bar component."""
-    # Extract brand and menu_items from kwargs if they exist
+    # Extract brand, menu_items, and static_items from kwargs if they exist
     brand = kwargs.pop('brand', None)
     menu_items = kwargs.pop('menu_items', None)
-    return mark_safe(render_app_bar(brand, menu_items, **kwargs))
+    static_items = kwargs.pop('static_items', None)
+    return mark_safe(render_app_bar(brand, menu_items, static_items, **kwargs))
 
 
 @register.simple_tag
@@ -308,14 +309,40 @@ def metroui5_dropdown(items, button_text="Dropdown", **kwargs):
 
 
 @register.simple_tag
-def metroui5_input(input_type="text", placeholder="", **kwargs):
+def metroui5_input(*args, **kwargs):
     """Renders MetroUI input with advanced features."""
+    # Handle positional arguments
+    input_type = "text"
+    placeholder = ""
+    
+    if len(args) > 0:
+        input_type = args[0]
+    if len(args) > 1:
+        placeholder = args[1]
+    
+    # If placeholder is provided as a keyword argument, use it instead of the positional one
+    if 'placeholder' in kwargs:
+        placeholder = kwargs.pop('placeholder')
+    
     return mark_safe(render_input(input_type, placeholder, **kwargs))
 
 
 @register.simple_tag
-def metroui5_material_input(input_type="text", placeholder="", **kwargs):
+def metroui5_material_input(*args, **kwargs):
     """Renders MetroUI material input with material design features."""
+    # Handle positional arguments
+    input_type = "text"
+    placeholder = ""
+    
+    if len(args) > 0:
+        input_type = args[0]
+    if len(args) > 1:
+        placeholder = args[1]
+    
+    # If placeholder is provided as a keyword argument, use it instead of the positional one
+    if 'placeholder' in kwargs:
+        placeholder = kwargs.pop('placeholder')
+    
     return mark_safe(render_material_input(input_type, placeholder, **kwargs))
 
 
@@ -479,12 +506,6 @@ def metroui5_fluid_container(**kwargs):
     return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
-@register.simple_tag
-def metroui5_app_bar(**kwargs):
-    """Renders MetroUI app bar."""
-    attrs = {"class": "app-bar", "data-role": "appbar"}
-    attrs.update(kwargs)
-    return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag
@@ -575,9 +596,9 @@ def metroui5_wizard(steps, **kwargs):
 
 @register.simple_tag
 def metroui5_theme_meta():
-    """Returns the meta tag for theme configuration."""
-    from metroui5.core import get_theme_meta_tag
-    return get_theme_meta_tag()
+	"""Returns the meta tag for theme configuration."""
+	from metroui5.core import get_theme_meta_tag
+	return mark_safe(get_theme_meta_tag())
 
 
 @register.simple_tag

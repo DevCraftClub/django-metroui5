@@ -133,6 +133,38 @@ class BaseComponent(ABC):
         
         return data_attrs
     
+    def build_id_attribute(self, component_attrs, standard_attrs, prefix=None, auto_generate=True):
+        """
+        Build ID attribute for the component.
+        
+        Args:
+            component_attrs: Component-specific attributes
+            standard_attrs: Standard HTML attributes
+            prefix: Optional prefix for the ID (defaults to component name)
+            auto_generate: Whether to auto-generate ID if none provided (default: True)
+            
+        Returns:
+            str: ID attribute value or None
+        """
+        # Check if ID is explicitly provided
+        if 'id' in standard_attrs:
+            return standard_attrs['id']
+        
+        # Check if component has an ID parameter
+        if 'id' in component_attrs:
+            return component_attrs['id']
+        
+        # Auto-generate ID if requested
+        if auto_generate:
+            if prefix is None:
+                prefix = self.component_name
+            
+            # Create a simple ID based on component name
+            # This can be overridden by providing an explicit 'id' parameter
+            return f"{prefix}-component"
+        
+        return None
+    
     def render_component(self, tag_name, attrs, content="", close=True):
         """
         Render the component HTML.
@@ -205,6 +237,9 @@ class SimpleComponent(BaseComponent):
         # Build data attributes
         data_attrs = self.build_data_attributes(component_attrs, self.data_attr_mapping)
         
+        # Build ID attribute
+        id_attr = self.build_id_attribute(component_attrs, standard_attrs)
+        
         # Build final attributes
         final_attrs = {
             "class": " ".join(css_classes),
@@ -212,6 +247,10 @@ class SimpleComponent(BaseComponent):
             **data_attrs,
             **standard_attrs
         }
+        
+        # Add ID if generated or provided
+        if id_attr:
+            final_attrs["id"] = id_attr
         
         return self.render_component(self.tag_name, final_attrs)
 
@@ -249,10 +288,19 @@ class ComplexComponent(BaseComponent):
         """
         css_classes = self.build_css_classes(component_attrs, cls_attrs, standard_attrs, additional_classes)
         
-        return {
+        # Build ID attribute
+        id_attr = self.build_id_attribute(component_attrs, standard_attrs)
+        
+        base_attrs = {
             "class": " ".join(css_classes),
             **standard_attrs
         }
+        
+        # Add ID if generated or provided
+        if id_attr:
+            base_attrs["id"] = id_attr
+        
+        return base_attrs
     
     @abstractmethod
     def render(self, **attrs):
