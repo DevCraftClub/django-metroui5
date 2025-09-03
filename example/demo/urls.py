@@ -36,5 +36,6 @@ urlpatterns = [
     path('calendar-picker-demo/', views.calendar_picker_demo, name='calendar_picker_demo'),
     path('card-demo/', views.card_demo, name='card_demo'),
     path('carousel-demo/', views.carousel_demo, name='carousel_demo'),
+    path('catalog-menu-demo/', views.catalog_menu_demo, name='catalog_menu_demo'),
     path('test-demo/', views.test_demo, name='test_demo'),
 ]

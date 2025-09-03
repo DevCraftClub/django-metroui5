@@ -21,6 +21,8 @@ from ..components import (
     render_calendar,
     render_calendar_picker,
     render_carousel,
+    render_card,
+    render_catalog_menu,
     render_dialog,
     render_dropdown,
     render_input,
@@ -205,6 +207,12 @@ def metroui5_card(**kwargs):
 def metroui5_carousel(**kwargs):
     """Renders MetroUI carousel."""
     return mark_safe(render_carousel(**kwargs))
+
+
+@register.simple_tag
+def metroui5_catalog_menu(**kwargs):
+    """Renders MetroUI catalog menu."""
+    return mark_safe(render_catalog_menu(**kwargs))
 
 
 @register.simple_tag

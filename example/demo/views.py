@@ -806,6 +806,14 @@ def carousel_demo(request):
 	return render(request, 'demo/carousel_demo.html', context)
 
 
+def catalog_menu_demo(request):
+	"""Catalog Menu component demo page."""
+	context = {
+		'page_title': 'Catalog Menu Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/catalog_menu_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {
