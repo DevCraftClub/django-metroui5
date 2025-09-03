@@ -51,7 +51,8 @@ def app_bar_data(request):
                     {'text': 'Calendar', 'href': '/calendar-demo/', 'icon': 'mif-calendar'},
                     {'text': 'Calendar Picker', 'href': '/calendar-picker-demo/', 'icon': 'mif-calendar'},
                     {'text': 'Card', 'href': '/card-demo/', 'icon': 'mif-credit-card'},
-                    {'text': 'Carousel', 'href': '/carousel-demo/', 'icon': 'mif-images'}
+                    {'text': 'Carousel', 'href': '/carousel-demo/', 'icon': 'mif-images'},
+                    {'text': 'Catalog Menu', 'href': '/catalog-menu-demo/', 'icon': 'mif-list'}
                 ]
             },
             {
