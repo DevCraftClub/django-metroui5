@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Calendar Picker Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>MetroUI Calendar Picker Component</h1>
+    <p>This demo showcases the MetroUI v5 Calendar Picker component that combines an input field with a calendar popup for easy date selection.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-12">
+                <h2>Basic Usage</h2>
+                <p>Simple calendar picker with default settings:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Initial Value</h2>
+                <p>Calendar picker with a pre-selected date:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker value="2024/01/15" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Label</h2>
+                <p>Calendar picker with a descriptive label:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker label="Select date:" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Custom Date Format</h2>
+                <p>Calendar picker with custom date format:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker format="DD, MMM YYYY" input_format="DD/MM/YYYY" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Time Selection</h2>
+                <p>Calendar picker that also allows time selection:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker show_time=True initial_time="14:30" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Dialog Mode for Mobile</h2>
+                <p>Calendar picker that opens in dialog mode on mobile devices:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker dialog_mode=True dialog_point=640 %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Date Restrictions</h2>
+                <p>Calendar picker with minimum and maximum date limits:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker min_date="2024/01/01" max_date="2024/12/31" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Clear Button</h2>
+                <p>Calendar picker with a clear button to reset the selection:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker clear_button=True %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Wide Calendar Layout</h2>
+                <p>Calendar picker with wide layout for better visibility:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker wide=True wide_point=640 %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Custom Icons</h2>
+                <p>Calendar picker with custom icons for navigation:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker calendar_button_icon="📅" clear_button_icon="❌" prev_month_icon="⯇" next_month_icon="⯈" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Week Numbers</h2>
+                <p>Calendar picker that displays week numbers:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker show_week_number=True %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Event Handlers</h2>
+                <p>Calendar picker with JavaScript event callbacks:</p>
+                <div class="example-container">
+                    {% metroui5_calendar_picker on_change="handleDateChange(this)" on_calendar_show="handleCalendarShow(this)" on_calendar_hide="handleCalendarHide(this)" %}
+                </div>
+                <div id="event-output" class="bg-lightGray p-2 mt-2" style="min-height: 50px; border-radius: 4px;">
+                    <small class="text-muted">Event callbacks will appear here...</small>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Usage Examples</h2>
+               
+                <h3>Django Template Usage:</h3>
+                <pre><code>&lbrace;% load metroui5 %}
+
+&lbrace;% metroui5_calendar_picker %}
+&lbrace;% metroui5_calendar_picker value="2024/01/15" %}
+&lbrace;% metroui5_calendar_picker label="Select date:" %}
+&lbrace;% metroui5_calendar_picker format="DD, MMM YYYY" input_format="DD/MM/YYYY" %}
+&lbrace;% metroui5_calendar_picker show_time=True initial_time="14:30" %}
+&lbrace;% metroui5_calendar_picker dialog_mode=True dialog_point=640 %}
+&lbrace;% metroui5_calendar_picker min_date="2024/01/01" max_date="2024/12/31" %}
+&lbrace;% metroui5_calendar_picker clear_button=True %}</code></pre>
+
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Additional Information</h2>
+                <p>The Calendar Picker component:</p>
+                <ul>
+                    <li>Combines an input field with a calendar popup for easy date selection</li>
+                    <li>Supports various date formats and time selection</li>
+                    <li>Automatically switches to dialog mode on mobile devices</li>
+                    <li>Integrates with the Metro UI theming system</li>
+                    <li>Provides extensive customization options for icons, colors, and behavior</li>
+                    <li>Supports date restrictions and special date highlighting</li>
+                    <li>Includes comprehensive event handling for user interactions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+#event-output {
+    font-family: monospace;
+    font-size: 12px;
+}
+</style>
+
+<script>
+// Event handler functions for demo
+function handleDateChange(picker) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Date changed to ' + picker.value + '</div>';
+}
+
+function handleCalendarShow(picker) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Calendar shown</div>';
+}
+
+function handleCalendarHide(picker) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Calendar hidden</div>';
+}
+
+// Clear event output
+function clearEventOutput() {
+    document.getElementById('event-output').innerHTML = '<small class="text-muted">Event callbacks will appear here...</small>';
+}
+
+// Add clear button
+document.addEventListener('DOMContentLoaded', function() {
+    const clearBtn = document.createElement('button');
+    clearBtn.className = 'button small';
+    clearBtn.textContent = 'Clear Output';
+    clearBtn.addEventListener('click', clearEventOutput);
+    
+    const eventOutput = document.getElementById('event-output');
+    eventOutput.parentNode.insertBefore(clearBtn, eventOutput.nextSibling);
+});
+</script>
+{% endblock %}

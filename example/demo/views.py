@@ -782,6 +782,22 @@ def calendar_demo(request):
 	return render(request, 'demo/calendar_demo.html', context)
 
 
+def calendar_picker_demo(request):
+	"""Demo page for calendar picker component."""
+	context = {
+		'page_title': 'Calendar Picker Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/calendar_picker_demo.html', context)
+
+
+def card_demo(request):
+	"""Card component demo page."""
+	context = {
+		'page_title': 'Card Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/card_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {

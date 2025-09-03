@@ -19,6 +19,7 @@ from ..components import (
     render_bar3d,
     render_box,
     render_calendar,
+    render_calendar_picker,
     render_dialog,
     render_dropdown,
     render_input,
@@ -294,6 +295,12 @@ def metroui5_audio_player(src="", **kwargs):
 def metroui5_calendar(**kwargs):
     """Renders MetroUI calendar."""
     return mark_safe(render_calendar(**kwargs))
+
+
+@register.simple_tag
+def metroui5_calendar_picker(**kwargs):
+    """Renders MetroUI calendar picker component."""
+    return mark_safe(render_calendar_picker(**kwargs))
 
 
 @register.simple_tag
