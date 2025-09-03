@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Carousel Component Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Carousel Component Demo</h1>
+    <p>This demo showcases the MetroUI Carousel component with various configurations and features.</p>
+
+    <h2>Basic Carousel</h2>
+    <div class="example">
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' %}
+    </div>
+
+    <h2>Carousel with Background Images</h2>
+    <div class="example">
+        {% metroui5_carousel slides='[{"cover": "https://placehold.co/800x400/1976D2/ffffff?text=Image+1", "content": "Slide 1"}, {"cover": "https://placehold.co/800x400/4CAF50/ffffff?text=Image+2", "content": "Slide 2"}, {"cover": "https://placehold.co/800x400/FF9800/ffffff?text=Image+3", "content": "Slide 3"}]' %}
+    </div>
+
+    <h2>Carousel with Custom Options</h2>
+    <div class="example">
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' auto_start=True effect="fade" control_prev="<span class='mif-arrow-left'></span>" control_next="<span class='mif-arrow-right'></span>" bullets_style="circle" bullets_size="large" %}
+    </div>
+
+    <h2>Carousel with Different Effects</h2>
+    <div class="example">
+        <h3>Slide Effect (Default)</h3>
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' effect="slide" %}
+        
+        <h3>Fade Effect</h3>
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' effect="fade" %}
+        
+        <h3>Zoom Effect</h3>
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' effect="zoom" %}
+    </div>
+
+    <h2>Carousel with Custom Controls</h2>
+    <div class="example">
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' control_prev="<span class='mif-chevron-left'></span>" control_next="<span class='mif-chevron-right'></span>" controls_outside=True %}
+    </div>
+
+    <h2>Carousel with Different Bullet Styles</h2>
+    <div class="example">
+        <h3>Square Bullets (Default)</h3>
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' bullets_style="square" %}
+        
+        <h3>Circle Bullets</h3>
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' bullets_style="circle" %}
+        
+        <h3>Diamond Bullets</h3>
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' bullets_style="diamond" %}
+    </div>
+
+    <h2>Carousel with Different Bullet Sizes</h2>
+    <div class="example">
+        <h3>Mini Size</h3>
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' bullets_size="mini" %}
+        
+        <h3>Small Size</h3>
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' bullets_size="small" %}
+        
+        <h3>Large Size</h3>
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' bullets_size="large" %}
+    </div>
+
+    <h2>Carousel with Custom Timing</h2>
+    <div class="example">
+        {% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' auto_start=True period=3000 duration=500 %}
+    </div>
+
+    <h2>Carousel with Rich Content</h2>
+    <div class="example">
+        {% metroui5_carousel slides='["<h3>Welcome to MetroUI</h3><p>This is a beautiful carousel component with rich content.</p>", "<h3>Feature 1</h3><p>Multiple transition effects and customizable controls.</p>", "<h3>Feature 2</h3><p>Responsive design and accessibility features.</p>"]' effect="fade" %}
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example">
+        <h3>Basic Carousel</h3>
+        <pre><code>{% verbatim %}{% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' %}{% endverbatim %}</code></pre>
+
+        <h3>Carousel with Background Images</h3>
+        <pre><code>{% verbatim %}{% metroui5_carousel slides='[{"cover": "https://placehold.co/800x400/1976D2/ffffff?text=Image+1", "content": "Slide 1"}, {"cover": "https://placehold.co/800x400/4CAF50/ffffff?text=Image+2", "content": "Slide 2"}]' %}{% endverbatim %}</code></pre>
+
+        <h3>Carousel with Custom Options</h3>
+        <pre><code>{% verbatim %}{% metroui5_carousel slides='["Slide 1", "Slide 2", "Slide 3"]' auto_start=True effect="fade" bullets_style="circle" %}{% endverbatim %}</code></pre>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Example of API usage
+    const carousels = document.querySelectorAll('[data-role="carousel"]');
+    
+    carousels.forEach((carousel, index) => {
+        // Get the MetroUI carousel instance
+        const carouselInstance = Metro.getPlugin(carousel, 'carousel');
+        
+        if (carouselInstance) {
+            // Example: Navigate to slide 2 after 5 seconds
+            setTimeout(() => {
+                if (carouselInstance.toSlide) {
+                    carouselInstance.toSlide(1); // 0-based index
+                }
+            }, 5000);
+        }
+    });
+});
+</script>
+{% endblock %}

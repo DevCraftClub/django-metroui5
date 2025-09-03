@@ -798,6 +798,14 @@ def card_demo(request):
 	return render(request, 'demo/card_demo.html', context)
 
 
+def carousel_demo(request):
+	"""Carousel component demo page."""
+	context = {
+		'page_title': 'Carousel Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/carousel_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {

@@ -19,6 +19,7 @@ from .breadcrumb import render_breadcrumb
 from .button import render_button
 from .calendar import render_calendar
 from .calendar_picker import render_calendar_picker
+from .carousel import render_carousel
 from .card import render_card
 from .dialog import render_dialog
 from .dropdown import render_dropdown
@@ -72,6 +73,7 @@ __all__ = [
     'render_box',
     'render_calendar',
     'render_calendar_picker',
+    'render_carousel',
     'render_dialog',
     'render_dropdown',
     'render_input',
