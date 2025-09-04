@@ -886,6 +886,14 @@ def color_picker_demo(request):
 	return render(request, 'demo/color_picker_demo.html', context)
 
 
+def color_selector_demo(request):
+	"""Color Selector component demo page."""
+	context = {
+		'page_title': 'Color Selector Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/color_selector_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {

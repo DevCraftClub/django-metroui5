@@ -60,7 +60,8 @@ def app_bar_data(request):
                     {'text': 'Chips', 'href': '/chips-demo/', 'icon': 'mif-tag'},
                     {'text': 'Cloak', 'href': '/cloak-demo/', 'icon': 'mif-eye-slash'},
                     {'text': 'Collapse', 'href': '/collapse-demo/', 'icon': 'mif-chevron-down'},
-                    {'text': 'Color Picker', 'href': '/color-picker-demo/', 'icon': 'mif-palette'}
+                    {'text': 'Color Picker', 'href': '/color-picker-demo/', 'icon': 'mif-palette'},
+                    {'text': 'Color Selector', 'href': '/color-selector-demo/', 'icon': 'mif-palette'}
                 ]
             },
             {
