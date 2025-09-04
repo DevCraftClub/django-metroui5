@@ -1,0 +1,455 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Chat Component Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Chat Component Demo</h1>
+    <p>This demo showcases the MetroUI Chat component for interactive messaging interface.</p>
+
+    <h2>Basic Chat</h2>
+    <div class="example">
+        {% metroui5_chat %}
+    </div>
+
+    <h2>Chat with Configuration</h2>
+    <div class="example">
+        {% metroui5_chat name="John Smith" avatar="<span>👨</span>" welcome="Welcome to our chat! How can I help you today?" welcomeAvatar="<span>🤖</span>" title="Customer Support" width="100%" height="400px" %}
+    </div>
+
+    <h2>Chat with Initial Messages</h2>
+    <div class="example">
+        {% metroui5_chat name="John Smith" avatar="<span>👨</span>" title="Customer Support" %}
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find the chat component in this example
+            const chatElement = document.querySelector('.example:nth-of-type(3) [data-role="chat"]');
+            if (chatElement) {
+                const chat = Metro.getPlugin(chatElement, 'chat');
+                if (chat) {
+                    chat.addMessages([
+                        {"name": "Alice", "avatar": "<span>👩</span>", "text": "Hello! How can I help you today?", "position": "left", "time": "10:30 AM"},
+                        {"name": "John", "avatar": "<span>👨</span>", "text": "Hi there! I need help with my order.", "position": "right", "time": "10:31 AM"},
+                        {"name": "Alice", "avatar": "<span>👩</span>", "text": "Of course! What is your order number?", "position": "left", "time": "10:32 AM"}
+                    ]);
+                }
+            }
+        });
+        </script>
+    </div>
+
+    <h2>Read-only Chat (Chat History)</h2>
+    <div class="example">
+        {% metroui5_chat readonly="true" title="Chat History" %}
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find the chat component in this example
+            const chatElement = document.querySelector('.example:nth-of-type(4) [data-role="chat"]');
+            if (chatElement) {
+                const chat = Metro.getPlugin(chatElement, 'chat');
+                if (chat) {
+                    chat.addMessages([
+                        {"name": "Support Team", "avatar": "<span>🤖</span>", "text": "Welcome to our support chat!", "position": "left", "time": "9:00 AM"},
+                        {"name": "Customer", "avatar": "<span>👤</span>", "text": "I have a question about my subscription", "position": "right", "time": "9:05 AM"},
+                        {"name": "Support Team", "avatar": "<span>🤖</span>", "text": "I would be happy to help! What would you like to know?", "position": "left", "time": "9:06 AM"},
+                        {"name": "Customer", "avatar": "<span>👤</span>", "text": "How do I cancel my subscription?", "position": "right", "time": "9:07 AM"},
+                        {"name": "Support Team", "avatar": "<span>🤖</span>", "text": "You can cancel your subscription in the account settings.", "position": "left", "time": "9:08 AM"}
+                    ]);
+                }
+            }
+        });
+        </script>
+    </div>
+
+    <h2>Chat with Custom Styling</h2>
+    <div class="example">
+        {% metroui5_chat clsChat="custom-chat" clsMessageLeft="custom-message-left" clsMessageRight="custom-message-right" title="Team Chat" %}
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find the chat component in this example
+            const chatElement = document.querySelector('.example:nth-of-type(5) [data-role="chat"]');
+            if (chatElement) {
+                const chat = Metro.getPlugin(chatElement, 'chat');
+                if (chat) {
+                    chat.addMessages([
+                        {"name": "Designer", "avatar": "<span>🎨</span>", "text": "Here is the new design mockup", "position": "left", "time": "2:15 PM"},
+                        {"name": "Developer", "avatar": "<span>💻</span>", "text": "Looks great! I will start implementing it.", "position": "right", "time": "2:16 PM"}
+                    ]);
+                }
+            }
+        });
+        </script>
+    </div>
+
+    <h2>Chat with Different Send Modes</h2>
+    <div class="example">
+        <h3>Enter to Send</h3>
+        {% metroui5_chat sendMode="enter" name="User" avatar="<span>👤</span>" title="Enter to Send" %}
+
+        <h3>Control+Enter to Send</h3>
+        {% metroui5_chat sendMode="control+enter" name="User" avatar="<span>👤</span>" title="Ctrl+Enter to Send" %}
+
+        <h3>Button Only</h3>
+        {% metroui5_chat sendMode="button" name="User" avatar="<span>👤</span>" title="Button Only" %}
+    </div>
+
+    <h2>Chat with File Attachments</h2>
+    <div class="example">
+        {% metroui5_chat attachAccept=".pdf,.doc,.docx" buttons="send attach" name="User" avatar="<span>👤</span>" title="File Sharing" %}
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find the chat component in this example
+            const chatElement = document.querySelector('.example:nth-of-type(7) [data-role="chat"]');
+            if (chatElement) {
+                const chat = Metro.getPlugin(chatElement, 'chat');
+                if (chat) {
+                    chat.addMessages([
+                        {"name": "User", "avatar": "<span>👤</span>", "text": "I am sending you the document", "position": "right", "time": "3:00 PM"},
+                        {"name": "Support", "avatar": "<span>🤖</span>", "text": "Thank you! I received the file.", "position": "left", "time": "3:01 PM"}
+                    ]);
+                }
+            }
+        });
+        </script>
+    </div>
+
+    <h2>Chat with Custom Time Format</h2>
+    <div class="example">
+        {% metroui5_chat timeFormat="YYYY-MM-DD HH:mm:ss" name="User" avatar="<span>👤</span>" title="Custom Time Format" %}
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find the chat component in this example
+            const chatElement = document.querySelector('.example:nth-of-type(8) [data-role="chat"]');
+            if (chatElement) {
+                const chat = Metro.getPlugin(chatElement, 'chat');
+                if (chat) {
+                    chat.addMessages([
+                        {"name": "System", "avatar": "<span>⚙️</span>", "text": "System message with custom time format", "position": "left", "time": "2024-01-15 14:30:00"}
+                    ]);
+                }
+            }
+        });
+        </script>
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example">
+        <h3>Basic Chat</h3>
+        <pre><code>{% verbatim %}{% metroui5_chat %}{% endverbatim %}</code></pre>
+
+        <h3>Chat with Configuration</h3>
+        <pre><code>{% verbatim %}{% metroui5_chat name="John Smith" avatar="<span>👨</span>" welcome="Welcome!" title="Support" %}{% endverbatim %}</code></pre>
+
+        <h3>Chat with Initial Messages</h3>
+        <pre><code>{% verbatim %}{% metroui5_chat name="User" avatar="<span>👤</span>" title="Chat" %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chat = Metro.getPlugin('#chat-component', 'chat');
+    if (chat) {
+        chat.addMessages([
+            {"name": "Alice", "text": "Hello!", "position": "left", "time": "10:30 AM"}
+        ]);
+    }
+});
+</script>{% endverbatim %}</code></pre>
+
+        <h3>Read-only Chat</h3>
+        <pre><code>{% verbatim %}{% metroui5_chat readonly="true" title="Chat History" %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chat = Metro.getPlugin('#chat-component', 'chat');
+    if (chat) {
+        chat.addMessages([
+            {"name": "User", "text": "Message", "position": "left"}
+        ]);
+    }
+});
+</script>{% endverbatim %}</code></pre>
+    </div>
+
+    <h2>JavaScript API Examples</h2>
+    <div class="example">
+        <h3>Adding Messages Programmatically</h3>
+        <pre><code>// Get chat instance
+const chat = Metro.getPlugin('#myChat', 'chat');
+
+// Add a single message
+chat.add({
+    name: 'User Name',
+    avatar: '<span>👨</span>',
+    text: 'Hello, world!',
+    position: 'left',
+    time: new Date()
+});
+
+// Add multiple messages
+chat.addMessages([
+    {
+        name: 'User 1',
+        avatar: '<span>👨</span>',
+        text: 'Hello!',
+        position: 'left',
+        time: new Date()
+    },
+    {
+        name: 'User 2',
+        avatar: '<span>👩</span>',
+        text: 'Hi there!',
+        position: 'right',
+        time: new Date()
+    }
+]);
+
+// Delete a message
+chat.delMessage('message-id');
+
+// Update a message
+chat.updMessage({
+    id: 'message-id',
+    text: 'Updated message text',
+    time: new Date()
+});
+
+// Clear all messages
+chat.clear();
+
+// Toggle read-only mode
+chat.toggleReadonly(true);</code></pre>
+
+        <button class="button" onclick="addSampleMessage()">Add Sample Message</button>
+        <button class="button" onclick="clearChat()">Clear Chat</button>
+        <button class="button" onclick="toggleReadonly()">Toggle Read-only</button>
+    </div>
+
+    <h2>Event Handling Examples</h2>
+    <div class="example">
+        <h3>Chat with Event Callbacks</h3>
+        {% metroui5_chat onMessage="console.log('Message added:', arguments[0])" onSend="console.log('Message sent:', arguments[0])" onChatCreate="console.log('Chat created')" name="User" avatar="<span>👤</span>" title="Event Demo" %}
+        <p><small>Check browser console for event messages</small></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Custom styling for chat demo */
+.custom-chat {
+    --chat-border-color: #2196F3;
+    --chat-background: #E3F2FD;
+    --chat-color: #0D47A1;
+    --chat-message-background: #BBDEFB;
+    --chat-message-color: #0D47A1;
+    border: 2px solid #2196F3;
+    border-radius: 12px;
+}
+
+.custom-message-left {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 18px 18px 18px 4px;
+}
+
+.custom-message-right {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border-radius: 18px 18px 4px 18px;
+}
+
+/* Chat styling */
+.chat {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.chat .title {
+    background: #f5f5f5;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: 600;
+    color: #333;
+}
+
+.chat .messages {
+    padding: 16px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.chat .message {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.chat .message.right {
+    flex-direction: row-reverse;
+}
+
+.chat .message-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.chat .message-item {
+    max-width: 70%;
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.chat .message.right .message-item {
+    background: #007bff;
+    color: white;
+}
+
+.chat .message-sender {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.chat .message.right .message-sender {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.chat .message-text-inner {
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.chat .message-time {
+    font-size: 10px;
+    color: #999;
+    margin-top: 4px;
+    text-align: right;
+}
+
+.chat .message.right .message-time {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.chat .message-input {
+    border-top: 1px solid #e0e0e0;
+    padding: 12px 16px;
+    background: #fafafa;
+}
+
+.chat .chat-input {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.chat .chat-input:focus {
+    border-color: #007bff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .chat .message-item {
+        max-width: 85%;
+    }
+    
+    .chat .messages {
+        max-height: 250px;
+    }
+}
+
+/* Example styling */
+.example {
+    margin-bottom: 30px;
+}
+
+.example h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.example pre {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 12px;
+    overflow-x: auto;
+    font-size: 13px;
+}
+
+.example code {
+    background: none;
+    padding: 0;
+    font-size: 13px;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // MetroUI will auto-initialize chat components with data-role="chat"
+    // No need for manual initialization to avoid duplicates
+    
+    // Example of global configuration
+    Metro.chatSetup({
+        onChatCreate: function() {
+            console.log('Chat has been created');
+        }
+    });
+});
+
+// Sample functions for API examples
+function addSampleMessage() {
+    const chat = Metro.getPlugin('#chat-component', 'chat');
+    if (chat) {
+        chat.add({
+            name: 'Sample User',
+            avatar: '<span>👤</span>',
+            text: 'This is a sample message added via JavaScript API!',
+            position: 'left',
+            time: new Date()
+        });
+    }
+}
+
+function clearChat() {
+    const chat = Metro.getPlugin('#chat-component', 'chat');
+    if (chat) {
+        chat.clear();
+    }
+}
+
+function toggleReadonly() {
+    const chat = Metro.getPlugin('#chat-component', 'chat');
+    if (chat) {
+        const currentState = chat.element.hasAttribute('data-readonly');
+        chat.toggleReadonly(!currentState);
+        console.log('Read-only mode:', !currentState);
+    }
+}
+
+// Add click handlers for interactive elements
+document.querySelectorAll('.button').forEach(button => {
+    button.addEventListener('click', function() {
+        console.log('Button clicked:', this.textContent);
+    });
+});
+</script>
+{% endblock %}
