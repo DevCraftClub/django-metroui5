@@ -33,6 +33,7 @@ from ..components import (
     render_collapse,
     render_color_picker,
     render_color_selector,
+    render_command_button,
     render_dialog,
     render_dropdown,
     render_input,
@@ -283,6 +284,12 @@ def metroui5_color_picker(**kwargs):
 def metroui5_color_selector(**kwargs):
     """Renders MetroUI color selector."""
     return mark_safe(render_color_selector(**kwargs))
+
+
+@register.simple_tag
+def metroui5_command_button(icon="", caption="", description="", **kwargs):
+    """Renders MetroUI command button."""
+    return mark_safe(render_command_button(icon=icon, caption=caption, description=description, **kwargs))
 
 
 @register.simple_tag

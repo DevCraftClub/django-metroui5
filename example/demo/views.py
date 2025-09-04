@@ -894,6 +894,14 @@ def color_selector_demo(request):
 	return render(request, 'demo/color_selector_demo.html', context)
 
 
+def command_button_demo(request):
+	"""Command Button component demo page."""
+	context = {
+		'page_title': 'Command Button Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/command_button_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {
