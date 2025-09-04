@@ -854,6 +854,14 @@ def chips_demo(request):
 	return render(request, 'demo/chips_demo.html', context)
 
 
+def cloak_demo(request):
+	"""Cloak component demo page."""
+	context = {
+		'page_title': 'Cloak Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/cloak_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {
