@@ -830,6 +830,14 @@ def chart_card_demo(request):
 	return render(request, 'demo/chart_card_demo.html', context)
 
 
+def chat_demo(request):
+	"""Chat component demo page."""
+	context = {
+		'page_title': 'Chat Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/chat_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {

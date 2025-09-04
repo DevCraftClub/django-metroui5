@@ -25,6 +25,7 @@ from ..components import (
     render_catalog_menu,
     render_charms,
     render_chart_card,
+    render_chat,
     render_dialog,
     render_dropdown,
     render_input,
@@ -227,6 +228,12 @@ def metroui5_charms(**kwargs):
 def metroui5_chart_card(**kwargs):
     """Renders MetroUI chart card."""
     return mark_safe(render_chart_card(**kwargs))
+
+
+@register.simple_tag
+def metroui5_chat(**kwargs):
+    """Renders MetroUI chat."""
+    return mark_safe(render_chat(**kwargs))
 
 
 @register.simple_tag
