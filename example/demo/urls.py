@@ -40,5 +40,6 @@ urlpatterns = [
     path('charms-demo/', views.charms_demo, name='charms_demo'),
     path('chart-card-demo/', views.chart_card_demo, name='chart_card_demo'),
     path('chat-demo/', views.chat_demo, name='chat_demo'),
+    path('checkbox-demo/', views.checkbox_demo, name='checkbox_demo'),
     path('test-demo/', views.test_demo, name='test_demo'),
 ]

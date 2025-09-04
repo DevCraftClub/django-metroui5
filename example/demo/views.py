@@ -838,6 +838,14 @@ def chat_demo(request):
 	return render(request, 'demo/chat_demo.html', context)
 
 
+def checkbox_demo(request):
+	"""Checkbox component demo page."""
+	context = {
+		'page_title': 'Checkbox Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/checkbox_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {
