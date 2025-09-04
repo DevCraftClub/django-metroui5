@@ -27,6 +27,7 @@ from ..components import (
     render_chart_card,
     render_chat,
     render_checkbox,
+    render_chips,
     render_dialog,
     render_dropdown,
     render_input,
@@ -241,6 +242,12 @@ def metroui5_chat(**kwargs):
 def metroui5_checkbox(**kwargs):
     """Renders MetroUI checkbox."""
     return mark_safe(render_checkbox(**kwargs))
+
+
+@register.simple_tag
+def metroui5_chips(**kwargs):
+    """Renders MetroUI chips."""
+    return mark_safe(render_chips(**kwargs))
 
 
 @register.simple_tag
