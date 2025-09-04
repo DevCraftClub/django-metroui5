@@ -45,5 +45,6 @@ urlpatterns = [
     path('cloak-demo/', views.cloak_demo, name='cloak_demo'),
     path('clock-demo/', views.clock_demo, name='clock_demo'),
     path('collapse-demo/', views.collapse_demo, name='collapse_demo'),
+    path('color-picker-demo/', views.color_picker_demo, name='color_picker_demo'),
     path('test-demo/', views.test_demo, name='test_demo'),
 ]

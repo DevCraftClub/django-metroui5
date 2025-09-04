@@ -878,6 +878,14 @@ def collapse_demo(request):
 	return render(request, 'demo/collapse_demo.html', context)
 
 
+def color_picker_demo(request):
+	"""Color Picker component demo page."""
+	context = {
+		'page_title': 'Color Picker Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/color_picker_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {

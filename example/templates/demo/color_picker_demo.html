@@ -1,0 +1,388 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Color Picker Component Demo{% endblock %}
+
+{% block extra_css %}
+<style>
+    .color-picker-example {
+        margin-bottom: 2rem;
+    }
+    
+    .color-picker-example h3 {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .color-picker-example .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .color-picker-example label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    
+    .color-picker-example .input {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .color-picker-example .button {
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .color-picker-example .result {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+    }
+    
+    .color-picker-example .result h4 {
+        margin-top: 0;
+        color: #495057;
+    }
+    
+    .color-picker-example .color-preview {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-right: 0.5rem;
+        vertical-align: middle;
+    }
+    
+    .color-picker-example .form-row {
+        display: flex;
+        gap: 1rem;
+        align-items: end;
+        margin-bottom: 1rem;
+    }
+    
+    .color-picker-example .form-row .form-group {
+        flex: 1;
+        margin-bottom: 0;
+    }
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Color Picker Component Demo</h1>
+    <p>This demo showcases the MetroUI Color Picker component for interactive color selection with various formats and options.</p>
+
+    <h2>Basic Color Picker</h2>
+    <div class="example box">
+        <h3>Simple Color Picker</h3>
+        <div class="form-group">
+            <label for="basic-color-picker">Select a color:</label>
+            {% metroui5_color_picker id="basic-color-picker" %}
+        </div>
+        
+        <h3>With Label</h3>
+        <div class="form-group">
+            {% metroui5_color_picker label="Choose color:" %}
+        </div>
+        
+        <h3>With Placeholder</h3>
+        <div class="form-group">
+            {% metroui5_color_picker placeholder="Click to select color" %}
+        </div>
+    </div>
+
+    <h2>Advanced Configuration</h2>
+    <div class="example box">
+        <h3>With Clear Button</h3>
+        <div class="form-group">
+            <label for="clear-color-picker">Color with clear option:</label>
+            {% metroui5_color_picker id="clear-color-picker" clearButton=True clearButtonIcon="❌" %}
+        </div>
+        
+        <h3>Custom Icons</h3>
+        <div class="form-group">
+            <label for="custom-icons-picker">Custom icons:</label>
+            {% metroui5_color_picker id="custom-icons-picker" pickerButtonIcon="🎨" clearButton=True clearButtonIcon="🗑️" %}
+        </div>
+        
+        <h3>Custom Swatches</h3>
+        <div class="form-group">
+            <label for="swatches-picker">Predefined colors:</label>
+            {% metroui5_color_picker id="swatches-picker" defaultSwatches="#FF0000,#00FF00,#0000FF,#FFFF00,#FF00FF,#00FFFF,#FFA500,#800080" %}
+        </div>
+    </div>
+
+    <h2>Color Formats</h2>
+    <div class="example box">
+        <h3>Different Result Types</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="hex-picker">Hex Format:</label>
+                {% metroui5_color_picker id="hex-picker" resultType="hex" %}
+            </div>
+            <div class="form-group">
+                <label for="rgb-picker">RGB Format:</label>
+                {% metroui5_color_picker id="rgb-picker" resultType="rgb" %}
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="rgba-picker">RGBA Format:</label>
+                {% metroui5_color_picker id="rgba-picker" resultType="rgba" %}
+            </div>
+            <div class="form-group">
+                <label for="hsl-picker">HSL Format:</label>
+                {% metroui5_color_picker id="hsl-picker" resultType="hsl" %}
+            </div>
+        </div>
+        
+        <h3>Show Multiple Values</h3>
+        <div class="form-group">
+            <label for="multi-format-picker">Multiple formats:</label>
+            {% metroui5_color_picker id="multi-format-picker" showValues="hex,rgb,hsl,hsla" returnValueType="rgba" %}
+        </div>
+    </div>
+
+    <h2>Behavior Configuration</h2>
+    <div class="example box">
+        <h3>Open Modes</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="auto-picker">Auto Mode:</label>
+                {% metroui5_color_picker id="auto-picker" openMode="auto" %}
+            </div>
+            <div class="form-group">
+                <label for="click-picker">Click Mode:</label>
+                {% metroui5_color_picker id="click-picker" openMode="click" %}
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="focus-picker">Focus Mode:</label>
+            {% metroui5_color_picker id="focus-picker" openMode="focus" %}
+        </div>
+        
+        <h3>Animation Duration</h3>
+        <div class="form-group">
+            <label for="slow-picker">Slow Animation (500ms):</label>
+            {% metroui5_color_picker id="slow-picker" duration=500 %}
+        </div>
+        
+        <div class="form-group">
+            <label for="fast-picker">Fast Animation (50ms):</label>
+            {% metroui5_color_picker id="fast-picker" duration=50 %}
+        </div>
+    </div>
+
+    <h2>Form Integration</h2>
+    <div class="example box">
+        <h3>Form with Color Picker</h3>
+        <form id="color-form">
+            <div class="form-group">
+                <label for="primary-color">Primary Color:</label>
+                {% metroui5_color_picker id="primary-color" name="primary_color" required=True %}
+            </div>
+            
+            <div class="form-group">
+                <label for="secondary-color">Secondary Color:</label>
+                {% metroui5_color_picker id="secondary-color" name="secondary_color" clearButton=True %}
+            </div>
+            
+            <div class="form-group">
+                <label for="accent-color">Accent Color:</label>
+                {% metroui5_color_picker id="accent-color" name="accent_color" defaultValue="#FF6B35" %}
+            </div>
+            
+            <button type="submit" class="button primary">Submit Colors</button>
+            <button type="reset" class="button">Reset</button>
+        </form>
+    </div>
+
+    <h2>Event Handling</h2>
+    <div class="example box">
+        <h3>Color Selection Events</h3>
+        <div class="form-group">
+            <label for="event-picker">Color with events:</label>
+            {% metroui5_color_picker id="event-picker" onColorSelected="onColorSelected()" onColorPickerCreate="onColorPickerCreate()" %}
+        </div>
+        
+        <div class="result">
+            <h4>Event Log:</h4>
+            <div id="event-log">No events yet</div>
+        </div>
+    </div>
+
+    <h2>Programmatic Control</h2>
+    <div class="example box">
+        <h3>Set Color Programmatically</h3>
+        <div class="form-group">
+            <label for="programmatic-picker">Color Picker:</label>
+            {% metroui5_color_picker id="programmatic-picker" %}
+        </div>
+        
+        <div class="form-group">
+            <label for="color-input">Set Color:</label>
+            <input type="text" id="color-input" class="input" placeholder="Enter color (e.g., #FF0000, rgb(255,0,0))">
+        </div>
+        
+        <button class="button" onclick="setColor()">Set Color</button>
+        <button class="button" onclick="getColor()">Get Color</button>
+        <button class="button" onclick="clearColor()">Clear Color</button>
+        
+        <div class="result">
+            <h4>Current Color:</h4>
+            <div id="current-color">
+                <span class="color-preview" id="color-preview"></span>
+                <span id="color-value">No color selected</span>
+            </div>
+        </div>
+    </div>
+
+    <h2>Real-world Examples</h2>
+    <div class="example box">
+        <h3>Theme Customization</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="primary-theme">Primary Theme Color:</label>
+                {% metroui5_color_picker id="primary-theme" defaultValue="#0078d4" resultType="hex" %}
+            </div>
+            <div class="form-group">
+                <label for="secondary-theme">Secondary Theme Color:</label>
+                {% metroui5_color_picker id="secondary-theme" defaultValue="#6c757d" resultType="hex" %}
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="accent-theme">Accent Color:</label>
+            {% metroui5_color_picker id="accent-theme" defaultValue="#28a745" resultType="hex" %}
+        </div>
+        
+        <button class="button primary" onclick="applyTheme()">Apply Theme</button>
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example box">
+        <h3>Basic Usage</h3>
+        <pre><code>{% verbatim %}{% metroui5_color_picker %}{% endverbatim %}</code></pre>
+        
+        <h3>With Parameters</h3>
+        <pre><code>{% verbatim %}{% metroui5_color_picker label="Select color:" clearButton=True resultType="hex" %}{% endverbatim %}</code></pre>
+        
+        <h3>With Events</h3>
+        <pre><code>{% verbatim %}{% metroui5_color_picker id="my-picker" onColorSelected="onColorSelected()" %}{% endverbatim %}</code></pre>
+    </div>
+</div>
+
+<script>
+// Event handling functions
+function onColorSelected() {
+    const log = document.getElementById('event-log');
+    const timestamp = new Date().toLocaleTimeString();
+    log.innerHTML += `<div>[${timestamp}] Color selected</div>`;
+}
+
+function onColorPickerCreate() {
+    const log = document.getElementById('event-log');
+    const timestamp = new Date().toLocaleTimeString();
+    log.innerHTML += `<div>[${timestamp}] Color picker created</div>`;
+}
+
+// Programmatic control functions
+function setColor() {
+    const colorInput = document.getElementById('color-input');
+    const color = colorInput.value;
+    
+    if (color) {
+        try {
+            const picker = Metro.getPlugin('#programmatic-picker', 'color-picker');
+            if (picker) {
+                picker.val(color);
+                updateColorDisplay();
+            }
+        } catch (error) {
+            alert('Invalid color format. Please use hex (#FF0000) or rgb(rgb(255,0,0)) format.');
+        }
+    }
+}
+
+function getColor() {
+    const picker = Metro.getPlugin('#programmatic-picker', 'color-picker');
+    if (picker) {
+        const color = picker.val();
+        document.getElementById('color-value').textContent = color || 'No color selected';
+        updateColorPreview(color);
+    }
+}
+
+function clearColor() {
+    const picker = Metro.getPlugin('#programmatic-picker', 'color-picker');
+    if (picker) {
+        picker.val('');
+        updateColorDisplay();
+    }
+}
+
+function updateColorDisplay() {
+    const picker = Metro.getPlugin('#programmatic-picker', 'color-picker');
+    if (picker) {
+        const color = picker.val();
+        document.getElementById('color-value').textContent = color || 'No color selected';
+        updateColorPreview(color);
+    }
+}
+
+function updateColorPreview(color) {
+    const preview = document.getElementById('color-preview');
+    if (color) {
+        preview.style.backgroundColor = color;
+        preview.style.display = 'inline-block';
+    } else {
+        preview.style.display = 'none';
+    }
+}
+
+function applyTheme() {
+    const primaryColor = Metro.getPlugin('#primary-theme', 'color-picker').val();
+    const secondaryColor = Metro.getPlugin('#secondary-theme', 'color-picker').val();
+    const accentColor = Metro.getPlugin('#accent-theme', 'color-picker').val();
+    
+    alert(`Theme applied!\nPrimary: ${primaryColor}\nSecondary: ${secondaryColor}\nAccent: ${accentColor}`);
+}
+
+// Form submission
+document.getElementById('color-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const colors = {};
+    
+    for (let [key, value] of formData.entries()) {
+        colors[key] = value;
+    }
+    
+    alert('Form submitted with colors: ' + JSON.stringify(colors, null, 2));
+});
+
+// Initialize color preview
+document.addEventListener('DOMContentLoaded', function() {
+    // Update color display when programmatic picker changes
+    const picker = document.getElementById('programmatic-picker');
+    if (picker) {
+        picker.addEventListener('change', updateColorDisplay);
+    }
+    
+    // Update color display for all pickers
+    const allPickers = document.querySelectorAll('[data-role="color-picker"]');
+    allPickers.forEach(picker => {
+        picker.addEventListener('change', function() {
+            console.log('Color changed:', this.value);
+        });
+    });
+});
+</script>
+{% endblock %}

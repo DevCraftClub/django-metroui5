@@ -20,7 +20,7 @@ class BaseComponent(ABC):
     - HTML rendering
     """
     
-    def __init__(self, component_name, base_css_class, component_params=None):
+    def __init__(self, component_name, base_css_class=None, component_params=None):
         """
         Initialize the base component.
         
