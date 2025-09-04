@@ -65,6 +65,7 @@ def app_bar_data(request):
                 'text': 'Утилиты',
                 'icon': 'mif-tools',
                 'dropdown': [
+                    {'text': 'Clock', 'href': '/clock-demo/', 'icon': 'mif-clock'},
                     {'text': 'Adblock Detection', 'href': '/adblock-demo/', 'icon': 'mif-shield'},
                     {'text': 'Analog Clock', 'href': '/analog-clock-demo/', 'icon': 'mif-clock'},
                     {'text': 'Avatars', 'href': '/initials-avatars/', 'icon': 'mif-user'}
