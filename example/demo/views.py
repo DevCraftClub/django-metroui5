@@ -870,6 +870,14 @@ def clock_demo(request):
 	return render(request, 'demo/clock_demo.html', context)
 
 
+def collapse_demo(request):
+	"""Collapse component demo page."""
+	context = {
+		'page_title': 'Collapse Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/collapse_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {

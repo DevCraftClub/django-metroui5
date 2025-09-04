@@ -30,6 +30,7 @@ from ..components import (
     render_chips,
     render_cloak,
     render_clock,
+    render_collapse,
     render_dialog,
     render_dropdown,
     render_input,
@@ -262,6 +263,12 @@ def metroui5_cloak(**kwargs):
 def metroui5_clock(**kwargs):
     """Renders MetroUI clock."""
     return mark_safe(render_clock(**kwargs))
+
+
+@register.simple_tag
+def metroui5_collapse(content="", **kwargs):
+    """Renders MetroUI collapse."""
+    return mark_safe(render_collapse(content=content, **kwargs))
 
 
 @register.simple_tag

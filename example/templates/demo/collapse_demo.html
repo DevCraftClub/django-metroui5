@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Collapse Component Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Collapse Component Demo</h1>
+    <p>This demo showcases the MetroUI Collapse component for toggling content visibility with smooth animations.</p>
+
+    <h2>Basic Collapse</h2>
+    <div class="example box">
+        <h3>Default Toggle Element</h3>
+        <div class="collapse-toggle button">Toggle Content</div>
+        {% metroui5_collapse content="<p>This content can be collapsed or expanded.</p>" %}
+        
+        <h3>With Custom ID</h3>
+        <div class="collapse-toggle button" id="basic-collapse-toggle">Toggle Content with ID</div>
+        {% metroui5_collapse content="<p>This content has a custom ID for JavaScript access.</p>" id="#basic-collapse" toggleElement="#basic-collapse-toggle" %}
+    </div>
+
+    <h2>Custom Toggle Element</h2>
+    <div class="example box">
+        <h3>Button Toggle</h3>
+        <button id="customToggle" class="button">Toggle Content</button>
+        {% metroui5_collapse content="<p>This content is toggled by a custom button element.</p>" toggleElement="#customToggle" %}
+        
+        <h3>Link Toggle</h3>
+        <a href="#" id="linkToggle" class="link">Toggle Content</a>
+        {% metroui5_collapse content="<p>This content is toggled by a custom link element.</p>" toggleElement="#linkToggle" %}
+    </div>
+
+    <h2>Initially Collapsed</h2>
+    <div class="example box">
+        <h3>Hidden by Default</h3>
+        <div class="collapse-toggle button">Toggle Hidden Content</div>
+        {% metroui5_collapse content="<p>This content is initially hidden and can be expanded.</p>" collapsed=True %}
+        
+        <h3>Multiple Hidden Sections</h3>
+        <div class="collapse-toggle button">Section 1</div>
+        {% metroui5_collapse content="<p>This is the first hidden section.</p>" collapsed=True %}
+        
+        <div class="collapse-toggle button">Section 2</div>
+        {% metroui5_collapse content="<p>This is the second hidden section.</p>" collapsed=True %}
+    </div>
+
+    <h2>Custom Animation Duration</h2>
+    <div class="example box">
+        <h3>Fast Animation (50ms)</h3>
+        <div class="collapse-toggle button">Fast Toggle</div>
+        {% metroui5_collapse content="<p>This content animates quickly.</p>" duration=50 %}
+        
+        <h3>Slow Animation (1000ms)</h3>
+        <div class="collapse-toggle button">Slow Toggle</div>
+        {% metroui5_collapse content="<p>This content animates slowly.</p>" duration=1000 %}
+    </div>
+
+    <h2>Event Handling</h2>
+    <div class="example box">
+        <h3>Collapse with Events</h3>
+        <div class="collapse-toggle button">Toggle with Events</div>
+        {% metroui5_collapse content="<p>This content triggers events when expanded or collapsed.</p>" id="event-collapse" onExpand="onExpandEvent()" onCollapse="onCollapseEvent()" %}
+        <p>Event log: <span id="event-log">No events yet</span></p>
+    </div>
+
+    <h2>Accordion Style</h2>
+    <div class="example box">
+        <h3>FAQ Accordion</h3>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="collapse-toggle button">What is MetroUI?</div>
+                {% metroui5_collapse content="<p>MetroUI is a modern CSS framework for building responsive web applications with a Metro design language.</p>" collapsed=True %}
+            </div>
+            
+            <div class="accordion-item">
+                <div class="collapse-toggle button">How do I use the Collapse component?</div>
+                {% metroui5_collapse content="<p>Simply add the data-role='collapse' attribute to any element and use a toggle element to control its visibility.</p>" collapsed=True %}
+            </div>
+            
+            <div class="accordion-item">
+                <div class="collapse-toggle button">Can I customize the animation?</div>
+                {% metroui5_collapse content="<p>Yes, you can customize the animation duration using the duration parameter or CSS transitions.</p>" collapsed=True %}
+            </div>
+        </div>
+    </div>
+
+    <h2>Interactive Examples</h2>
+    <div class="example box">
+        <h3>Programmatic Control</h3>
+        <div class="button-group">
+            <button class="button" onclick="expandAll()">Expand All</button>
+            <button class="button" onclick="collapseAll()">Collapse All</button>
+            <button class="button" onclick="toggleAll()">Toggle All</button>
+        </div>
+        
+        <div class="collapse-toggle button">Section 1</div>
+        {% metroui5_collapse content="<p>This is section 1 content.</p>" id="section-1" collapsed=True %}
+        
+        <div class="collapse-toggle button">Section 2</div>
+        {% metroui5_collapse content="<p>This is section 2 content.</p>" id="section-2" collapsed=True %}
+        
+        <div class="collapse-toggle button">Section 3</div>
+        {% metroui5_collapse content="<p>This is section 3 content.</p>" id="section-3" collapsed=True %}
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example box">
+        <h3>Basic Collapse</h3>
+        <pre><code>{% verbatim %}{% metroui5_collapse content="<p>This content can be collapsed or expanded.</p>" %}{% endverbatim %}</code></pre>
+
+        <h3>Collapse with Custom Toggle</h3>
+        <pre><code>{% verbatim %}{% metroui5_collapse content="<p>This content is toggled by a custom element.</p>" toggleElement="#customToggle" %}{% endverbatim %}</code></pre>
+
+        <h3>Initially Collapsed</h3>
+        <pre><code>{% verbatim %}{% metroui5_collapse content="<p>This content is initially hidden.</p>" collapsed=True %}{% endverbatim %}</code></pre>
+
+        <h3>Collapse with Duration</h3>
+        <pre><code>{% verbatim %}{% metroui5_collapse content="<p>This content has custom animation duration.</p>" duration=500 %}{% endverbatim %}</code></pre>
+
+        <h3>Collapse with Events</h3>
+        <pre><code>{% verbatim %}{% metroui5_collapse content="<p>This content has event callbacks.</p>" onExpand="console.log('Expanded!')" onCollapse="console.log('Collapsed!')" %}{% endverbatim %}</code></pre>
+    </div>
+
+    <h2>JavaScript API Examples</h2>
+    <div class="example box">
+        <h3>Programmatic Control</h3>
+        <pre><code>// Get collapse instance
+const collapse = Metro.getPlugin('#myCollapse', 'collapse');
+
+// Collapse with animation
+collapse.collapse();
+
+// Collapse immediately without animation
+collapse.collapse(true);
+
+// Expand with animation
+collapse.expand();
+
+// Expand immediately without animation
+collapse.expand(true);
+
+// Check if collapsed
+if (collapse.isCollapsed()) {
+    console.log('Element is collapsed');
+}
+
+// Toggle state
+collapse.toggleState();</code></pre>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+
+
+/* Example styling */
+.example {
+    margin-bottom: 30px;
+}
+
+.example h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.example pre {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 12px;
+    overflow-x: auto;
+    font-size: 13px;
+}
+
+.example code {
+    background: none;
+    padding: 0;
+    font-size: 13px;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Demo functions for interactive examples
+function onExpandEvent() {
+    const log = document.getElementById('event-log');
+    if (log) {
+        log.textContent = 'Expanded at ' + new Date().toLocaleTimeString();
+    }
+}
+
+function onCollapseEvent() {
+    const log = document.getElementById('event-log');
+    if (log) {
+        log.textContent = 'Collapsed at ' + new Date().toLocaleTimeString();
+    }
+}
+
+function expandAll() {
+    const collapses = ['section-1', 'section-2', 'section-3'];
+    collapses.forEach(id => {
+        const collapse = Metro.getPlugin('#' + id, 'collapse');
+        if (collapse) {
+            collapse.expand();
+        }
+    });
+}
+
+function collapseAll() {
+    const collapses = ['section-1', 'section-2', 'section-3'];
+    collapses.forEach(id => {
+        const collapse = Metro.getPlugin('#' + id, 'collapse');
+        if (collapse) {
+            collapse.collapse();
+        }
+    });
+}
+
+function toggleAll() {
+    const collapses = ['section-1', 'section-2', 'section-3'];
+    collapses.forEach(id => {
+        const collapse = Metro.getPlugin('#' + id, 'collapse');
+        if (collapse) {
+            collapse.toggleState();
+        }
+    });
+}
+
+// Example of global configuration
+document.addEventListener('DOMContentLoaded', function() {
+    Metro.collapseSetup({
+        duration: 300,
+        collapsed: false
+    });
+});
+</script>
+{% endblock %}
