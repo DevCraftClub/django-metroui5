@@ -31,6 +31,7 @@ from .cloak import render_cloak
 from .clock import render_clock
 from .collapse import render_collapse
 from .color_picker import render_color_picker
+from .color_selector import render_color_selector
 from .dialog import render_dialog
 from .dropdown import render_dropdown
 from .input import render_input, render_material_input
@@ -95,6 +96,7 @@ __all__ = [
     'render_clock',
     'render_collapse',
     'render_color_picker',
+    'render_color_selector',
     'render_dialog',
     'render_dropdown',
     'render_input',

@@ -32,6 +32,7 @@ from ..components import (
     render_clock,
     render_collapse,
     render_color_picker,
+    render_color_selector,
     render_dialog,
     render_dropdown,
     render_input,
@@ -276,6 +277,12 @@ def metroui5_collapse(content="", **kwargs):
 def metroui5_color_picker(**kwargs):
     """Renders MetroUI color picker."""
     return mark_safe(render_color_picker(**kwargs))
+
+
+@register.simple_tag
+def metroui5_color_selector(**kwargs):
+    """Renders MetroUI color selector."""
+    return mark_safe(render_color_selector(**kwargs))
 
 
 @register.simple_tag
