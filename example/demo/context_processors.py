@@ -57,7 +57,8 @@ def app_bar_data(request):
                     {'text': 'Chart Card', 'href': '/chart-card-demo/', 'icon': 'mif-chart'},
                     {'text': 'Chat', 'href': '/chat-demo/', 'icon': 'mif-comment'},
                     {'text': 'Checkbox', 'href': '/checkbox-demo/', 'icon': 'mif-checkmark'},
-                    {'text': 'Chips', 'href': '/chips-demo/', 'icon': 'mif-tag'}
+                    {'text': 'Chips', 'href': '/chips-demo/', 'icon': 'mif-tag'},
+                    {'text': 'Cloak', 'href': '/cloak-demo/', 'icon': 'mif-eye-slash'}
                 ]
             },
             {

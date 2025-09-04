@@ -1,0 +1,359 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Cloak Component Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Cloak Component Demo</h1>
+    <p>This demo showcases the MetroUI Cloak component for hiding elements initially and revealing them with smooth fade-in animation.</p>
+
+    <h2>Basic Usage</h2>
+    <div class="example">
+        {% metroui5_cloak content="This content will be initially hidden." %}
+    </div>
+
+    <h2>Revealing Cloaked Elements</h2>
+    <div class="example">
+        {% metroui5_cloak content="This content will fade in." reveal=True %}
+    </div>
+
+    <h2>Hiding Visible Elements</h2>
+    <div class="example">
+        <div class="visible-content">
+            <p>This content is initially visible.</p>
+            <button class="button" onclick="hideContent()">Hide with Fade Out</button>
+        </div>
+        {% metroui5_cloak content="This content will fade out when the button is clicked." id="hide-demo" %}
+    </div>
+
+    <h2>Custom Animation Duration</h2>
+    <div class="example">
+        <h3>Fast Animation (500ms)</h3>
+        {% metroui5_cloak content="This content fades in quickly." reveal=True duration="500ms" %}
+        
+        <h3>Slow Animation (3s)</h3>
+        {% metroui5_cloak content="This content fades in slowly." reveal=True duration="3s" %}
+    </div>
+
+    <h2>Animation Delay</h2>
+    <div class="example">
+        <h3>With 1 Second Delay</h3>
+        {% metroui5_cloak content="This content appears after 1 second." reveal=True delay="1s" %}
+        
+        <h3>With 2 Second Delay</h3>
+        {% metroui5_cloak content="This content appears after 2 seconds." reveal=True delay="2s" %}
+    </div>
+
+    <h2>Loading Indicators Example</h2>
+    <div class="example">
+        <div id="loading-indicator" class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading content...</p>
+        </div>
+        {% metroui5_cloak content="<h3>Content Loaded!</h3><p>This content was hidden until it was fully loaded.</p>" id="loaded-content" %}
+        <button class="button" onclick="simulateLoading()">Simulate Loading</button>
+    </div>
+
+    <h2>Progressive Enhancement Example</h2>
+    <div class="example">
+        <div id="no-js-message" class="alert">
+            <p>Please enable JavaScript to use all features.</p>
+        </div>
+        {% metroui5_cloak content="<h3>JavaScript Content</h3><p>This content requires JavaScript and will only be shown if JavaScript is enabled.</p>" id="js-content" %}
+    </div>
+
+    <h2>Interactive Examples</h2>
+    <div class="example">
+        <h3>Dynamic Content Reveal</h3>
+        <button class="button" onclick="revealContent()">Reveal Hidden Content</button>
+        <button class="button" onclick="hideContent()">Hide Content</button>
+        <button class="button" onclick="toggleContent()">Toggle Content</button>
+        
+        {% metroui5_cloak content="<div class='revealed-content'><h4>Dynamic Content</h4><p>This content can be shown and hidden dynamically using JavaScript.</p></div>" id="dynamic-content" %}
+    </div>
+
+    <h2>Multiple Elements with Staggered Animation</h2>
+    <div class="example">
+        <button class="button" onclick="staggeredReveal()">Reveal All with Stagger</button>
+        <button class="button" onclick="staggeredHide()">Hide All with Stagger</button>
+        
+        <div class="staggered-container">
+            {% metroui5_cloak content="<div class='staggered-item'>Item 1</div>" id="item-1" %}
+            {% metroui5_cloak content="<div class='staggered-item'>Item 2</div>" id="item-2" %}
+            {% metroui5_cloak content="<div class='staggered-item'>Item 3</div>" id="item-3" %}
+            {% metroui5_cloak content="<div class='staggered-item'>Item 4</div>" id="item-4" %}
+            {% metroui5_cloak content="<div class='staggered-item'>Item 5</div>" id="item-5" %}
+        </div>
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example">
+        <h3>Basic Cloak</h3>
+        <pre><code>{% verbatim %}{% metroui5_cloak content="This content will be initially hidden." %}{% endverbatim %}</code></pre>
+
+        <h3>Cloak with Reveal</h3>
+        <pre><code>{% verbatim %}{% metroui5_cloak content="This content will fade in." reveal=True %}{% endverbatim %}</code></pre>
+
+        <h3>Cloak with Hide</h3>
+        <pre><code>{% verbatim %}{% metroui5_cloak content="This content will fade out." hide=True %}{% endverbatim %}</code></pre>
+
+        <h3>Cloak with Custom Duration</h3>
+        <pre><code>{% verbatim %}{% metroui5_cloak content="This content has custom duration." reveal=True duration="2s" %}{% endverbatim %}</code></pre>
+
+        <h3>Cloak with Delay</h3>
+        <pre><code>{% verbatim %}{% metroui5_cloak content="This content has delay." reveal=True delay="1s" %}{% endverbatim %}</code></pre>
+
+        <h3>Cloak with Custom Classes</h3>
+        <pre><code>{% verbatim %}{% metroui5_cloak content="This content has custom classes." cls="my-custom-cloak" %}{% endverbatim %}</code></pre>
+    </div>
+
+    <h2>JavaScript API Examples</h2>
+    <div class="example">
+        <h3>Programmatic Control</h3>
+        <pre><code>// Add cloak to an element
+element.classList.add('cloak');
+
+// Reveal a cloaked element
+element.classList.add('remove-cloak');
+
+// Hide a visible element
+element.classList.add('add-cloak');
+
+// Remove cloak classes
+element.classList.remove('cloak', 'remove-cloak', 'add-cloak');
+
+// Custom animation duration
+element.style.animationDuration = '2s';
+element.classList.add('remove-cloak');
+
+// Custom animation delay
+element.style.animationDelay = '1s';
+element.classList.add('remove-cloak');</code></pre>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Custom styling for cloak demo */
+.loading-spinner {
+    text-align: center;
+    padding: 20px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.alert {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #f5c6cb;
+    margin-bottom: 15px;
+}
+
+.revealed-content {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #c3e6cb;
+    margin-top: 10px;
+}
+
+.staggered-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.staggered-item {
+    background: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* Example styling */
+.example {
+    margin-bottom: 30px;
+}
+
+.example h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.example pre {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 12px;
+    overflow-x: auto;
+    font-size: 13px;
+}
+
+.example code {
+    background: none;
+    padding: 0;
+    font-size: 13px;
+}
+
+/* Button styling */
+.button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* Cloak animation overrides for demo */
+.cloak {
+    opacity: 0 !important;
+}
+
+.remove-cloak {
+    animation: kf-fadeIn 1s linear forwards;
+}
+
+.add-cloak {
+    animation: kf-fadeOut 1s linear forwards;
+}
+
+@keyframes kf-fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes kf-fadeOut {
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .staggered-container {
+        flex-direction: column;
+    }
+    
+    .staggered-item {
+        min-width: auto;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Demo functions for interactive examples
+function revealContent() {
+    const element = document.getElementById('dynamic-content');
+    if (element) {
+        element.classList.remove('add-cloak');
+        element.classList.add('remove-cloak');
+    }
+}
+
+function hideContent() {
+    const element = document.getElementById('dynamic-content');
+    if (element) {
+        element.classList.remove('remove-cloak');
+        element.classList.add('add-cloak');
+    }
+}
+
+function toggleContent() {
+    const element = document.getElementById('dynamic-content');
+    if (element) {
+        if (element.classList.contains('remove-cloak')) {
+            hideContent();
+        } else {
+            revealContent();
+        }
+    }
+}
+
+function simulateLoading() {
+    const loadingIndicator = document.getElementById('loading-indicator');
+    const loadedContent = document.getElementById('loaded-content');
+    
+    if (loadingIndicator && loadedContent) {
+        // Show loading indicator
+        loadingIndicator.style.display = 'block';
+        loadedContent.classList.remove('remove-cloak');
+        loadedContent.classList.add('cloak');
+        
+        // Simulate loading delay
+        setTimeout(() => {
+            // Hide loading indicator
+            loadingIndicator.classList.add('add-cloak');
+            
+            // Show loaded content
+            setTimeout(() => {
+                loadingIndicator.style.display = 'none';
+                loadedContent.classList.remove('cloak');
+                loadedContent.classList.add('remove-cloak');
+            }, 1000);
+        }, 2000);
+    }
+}
+
+function staggeredReveal() {
+    const items = ['item-1', 'item-2', 'item-3', 'item-4', 'item-5'];
+    
+    items.forEach((itemId, index) => {
+        const element = document.getElementById(itemId);
+        if (element) {
+            setTimeout(() => {
+                element.classList.remove('add-cloak');
+                element.classList.add('remove-cloak');
+            }, index * 200); // 200ms delay between each item
+        }
+    });
+}
+
+function staggeredHide() {
+    const items = ['item-1', 'item-2', 'item-3', 'item-4', 'item-5'];
+    
+    items.forEach((itemId, index) => {
+        const element = document.getElementById(itemId);
+        if (element) {
+            setTimeout(() => {
+                element.classList.remove('remove-cloak');
+                element.classList.add('add-cloak');
+            }, index * 200); // 200ms delay between each item
+        }
+    });
+}
+
+// Progressive enhancement - hide no-js message and show JS content
+document.addEventListener('DOMContentLoaded', function() {
+    const noJsMessage = document.getElementById('no-js-message');
+    const jsContent = document.getElementById('js-content');
+    
+    if (noJsMessage && jsContent) {
+        // JavaScript is enabled, so we can show the JS content
+        noJsMessage.classList.add('add-cloak');
+        jsContent.classList.add('remove-cloak');
+    }
+});
+</script>
+{% endblock %}

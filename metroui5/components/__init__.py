@@ -27,6 +27,7 @@ from .chart_card import render_chart_card
 from .chat import render_chat
 from .checkbox import render_checkbox
 from .chips import render_chips
+from .cloak import render_cloak
 from .dialog import render_dialog
 from .dropdown import render_dropdown
 from .input import render_input, render_material_input
@@ -87,6 +88,7 @@ __all__ = [
     'render_chat',
     'render_checkbox',
     'render_chips',
+    'render_cloak',
     'render_dialog',
     'render_dropdown',
     'render_input',
