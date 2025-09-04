@@ -43,5 +43,6 @@ urlpatterns = [
     path('checkbox-demo/', views.checkbox_demo, name='checkbox_demo'),
     path('chips-demo/', views.chips_demo, name='chips_demo'),
     path('cloak-demo/', views.cloak_demo, name='cloak_demo'),
+    path('clock-demo/', views.clock_demo, name='clock_demo'),
     path('test-demo/', views.test_demo, name='test_demo'),
 ]

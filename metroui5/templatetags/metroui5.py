@@ -29,6 +29,7 @@ from ..components import (
     render_checkbox,
     render_chips,
     render_cloak,
+    render_clock,
     render_dialog,
     render_dropdown,
     render_input,
@@ -255,6 +256,12 @@ def metroui5_chips(**kwargs):
 def metroui5_cloak(**kwargs):
     """Renders MetroUI cloak."""
     return mark_safe(render_cloak(**kwargs))
+
+
+@register.simple_tag
+def metroui5_clock(**kwargs):
+    """Renders MetroUI clock."""
+    return mark_safe(render_clock(**kwargs))
 
 
 @register.simple_tag
