@@ -8,7 +8,17 @@ from ..html import render_tag
 
 class AppBarComponent(ComplexComponent):
 	"""
-	MetroUI App Bar Component
+	MetroUI App Bar Component with Multi-Level Nested Menu Support
+	
+	This component supports unlimited nesting levels for dropdown menus, following the
+	official MetroUI structure. Each menu item can contain sub-menus with their own
+	dropdown items, creating a 3rd, 4th, or deeper level navigation.
+	
+	The component follows the official MetroUI app bar structure:
+	- Uses `dropdown-toggle` class for dropdown triggers
+	- Uses `d-menu` class for all dropdown levels
+	- Supports nested dropdowns with proper positioning
+	- Maintains MetroUI5 compatibility and styling
 	
 	For more details, see the `official documentation <https://v5.metroui.org.ua/components/app-bar/>`_.
 	
@@ -17,6 +27,40 @@ class AppBarComponent(ComplexComponent):
 	- `Plugin Parameters <https://v5.metroui.org.ua/components/app-bar/#plugin-parameters>`_
 	- `API Methods <https://v5.metroui.org.ua/components/app-bar/#api-methods>`_
 	- `Responsive Behavior <https://v5.metroui.org.ua/components/app-bar/#responsive-behavior>`_
+	
+	Multi-Level Menu Structure (following official MetroUI pattern):
+		menu_items = [
+			{
+				'text': 'Products',
+				'icon': 'mif-apps',
+				'dropdown': [
+					{
+						'text': 'Go to Definition',
+						'href': '/definition/',
+						'icon': 'mif-codepen'
+					},
+					{
+						'text': 'Peek',
+						'icon': 'mif-eye',
+						'dropdown': [
+							{
+								'text': 'Find All References',
+								'href': '/references/',
+								'icon': 'mif-search'
+							},
+							{
+								'text': 'Show Call Hierarchy',
+								'icon': 'mif-list',
+								'dropdown': [
+									{'text': 'Find All References', 'href': '/refs/', 'icon': 'mif-search'},
+									{'text': 'Find All Implementations', 'href': '/impls/', 'icon': 'mif-code'}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
 	"""
 	
 	def __init__(self):
@@ -142,39 +186,7 @@ class AppBarComponent(ComplexComponent):
 			
 			menu_list_items = []
 			for item in menu_items:
-				# Check if item has dropdown
-				if item.get('dropdown'):
-					# Create dropdown menu item
-					item_content = ""
-					if item.get('icon'):
-						item_content += f'<span class="icon"><span class="{item["icon"]}"></span></span>'
-					if item.get('text'):
-						item_content += item['text']
-					
-					# Create dropdown menu
-					dropdown_items = []
-					for dropdown_item in item['dropdown']:
-						dropdown_item_content = ""
-						if dropdown_item.get('icon'):
-							dropdown_item_content += f'<span class="icon"><span class="{dropdown_item["icon"]}"></span></span>'
-						if dropdown_item.get('text'):
-							dropdown_item_content += dropdown_item['text']
-						
-						dropdown_item_attrs = {"href": dropdown_item.get('href', '#')}
-						dropdown_items.append(render_tag("li", {}, render_tag("a", dropdown_item_attrs, dropdown_item_content)))
-					
-					dropdown_menu = render_tag("ul", {"class": "d-menu", "data-role": "dropdown"}, "".join(dropdown_items))
-					menu_list_items.append(render_tag("li", {}, render_tag("a", {"href": item.get('href', '#'), "class": "dropdown-caret"}, item_content) + dropdown_menu))
-				else:
-					# Regular menu item
-					item_content = ""
-					if item.get('icon'):
-						item_content += f'<span class="icon"><span class="{item["icon"]}"></span></span>'
-					if item.get('text'):
-						item_content += item['text']
-					
-					item_attrs = {"href": item.get('href', '#')}
-					menu_list_items.append(render_tag("li", {}, render_tag("a", item_attrs, item_content)))
+				menu_list_items.append(self._render_menu_item(item, component_attrs))
 			
 			app_bar_content += render_tag("ul", {"class": " ".join(menu_classes)}, "".join(menu_list_items))
 		
@@ -193,6 +205,52 @@ class AppBarComponent(ComplexComponent):
 				app_bar_content += render_tag("div", {"class": " ".join(static_classes)}, static_content)
 		
 		return render_tag("nav", attrs=base_attrs, content=app_bar_content)
+	
+	def _render_menu_item(self, item, component_attrs, level=1):
+		"""
+		Recursively renders menu items with support for unlimited nesting levels.
+		
+		Args:
+			item: Menu item dictionary
+			component_attrs: Component attributes
+			level: Current nesting level (for CSS classes)
+			
+		Returns:
+			str: Rendered HTML for the menu item
+		"""
+		# Check if item has dropdown (submenu)
+		if item.get('dropdown'):
+			# Create dropdown menu item
+			item_content = ""
+			if item.get('icon'):
+				item_content += f'<span class="icon"><span class="{item["icon"]}"></span></span>'
+			if item.get('text'):
+				item_content += item['text']
+			
+			# Create dropdown menu recursively
+			dropdown_items = []
+			for dropdown_item in item['dropdown']:
+				dropdown_items.append(self._render_menu_item(dropdown_item, component_attrs, level + 1))
+			
+			# Use standard MetroUI dropdown classes
+			dropdown_classes = ["d-menu", "data-role-dropdown"]
+			dropdown_menu = render_tag("ul", {"class": " ".join(dropdown_classes), "data-role": "dropdown"}, "".join(dropdown_items))
+			
+			# Use standard MetroUI dropdown toggle class
+			link_classes = ["dropdown-toggle"]
+			
+			link_attrs = {"href": item.get('href', '#'), "class": " ".join(link_classes)}
+			return render_tag("li", {}, render_tag("a", link_attrs, item_content) + dropdown_menu)
+		else:
+			# Regular menu item (leaf node)
+			item_content = ""
+			if item.get('icon'):
+				item_content += f'<span class="icon"><span class="{item["icon"]}"></span></span>'
+			if item.get('text'):
+				item_content += item['text']
+			
+			item_attrs = {"href": item.get('href', '#')}
+			return render_tag("li", {}, render_tag("a", item_attrs, item_content))
 
 
 # Create component instance
