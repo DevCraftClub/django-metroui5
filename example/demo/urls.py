@@ -51,5 +51,6 @@ urlpatterns = [
     path('container-demo/', views.container_demo, name='container_demo'),
     path('counter-demo/', views.counter_demo, name='counter_demo'),
     path('cube-demo/', views.cube_demo, name='cube_demo'),
+    path('custom-checkbox-demo/', views.custom_checkbox_demo, name='custom_checkbox_demo'),
     path('test-demo/', views.test_demo, name='test_demo'),
 ]

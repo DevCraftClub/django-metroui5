@@ -926,6 +926,14 @@ def cube_demo(request):
 	return render(request, 'demo/cube_demo.html', context)
 
 
+def custom_checkbox_demo(request):
+	"""Custom Checkbox component demo page."""
+	context = {
+		'page_title': 'Custom Checkbox Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/custom_checkbox_demo.html', context)
+
+
 
 
 def test_demo(request):
