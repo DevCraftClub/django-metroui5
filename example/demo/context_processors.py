@@ -35,48 +35,126 @@ def app_bar_data(request):
                 'text': 'UI Компоненты',
                 'icon': 'mif-cog',
                 'dropdown': [
-                    {'text': 'Accordion', 'href': '/accordion-demo/', 'icon': 'mif-list'},
-                    {'text': 'Action Button', 'href': '/action-button-demo/', 'icon': 'mif-plus'},
-                    {'text': 'Activity', 'href': '/activity-demo/', 'icon': 'mif-spinner'},
-                    {'text': 'App Bar', 'href': '/app-bar-demo/', 'icon': 'mif-menu'},
-                    {'text': 'Audio Button', 'href': '/audio-button-demo/', 'icon': 'mif-volume-high'},
-                    {'text': 'Audio Player', 'href': '/audio-player-demo/', 'icon': 'mif-music-note'},
-                    {'text': 'Badge', 'href': '/badge-demo/', 'icon': 'mif-bookmark'},
-                    {'text': 'Bar3d', 'href': '/bar3d-demo/', 'icon': 'mif-chart'},
-                    {'text': 'Box', 'href': '/box-demo/', 'icon': 'mif-folder'},
-                    {'text': 'Breadcrumb', 'href': '/breadcrumb-demo/', 'icon': 'mif-arrow-right'},
-                    {'text': 'Bulls', 'href': '/bulls-demo/', 'icon': 'mif-checkmark'},
-                    {'text': 'Button', 'href': '/button-demo/', 'icon': 'mif-play'},
-                    {'text': 'Button Group', 'href': '/button-group-demo/', 'icon': 'mif-menu'},
-                    {'text': 'Calendar', 'href': '/calendar-demo/', 'icon': 'mif-calendar'},
-                    {'text': 'Calendar Picker', 'href': '/calendar-picker-demo/', 'icon': 'mif-calendar'},
-                    {'text': 'Card', 'href': '/card-demo/', 'icon': 'mif-credit-card'},
-                    {'text': 'Carousel', 'href': '/carousel-demo/', 'icon': 'mif-images'},
-                    {'text': 'Catalog Menu', 'href': '/catalog-menu-demo/', 'icon': 'mif-list'},
-                    {'text': 'Charms', 'href': '/charms-demo/', 'icon': 'mif-apps'},
-                    {'text': 'Chart Card', 'href': '/chart-card-demo/', 'icon': 'mif-chart'},
-                    {'text': 'Chat', 'href': '/chat-demo/', 'icon': 'mif-comment'},
-                    {'text': 'Checkbox', 'href': '/checkbox-demo/', 'icon': 'mif-checkmark'},
-                    {'text': 'Chips', 'href': '/chips-demo/', 'icon': 'mif-tag'},
-                    {'text': 'Cloak', 'href': '/cloak-demo/', 'icon': 'mif-eye-slash'},
-                    {'text': 'Collapse', 'href': '/collapse-demo/', 'icon': 'mif-chevron-down'},
-                    {'text': 'Color Picker', 'href': '/color-picker-demo/', 'icon': 'mif-palette'},
-                    {'text': 'Color Selector', 'href': '/color-selector-demo/', 'icon': 'mif-palette'},
-                    {'text': 'Command Button', 'href': '/command-button-demo/', 'icon': 'mif-cursor'},
-                    {'text': 'Container', 'href': '/container-demo/', 'icon': 'mif-layout'},
-                    {'text': 'Counter', 'href': '/counter-demo/', 'icon': 'mif-plus'},
-                    {'text': 'Cube', 'href': '/cube-demo/', 'icon': 'mif-cube'},
-                    {'text': 'Custom Checkbox', 'href': '/custom-checkbox-demo/', 'icon': 'mif-checkmark'}
+                    {
+                        'text': 'Layout & Structure',
+                        'icon': 'mif-layout',
+                        'dropdown': [
+                            {'text': 'App Bar', 'href': '/app-bar-demo/', 'icon': 'mif-menu'},
+                            {'text': 'Container', 'href': '/container-demo/', 'icon': 'mif-layout'},
+                            {'text': 'Box', 'href': '/box-demo/', 'icon': 'mif-folder'},
+                            {'text': 'Breadcrumb', 'href': '/breadcrumb-demo/', 'icon': 'mif-arrow-right'}
+                        ]
+                    },
+                    {
+                        'text': 'Navigation & Menus',
+                        'icon': 'mif-list',
+                        'dropdown': [
+                            {'text': 'Accordion', 'href': '/accordion-demo/', 'icon': 'mif-list'},
+                            {'text': 'Catalog Menu', 'href': '/catalog-menu-demo/', 'icon': 'mif-list'},
+                            {'text': 'Collapse', 'href': '/collapse-demo/', 'icon': 'mif-chevron-down'}
+                        ]
+                    },
+                    {
+                        'text': 'Buttons & Actions',
+                        'icon': 'mif-play',
+                        'dropdown': [
+                            {'text': 'Button', 'href': '/button-demo/', 'icon': 'mif-play'},
+                            {'text': 'Action Button', 'href': '/action-button-demo/', 'icon': 'mif-plus'},
+                            {'text': 'Command Button', 'href': '/command-button-demo/', 'icon': 'mif-cursor'},
+                            {'text': 'Button Group', 'href': '/button-group-demo/', 'icon': 'mif-menu'}
+                        ]
+                    },
+                    {
+                        'text': 'Forms & Inputs',
+                        'icon': 'mif-checkmark',
+                        'dropdown': [
+                            {'text': 'Checkbox', 'href': '/checkbox-demo/', 'icon': 'mif-checkmark'},
+                            {'text': 'Custom Checkbox', 'href': '/custom-checkbox-demo/', 'icon': 'mif-checkmark'},
+                            {'text': 'Color Picker', 'href': '/color-picker-demo/', 'icon': 'mif-palette'},
+                            {'text': 'Color Selector', 'href': '/color-selector-demo/', 'icon': 'mif-palette'}
+                        ]
+                    },
+                    {
+                        'text': 'Data Display',
+                        'icon': 'mif-chart',
+                        'dropdown': [
+                            {'text': 'Badge', 'href': '/badge-demo/', 'icon': 'mif-bookmark'},
+                            {'text': 'Card', 'href': '/card-demo/', 'icon': 'mif-credit-card'},
+                            {'text': 'Chart Card', 'href': '/chart-card-demo/', 'icon': 'mif-chart'},
+                            {'text': 'Bar3d', 'href': '/bar3d-demo/', 'icon': 'mif-chart'},
+                            {'text': 'Counter', 'href': '/counter-demo/', 'icon': 'mif-plus'},
+                            {'text': 'Cube', 'href': '/cube-demo/', 'icon': 'mif-cube'}
+                        ]
+                    },
+                    {
+                        'text': 'Media & Content',
+                        'icon': 'mif-music-note',
+                        'dropdown': [
+                            {'text': 'Audio Button', 'href': '/audio-button-demo/', 'icon': 'mif-volume-high'},
+                            {'text': 'Audio Player', 'href': '/audio-player-demo/', 'icon': 'mif-music-note'},
+                            {'text': 'Carousel', 'href': '/carousel-demo/', 'icon': 'mif-images'}
+                        ]
+                    },
+                    {
+                        'text': 'Communication',
+                        'icon': 'mif-comment',
+                        'dropdown': [
+                            {'text': 'Chat', 'href': '/chat-demo/', 'icon': 'mif-comment'},
+                            {'text': 'Activity', 'href': '/activity-demo/', 'icon': 'mif-spinner'}
+                        ]
+                    },
+                    {
+                        'text': 'Interactive Elements',
+                        'icon': 'mif-apps',
+                        'dropdown': [
+                            {'text': 'Chips', 'href': '/chips-demo/', 'icon': 'mif-tag'},
+                            {'text': 'Charms', 'href': '/charms-demo/', 'icon': 'mif-apps'},
+                            {'text': 'Bulls', 'href': '/bulls-demo/', 'icon': 'mif-checkmark'}
+                        ]
+                    },
+                    {
+                        'text': 'Utility Components',
+                        'icon': 'mif-tools',
+                        'dropdown': [
+                            {'text': 'Cloak', 'href': '/cloak-demo/', 'icon': 'mif-eye-slash'}
+                        ]
+                    },
+                    {
+                        'text': 'Calendar & Time',
+                        'icon': 'mif-calendar',
+                        'dropdown': [
+                            {'text': 'Calendar', 'href': '/calendar-demo/', 'icon': 'mif-calendar'},
+                            {'text': 'Calendar Picker', 'href': '/calendar-picker-demo/', 'icon': 'mif-calendar'}
+                        ]
+                    }
                 ]
             },
             {
                 'text': 'Утилиты',
                 'icon': 'mif-tools',
                 'dropdown': [
-                    {'text': 'Clock', 'href': '/clock-demo/', 'icon': 'mif-clock'},
-                    {'text': 'Adblock Detection', 'href': '/adblock-demo/', 'icon': 'mif-shield'},
-                    {'text': 'Analog Clock', 'href': '/analog-clock-demo/', 'icon': 'mif-clock'},
-                    {'text': 'Avatars', 'href': '/initials-avatars/', 'icon': 'mif-user'}
+                    {
+                        'text': 'Time & Clocks',
+                        'icon': 'mif-clock',
+                        'dropdown': [
+                            {'text': 'Clock', 'href': '/clock-demo/', 'icon': 'mif-clock'},
+                            {'text': 'Analog Clock', 'href': '/analog-clock-demo/', 'icon': 'mif-clock'}
+                        ]
+                    },
+                    {
+                        'text': 'Security & Detection',
+                        'icon': 'mif-shield',
+                        'dropdown': [
+                            {'text': 'Adblock Detection', 'href': '/adblock-demo/', 'icon': 'mif-shield'}
+                        ]
+                    },
+                    {
+                        'text': 'User & Identity',
+                        'icon': 'mif-user',
+                        'dropdown': [
+                            {'text': 'Avatars', 'href': '/initials-avatars/', 'icon': 'mif-user'}
+                        ]
+                    }
                 ]
             },
             {'text': 'Темы', 'href': '/themes/', 'icon': 'mif-palette'}
