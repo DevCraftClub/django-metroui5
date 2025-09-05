@@ -36,6 +36,8 @@ from ..components import (
     render_command_button,
     render_container,
     render_counter,
+    render_cube,
+    render_custom_checkbox,
     render_dialog,
     render_dropdown,
     render_input,
@@ -344,6 +346,43 @@ def metroui5_counter(value=0, from_value=0, duration=2000, prefix="", suffix="",
         start_on_viewport=start_on_viewport, 
         counter_deferred=counter_deferred, 
         timeout=timeout, 
+        **kwargs
+    ))
+
+
+@register.simple_tag
+def metroui5_cube(show_axis=False, axis_style="arrow", cells=4, numbers=False, color="", flash_color="", 
+                  rules=None, flash_interval=1000, auto_restart=0, cell_click=False, **kwargs):
+    """Renders MetroUI cube."""
+    return mark_safe(render_cube(
+        show_axis=show_axis,
+        axis_style=axis_style,
+        cells=cells,
+        numbers=numbers,
+        color=color,
+        flash_color=flash_color,
+        rules=rules,
+        flash_interval=flash_interval,
+        auto_restart=auto_restart,
+        cell_click=cell_click,
+        **kwargs
+    ))
+
+
+@register.simple_tag
+def metroui5_custom_checkbox(state_on="✓", state_off="✗", caption_on="", caption_off="", 
+                            caption_position="right", name="", value="", checked=False, disabled=False, **kwargs):
+    """Renders MetroUI custom checkbox."""
+    return mark_safe(render_custom_checkbox(
+        state_on=state_on,
+        state_off=state_off,
+        caption_on=caption_on,
+        caption_off=caption_off,
+        caption_position=caption_position,
+        name=name,
+        value=value,
+        checked=checked,
+        disabled=disabled,
         **kwargs
     ))
 

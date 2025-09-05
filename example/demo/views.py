@@ -918,6 +918,14 @@ def counter_demo(request):
 	return render(request, 'demo/counter_demo.html', context)
 
 
+def cube_demo(request):
+	"""Cube component demo page."""
+	context = {
+		'page_title': 'Cube Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/cube_demo.html', context)
+
+
 
 
 def test_demo(request):

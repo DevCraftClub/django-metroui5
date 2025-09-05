@@ -1,0 +1,330 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block page_content %}
+<div class="container-fluid">
+    <h1>Cube Component Demo</h1>
+    <p>MetroUI Cube component is a 3D-styled cube visualization with three visible sides (left, right, top), each divided into a grid of cells. Cells can "flash" (light up) over time according to configurable rules.</p>
+
+    <h2>Basic Usage</h2>
+    <div class="example box">
+        <h3>Simple Cube</h3>
+        <div class="demo-content">
+            <p>Basic cube with default settings (4×4 grid, no axis, built-in flashing rules):</p>
+        </div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            {% metroui5_cube %}
+        </div>
+        
+        <h3>Cube with Axis</h3>
+        <div class="demo-content">
+            <p>Cube with axis lines for orientation (arrow style):</p>
+        </div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            {% metroui5_cube show_axis=True %}
+        </div>
+        
+        <h3>Cube with Line Axis</h3>
+        <div class="demo-content">
+            <p>Cube with line-style axis:</p>
+        </div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            {% metroui5_cube show_axis=True axis_style="line" %}
+        </div>
+    </div>
+
+    <h2>Grid Configuration</h2>
+    <div class="example box">
+        <h3>Different Grid Sizes</h3>
+        <div class="demo-content">
+            <p>Various grid sizes and cell numbers:</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
+            <div style="text-align: center;">
+                <h4>3×3 Grid</h4>
+                {% metroui5_cube cells=3 %}
+            </div>
+            <div style="text-align: center;">
+                <h4>5×5 Grid</h4>
+                {% metroui5_cube cells=5 %}
+            </div>
+            <div style="text-align: center;">
+                <h4>6×6 Grid</h4>
+                {% metroui5_cube cells=6 %}
+            </div>
+        </div>
+        
+        <h3>Cube with Numbers</h3>
+        <div class="demo-content">
+            <p>Cube with cell numbers for development/demonstration:</p>
+        </div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            {% metroui5_cube cells=3 numbers=True %}
+        </div>
+    </div>
+
+    <h2>Custom Colors</h2>
+    <div class="example box">
+        <h3>Custom Color Schemes</h3>
+        <div class="demo-content">
+            <p>Various color combinations for different themes:</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0;">
+            <div style="text-align: center; padding: 20px; background-color: #1a1a1a; border-radius: 8px;">
+                <h4 style="color: white;">Dark Theme</h4>
+                {% metroui5_cube color="#222831" flash_color="#00bcd4" cells=4 %}
+            </div>
+            <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+                <h4>Light Theme</h4>
+                {% metroui5_cube color="#e3f2fd" flash_color="#1976d2" cells=4 %}
+            </div>
+            <div style="text-align: center; padding: 20px; background-color: #2e7d32; border-radius: 8px;">
+                <h4 style="color: white;">Green Theme</h4>
+                {% metroui5_cube color="#1b5e20" flash_color="#4caf50" cells=4 %}
+            </div>
+            <div style="text-align: center; padding: 20px; background-color: #d32f2f; border-radius: 8px;">
+                <h4 style="color: white;">Red Theme</h4>
+                {% metroui5_cube color="#b71c1c" flash_color="#f44336" cells=4 %}
+            </div>
+        </div>
+    </div>
+
+    <h2>Custom Flashing Rules</h2>
+    <div class="example box">
+        <h3>Custom Pattern 1</h3>
+        <div class="demo-content">
+            <p>Custom flashing pattern with specific cell sequences:</p>
+        </div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            {% metroui5_cube cells=3 show_axis=True rules='[{"on": {"top": [1,2], "left": [3], "right": [4]}}, {"off": {"top": [2], "left": [3], "right": [4]}, "on": {"top": [5,6]}}, {"on": {"left": [7,8], "right": [9]}}]' %}
+        </div>
+        
+        <h3>Custom Pattern 2</h3>
+        <div class="demo-content">
+            <p>Another custom pattern with different timing:</p>
+        </div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            {% metroui5_cube cells=4 flash_interval=500 rules='[{"on": {"top": [1,2,3,4]}}, {"on": {"left": [1,2,3,4]}}, {"on": {"right": [1,2,3,4]}}, {"off": {"top": [1,2,3,4], "left": [1,2,3,4], "right": [1,2,3,4]}}]' %}
+        </div>
+    </div>
+
+    <h2>Interactive Features</h2>
+    <div class="example box">
+        <h3>Clickable Cells</h3>
+        <div class="demo-content">
+            <p>Cube with clickable cells for manual toggling:</p>
+        </div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            {% metroui5_cube cells=4 cell_click=True show_axis=True %}
+        </div>
+        
+        <h3>Fast Animation</h3>
+        <div class="demo-content">
+            <p>Cube with faster flashing interval (500ms):</p>
+        </div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            {% metroui5_cube cells=4 flash_interval=500 %}
+        </div>
+        
+        <h3>Auto-Restart</h3>
+        <div class="demo-content">
+            <p>Cube with auto-restart after 5 seconds:</p>
+        </div>
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            {% metroui5_cube cells=4 auto_restart=5000 %}
+        </div>
+    </div>
+
+    <h2>Status Dashboard Examples</h2>
+    <div class="example box">
+        <h3>System Status Dashboard</h3>
+        <div class="demo-content">
+            <p>Real-world example using cubes for system status indicators:</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+            <div class="status-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px; text-align: center;">
+                <h4>CPU Usage</h4>
+                <div style="margin: 15px 0;">
+                    {% metroui5_cube cells=3 color="#ffffff" flash_color="#00ff00" flash_interval=800 %}
+                </div>
+                <p>High activity detected</p>
+            </div>
+            
+            <div class="status-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; border-radius: 12px; text-align: center;">
+                <h4>Memory Usage</h4>
+                <div style="margin: 15px 0;">
+                    {% metroui5_cube cells=4 color="#ffffff" flash_color="#ffff00" flash_interval=1200 %}
+                </div>
+                <p>Moderate usage</p>
+            </div>
+            
+            <div class="status-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 20px; border-radius: 12px; text-align: center;">
+                <h4>Network Activity</h4>
+                <div style="margin: 15px 0;">
+                    {% metroui5_cube cells=5 color="#ffffff" flash_color="#ff6b6b" flash_interval=600 %}
+                </div>
+                <p>Active data transfer</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>Programmatic Control</h2>
+    <div class="example box">
+        <h3>Interactive Controls</h3>
+        <div class="demo-content">
+            <p>Control the cube programmatically using JavaScript:</p>
+        </div>
+        
+        <div style="display: flex; gap: 20px; align-items: center; margin: 20px 0;">
+            <div style="flex: 1;">
+                <h4>Controlled Cube</h4>
+                {% metroui5_cube cells=4 show_axis=True id="controlled-cube" %}
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button class="button primary" onclick="startCube()">Start</button>
+                <button class="button secondary" onclick="stopCube()">Stop</button>
+                <button class="button success" onclick="toRule(2)">Go to Rule 2</button>
+                <button class="button alert" onclick="toggleAxis()">Toggle Axis</button>
+            </div>
+        </div>
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example box">
+        <h3>Basic Usage</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_cube %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>With Axis and Custom Grid</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_cube show_axis=True axis_style="line" cells=5 %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>With Custom Colors</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_cube color="#222831" flash_color="#00bcd4" %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>With Custom Rules</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_cube rules='[{"on": {"top": [1,2], "left": [3]}}]' %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>Interactive Cube</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_cube cell_click=True flash_interval=500 auto_restart=3000 %}{% endverbatim %}</code></pre>
+        </div>
+    </div>
+</div>
+
+<style>
+.status-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.status-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.code-example {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.code-example pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.code-example code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    color: #495057;
+}
+
+.demo-content {
+    margin-bottom: 1rem;
+}
+
+.demo-content p {
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+/* Custom cube styling */
+.cube {
+    --cube-size: 20px;
+    --cube-gap: 3px;
+    --cube-background: #f8f9fa;
+    --cube-background-flash: #007bff;
+    --cube-axis-color: #6c757d;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Programmatic cube control
+    window.startCube = function() {
+        const cube = document.getElementById('controlled-cube');
+        if (cube && typeof Metro !== 'undefined' && Metro.getPlugin) {
+            const cubePlugin = Metro.getPlugin(cube, 'cube');
+            if (cubePlugin) {
+                cubePlugin.start();
+            }
+        }
+    };
+    
+    window.stopCube = function() {
+        const cube = document.getElementById('controlled-cube');
+        if (cube && typeof Metro !== 'undefined' && Metro.getPlugin) {
+            const cubePlugin = Metro.getPlugin(cube, 'cube');
+            if (cubePlugin) {
+                cubePlugin.stop();
+            }
+        }
+    };
+    
+    window.toRule = function(index) {
+        const cube = document.getElementById('controlled-cube');
+        if (cube && typeof Metro !== 'undefined' && Metro.getPlugin) {
+            const cubePlugin = Metro.getPlugin(cube, 'cube');
+            if (cubePlugin) {
+                cubePlugin.toRule(index);
+            }
+        }
+    };
+    
+    window.toggleAxis = function() {
+        const cube = document.getElementById('controlled-cube');
+        if (cube && typeof Metro !== 'undefined' && Metro.getPlugin) {
+            const cubePlugin = Metro.getPlugin(cube, 'cube');
+            if (cubePlugin) {
+                const currentAxis = cube.getAttribute('data-show-axis') === 'true';
+                cubePlugin.axis(!currentAxis);
+            }
+        }
+    };
+    
+    // Add event listeners for cube events
+    const cubes = document.querySelectorAll('[data-role="cube"]');
+    cubes.forEach(cube => {
+        cube.addEventListener('cube-create', function(e) {
+            console.log('Cube created:', e.detail);
+        });
+        
+        cube.addEventListener('tick', function(e) {
+            console.log('Cube tick:', e.detail.index);
+        });
+    });
+});
+</script>
+{% endblock %}
