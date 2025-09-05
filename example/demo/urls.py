@@ -49,5 +49,6 @@ urlpatterns = [
     path('color-selector-demo/', views.color_selector_demo, name='color_selector_demo'),
     path('command-button-demo/', views.command_button_demo, name='command_button_demo'),
     path('container-demo/', views.container_demo, name='container_demo'),
+    path('counter-demo/', views.counter_demo, name='counter_demo'),
     path('test-demo/', views.test_demo, name='test_demo'),
 ]

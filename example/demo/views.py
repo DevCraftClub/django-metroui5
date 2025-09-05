@@ -910,6 +910,16 @@ def container_demo(request):
 	return render(request, 'demo/container_demo.html', context)
 
 
+def counter_demo(request):
+	"""Counter component demo page."""
+	context = {
+		'page_title': 'Counter Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/counter_demo.html', context)
+
+
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {
