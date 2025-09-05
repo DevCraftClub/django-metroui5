@@ -34,6 +34,7 @@ from ..components import (
     render_color_picker,
     render_color_selector,
     render_command_button,
+    render_container,
     render_dialog,
     render_dropdown,
     render_input,
@@ -290,6 +291,51 @@ def metroui5_color_selector(**kwargs):
 def metroui5_command_button(icon="", caption="", description="", **kwargs):
     """Renders MetroUI command button."""
     return mark_safe(render_command_button(icon=icon, caption=caption, description=description, **kwargs))
+
+
+@register.tag
+def metroui5_container(parser, token):
+    """Renders MetroUI container as a block tag."""
+    try:
+        tag_name, *args = token.split_contents()
+    except ValueError:
+        raise template.TemplateSyntaxError(f"{token.contents.split()[0]} requires arguments")
+    
+    # Parse arguments
+    kwargs = {}
+    for arg in args:
+        if '=' in arg:
+            key, value = arg.split('=', 1)
+            # Remove quotes from value
+            value = value.strip('"\'')
+            # Convert boolean values
+            if value.lower() in ('true', 'false'):
+                value = value.lower() == 'true'
+            kwargs[key] = value
+        else:
+            # Boolean flag
+            kwargs[arg] = True
+    
+    nodelist = parser.parse(('endmetroui5_container',))
+    parser.delete_first_token()
+    
+    return ContainerNode(nodelist, kwargs)
+
+
+@register.tag
+def endmetroui5_container(parser, token):
+    """End tag for MetroUI container block tag."""
+    return None
+
+
+class ContainerNode(template.Node):
+    def __init__(self, nodelist, kwargs):
+        self.nodelist = nodelist
+        self.kwargs = kwargs
+    
+    def render(self, context):
+        content = self.nodelist.render(context)
+        return render_container(content, **self.kwargs)
 
 
 @register.simple_tag
@@ -589,12 +635,6 @@ def metroui5_cell(size, **kwargs):
     return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
-@register.simple_tag
-def metroui5_container(**kwargs):
-    """Renders MetroUI container."""
-    attrs = {"class": "container"}
-    attrs.update(kwargs)
-    return mark_safe(render_tag("div", attrs=attrs, content=""))
 
 
 @register.simple_tag

@@ -1,0 +1,574 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Container Component Demo{% endblock %}
+
+{% block extra_css %}
+<style>
+    .container-example {
+        margin-bottom: 2rem;
+    }
+    
+    .container-example h3 {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .container-example .demo-content {
+        background-color: #f8f9fa;
+        border: 2px dashed #dee2e6;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 4px;
+        text-align: center;
+        color: #6c757d;
+    }
+    
+    .container-example .demo-content h4 {
+        margin-top: 0;
+        color: #495057;
+    }
+    
+    .container-example .breakpoint-info {
+        background-color: #e9ecef;
+        padding: 0.5rem;
+        border-radius: 4px;
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+        color: #495057;
+    }
+    
+    .container-example .responsive-demo {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+    }
+    
+    .container-example .responsive-demo h3 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+    
+    .container-example .semantic-demo {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+    }
+    
+    .container-example .semantic-demo h3 {
+        color: #856404;
+        margin-bottom: 1rem;
+    }
+    
+    .container-example .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .container-example .comparison-item {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 1rem;
+        border-radius: 4px;
+    }
+    
+    .container-example .comparison-item h4 {
+        margin-top: 0;
+        color: #495057;
+    }
+    
+    .container-example .code-example {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        overflow-x: auto;
+    }
+    
+    .container-example .viewport-info {
+        background-color: #d1ecf1;
+        border: 1px solid #bee5eb;
+        color: #0c5460;
+        padding: 0.5rem;
+        border-radius: 4px;
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+    }
+    
+    .container-example .container-query-demo {
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+    }
+    
+    .container-example .container-query-demo h3 {
+        color: #155724;
+        margin-bottom: 1rem;
+    }
+    
+    .container-example .responsive-element {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 0.5rem 0;
+        transition: all 0.3s ease;
+    }
+    
+    .container-example .responsive-element:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+    
+    .container-example .breakpoint-demo {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .container-example .breakpoint-demo > div {
+        flex: 1;
+        min-width: 200px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 1rem;
+        border-radius: 4px;
+        text-align: center;
+    }
+    
+    .container-example .breakpoint-demo h4 {
+        margin-top: 0;
+        color: #495057;
+    }
+    
+    .container-example .breakpoint-demo .breakpoint-size {
+        font-size: 0.8rem;
+        color: #6c757d;
+        margin-top: 0.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Container Component Demo</h1>
+    <p>This demo showcases the MetroUI Container component for responsive layout containers that help center and horizontally pad your content. It's a fundamental building block for creating responsive layouts in Metro UI.</p>
+
+    <h2>Basic Container Types</h2>
+    <div class="example box">
+        <h3>Standard Container</h3>
+        <div class="breakpoint-info">
+            <strong>Responsive Behavior:</strong> Adapts to different screen sizes with adaptive max-width
+        </div>
+        {% metroui5_container %}
+            <div class="demo-content">
+                <h4>Standard Container</h4>
+                <p>This is a standard responsive container that adapts to different screen sizes.</p>
+            </div>
+        {% endmetroui5_container %}
+        
+        <h3>Fluid Container</h3>
+        <div class="breakpoint-info">
+            <strong>Full-width:</strong> Spans the entire viewport width with no max-width
+        </div>
+        {% metroui5_container fluid=True %}
+            <div class="demo-content">
+                <h4>Fluid Container</h4>
+                <p>This is a fluid container that spans the full width of the viewport.</p>
+            </div>
+        {% endmetroui5_container %}
+        
+        <h3>Maximum Width Container</h3>
+        <div class="breakpoint-info">
+            <strong>100% Width:</strong> Takes 100% width of its parent
+        </div>
+        {% metroui5_container max=True %}
+            <div class="demo-content">
+                <h4>Maximum Width Container</h4>
+                <p>This is a maximum width container that takes 100% width.</p>
+            </div>
+        {% endmetroui5_container %}
+    </div>
+
+    <h2>Breakpoint-Specific Containers</h2>
+    <div class="example box">
+        <h3>Fixed-Width Containers</h3>
+        <div class="breakpoint-demo">
+            <div>
+                <h4>Extra Small (XS)</h4>
+                {% metroui5_container xs=True %}
+                    <div class="demo-content">
+                        <h4>XS Container</h4>
+                        <p>Max-width based on xs breakpoint</p>
+                    </div>
+                {% endmetroui5_container %}
+                <div class="breakpoint-size">Max-width: xs breakpoint</div>
+            </div>
+            <div>
+                <h4>Small (SM)</h4>
+                {% metroui5_container sm=True %}
+                    <div class="demo-content">
+                        <h4>SM Container</h4>
+                        <p>Max-width based on sm breakpoint</p>
+                    </div>
+                {% endmetroui5_container %}
+                <div class="breakpoint-size">Max-width: sm breakpoint</div>
+            </div>
+            <div>
+                <h4>Medium (MD)</h4>
+                {% metroui5_container md=True %}
+                    <div class="demo-content">
+                        <h4>MD Container</h4>
+                        <p>Max-width based on md breakpoint</p>
+                    </div>
+                {% endmetroui5_container %}
+                <div class="breakpoint-size">Max-width: md breakpoint</div>
+            </div>
+            <div>
+                <h4>Large (LG)</h4>
+                {% metroui5_container lg=True %}
+                    <div class="demo-content">
+                        <h4>LG Container</h4>
+                        <p>Max-width based on lg breakpoint</p>
+                    </div>
+                {% endmetroui5_container %}
+                <div class="breakpoint-size">Max-width: lg breakpoint</div>
+            </div>
+            <div>
+                <h4>Extra Large (XL)</h4>
+                {% metroui5_container xl=True %}
+                    <div class="demo-content">
+                        <h4>XL Container</h4>
+                        <p>Max-width based on xl breakpoint</p>
+                    </div>
+                {% endmetroui5_container %}
+                <div class="breakpoint-size">Max-width: xl breakpoint</div>
+            </div>
+            <div>
+                <h4>Extra Extra Large (XXL)</h4>
+                {% metroui5_container xxl=True %}
+                    <div class="demo-content">
+                        <h4>XXL Container</h4>
+                        <p>Max-width based on xxl breakpoint</p>
+                    </div>
+                {% endmetroui5_container %}
+                <div class="breakpoint-size">Max-width: xxl breakpoint</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Container Query Support</h2>
+    <div class="example box">
+        <h3>Container Query Container</h3>
+        <div class="container-query-demo">
+            <h3>Container Query Support</h3>
+            <p>This container enables CSS container queries, allowing child elements to respond to the container's size rather than the viewport size.</p>
+        </div>
+        {% metroui5_container query=True %}
+            <div class="demo-content">
+                <h4>Container Query Container</h4>
+                <p>This container supports CSS container queries for component-level responsiveness.</p>
+            </div>
+        {% endmetroui5_container %}
+        
+        <h3>Responsive Container</h3>
+        <div class="container-query-demo">
+            <h3>Responsive Container</h3>
+            <p>This container also supports responsive behavior with container queries.</p>
+        </div>
+        {% metroui5_container responsive=True %}
+            <div class="demo-content">
+                <h4>Responsive Container</h4>
+                <p>This container provides responsive behavior with container query support.</p>
+            </div>
+        {% endmetroui5_container %}
+    </div>
+
+    <h2>Semantic HTML Elements</h2>
+    <div class="example box">
+        <h3>Semantic Containers</h3>
+        <div class="semantic-demo">
+            <h3>Semantic HTML Elements</h3>
+            <p>The container styles are also applied to semantic HTML elements like header, section, footer, aside, main, and article.</p>
+        </div>
+        
+        <h4>Header Container</h4>
+        {% metroui5_container semantic=True tag="header" %}
+            <h1>Page Header</h1>
+            <p>This is a header container with semantic meaning.</p>
+        {% endmetroui5_container %}
+        
+        <h4>Section Container</h4>
+        {% metroui5_container semantic=True tag="section" %}
+            <h2>Section Title</h2>
+            <p>This is a section container with semantic meaning.</p>
+        {% endmetroui5_container %}
+        
+        <h4>Article Container</h4>
+        {% metroui5_container semantic=True tag="article" %}
+            <h2>Article Title</h2>
+            <p>This is an article container with semantic meaning.</p>
+        {% endmetroui5_container %}
+        
+        <h4>Aside Container</h4>
+        {% metroui5_container semantic=True tag="aside" %}
+            <h3>Sidebar</h3>
+            <p>This is an aside container with semantic meaning.</p>
+        {% endmetroui5_container %}
+        
+        <h4>Footer Container</h4>
+        {% metroui5_container semantic=True tag="footer" %}
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+        {% endmetroui5_container %}
+    </div>
+
+    <h2>Responsive Behavior Demo</h2>
+    <div class="example box">
+        <h3>Responsive Behavior</h3>
+        <div class="viewport-info">
+            <strong>Current Viewport:</strong> <span id="viewport-info">Loading...</span>
+        </div>
+        <div class="breakpoint-info">
+            <strong>Standard Container Responsive Behavior:</strong><br>
+            • &lt; 360px: 100% width<br>
+            • 360px - 576px: 98% width<br>
+            • 577px - 768px: 95% width<br>
+            • 769px - 992px: 90% width<br>
+            • 993px - 1200px: 90% width<br>
+            • &gt; 1200px: 80% width
+        </div>
+        
+        <div class="responsive-demo">
+            <h3>Responsive Container Demo</h3>
+            <p>This container adapts to different screen sizes. Try resizing your browser window to see the responsive behavior.</p>
+            <div class="responsive-element">
+                <h4>Responsive Element</h4>
+                <p>This element responds to container size changes.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>Container Comparison</h2>
+    <div class="example box">
+        <h3>Container Types Comparison</h3>
+        <div class="comparison-grid">
+            <div class="comparison-item">
+                <h4>Standard Container</h4>
+                <p>Adaptive max-width based on viewport size. Provides consistent padding and centering.</p>
+                <div class="code-example">
+                    {% metroui5_container %}
+                        <div class="demo-content">
+                            <h4>Standard</h4>
+                            <p>Adaptive width</p>
+                        </div>
+                    {% endmetroui5_container %}
+                </div>
+            </div>
+            
+            <div class="comparison-item">
+                <h4>Fluid Container</h4>
+                <p>Full-width container with no max-width. Spans the entire viewport width.</p>
+                <div class="code-example">
+                    {% metroui5_container fluid=True %}
+                        <div class="demo-content">
+                            <h4>Fluid</h4>
+                            <p>Full width</p>
+                        </div>
+                    {% endmetroui5_container %}
+                </div>
+            </div>
+            
+            <div class="comparison-item">
+                <h4>Fixed-Width Container</h4>
+                <p>Container with specific breakpoint max-width. Useful for consistent sizing.</p>
+                <div class="code-example">
+                    {% metroui5_container md=True %}
+                        <div class="demo-content">
+                            <h4>Fixed</h4>
+                            <p>MD breakpoint</p>
+                        </div>
+                    {% endmetroui5_container %}
+                </div>
+            </div>
+            
+            <div class="comparison-item">
+                <h4>Container Query</h4>
+                <p>Container that supports CSS container queries for component-level responsiveness.</p>
+                <div class="code-example">
+                    {% metroui5_container query=True %}
+                        <div class="demo-content">
+                            <h4>Query</h4>
+                            <p>Container queries</p>
+                        </div>
+                    {% endmetroui5_container %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Real-world Examples</h2>
+    <div class="example box">
+        <h3>Page Layout Example</h3>
+        <div class="responsive-demo">
+            <h3>Complete Page Layout</h3>
+            <p>This demonstrates how containers can be used to create a complete page layout.</p>
+        </div>
+        
+        <!-- Header -->
+        {% metroui5_container semantic=True tag="header" %}
+            <header style="background-color: #343a40; color: white; padding: 1rem 0;">
+                <h1>Website Header</h1>
+                <p>Navigation and branding</p>
+            </header>
+        {% endmetroui5_container %}
+        
+        <!-- Main Content -->
+        {% metroui5_container semantic=True tag="main" %}
+            <main style="padding: 2rem 0;">
+                <h2>Main Content</h2>
+                <p>This is the main content area of the page. It uses a standard container for responsive layout.</p>
+                <div class="responsive-element">
+                    <h3>Content Section</h3>
+                    <p>This section demonstrates responsive behavior within the container.</p>
+                </div>
+            </main>
+        {% endmetroui5_container %}
+        
+        <!-- Sidebar -->
+        {% metroui5_container semantic=True tag="aside" %}
+            <aside style="background-color: #f8f9fa; padding: 1rem; border-left: 3px solid #007bff;">
+                <h3>Sidebar</h3>
+                <p>Additional information and links</p>
+            </aside>
+        {% endmetroui5_container %}
+        
+        <!-- Footer -->
+        {% metroui5_container semantic=True tag="footer" %}
+            <footer style="background-color: #343a40; color: white; padding: 1rem 0; text-align: center;">
+                <p>&copy; 2024 Your Company. All rights reserved.</p>
+            </footer>
+        {% endmetroui5_container %}
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example box">
+        <h3>Basic Usage</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_container %}
+    <p>Your content here</p>
+{% endmetroui5_container %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>Fluid Container</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_container fluid=True %}
+    <p>Full-width content</p>
+{% endmetroui5_container %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>Fixed-Width Container</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_container md=True %}
+    <p>Medium width content</p>
+{% endmetroui5_container %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>Container with Queries</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_container query=True %}
+    <p>Responsive content</p>
+{% endmetroui5_container %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>Semantic Container</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_container semantic=True tag="header" %}
+    <h1>Header content</h1>
+{% endmetroui5_container %}{% endverbatim %}</code></pre>
+        </div>
+    </div>
+</div>
+
+<script>
+// Viewport information
+function updateViewportInfo() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const viewportInfo = document.getElementById('viewport-info');
+    
+    let breakpoint = 'Unknown';
+    if (width < 360) {
+        breakpoint = 'XS (< 360px)';
+    } else if (width < 577) {
+        breakpoint = 'SM (360px - 576px)';
+    } else if (width < 769) {
+        breakpoint = 'MD (577px - 768px)';
+    } else if (width < 993) {
+        breakpoint = 'LG (769px - 992px)';
+    } else if (width < 1201) {
+        breakpoint = 'XL (993px - 1200px)';
+    } else {
+        breakpoint = 'XXL (> 1200px)';
+    }
+    
+    viewportInfo.textContent = `${width}x${height} (${breakpoint})`;
+}
+
+// Initialize viewport info
+updateViewportInfo();
+window.addEventListener('resize', updateViewportInfo);
+
+// Container query demo
+document.addEventListener('DOMContentLoaded', function() {
+    // Add container query styles
+    const style = document.createElement('style');
+    style.textContent = `
+        @container container-query (min-width: 400px) {
+            .responsive-element {
+                font-size: 1.2rem;
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+        }
+        
+        @container container-query (min-width: 600px) {
+            .responsive-element {
+                font-size: 1.4rem;
+                background-color: rgba(255, 255, 255, 0.6);
+            }
+        }
+        
+        @container responsive-container (min-width: 500px) {
+            .responsive-element {
+                padding: 1.5rem;
+                border-radius: 8px;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Add hover effects
+    const responsiveElements = document.querySelectorAll('.responsive-element');
+    responsiveElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px) scale(1.02)';
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+});
+</script>
+{% endblock %}
