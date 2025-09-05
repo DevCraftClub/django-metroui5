@@ -62,7 +62,8 @@ def app_bar_data(request):
                     {'text': 'Collapse', 'href': '/collapse-demo/', 'icon': 'mif-chevron-down'},
                     {'text': 'Color Picker', 'href': '/color-picker-demo/', 'icon': 'mif-palette'},
                     {'text': 'Color Selector', 'href': '/color-selector-demo/', 'icon': 'mif-palette'},
-                    {'text': 'Command Button', 'href': '/command-button-demo/', 'icon': 'mif-cursor'}
+                    {'text': 'Command Button', 'href': '/command-button-demo/', 'icon': 'mif-cursor'},
+                    {'text': 'Container', 'href': '/container-demo/', 'icon': 'mif-layout'}
                 ]
             },
             {
