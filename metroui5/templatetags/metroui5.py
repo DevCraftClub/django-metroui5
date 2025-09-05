@@ -35,6 +35,7 @@ from ..components import (
     render_color_selector,
     render_command_button,
     render_container,
+    render_counter,
     render_dialog,
     render_dropdown,
     render_input,
@@ -326,6 +327,27 @@ def metroui5_container(parser, token):
 def endmetroui5_container(parser, token):
     """End tag for MetroUI container block tag."""
     return None
+
+
+@register.simple_tag
+def metroui5_counter(value=0, from_value=0, duration=2000, prefix="", suffix="", delimiter=",", size=16, 
+                     start_on_viewport=False, counter_deferred=0, timeout=0, **kwargs):
+    """Renders MetroUI counter."""
+    return mark_safe(render_counter(
+        value=value, 
+        from_value=from_value, 
+        duration=duration, 
+        prefix=prefix, 
+        suffix=suffix, 
+        delimiter=delimiter, 
+        size=size, 
+        start_on_viewport=start_on_viewport, 
+        counter_deferred=counter_deferred, 
+        timeout=timeout, 
+        **kwargs
+    ))
+
+
 
 
 class ContainerNode(template.Node):
