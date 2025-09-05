@@ -934,6 +934,14 @@ def custom_checkbox_demo(request):
 	return render(request, 'demo/custom_checkbox_demo.html', context)
 
 
+def cutter_demo(request):
+	"""Cutter component demo page."""
+	context = {
+		'page_title': 'Cutter Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/cutter_demo.html', context)
+
+
 
 
 def test_demo(request):
