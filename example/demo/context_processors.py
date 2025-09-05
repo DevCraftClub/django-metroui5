@@ -70,6 +70,7 @@ def app_bar_data(request):
                         'dropdown': [
                             {'text': 'Checkbox', 'href': '/checkbox-demo/', 'icon': 'mif-checkmark'},
                             {'text': 'Custom Checkbox', 'href': '/custom-checkbox-demo/', 'icon': 'mif-checkmark'},
+                            {'text': 'Cutter', 'href': '/cutter-demo/', 'icon': 'mif-scissors'},
                             {'text': 'Color Picker', 'href': '/color-picker-demo/', 'icon': 'mif-palette'},
                             {'text': 'Color Selector', 'href': '/color-selector-demo/', 'icon': 'mif-palette'}
                         ]

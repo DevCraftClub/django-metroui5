@@ -38,6 +38,7 @@ from ..components import (
     render_counter,
     render_cube,
     render_custom_checkbox,
+    render_cutter,
     render_dialog,
     render_dropdown,
     render_input,
@@ -383,6 +384,17 @@ def metroui5_custom_checkbox(state_on="✓", state_off="✗", caption_on="", cap
         value=value,
         checked=checked,
         disabled=disabled,
+        **kwargs
+    ))
+
+
+@register.simple_tag
+def metroui5_cutter(content="", icon="", text="", **kwargs):
+    """Renders MetroUI cutter."""
+    return mark_safe(render_cutter(
+        content=content,
+        icon=icon,
+        text=text,
         **kwargs
     ))
 
