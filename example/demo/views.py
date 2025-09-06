@@ -958,6 +958,12 @@ def d_menu_demo(request):
 	return render(request, 'demo/d_menu_demo.html', context)
 
 
+def dialog_demo(request):
+	"""Dialog component demo page."""
+	context = {
+		'page_title': 'Dialog Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/dialog_demo.html', context)
 
 
 def test_demo(request):

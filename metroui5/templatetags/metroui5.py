@@ -42,6 +42,7 @@ from ..components import (
     render_d_menu,
     render_date_picker,
     render_dialog,
+    render_dialog_create,
     render_dropdown,
     render_input,
     render_material_input,
@@ -535,6 +536,12 @@ def metroui5_date_picker(**kwargs):
 def metroui5_dialog(title, content, **kwargs):
     """Renders MetroUI dialog."""
     return mark_safe(render_dialog(title, content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_dialog_create(**kwargs):
+    """Renders JavaScript code to create a dialog dynamically using Metro.dialog.create()."""
+    return mark_safe(render_dialog_create(**kwargs))
 
 
 @register.simple_tag
