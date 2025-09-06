@@ -966,6 +966,14 @@ def dialog_demo(request):
 	return render(request, 'demo/dialog_demo.html', context)
 
 
+def directive_demo(request):
+	"""Directive component demo page."""
+	context = {
+		'page_title': 'Directive Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/directive_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {

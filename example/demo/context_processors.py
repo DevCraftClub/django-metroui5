@@ -137,6 +137,14 @@ def app_bar_data(request):
                             {'text': 'Dialog', 'href': '/dialog-demo/', 'icon': 'mif-window'},
                             {'text': 'Modal', 'href': '/modal-demo/', 'icon': 'mif-window'}
                         ]
+                    },
+                    {
+                        'text': 'Content & Information',
+                        'icon': 'mif-info',
+                        'dropdown': [
+                            {'text': 'Directive', 'href': '/directive-demo/', 'icon': 'mif-info'},
+                            {'text': 'Alert', 'href': '/alert-demo/', 'icon': 'mif-warning'}
+                        ]
                     }
                 ]
             },
