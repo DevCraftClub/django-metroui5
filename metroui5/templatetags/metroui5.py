@@ -40,6 +40,7 @@ from ..components import (
     render_custom_checkbox,
     render_cutter,
     render_d_menu,
+    render_date_picker,
     render_dialog,
     render_dropdown,
     render_input,
@@ -522,6 +523,12 @@ def metroui5_calendar(**kwargs):
 def metroui5_calendar_picker(**kwargs):
     """Renders MetroUI calendar picker component."""
     return mark_safe(render_calendar_picker(**kwargs))
+
+
+@register.simple_tag
+def metroui5_date_picker(**kwargs):
+    """Renders MetroUI date picker component."""
+    return mark_safe(render_date_picker(**kwargs))
 
 
 @register.simple_tag

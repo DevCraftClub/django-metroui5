@@ -126,7 +126,8 @@ def app_bar_data(request):
                         'icon': 'mif-calendar',
                         'dropdown': [
                             {'text': 'Calendar', 'href': '/calendar-demo/', 'icon': 'mif-calendar'},
-                            {'text': 'Calendar Picker', 'href': '/calendar-picker-demo/', 'icon': 'mif-calendar'}
+                            {'text': 'Calendar Picker', 'href': '/calendar-picker-demo/', 'icon': 'mif-calendar'},
+                            {'text': 'Date Picker', 'href': '/date-picker-demo/', 'icon': 'mif-calendar'}
                         ]
                     }
                 ]
