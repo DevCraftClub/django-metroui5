@@ -942,6 +942,14 @@ def cutter_demo(request):
 	return render(request, 'demo/cutter_demo.html', context)
 
 
+def d_menu_demo(request):
+	"""D-Menu component demo page."""
+	context = {
+		'page_title': 'D-Menu Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/d_menu_demo.html', context)
+
+
 
 
 def test_demo(request):
