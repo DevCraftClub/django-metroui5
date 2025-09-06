@@ -990,6 +990,114 @@ def double_slider_demo(request):
 	return render(request, 'demo/double_slider_demo.html', context)
 
 
+def drag_items_demo(request):
+	"""Drag Items component demo page."""
+	context = {
+		'page_title': 'Drag Items Component Demo - MetroUI5 Demo',
+		
+		# Basic examples
+		'basic_items': [
+			'Drag me around!',
+			'Reorder by dragging',
+			'Simple drag and drop',
+			'Move me up or down'
+		],
+		
+		'marker_items': [
+			'Item with drag marker',
+			'Drag by the hamburger icon',
+			'Visual drag indicator',
+			'Easy to identify drag handle'
+		],
+		
+		'div_items': [
+			{'content': 'Div element 1', 'class': 'widget-item'},
+			{'content': 'Div element 2', 'class': 'widget-item'},
+			{'content': 'Div element 3', 'class': 'widget-item'},
+			{'content': 'Div element 4', 'class': 'widget-item'}
+		],
+		
+		'disabled_items': [
+			'Initially disabled item 1',
+			'Initially disabled item 2',
+			'Initially disabled item 3',
+			'Use the button to enable dragging'
+		],
+		
+		'interactive_items': [
+			'Interactive item 1 - Watch events below',
+			'Interactive item 2 - Drag to see events',
+			'Interactive item 3 - Custom styling applied',
+			'Interactive item 4 - Event logging enabled'
+		],
+		
+		# Real-world examples
+		'task_items': [
+			{'content': 'Complete project proposal', 'class': 'task-item priority-high'},
+			{'content': 'Review team feedback', 'class': 'task-item priority-medium'},
+			{'content': 'Update documentation', 'class': 'task-item priority-low'},
+			{'content': 'Schedule team meeting', 'class': 'task-item priority-medium'},
+			{'content': 'Deploy to staging', 'class': 'task-item priority-high'}
+		],
+		
+		'menu_items': [
+			'Dashboard',
+			'Projects',
+			'Team',
+			'Reports',
+			'Settings'
+		],
+		
+		'gallery_items': [
+			'🖼️ Image 1.jpg',
+			'🖼️ Image 2.jpg',
+			'🖼️ Image 3.jpg',
+			'🖼️ Image 4.jpg',
+			'🖼️ Image 5.jpg'
+		],
+		
+		'widget_items': [
+			{'content': '📊 Analytics Widget', 'class': 'widget-item'},
+			{'content': '📈 Sales Chart', 'class': 'widget-item'},
+			{'content': '👥 User Stats', 'class': 'widget-item'},
+			{'content': '📋 Task List', 'class': 'widget-item'}
+		],
+		
+		'file_items': [
+			{'content': 'document.pdf', 'class': 'file-item'},
+			{'content': 'spreadsheet.xlsx', 'class': 'file-item'},
+			{'content': 'presentation.pptx', 'class': 'file-item'},
+			{'content': 'image.jpg', 'class': 'file-item'},
+			{'content': 'archive.zip', 'class': 'file-item'}
+		],
+		
+		'priority_items': [
+			{'content': 'Critical Bug Fix', 'class': 'priority-high'},
+			{'content': 'Feature Request', 'class': 'priority-medium'},
+			{'content': 'Documentation Update', 'class': 'priority-low'},
+			{'content': 'Security Patch', 'class': 'priority-high'},
+			{'content': 'UI Enhancement', 'class': 'priority-medium'}
+		],
+		
+		# Theme examples
+		'theme_items': [
+			'Themed item 1',
+			'Themed item 2',
+			'Themed item 3',
+			'Themed item 4'
+		],
+		
+		# API demonstration
+		'api_items': [
+			'API Control Item 1',
+			'API Control Item 2',
+			'API Control Item 3',
+			'Use buttons above to control dragging'
+		]
+	}
+	return render(request, 'demo/drag_items_demo.html', context)
+
+
 def double_select_box_demo(request):
 	"""Double Select Box component demo page."""
 	context = {
