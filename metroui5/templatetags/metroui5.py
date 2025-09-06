@@ -39,6 +39,7 @@ from ..components import (
     render_cube,
     render_custom_checkbox,
     render_cutter,
+    render_d_menu,
     render_dialog,
     render_dropdown,
     render_input,
@@ -395,6 +396,15 @@ def metroui5_cutter(content="", icon="", text="", **kwargs):
         content=content,
         icon=icon,
         text=text,
+        **kwargs
+    ))
+
+
+@register.simple_tag
+def metroui5_d_menu(items=None, **kwargs):
+    """Renders MetroUI D-Menu."""
+    return mark_safe(render_d_menu(
+        items=items,
         **kwargs
     ))
 

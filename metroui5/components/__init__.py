@@ -38,6 +38,7 @@ from .counter import render_counter
 from .cube import render_cube
 from .custom_checkbox import render_custom_checkbox
 from .cutter import render_cutter
+from .d_menu import render_d_menu
 from .dialog import render_dialog
 from .dropdown import render_dropdown
 from .input import render_input, render_material_input
@@ -109,6 +110,7 @@ __all__ = [
     'render_cube',
     'render_custom_checkbox',
     'render_cutter',
+    'render_d_menu',
     'render_dialog',
     'render_dropdown',
     'render_input',
