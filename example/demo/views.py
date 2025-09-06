@@ -1558,3 +1558,20 @@ def dropdown_button_demo(request):
 		'''
 	}
 	return render(request, 'demo/dropdown_button_demo.html', context)
+
+
+def file_demo(request):
+	"""Demo page for file component."""
+	context = {
+		'page_title': 'File Demo - MetroUI5 Demo',
+		# Demo data for file component examples
+		'file_examples': {
+			'basic': 'Basic file input with default settings',
+			'button': 'File input in button mode',
+			'drop': 'File input in drop zone mode for drag and drop',
+			'multiple': 'File input that accepts multiple files',
+			'validation': 'File input with validation states',
+			'advanced': 'Advanced file input configurations'
+		}
+	}
+	return render(request, 'demo/file_demo.html', context)

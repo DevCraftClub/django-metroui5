@@ -1,0 +1,466 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}File Demo - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+	<h1>File Demo</h1>
+	<p>Demonstrating the MetroUI v5 File component with all features and modes.</p>
+
+	<div class="grid">
+		<div class="row">
+			<div class="cell-md-6">
+				<h2>Basic Usage</h2>
+				<p>Basic file input with default settings.</p>
+				<div class="example-container">
+					{% metroui5_file %}
+				</div>
+			</div>
+
+			<div class="cell-md-6">
+				<h2>With Custom Label</h2>
+				<p>File input with custom label text.</p>
+				<div class="example-container">
+					{% metroui5_file label="Select a file:" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-6">
+				<h2>With Icon Prepend</h2>
+				<p>File input with folder icon prepend.</p>
+				<div class="example-container">
+					{% metroui5_file_with_icon icon_class="mif-folder" %}
+				</div>
+			</div>
+
+			<div class="cell-md-6">
+				<h2>Button Mode</h2>
+				<p>File input in button mode with custom text.</p>
+				<div class="example-container">
+					{% metroui5_file_button button_text="Choose File" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-6">
+				<h2>Drop Zone Mode</h2>
+				<p>File input in drop zone mode for drag and drop.</p>
+				<div class="example-container">
+					{% metroui5_file_drop drop_text="Drop file here" %}
+				</div>
+			</div>
+
+			<div class="cell-md-6">
+				<h2>Multiple Files</h2>
+				<p>File input that accepts multiple files.</p>
+				<div class="example-container">
+					{% metroui5_file_multiple %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-6">
+				<h2>File Type Restriction</h2>
+				<p>File input that only accepts images.</p>
+				<div class="example-container">
+					{% metroui5_file accept="image/*" label="Select image:" %}
+				</div>
+			</div>
+
+			<div class="cell-md-6">
+				<h2>Disabled State</h2>
+				<p>File input in disabled state.</p>
+				<div class="example-container">
+					{% metroui5_file disabled=True label="Disabled file input" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-12">
+				<h2>Validation States</h2>
+				<p>File input with different validation states.</p>
+
+				<div class="grid">
+					<div class="row">
+						<div class="cell-md-3">
+							<h4>Error State</h4>
+							<div class="example-container">
+								{% metroui5_file error=True error_message="Please select a file" %}
+							</div>
+						</div>
+						<div class="cell-md-3">
+							<h4>Success State</h4>
+							<div class="example-container">
+								{% metroui5_file success=True success_message="File selected successfully" %}
+							</div>
+						</div>
+						<div class="cell-md-3">
+							<h4>Required Field</h4>
+							<div class="example-container">
+								{% metroui5_file required=True label="Required file:" %}
+							</div>
+						</div>
+						<div class="cell-md-3">
+							<h4>Custom Styling</h4>
+							<div class="example-container">
+								{% metroui5_file cls_component="custom-file-style" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-12">
+				<h2>Advanced Examples</h2>
+				<p>More complex file input configurations.</p>
+
+				<div class="grid">
+					<div class="row">
+						<div class="cell-md-6">
+							<h4>Custom Drop Zone</h4>
+							<div class="example-container">
+								{% metroui5_file_drop drop_text="Drag & drop your files here" drop_icon="📁" %}
+							</div>
+						</div>
+						<div class="cell-md-6">
+							<h4>Button with Custom Title</h4>
+							<div class="example-container">
+								{% metroui5_file_button button_text="Upload Document" files_selected_title="Documents selected: {n}" %}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell-md-6">
+							<h4>PDF Files Only</h4>
+							<div class="example-container">
+								{% metroui5_file accept=".pdf" label="Select PDF:" mode="button" button_title="Choose PDF" %}
+							</div>
+						</div>
+						<div class="cell-md-6">
+							<h4>Multiple Images</h4>
+							<div class="example-container">
+								{% metroui5_file_multiple accept="image/*" label="Select images:" mode="drop" drop_text="Drop images here" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-12">
+				<h2>Interactive Examples</h2>
+				<p>File inputs with JavaScript event handlers.</p>
+
+				<div class="grid">
+					<div class="row">
+						<div class="cell-md-6">
+							<h4>With Event Handlers</h4>
+							<div class="example-container">
+								{% metroui5_file on_select="handleFileSelect(event)" on_file_create="handleFileCreate(event)" %}
+							</div>
+						</div>
+						<div class="cell-md-6">
+							<h4>Deferred Initialization</h4>
+							<div class="example-container">
+								{% metroui5_file file_deferred="1000" label="Delayed initialization:" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<h2>Usage Examples</h2>
+		<div class="accordion" data-role="accordion">
+			<div class="frame">
+				<div class="heading">Basic Usage</div>
+				<div class="content">
+					<pre><code>{% metroui5_file %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">With Custom Label</div>
+				<div class="content">
+					<pre><code>{% metroui5_file label="Select a file:" %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">Button Mode</div>
+				<div class="content">
+					<pre><code>{% metroui5_file_button button_text="Choose File" %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">Drop Zone Mode</div>
+				<div class="content">
+					<pre><code>{% metroui5_file_drop drop_text="Drop file here" %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">With Icon</div>
+				<div class="content">
+					<pre><code>{% metroui5_file_with_icon icon_class="mif-folder" %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">Multiple Files</div>
+				<div class="content">
+					<pre><code>{% metroui5_file_multiple %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">File Type Restriction</div>
+				<div class="content">
+					<pre><code>{% metroui5_file accept="image/*" label="Select image:" %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">Validation States</div>
+				<div class="content">
+					<pre><code>{% metroui5_file error=True error_message="Please select a file" %}</pre><code>
+{% metroui5_file success=True success_message="File selected successfully" %}</code></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<h2>Component Parameters</h2>
+		<div class="table-container">
+			<table class="table striped">
+				<thead>
+					<tr>
+						<th>Parameter</th>
+						<th>Type</th>
+						<th>Default</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>file_deferred</td>
+						<td>number</td>
+						<td>0</td>
+						<td>Delay before initialization in milliseconds</td>
+					</tr>
+					<tr>
+						<td>label</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Label text for the file input</td>
+					</tr>
+					<tr>
+						<td>mode</td>
+						<td>string</td>
+						<td>"input"</td>
+						<td>Mode of operation: "input", "button", or "drop"</td>
+					</tr>
+					<tr>
+						<td>button_title</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Text for the select files button</td>
+					</tr>
+					<tr>
+						<td>files_selected_title</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Text for displaying selected files count</td>
+					</tr>
+					<tr>
+						<td>drop_title</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Text for the drop zone</td>
+					</tr>
+					<tr>
+						<td>drop_icon</td>
+						<td>string</td>
+						<td>"📥"</td>
+						<td>Icon for the drop zone</td>
+					</tr>
+					<tr>
+						<td>clear_button_icon</td>
+						<td>string</td>
+						<td>"❌"</td>
+						<td>Icon for the clear button</td>
+					</tr>
+					<tr>
+						<td>prepend</td>
+						<td>string</td>
+						<td>""</td>
+						<td>HTML content to prepend to the input</td>
+					</tr>
+					<tr>
+						<td>multiple</td>
+						<td>boolean</td>
+						<td>false</td>
+						<td>Allow multiple file selection</td>
+					</tr>
+					<tr>
+						<td>accept</td>
+						<td>string</td>
+						<td>""</td>
+						<td>File types to accept</td>
+					</tr>
+					<tr>
+						<td>disabled</td>
+						<td>boolean</td>
+						<td>false</td>
+						<td>Disable the input</td>
+					</tr>
+					<tr>
+						<td>required</td>
+						<td>boolean</td>
+						<td>false</td>
+						<td>Make the input required</td>
+					</tr>
+					<tr>
+						<td>on_select</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Callback function when files are selected</td>
+					</tr>
+					<tr>
+						<td>on_file_create</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Callback function when component is created</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<h2>API Methods</h2>
+		<div class="table-container">
+			<table class="table striped">
+				<thead>
+					<tr>
+						<th>Method</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>clear()</td>
+						<td>Clears the selected file(s) and resets the input</td>
+					</tr>
+					<tr>
+						<td>disable()</td>
+						<td>Disables the file input</td>
+					</tr>
+					<tr>
+						<td>enable()</td>
+						<td>Enables the file input</td>
+					</tr>
+					<tr>
+						<td>toggleState()</td>
+						<td>Toggles between enabled and disabled states</td>
+					</tr>
+					<tr>
+						<td>toggleDir()</td>
+						<td>Toggles between LTR and RTL text directions</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<h2>Events</h2>
+		<div class="table-container">
+			<table class="table striped">
+				<thead>
+					<tr>
+						<th>Event</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>onSelect</td>
+						<td>Triggered when files are selected</td>
+					</tr>
+					<tr>
+						<td>onFileCreate</td>
+						<td>Triggered when the component is created</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<style>
+	.example-container {
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 15px;
+		margin: 10px 0;
+		background: #f9f9f9;
+		min-height: 60px;
+		display: flex;
+		align-items: center;
+	}
+
+	.custom-file-style {
+		border: 2px solid #2196f3;
+		border-radius: 8px;
+		padding: 10px;
+	}
+
+	/* Custom styling for file components */
+	.file, .file-button, .drop-zone {
+		margin: 5px 0;
+	}
+
+	/* Ensure proper spacing in examples */
+	.example-container .file,
+	.example-container .file-button,
+	.example-container .drop-zone {
+		margin: 0;
+	}
+</style>
+
+<script>
+	// Example event handlers
+	function handleFileSelect(event) {
+		console.log('Files selected:', event.target.files);
+		// You can add custom logic here
+	}
+
+	function handleFileCreate(event) {
+		console.log('File component created:', event.target);
+		// You can add custom initialization here
+	}
+
+	// Example of using API methods
+	document.addEventListener('DOMContentLoaded', function() {
+		// Get a file component and demonstrate API usage
+		const fileInput = document.querySelector('input[data-role="file"]');
+		if (fileInput) {
+			// Example: Clear files after 5 seconds (for demo purposes)
+			setTimeout(() => {
+				const fileComponent = Metro.getPlugin(fileInput, 'file');
+				if (fileComponent) {
+					console.log('File component API available:', fileComponent);
+					// fileComponent.clear(); // Uncomment to test
+				}
+			}, 5000);
+		}
+	});
+</script>
+{% endblock %}
