@@ -114,7 +114,8 @@ def app_bar_data(request):
                         'dropdown': [
                             {'text': 'Chips', 'href': '/chips-demo/', 'icon': 'mif-tag'},
                             {'text': 'Charms', 'href': '/charms-demo/', 'icon': 'mif-apps'},
-                            {'text': 'Bulls', 'href': '/bulls-demo/', 'icon': 'mif-checkmark'}
+                            {'text': 'Bulls', 'href': '/bulls-demo/', 'icon': 'mif-checkmark'},
+                            {'text': 'Drag Items', 'href': '/drag-items-demo/', 'icon': 'mif-move'}
                         ]
                     },
                     {
