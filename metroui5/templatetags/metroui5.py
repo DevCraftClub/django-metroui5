@@ -52,6 +52,11 @@ from ..components import (
     render_drop_menu,
     render_dropdown,
     render_dropdown_button,
+    render_file,
+    render_file_button,
+    render_file_drop,
+    render_file_with_icon,
+    render_file_multiple,
     render_input,
     render_material_input,
     render_list,
@@ -677,6 +682,97 @@ def metroui5_dropdown_button(button_text="Options", items=None, content="", **kw
         content=content,
         **kwargs
     ))
+
+
+@register.simple_tag
+def metroui5_file(**kwargs):
+    """
+    Renders MetroUI file component.
+    
+    Args:
+        **kwargs: Component attributes including:
+            # Configuration
+            - file_deferred: Delay before initialization in milliseconds (number, default: 0)
+            - label: Label text for the file input (string, default: "")
+            - mode: Mode of operation - "input", "button", or "drop" (string, default: "input")
+            - button_title: Text for the select files button (string, default: "")
+            - files_selected_title: Text for displaying selected files count (string, default: "")
+            - drop_title: Text for the drop zone (string, default: "")
+            - drop_icon: Icon for the drop zone (string, default: "📥")
+            - clear_button_icon: Icon for the clear button (string, default: "❌")
+            - prepend: HTML content to prepend to the input (string, default: "")
+            
+            # Styling
+            - cls_component: Additional CSS class for component container (string)
+            - cls_prepend: Additional CSS class for prepend element (string)
+            - cls_button: Additional CSS class for button (string)
+            - cls_caption: Additional CSS class for caption (string)
+            - cls_label: Additional CSS class for label (string)
+            
+            # Events
+            - on_select: Callback function when files are selected (string)
+            - on_file_create: Callback function when component is created (string)
+            
+            # Validation
+            - error: Show error state (boolean)
+            - error_message: Error message text (string)
+            - success: Show success state (boolean)
+            - success_message: Success message text (string)
+            
+            # Standard input attributes
+            - multiple: Allow multiple file selection (boolean)
+            - accept: File types to accept (string)
+            - disabled: Disable the input (boolean)
+            - required: Make the input required (boolean)
+    """
+    return mark_safe(render_file(**kwargs))
+
+
+@register.simple_tag
+def metroui5_file_button(button_text="Choose File", **kwargs):
+    """
+    Renders MetroUI file component in button mode.
+    
+    Args:
+        button_text: Text for the button (string, default: "Choose File")
+        **kwargs: Additional component attributes
+    """
+    return mark_safe(render_file_button(button_text=button_text, **kwargs))
+
+
+@register.simple_tag
+def metroui5_file_drop(drop_text="Drop file here", **kwargs):
+    """
+    Renders MetroUI file component in drop zone mode.
+    
+    Args:
+        drop_text: Text for the drop zone (string, default: "Drop file here")
+        **kwargs: Additional component attributes
+    """
+    return mark_safe(render_file_drop(drop_text=drop_text, **kwargs))
+
+
+@register.simple_tag
+def metroui5_file_with_icon(icon_class="mif-folder", **kwargs):
+    """
+    Renders MetroUI file component with an icon prepend.
+    
+    Args:
+        icon_class: CSS class for the icon (string, default: "mif-folder")
+        **kwargs: Additional component attributes
+    """
+    return mark_safe(render_file_with_icon(icon_class=icon_class, **kwargs))
+
+
+@register.simple_tag
+def metroui5_file_multiple(**kwargs):
+    """
+    Renders MetroUI file component that accepts multiple files.
+    
+    Args:
+        **kwargs: Additional component attributes
+    """
+    return mark_safe(render_file_multiple(**kwargs))
 
 
 @register.simple_tag
