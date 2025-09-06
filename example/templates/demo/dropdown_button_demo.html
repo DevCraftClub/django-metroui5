@@ -1,0 +1,459 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Dropdown Button Demo - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Dropdown Button Demo</h1>
+    <p>Demonstrating the MetroUI v5 Dropdown Button component that combines Button and Dropdown functionality.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Basic Dropdown Button</h2>
+                <p>Basic dropdown button with default styling.</p>
+
+                {% metroui5_dropdown_button button_text="Options" items=basic_items %}
+            </div>
+
+            <div class="cell-md-6">
+                <h2>Primary Button Style</h2>
+                <p>Dropdown button with primary button styling.</p>
+
+                {% metroui5_dropdown_button button_text="Primary Menu" items=basic_items button_style="primary" %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Success Button with Icon</h2>
+                <p>Dropdown button with success styling and icon.</p>
+
+                {% metroui5_dropdown_button button_text="Actions" items=action_items button_style="success" icon="mif-cog" %}
+            </div>
+
+            <div class="cell-md-6">
+                <h2>Outline Button</h2>
+                <p>Dropdown button with outline styling.</p>
+
+                {% metroui5_dropdown_button button_text="Settings" items=settings_items outline=True %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Positioning Options</h2>
+                <p>Dropdown button with upward positioning.</p>
+
+                {% metroui5_dropdown_button button_text="Drop Up" items=basic_items drop_up=True %}
+            </div>
+
+            <div class="cell-md-6">
+                <h2>Right Aligned</h2>
+                <p>Dropdown button with right alignment.</p>
+
+                {% metroui5_dropdown_button button_text="Right Aligned" items=basic_items drop_down_right=True %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Large Button</h2>
+                <p>Dropdown button with large size.</p>
+
+                {% metroui5_dropdown_button button_text="Large Button" items=basic_items button_size="large" button_style="info" %}
+            </div>
+
+            <div class="cell-md-6">
+                <h2>Small Rounded Button</h2>
+                <p>Dropdown button with small size and rounded corners.</p>
+
+                {% metroui5_dropdown_button button_text="Small" items=basic_items button_size="small" rounded=True %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Custom Content</h2>
+                <p>Dropdown button with custom HTML content.</p>
+
+                {% metroui5_dropdown_button button_text="Custom Content" content=custom_content %}
+            </div>
+
+            <div class="cell-md-6">
+                <h2>Flat Button</h2>
+                <p>Dropdown button with flat styling.</p>
+
+                {% metroui5_dropdown_button button_text="Flat Button" items=basic_items flat=True %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Button Styles Showcase</h2>
+                <p>Different button styles available for dropdown buttons.</p>
+
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>Default</h4>
+                            {% metroui5_dropdown_button button_text="Default" items=style_items %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Primary</h4>
+                            {% metroui5_dropdown_button button_text="Primary" items=style_items button_style="primary" %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Success</h4>
+                            {% metroui5_dropdown_button button_text="Success" items=style_items button_style="success" %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Warning</h4>
+                            {% metroui5_dropdown_button button_text="Warning" items=style_items button_style="warning" %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>Danger</h4>
+                            {% metroui5_dropdown_button button_text="Danger" items=style_items button_style="danger" %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Info</h4>
+                            {% metroui5_dropdown_button button_text="Info" items=style_items button_style="info" %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Dark</h4>
+                            {% metroui5_dropdown_button button_text="Dark" items=style_items button_style="dark" %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Light</h4>
+                            {% metroui5_dropdown_button button_text="Light" items=style_items button_style="light" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Advanced Configuration</h2>
+                <p>Dropdown button with advanced configuration options.</p>
+
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>No Close</h4>
+                            <p>Stays open when clicking outside.</p>
+                            {% metroui5_dropdown_button button_text="No Close" items=basic_items no_close=True %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Slow Animation</h4>
+                            <p>Custom animation duration.</p>
+                            {% metroui5_dropdown_button button_text="Slow Open" items=basic_items duration=300 %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Custom Height</h4>
+                            <p>Fixed dropdown height with scrolling.</p>
+                            {% metroui5_dropdown_button button_text="Fixed Height" items=long_items height="150px" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Interactive Examples</h2>
+                <p>Dropdown buttons with event handlers and API demonstrations.</p>
+
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>With Event Handlers</h4>
+                            {% metroui5_dropdown_button button_text="Events" items=basic_items id="eventDropdown" on_drop="onDropdownOpen()" on_up="onDropdownClose()" %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>API Controls</h4>
+                            <div class="mt-2">
+                                <button class="button" onclick="openDropdown()">Open</button>
+                                <button class="button" onclick="closeDropdown()">Close</button>
+                                <button class="button" onclick="toggleDropdown()">Toggle</button>
+                            </div>
+                            {% metroui5_dropdown_button button_text="API Demo" items=basic_items id="apiDropdown" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Real-world Examples</h2>
+                <p>Practical examples of dropdown button usage.</p>
+
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>User Menu</h4>
+                            {% metroui5_dropdown_button button_text="John Doe" items=user_menu icon="mif-user" icon_position="left" %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>File Actions</h4>
+                            {% metroui5_dropdown_button button_text="File" items=file_menu icon="mif-folder" %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Export Options</h4>
+                            {% metroui5_dropdown_button button_text="Export" items=export_menu button_style="success" icon="mif-download" %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>More Actions</h4>
+                            {% metroui5_dropdown_button button_text="⋯" items=more_actions button_style="light" cls_button="text-center" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Custom Styling</h2>
+                <p>Dropdown buttons with custom CSS classes.</p>
+
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Custom Button</h4>
+                            {% metroui5_dropdown_button button_text="Custom" items=basic_items cls_button="custom-button" %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Custom Dropdown</h4>
+                            {% metroui5_dropdown_button button_text="Custom Menu" items=basic_items cls_dropdown="custom-dropdown" %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Custom Container</h4>
+                            {% metroui5_dropdown_button button_text="Custom All" items=basic_items cls_dropdown_button="custom-container" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Usage</div>
+                <div class="content">
+                    <pre><code>{% verbatim %}{% metroui5_dropdown_button button_text="Options" items=items %}{% endverbatim %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Button Styling</div>
+                <div class="content">
+                    <pre><code>{% verbatim %}{% metroui5_dropdown_button button_text="Primary" items=items button_style="primary" icon="mif-cog" %}{% endverbatim %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Positioning</div>
+                <div class="content">
+                    <pre><code>{% verbatim %}{% metroui5_dropdown_button button_text="Menu" items=items drop_up=True drop_right=True %}{% endverbatim %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Custom Content</div>
+                <div class="content">
+                    <pre><code>{% verbatim %}{% metroui5_dropdown_button button_text="Custom" content="<div>Custom HTML content</div>" %}{% endverbatim %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Events and API</div>
+                <div class="content">
+                    <pre><code>{% verbatim %}{% metroui5_dropdown_button button_text="Events" items=items id="myDropdown" on_drop="handleOpen()" %}{% endverbatim %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Component Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>button_text</td>
+                        <td>string</td>
+                        <td>"Options"</td>
+                        <td>Text displayed on the button</td>
+                    </tr>
+                    <tr>
+                        <td>items</td>
+                        <td>list</td>
+                        <td>None</td>
+                        <td>List of menu items (strings or dicts)</td>
+                    </tr>
+                    <tr>
+                        <td>content</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Custom HTML content for dropdown</td>
+                    </tr>
+                    <tr>
+                        <td>button_style</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Button style (primary, success, warning, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td>button_size</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Button size (large, small, mini)</td>
+                    </tr>
+                    <tr>
+                        <td>outline</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Use outline button style</td>
+                    </tr>
+                    <tr>
+                        <td>flat</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Use flat button style</td>
+                    </tr>
+                    <tr>
+                        <td>rounded</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Use rounded button corners</td>
+                    </tr>
+                    <tr>
+                        <td>icon</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Icon class for button</td>
+                    </tr>
+                    <tr>
+                        <td>icon_position</td>
+                        <td>string</td>
+                        <td>"left"</td>
+                        <td>Icon position (left, right)</td>
+                    </tr>
+                    <tr>
+                        <td>drop_up</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Position dropdown above button</td>
+                    </tr>
+                    <tr>
+                        <td>drop_right</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Position dropdown to the right</td>
+                    </tr>
+                    <tr>
+                        <td>no_close</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Prevent closing when clicking outside</td>
+                    </tr>
+                    <tr>
+                        <td>duration</td>
+                        <td>number</td>
+                        <td>50</td>
+                        <td>Animation duration in milliseconds</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>string</td>
+                        <td>"auto"</td>
+                        <td>Fixed height for dropdown</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .custom-button {
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        color: white;
+        border: none;
+        font-weight: bold;
+    }
+
+    .custom-button:hover {
+        background: linear-gradient(45deg, #ff5252, #26c6da);
+    }
+
+    .custom-dropdown {
+        border: 2px solid #4ecdc4;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .custom-container {
+        position: relative;
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .example-container {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 10px 0;
+        background: #f9f9f9;
+    }
+</style>
+
+<script>
+    function onDropdownOpen() {
+        console.log('Dropdown opened!');
+        Metro.notify.create('Dropdown opened!', null, {
+            cls: 'success',
+            timeout: 2000
+        });
+    }
+
+    function onDropdownClose() {
+        console.log('Dropdown closed!');
+        Metro.notify.create('Dropdown closed!', null, {
+            cls: 'info',
+            timeout: 2000
+        });
+    }
+
+    function openDropdown() {
+        const dropdown = Metro.getPlugin('#apiDropdown ul', 'dropdown');
+        if (dropdown) {
+            dropdown.open();
+        }
+    }
+
+    function closeDropdown() {
+        const dropdown = Metro.getPlugin('#apiDropdown ul', 'dropdown');
+        if (dropdown) {
+            dropdown.close();
+        }
+    }
+
+    function toggleDropdown() {
+        const dropdown = Metro.getPlugin('#apiDropdown ul', 'dropdown');
+        if (dropdown) {
+            dropdown.toggle();
+        }
+    }
+</script>
+{% endblock %}

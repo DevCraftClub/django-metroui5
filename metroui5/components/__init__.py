@@ -49,6 +49,7 @@ from .drag_items import render_drag_items
 from .draggable import render_draggable
 from .drop_menu import render_drop_menu
 from .dropdown import render_dropdown
+from .dropdown_button import render_dropdown_button
 from .input import render_input, render_material_input
 from .list import render_list
 from .menu import render_menu
@@ -130,6 +131,7 @@ __all__ = [
     'render_draggable',
     'render_drop_menu',
     'render_dropdown',
+    'render_dropdown_button',
     'render_input',
     'render_material_input',
     'render_list',

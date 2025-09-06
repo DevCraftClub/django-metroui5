@@ -51,6 +51,7 @@ from ..components import (
     render_draggable,
     render_drop_menu,
     render_dropdown,
+    render_dropdown_button,
     render_input,
     render_material_input,
     render_list,
@@ -625,7 +626,57 @@ def metroui5_input(*args, **kwargs):
     if 'placeholder' in kwargs:
         placeholder = kwargs.pop('placeholder')
     
-    return mark_safe(render_input(input_type, placeholder, **kwargs))
+    return mark_safe(render_input(input_type, placeholder, **kwargs)    )
+
+
+@register.simple_tag
+def metroui5_dropdown_button(button_text="Options", items=None, content="", **kwargs):
+    """
+    Renders MetroUI dropdown button component.
+    
+    Args:
+        button_text: Text for the dropdown toggle button (string, default: "Options")
+        items: List of dropdown menu items (list of strings or dicts, default: None)
+        content: Custom HTML content for dropdown (string, default: "")
+        **kwargs: Additional component attributes including:
+            # Button styling
+            - button_style: Button style ("primary", "success", "warning", "danger", "info", "dark", "light")
+            - button_size: Button size ("large", "small", "mini")
+            - outline: Outline button style (boolean)
+            - flat: Flat button style (boolean)
+            - rounded: Rounded button style (boolean)
+            - icon: Icon class for button (string)
+            - icon_position: Icon position ("left", "right", default: "left")
+            
+            # Dropdown configuration
+            - dropdown_deferred: Delay before dropdown appears (number, default: 0)
+            - drop_filter: CSS selector to filter dropdowns (string, default: null)
+            - align: Dropdown alignment ("left" or "right", default: "left")
+            - no_close: Won't close when clicking outside (boolean, default: false)
+            - duration: Animation duration in milliseconds (number, default: 50)
+            - open_mode: How dropdown opens ("auto", "up", default: "auto")
+            - height: Height of dropdown (string, default: "auto")
+            
+            # Positioning
+            - drop_left, drop_right, drop_up, drop_down, etc.: Positioning options (boolean)
+            - keep_open: Prevent closing when clicking outside (boolean)
+            
+            # Events
+            - on_drop: Triggered when dropdown is opened (string)
+            - on_up: Triggered when dropdown is closed (string)
+            - on_dropdown_create: Triggered when dropdown is created (string)
+            
+            # CSS classes
+            - cls_dropdown_button: Additional CSS class for container (string)
+            - cls_button: Additional CSS class for button (string)
+            - cls_dropdown: Additional CSS class for dropdown menu (string)
+    """
+    return mark_safe(render_dropdown_button(
+        button_text=button_text,
+        items=items,
+        content=content,
+        **kwargs
+    ))
 
 
 @register.simple_tag

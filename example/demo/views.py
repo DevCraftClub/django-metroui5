@@ -1467,3 +1467,94 @@ def dropdown_demo(request):
 		'rich_dropdown_content': rich_dropdown_content,
 	}
 	return render(request, 'demo/dropdown_demo.html', context)
+
+
+def dropdown_button_demo(request):
+	"""Demo page for dropdown button component.""" 
+	context = {
+		'page_title': 'Dropdown Button Demo - MetroUI5 Demo',
+		# Basic items
+		'basic_items': [
+			'Option 1',
+			'Option 2',
+			'Option 3'
+		],
+		# Action items
+		'action_items': [
+			{'text': 'Edit', 'href': '/edit/', 'icon': 'mif-pencil'},
+			{'text': 'Delete', 'href': '/delete/', 'icon': 'mif-bin'},
+			{'text': 'Share', 'href': '/share/', 'icon': 'mif-share'}
+		],
+		# Settings items
+		'settings_items': [
+			{'text': 'Preferences', 'href': '/preferences/'},
+			{'text': 'Account', 'href': '/account/'},
+			{'text': 'Privacy', 'href': '/privacy/'},
+			{'text': 'Security', 'href': '/security/'}
+		],
+		# Style showcase items
+		'style_items': [
+			'Item 1',
+			'Item 2'
+		],
+		# Long list for height demo
+		'long_items': [
+			'Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5',
+			'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10',
+			'Item 11', 'Item 12', 'Item 13', 'Item 14', 'Item 15'
+		],
+		# User menu
+		'user_menu': [
+			{'text': 'Profile', 'href': '/profile/', 'icon': 'mif-user'},
+			{'text': 'Settings', 'href': '/settings/', 'icon': 'mif-cog'},
+			{'text': 'Messages', 'href': '/messages/', 'icon': 'mif-mail'},
+			{'text': 'Sign Out', 'href': '/logout/', 'icon': 'mif-exit'}
+		],
+		# File menu
+		'file_menu': [
+			{'text': 'New File', 'href': '/new/', 'icon': 'mif-file-plus'},
+			{'text': 'Open', 'href': '/open/', 'icon': 'mif-folder-open'},
+			{'text': 'Save', 'href': '/save/', 'icon': 'mif-floppy-disk'},
+			{'text': 'Save As...', 'href': '/save-as/', 'icon': 'mif-file-copy'}
+		],
+		# Export menu
+		'export_menu': [
+			{'text': 'Export as PDF', 'href': '/export/pdf/'},
+			{'text': 'Export as Excel', 'href': '/export/excel/'},
+			{'text': 'Export as CSV', 'href': '/export/csv/'},
+			{'text': 'Export as JSON', 'href': '/export/json/'}
+		],
+		# More actions
+		'more_actions': [
+			{'text': 'Copy Link', 'href': '#'},
+			{'text': 'Add to Favorites', 'href': '#'},
+			{'text': 'Report Issue', 'href': '#'},
+			{'text': 'Help', 'href': '#'}
+		],
+		# Custom content for advanced demo
+		'custom_content': '''
+			<div style="padding: 15px; min-width: 200px;">
+				<h4>Advanced Options</h4>
+				<div style="margin: 10px 0;">
+					<label><input type="checkbox"> Enable notifications</label>
+				</div>
+				<div style="margin: 10px 0;">
+					<label><input type="checkbox"> Auto-save</label>
+				</div>
+				<div style="margin: 10px 0;">
+					<label>Theme: 
+						<select style="margin-left: 5px;">
+							<option>Light</option>
+							<option>Dark</option>
+							<option>Auto</option>
+						</select>
+					</label>
+				</div>
+				<div style="margin-top: 15px;">
+					<button class="button button-primary small">Apply</button>
+					<button class="button small">Cancel</button>
+				</div>
+			</div>
+		'''
+	}
+	return render(request, 'demo/dropdown_button_demo.html', context)
