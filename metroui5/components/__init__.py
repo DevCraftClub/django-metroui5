@@ -44,6 +44,7 @@ from .dialog import render_dialog, render_dialog_create
 from .directive import render_directive
 from .donut import render_donut
 from .double_select_box import render_double_select_box
+from .double_slider import render_double_slider
 from .dropdown import render_dropdown
 from .input import render_input, render_material_input
 from .list import render_list
@@ -121,6 +122,7 @@ __all__ = [
     'render_directive',
     'render_donut',
     'render_double_select_box',
+    'render_double_slider',
     'render_dropdown',
     'render_input',
     'render_material_input',

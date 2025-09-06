@@ -73,6 +73,7 @@ def app_bar_data(request):
                             {'text': 'Cutter', 'href': '/cutter-demo/', 'icon': 'mif-scissors'},
                             {'text': 'D-Menu', 'href': '/d-menu-demo/', 'icon': 'mif-menu'},
                             {'text': 'Double Select Box', 'href': '/double-select-box-demo/', 'icon': 'mif-list'},
+                            {'text': 'Double Slider', 'href': '/double-slider-demo/', 'icon': 'mif-equalizer'},
                             {'text': 'Color Picker', 'href': '/color-picker-demo/', 'icon': 'mif-palette'},
                             {'text': 'Color Selector', 'href': '/color-selector-demo/', 'icon': 'mif-palette'}
                         ]
