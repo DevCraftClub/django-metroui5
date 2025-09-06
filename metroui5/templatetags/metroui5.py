@@ -49,6 +49,7 @@ from ..components import (
     render_double_slider,
     render_drag_items,
     render_draggable,
+    render_drop_menu,
     render_dropdown,
     render_input,
     render_material_input,
@@ -584,6 +585,12 @@ def metroui5_drag_items(items=None, **kwargs):
 def metroui5_draggable(content="", **kwargs):
     """Renders MetroUI draggable."""
     return mark_safe(render_draggable(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_drop_menu(items=None, button_text="Menu", **kwargs):
+    """Renders MetroUI drop menu."""
+    return mark_safe(render_drop_menu(items, button_text, **kwargs))
 
 
 @register.simple_tag

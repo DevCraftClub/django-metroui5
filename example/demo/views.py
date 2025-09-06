@@ -998,6 +998,132 @@ def draggable_demo(request):
 	return render(request, 'demo/draggable_demo.html', context)
 
 
+def drop_menu_demo(request):
+	"""Drop Menu component demo page."""
+	context = {
+		'page_title': 'Drop Menu Component Demo - MetroUI5 Demo',
+		
+		# Basic examples
+		'basic_items': [
+			'Home',
+			'About',
+			'Services',
+			'Contact'
+		],
+		
+		'long_items': [
+			'Item 1',
+			'Item 2',
+			'Item 3',
+			'Item 4',
+			'Item 5',
+			'Item 6',
+			'Item 7',
+			'Item 8',
+			'Item 9',
+			'Item 10'
+		],
+		
+		'nested_items': [
+			{'text': 'Home', 'href': '/'},
+			{'text': 'Products', 'submenu': [
+				{'text': 'Software', 'href': '/software/'},
+				{'text': 'Hardware', 'href': '/hardware/'},
+				{'text': 'Services', 'submenu': [
+					{'text': 'Consulting', 'href': '/consulting/'},
+					{'text': 'Support', 'href': '/support/'}
+				]}
+			]},
+			{'text': 'About', 'href': '/about/'},
+			{'text': 'Contact', 'href': '/contact/'}
+		],
+		
+		'interactive_items': [
+			'Interactive Item 1',
+			'Interactive Item 2',
+			'Interactive Item 3',
+			'Watch events below'
+		],
+		
+		# Real-world examples
+		'account_items': [
+			{'text': 'Profile', 'href': '/profile/'},
+			{'text': 'Settings', 'href': '/settings/'},
+			{'text': 'Preferences', 'href': '/preferences/'},
+			{'text': 'Logout', 'href': '/logout/'}
+		],
+		
+		'settings_items': [
+			{'text': 'General', 'href': '/settings/general/'},
+			{'text': 'Privacy', 'href': '/settings/privacy/'},
+			{'text': 'Security', 'href': '/settings/security/'},
+			{'text': 'Notifications', 'href': '/settings/notifications/'},
+			{'text': 'Advanced', 'href': '/settings/advanced/'}
+		],
+		
+		'action_items': [
+			{'text': 'Edit', 'href': '#'},
+			{'text': 'Copy', 'href': '#'},
+			{'text': 'Move', 'href': '#'},
+			{'text': 'Delete', 'href': '#', 'class': 'text-danger'}
+		],
+		
+		'navigation_items': [
+			{'text': 'Dashboard', 'href': '/dashboard/'},
+			{'text': 'Projects', 'submenu': [
+				{'text': 'Active Projects', 'href': '/projects/active/'},
+				{'text': 'Completed Projects', 'href': '/projects/completed/'},
+				{'text': 'New Project', 'href': '/projects/new/'}
+			]},
+			{'text': 'Reports', 'href': '/reports/'},
+			{'text': 'Team', 'href': '/team/'}
+		],
+		
+		'language_items': [
+			{'text': 'English', 'href': '/lang/en/'},
+			{'text': 'Español', 'href': '/lang/es/'},
+			{'text': 'Français', 'href': '/lang/fr/'},
+			{'text': 'Deutsch', 'href': '/lang/de/'},
+			{'text': 'Русский', 'href': '/lang/ru/'}
+		],
+		
+		'help_items': [
+			{'text': 'Documentation', 'href': '/docs/'},
+			{'text': 'FAQ', 'href': '/faq/'},
+			{'text': 'Video Tutorials', 'href': '/tutorials/'},
+			{'text': 'Contact Support', 'href': '/support/'},
+			{'text': 'Community Forum', 'href': '/forum/'}
+		],
+		
+		'complex_nested_items': [
+			{'text': 'Documents', 'submenu': [
+				{'text': 'Recent', 'href': '/docs/recent/'},
+				{'text': 'By Type', 'submenu': [
+					{'text': 'PDFs', 'href': '/docs/pdf/'},
+					{'text': 'Images', 'href': '/docs/images/'},
+					{'text': 'Spreadsheets', 'href': '/docs/spreadsheets/'}
+				]},
+				{'text': 'Shared', 'href': '/docs/shared/'}
+			]},
+			{'text': 'Media', 'submenu': [
+				{'text': 'Photos', 'href': '/media/photos/'},
+				{'text': 'Videos', 'href': '/media/videos/'},
+				{'text': 'Audio', 'href': '/media/audio/'}
+			]},
+			{'text': 'Downloads', 'href': '/downloads/'},
+			{'text': 'Trash', 'href': '/trash/'}
+		],
+		
+		'api_items': [
+			'API Control Item 1',
+			'API Control Item 2',
+			'API Control Item 3',
+			'Use buttons above to control'
+		]
+	}
+	return render(request, 'demo/drop_menu_demo.html', context)
+
+
 def drag_items_demo(request):
 	"""Drag Items component demo page."""
 	context = {
