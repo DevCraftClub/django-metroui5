@@ -46,6 +46,7 @@ from ..components import (
     render_directive,
     render_donut,
     render_double_select_box,
+    render_double_slider,
     render_dropdown,
     render_input,
     render_material_input,
@@ -563,6 +564,12 @@ def metroui5_donut(**kwargs):
 def metroui5_double_select_box(left_options=None, right_options=None, **kwargs):
     """Renders MetroUI double select box."""
     return mark_safe(render_double_select_box(left_options, right_options, **kwargs))
+
+
+@register.simple_tag
+def metroui5_double_slider(**kwargs):
+    """Renders MetroUI double slider."""
+    return mark_safe(render_double_slider(**kwargs))
 
 
 @register.simple_tag

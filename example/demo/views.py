@@ -982,6 +982,14 @@ def donut_demo(request):
 	return render(request, 'demo/donut_demo.html', context)
 
 
+def double_slider_demo(request):
+	"""Double Slider component demo page."""
+	context = {
+		'page_title': 'Double Slider Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/double_slider_demo.html', context)
+
+
 def double_select_box_demo(request):
 	"""Double Select Box component demo page."""
 	context = {
