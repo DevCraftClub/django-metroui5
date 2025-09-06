@@ -180,6 +180,30 @@ class BaseComponent(ABC):
         """
         return render_tag(tag_name, attrs=attrs, content=content, close=close)
     
+    def debug(self, **attrs):
+        """
+        Debug method that returns only the rendered HTML as text.
+        
+        This method calls the component's render method and returns the raw HTML
+        without any Django SafeString wrapping, making it useful for debugging,
+        testing, and inspecting the exact HTML output.
+        
+        Args:
+            **attrs: Component attributes (same as render method)
+            
+        Returns:
+            str: Raw HTML text output
+            
+        Example:
+            component = SomeComponent()
+            html_text = component.debug(cls="test-class", id="test-id")
+            print(html_text)  # Outputs: <div class="test-class" id="test-id">...</div>
+        """
+        html_output = self.render(**attrs)
+        
+        # Convert to string if it's a SafeString or other wrapper
+        return str(html_output)
+    
     @abstractmethod
     def render(self, **attrs):
         """

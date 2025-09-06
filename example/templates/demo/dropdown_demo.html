@@ -1,0 +1,330 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Dropdown Component Demo{% endblock %}
+
+{% block page_content %}
+<div class="container-fluid">
+    <h1 class="text-leader">Dropdown Component</h1>
+    <p class="text-leader2">The Dropdown component provides a flexible way to create dropdown menus and lists that can be toggled to show or hide content.</p>
+
+    <div class="row">
+        <div class="cell-md-12">
+            <h2>Basic Usage</h2>
+            <p>Basic dropdown with button toggle:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="Click me" content="<div>Dropdown content here</div>" %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Click me" content="<div>Dropdown content here</div>" %}{% endverbatim %}</code></pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-6">
+            <h3>Dropdown with Menu Items</h3>
+            <p>Dropdown with auto-generated menu from items list:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="Options" items=dropdown_items %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Options" items=dropdown_items %}{% endverbatim %}</code></pre>
+        </div>
+
+        <div class="cell-md-6">
+            <h3>Custom Content Dropdown</h3>
+            <p>Dropdown with custom HTML content:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="Custom Content" content="<div><p>This is custom content</p><ul><li>Item 1</li><li>Item 2</li></ul></div>" %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Custom Content" content="<div><p>This is custom content</p><ul><li>Item 1</li><li>Item 2</li></ul></div>" %}{% endverbatim %}</code></pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-12">
+            <h2>Positioning Options</h2>
+            <p>Dropdown components can be positioned in various ways around the toggle element:</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-4">
+            <h4>Drop Up</h4>
+            <p>Dropdown opens above the toggle:</p>
+            
+            <div class="example" style="margin-top: 100px;">
+                {% metroui5_dropdown button_text="Drop Up" content="<div>Content appears above</div>" drop_up=True %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Drop Up" content="<div>Content appears above</div>" drop_up=True %}{% endverbatim %}</code></pre>
+        </div>
+
+        <div class="cell-md-4">
+            <h4>Drop Right</h4>
+            <p>Dropdown opens to the right:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="Drop Right" content="<div>Content to the right</div>" drop_right=True %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Drop Right" content="<div>Content to the right</div>" drop_right=True %}{% endverbatim %}</code></pre>
+        </div>
+
+        <div class="cell-md-4">
+            <h4>Drop Down Right</h4>
+            <p>Dropdown opens below and aligned right:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="Drop Down Right" content="<div>Content below and right aligned</div>" drop_down_right=True %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Drop Down Right" content="<div>Content below and right aligned</div>" drop_down_right=True %}{% endverbatim %}</code></pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-6">
+            <h3>Keep Open Dropdown</h3>
+            <p>Dropdown that won't close when clicking outside:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="Keep Open" content="<div>This dropdown stays open when clicking elsewhere</div>" keep_open=True %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Keep Open" content="<div>This dropdown stays open when clicking elsewhere</div>" keep_open=True %}{% endverbatim %}</code></pre>
+        </div>
+
+        <div class="cell-md-6">
+            <h3>No Auto-Close</h3>
+            <p>Dropdown with no_close parameter:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="No Close" content="<div>Won't close automatically</div>" no_close=True %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="No Close" content="<div>Won't close automatically</div>" no_close=True %}{% endverbatim %}</code></pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-12">
+            <h2>Configuration Options</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-6">
+            <h3>Custom Duration</h3>
+            <p>Dropdown with slower animation (300ms):</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="Slow Animation" content="<div>This opens/closes slowly</div>" duration=300 %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Slow Animation" content="<div>This opens/closes slowly</div>" duration=300 %}{% endverbatim %}</code></pre>
+        </div>
+
+        <div class="cell-md-6">
+            <h3>Fixed Height</h3>
+            <p>Dropdown with fixed height and scrolling:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="Fixed Height" content="<div><p>Line 1</p><p>Line 2</p><p>Line 3</p><p>Line 4</p><p>Line 5</p><p>Line 6</p><p>Line 7</p><p>Line 8</p></div>" height="100px" %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Fixed Height" content="<div>...</div>" height="100px" %}{% endverbatim %}</code></pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-6">
+            <h3>Right Alignment</h3>
+            <p>Dropdown content aligned to the right:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="Right Aligned" content="<div>Right aligned content</div>" align="right" %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Right Aligned" content="<div>Right aligned content</div>" align="right" %}{% endverbatim %}</code></pre>
+        </div>
+
+        <div class="cell-md-6">
+            <h3>Deferred Initialization</h3>
+            <p>Dropdown with delayed initialization:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="Deferred" content="<div>Initialized after 1 second</div>" dropdown_deferred=1000 %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Deferred" content="<div>Initialized after 1 second</div>" dropdown_deferred=1000 %}{% endverbatim %}</code></pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-12">
+            <h2>Interactive Examples</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-6">
+            <h3>With Event Handlers</h3>
+            <p>Dropdown with JavaScript event handlers:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="With Events" content="<div>Check console for events</div>" on_drop="console.log('Dropdown opened')" on_up="console.log('Dropdown closed')" on_dropdown_create="console.log('Dropdown created')" %}
+            </div>
+            
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="With Events" content="<div>Check console for events</div>" on_drop="console.log('Dropdown opened')" on_up="console.log('Dropdown closed')" %}{% endverbatim %}</code></pre>
+        </div>
+
+        <div class="cell-md-6">
+            <h3>API Methods Demo</h3>
+            <p>Dropdown with programmatic control:</p>
+            
+            <div class="example">
+                {% metroui5_dropdown button_text="API Demo" content="<div>Controlled via API</div>" id="api-dropdown" %}
+                <br><br>
+                <button class="button" onclick="Metro.getPlugin('#api-dropdown', 'dropdown').open()">Open</button>
+                <button class="button" onclick="Metro.getPlugin('#api-dropdown', 'dropdown').close()">Close</button>
+                <button class="button" onclick="Metro.getPlugin('#api-dropdown', 'dropdown').toggle()">Toggle</button>
+            </div>
+            
+            <pre><code>// Get dropdown instance
+const dropdown = Metro.getPlugin('#api-dropdown', 'dropdown');
+
+// Open, close, or toggle
+dropdown.open();
+dropdown.close();
+dropdown.toggle();</code></pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-12">
+            <h2>Real-World Examples</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-4">
+            <h4>User Account Menu</h4>
+            <div class="example">
+                {% metroui5_dropdown button_text="👤 John Doe" items=user_account_items drop_down_right=True %}
+            </div>
+        </div>
+
+        <div class="cell-md-4">
+            <h4>Settings Menu</h4>
+            <div class="example">
+                {% metroui5_dropdown button_text="⚙️ Settings" items=settings_items %}
+            </div>
+        </div>
+
+        <div class="cell-md-4">
+            <h4>Actions Menu</h4>
+            <div class="example">
+                {% metroui5_dropdown button_text="Actions ▼" items=actions_items keep_open=True %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-12">
+            <h2>Complex Examples</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-6">
+            <h4>Form Controls Dropdown</h4>
+            <div class="example">
+                {% metroui5_dropdown button_text="Form Controls" content=form_dropdown_content height="200px" %}
+            </div>
+        </div>
+
+        <div class="cell-md-6">
+            <h4>Rich Content Dropdown</h4>
+            <div class="example">
+                {% metroui5_dropdown button_text="Rich Content" content=rich_dropdown_content width="300px" %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-12">
+            <h2>Best Practices</h2>
+            <ul class="unstyled-list">
+                <li>✓ Use clear and descriptive labels for dropdown toggles</li>
+                <li>✓ Keep dropdown menus concise and organized</li>
+                <li>✓ Consider using icons alongside text for better visual recognition</li>
+                <li>✓ Use appropriate positioning based on the location of the dropdown in the UI</li>
+                <li>✓ Ensure dropdown content is accessible and navigable via keyboard</li>
+                <li>✓ Test dropdown behavior on different screen sizes</li>
+                <li>✓ Use keep-open sparingly to avoid confusing users</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="cell-md-12">
+            <h2>Component API</h2>
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>content</td><td>string</td><td>""</td><td>HTML content for the dropdown</td></tr>
+                    <tr><td>button_text</td><td>string</td><td>""</td><td>Text for the button toggle</td></tr>
+                    <tr><td>items</td><td>list</td><td>None</td><td>Auto-generate menu from items</td></tr>
+                    <tr><td>dropdown_deferred</td><td>number</td><td>0</td><td>Delay before initialization (ms)</td></tr>
+                    <tr><td>align</td><td>string</td><td>"left"</td><td>Content alignment ("left"/"right")</td></tr>
+                    <tr><td>no_close</td><td>boolean</td><td>false</td><td>Prevent auto-close on outside click</td></tr>
+                    <tr><td>duration</td><td>number</td><td>50</td><td>Animation duration (ms)</td></tr>
+                    <tr><td>height</td><td>string</td><td>"auto"</td><td>Fixed height with scrolling</td></tr>
+                    <tr><td>drop_up</td><td>boolean</td><td>false</td><td>Open above toggle</td></tr>
+                    <tr><td>drop_right</td><td>boolean</td><td>false</td><td>Open to the right</td></tr>
+                    <tr><td>drop_down_right</td><td>boolean</td><td>false</td><td>Open below and right-aligned</td></tr>
+                    <tr><td>keep_open</td><td>boolean</td><td>false</td><td>Stay open when clicking elsewhere</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+.example {
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.example .dropdown-toggle {
+    margin-bottom: 10px;
+}
+
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+</style>
+{% endblock %}

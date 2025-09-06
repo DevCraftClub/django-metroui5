@@ -63,5 +63,6 @@ urlpatterns = [
     path('drag-items-demo/', views.drag_items_demo, name='drag_items_demo'),
     path('draggable-demo/', views.draggable_demo, name='draggable_demo'),
     path('drop-menu-demo/', views.drop_menu_demo, name='drop_menu_demo'),
+    path('dropdown-demo/', views.dropdown_demo, name='dropdown_demo'),
     path('test-demo/', views.test_demo, name='test_demo'),
 ]
