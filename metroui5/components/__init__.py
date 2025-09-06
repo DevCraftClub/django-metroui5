@@ -40,7 +40,7 @@ from .custom_checkbox import render_custom_checkbox
 from .cutter import render_cutter
 from .d_menu import render_d_menu
 from .date_picker import render_date_picker
-from .dialog import render_dialog
+from .dialog import render_dialog, render_dialog_create
 from .dropdown import render_dropdown
 from .input import render_input, render_material_input
 from .list import render_list
@@ -114,6 +114,7 @@ __all__ = [
     'render_d_menu',
     'render_date_picker',
     'render_dialog',
+    'render_dialog_create',
     'render_dropdown',
     'render_input',
     'render_material_input',
