@@ -44,6 +44,7 @@ from ..components import (
     render_dialog,
     render_dialog_create,
     render_directive,
+    render_donut,
     render_dropdown,
     render_input,
     render_material_input,
@@ -549,6 +550,12 @@ def metroui5_dialog_create(**kwargs):
 def metroui5_directive(content="", **kwargs):
     """Renders MetroUI directive."""
     return mark_safe(render_directive(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_donut(**kwargs):
+    """Renders MetroUI donut."""
+    return mark_safe(render_donut(**kwargs))
 
 
 @register.simple_tag

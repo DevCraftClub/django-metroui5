@@ -42,6 +42,7 @@ from .d_menu import render_d_menu
 from .date_picker import render_date_picker
 from .dialog import render_dialog, render_dialog_create
 from .directive import render_directive
+from .donut import render_donut
 from .dropdown import render_dropdown
 from .input import render_input, render_material_input
 from .list import render_list
@@ -117,6 +118,7 @@ __all__ = [
     'render_dialog',
     'render_dialog_create',
     'render_directive',
+    'render_donut',
     'render_dropdown',
     'render_input',
     'render_material_input',

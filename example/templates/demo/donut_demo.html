@@ -1,0 +1,638 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Donut Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Donut Components</h1>
+    <p>Demonstrating the MetroUI v5 Donut component - a circular progress indicator that displays values as filled arcs.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Basic Donut Charts</h2>
+                <p>Simple donut charts with different values and default styling.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>Basic 35%</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=35 %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Medium 65%</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=65 %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>High 85%</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=85 %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Complete 100%</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=100 %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Custom Colors</h2>
+                <p>Donut charts with custom stroke and fill colors.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>Purple Theme</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=35 stroke="#f5f5f5" fill="#9C27B0" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Green Theme</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=65 stroke="#e8f5e8" fill="#4CAF50" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Red Theme</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=45 stroke="#ffeaea" fill="#F44336" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Orange Theme</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=75 stroke="#fff3e0" fill="#FF9800" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Size Variations</h2>
+                <p>Donut charts with different sizes.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>Small (80px)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=60 size=80 %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Default (100px)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=60 %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Large (130px)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=60 size=130 %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Extra Large (160px)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=60 size=160 %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Hole Size Variations</h2>
+                <p>Donut charts with different hole sizes (0 = solid circle, 0.8 = default).</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>Solid Circle</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=70 hole=0 %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Small Hole (0.5)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=70 hole=0.5 %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Default Hole (0.8)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=70 %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Large Hole (0.9)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=70 hole=0.9 %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Value Display Options</h2>
+                <p>Different ways to display values and text.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>Percentage (Default)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=45 %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Actual Value</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=45 show_value=True %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Custom Suffix (°C)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=25 cap="°C" show_value=True %}
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>No Text</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=70 show_text=False %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Custom Totals</h2>
+                <p>Donut charts with different total values for percentage calculation.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Score: 8/10</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=8 total=10 show_value=True cap="/10" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Progress: 350/500</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=350 total=500 show_value=True cap="/500" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>RAM Usage: 6/16 GB</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=6 total=16 show_value=True cap=" GB" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Animation Examples</h2>
+                <p>Donut charts with different animation durations.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Fast Animation (300ms)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=75 animate=300 fill="#2196F3" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Medium Animation (800ms)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=60 animate=800 fill="#4CAF50" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Slow Animation (1500ms)</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=85 animate=1500 fill="#FF5722" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Color Classes</h2>
+                <p>Donut charts using predefined Metro UI color classes.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>Primary</h4>
+                            <div class="text-center">
+                                <div class="donut-primary">
+                                    {% metroui5_donut value=70 %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Success</h4>
+                            <div class="text-center">
+                                <div class="donut-success">
+                                    {% metroui5_donut value=85 %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Warning</h4>
+                            <div class="text-center">
+                                <div class="donut-warning">
+                                    {% metroui5_donut value=45 %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Alert</h4>
+                            <div class="text-center">
+                                <div class="donut-alert">
+                                    {% metroui5_donut value=25 %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Interactive Examples</h2>
+                <p>Donut charts with event handlers and interactive controls.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Interactive Donut</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=50 id="interactive-donut" on_change="handleDonutChange(this)" size=120 %}
+                            </div>
+                            <div class="mt-2 text-center">
+                                <button class="button" onclick="updateDonutValue(25)">25%</button>
+                                <button class="button" onclick="updateDonutValue(50)">50%</button>
+                                <button class="button" onclick="updateDonutValue(75)">75%</button>
+                                <button class="button" onclick="updateDonutValue(100)">100%</button>
+                            </div>
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Event Output</h4>
+                            <div id="donut-event-output" class="bg-lightGray p-2" style="min-height: 100px; border-radius: 4px;">
+                                <small class="text-muted">Donut events will appear here...</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Real-world Examples</h2>
+                <p>Practical examples of donut charts in common use cases.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>CPU Usage</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=68 cap="%" fill="#FF5722" background="#fff3e0" size=110 %}
+                                <p class="mt-2 text-small">68% CPU Load</p>
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Storage Space</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=45 total=100 cap=" GB" show_value=True fill="#2196F3" size=110 %}
+                                <p class="mt-2 text-small">45 GB of 100 GB</p>
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Project Progress</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=82 fill="#4CAF50" animate=1000 size=110 %}
+                                <p class="mt-2 text-small">82% Complete</p>
+                            </div>
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Battery Level</h4>
+                            <div class="text-center">
+                                {% metroui5_donut value=23 fill="#FFC107" stroke="#ffecb3" size=110 %}
+                                <p class="mt-2 text-small">23% Battery</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Donut</div>
+                <div class="content">
+                    <pre><code>{% metroui5_donut value=35 %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Custom Colors</div>
+                <div class="content">
+                    <pre><code>{% metroui5_donut value=75 stroke="#f5f5f5" fill="#9C27B0" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Custom Size</div>
+                <div class="content">
+                    <pre><code>{% metroui5_donut value=60 size=130 %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Show Actual Value</div>
+                <div class="content">
+                    <pre><code>{% metroui5_donut value=45 show_value=True cap="°C" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Animation</div>
+                <div class="content">
+                    <pre><code>{% metroui5_donut value=80 animate=500 %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Custom Total</div>
+                <div class="content">
+                    <pre><code>{% metroui5_donut value=8 total=10 show_value=True cap="/10" %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Component Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>size</td>
+                        <td>number</td>
+                        <td>100</td>
+                        <td>Size of the donut in pixels</td>
+                    </tr>
+                    <tr>
+                        <td>hole</td>
+                        <td>number</td>
+                        <td>0.8</td>
+                        <td>Size of the hole (0 to 1, where 0.8 means 80% of the radius)</td>
+                    </tr>
+                    <tr>
+                        <td>value</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Initial value</td>
+                    </tr>
+                    <tr>
+                        <td>background</td>
+                        <td>string</td>
+                        <td>"transparent"</td>
+                        <td>Background color of the element</td>
+                    </tr>
+                    <tr>
+                        <td>color</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Text color (defaults to fill color if empty)</td>
+                    </tr>
+                    <tr>
+                        <td>stroke</td>
+                        <td>string</td>
+                        <td>"#d1d8e7"</td>
+                        <td>Color of the background circle</td>
+                    </tr>
+                    <tr>
+                        <td>fill</td>
+                        <td>string</td>
+                        <td>"#49649f"</td>
+                        <td>Color of the value circle</td>
+                    </tr>
+                    <tr>
+                        <td>font_size</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Font size (0 means auto-calculated)</td>
+                    </tr>
+                    <tr>
+                        <td>total</td>
+                        <td>number</td>
+                        <td>100</td>
+                        <td>Total value (for percentage calculation)</td>
+                    </tr>
+                    <tr>
+                        <td>cap</td>
+                        <td>string</td>
+                        <td>"%"</td>
+                        <td>Suffix for the displayed value</td>
+                    </tr>
+                    <tr>
+                        <td>show_text</td>
+                        <td>boolean</td>
+                        <td>true</td>
+                        <td>Whether to show text</td>
+                    </tr>
+                    <tr>
+                        <td>show_value</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Whether to show the actual value instead of percentage</td>
+                    </tr>
+                    <tr>
+                        <td>animate</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Animation duration in milliseconds</td>
+                    </tr>
+                    <tr>
+                        <td>on_donut_create</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Triggered when the donut is created</td>
+                    </tr>
+                    <tr>
+                        <td>on_change</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Triggered when the donut value changes</td>
+                    </tr>
+                    <tr>
+                        <td>on_draw_value</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Callback for custom formatting of the displayed value</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Available CSS Classes</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>.donut</td>
+                        <td>Base class applied by MetroUI</td>
+                    </tr>
+                    <tr>
+                        <td>.donut-primary</td>
+                        <td>Primary brand color</td>
+                    </tr>
+                    <tr>
+                        <td>.donut-secondary</td>
+                        <td>Secondary brand color</td>
+                    </tr>
+                    <tr>
+                        <td>.donut-success</td>
+                        <td>Success indicator color</td>
+                    </tr>
+                    <tr>
+                        <td>.donut-alert</td>
+                        <td>Alert/error indicator color</td>
+                    </tr>
+                    <tr>
+                        <td>.donut-warning</td>
+                        <td>Warning indicator color</td>
+                    </tr>
+                    <tr>
+                        <td>.donut-info</td>
+                        <td>Information indicator color</td>
+                    </tr>
+                    <tr>
+                        <td>.donut-[color]</td>
+                        <td>Color variants (lime, green, blue, red, etc.)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+.text-center {
+    text-align: center;
+}
+
+.text-small {
+    font-size: 0.8em;
+    color: #666;
+}
+
+#donut-event-output {
+    font-family: monospace;
+    font-size: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Donut containers need some margin */
+[data-role="donut"] {
+    margin: 10px auto;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Event handler function for demo
+function handleDonutChange(donut) {
+    const value = Metro.getPlugin(donut, 'donut').val();
+    addToDonutOutput(`Donut value changed to: ${value}`);
+}
+
+// Function to update donut value
+function updateDonutValue(newValue) {
+    const donut = Metro.getPlugin('#interactive-donut', 'donut');
+    if (donut) {
+        donut.val(newValue);
+        addToDonutOutput(`Donut value updated to: ${newValue}`);
+    }
+}
+
+// Utility function to add output
+function addToDonutOutput(message) {
+    const output = document.getElementById('donut-event-output');
+    if (output) {
+        const timestamp = new Date().toLocaleTimeString();
+        output.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+        output.scrollTop = output.scrollHeight;
+    }
+}
+
+// Initialize when page loads
+$(document).ready(function() {
+    // MetroUI will initialize elements with data-role automatically
+    
+    // Add clear button for event output
+    const clearBtn = $('<button class="button small mt-2">Clear Output</button>');
+    clearBtn.on('click', function() {
+        $('#donut-event-output').html('<small class="text-muted">Donut events will appear here...</small>');
+    });
+    $('#donut-event-output').after(clearBtn);
+    
+    // Add initial message
+    addToDonutOutput('Page loaded - interact with the donut above to see events');
+});
+</script>
+{% endblock %}
