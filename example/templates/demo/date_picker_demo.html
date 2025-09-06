@@ -1,0 +1,255 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Date Picker Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>MetroUI Date Picker Component</h1>
+    <p>This demo showcases the MetroUI v5 Date Picker component - a wheel-based date picker that allows users to select a date by scrolling through months, days, and years.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-12">
+                <h2>Basic Usage</h2>
+                <p>Simple date picker with default settings:</p>
+                <div class="example-container">
+                    {% metroui5_date_picker %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Label</h2>
+                <p>Date picker with a descriptive label:</p>
+                <div class="example-container">
+                    {% metroui5_date_picker label="Select date:" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Initial Value</h2>
+                <p>Date picker with a pre-selected date:</p>
+                <div class="example-container">
+                    {% metroui5_date_picker value="2024-01-15" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Custom Date Format</h2>
+                <p>Date picker with custom date format:</p>
+                <div class="example-container">
+                    {% metroui5_date_picker format="DD/MM/YYYY" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Specific Locale</h2>
+                <p>Date picker with Ukrainian locale:</p>
+                <div class="example-container">
+                    {% metroui5_date_picker locale="uk-UA" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Disable Day Selection</h2>
+                <p>Date picker that only allows month and year selection:</p>
+                <div class="example-container">
+                    {% metroui5_date_picker day=False %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Disabled Date Picker</h2>
+                <p>Date picker in disabled state:</p>
+                <div class="example-container">
+                    {% metroui5_date_picker disabled=True label="Disabled picker" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Year Range</h2>
+                <p>Date picker with custom year range (2020-2030):</p>
+                <div class="example-container">
+                    {% metroui5_date_picker min_year=2020 max_year=2030 %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Dialog Mode</h2>
+                <p>Date picker that opens in dialog mode:</p>
+                <div class="example-container">
+                    {% metroui5_date_picker open_mode="dialog" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Custom Icons</h2>
+                <p>Date picker with custom OK and Cancel button icons:</p>
+                <div class="example-container">
+                    {% metroui5_date_picker ok_button_icon="✅" cancel_button_icon="❌" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Event Handlers</h2>
+                <p>Date picker with JavaScript event callbacks:</p>
+                <div class="example-container">
+                    {% metroui5_date_picker on_set="handleDateSet(this)" on_open="handlePickerOpen(this)" on_close="handlePickerClose(this)" %}
+                </div>
+                <div id="event-output" class="bg-lightGray p-2 mt-2" style="min-height: 50px; border-radius: 4px;">
+                    <small class="text-muted">Event callbacks will appear here...</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Validation States</h2>
+                <p>Date picker with different validation states:</p>
+                <div class="example-container">
+                    <h4>Error State:</h4>
+                    {% metroui5_date_picker error=True error_message="Please select a valid date" %}
+                    
+                    <h4>Success State:</h4>
+                    {% metroui5_date_picker success=True success_message="Date selected successfully" %}
+                    
+                    <h4>Warning State:</h4>
+                    {% metroui5_date_picker warning=True warning_message="Please verify your date selection" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Usage Examples</h2>
+               
+                <h3>Django Template Usage:</h3>
+                <pre><code>&lbrace;% load metroui5 %}
+
+&lbrace;% metroui5_date_picker %}
+&lbrace;% metroui5_date_picker label="Select date:" %}
+&lbrace;% metroui5_date_picker value="2024-01-15" %}
+&lbrace;% metroui5_date_picker format="DD/MM/YYYY" %}
+&lbrace;% metroui5_date_picker locale="uk-UA" %}
+&lbrace;% metroui5_date_picker day=False %}
+&lbrace;% metroui5_date_picker disabled=True %}
+&lbrace;% metroui5_date_picker min_year=2020 max_year=2030 %}
+&lbrace;% metroui5_date_picker open_mode="dialog" %}</code></pre>
+
+                <h3>Python Usage:</h3>
+                <pre><code>from metroui5.components import render_date_picker
+
+# Basic usage
+render_date_picker()
+
+# With label and value
+render_date_picker(label="Select date:", value="2024-01-15")
+
+# With custom format and locale
+render_date_picker(format="DD/MM/YYYY", locale="uk-UA")
+
+# With year range and validation
+render_date_picker(min_year=2020, max_year=2030, error=True, error_message="Invalid date")</code></pre>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Additional Information</h2>
+                <p>The Date Picker component:</p>
+                <ul>
+                    <li>Uses a wheel-based interface for intuitive date selection</li>
+                    <li>Supports various date formats and locales</li>
+                    <li>Allows customization of which date parts to show (month, day, year)</li>
+                    <li>Supports year range restrictions</li>
+                    <li>Can be configured to open in different modes (auto, dialog, up)</li>
+                    <li>Integrates with the Metro UI theming system</li>
+                    <li>Provides extensive customization options for styling and behavior</li>
+                    <li>Includes comprehensive event handling for user interactions</li>
+                    <li>Supports validation states and error messaging</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+#event-output {
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.example-container h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.example-container h4:first-child {
+    margin-top: 0;
+}
+</style>
+
+<script>
+// Event handler functions for demo
+function handleDateSet(picker) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Date set to ' + picker.value + '</div>';
+}
+
+function handlePickerOpen(picker) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Picker opened</div>';
+}
+
+function handlePickerClose(picker) {
+    const output = document.getElementById('event-output');
+    output.innerHTML += '<div>Event: Picker closed</div>';
+}
+
+// Clear event output
+function clearEventOutput() {
+    document.getElementById('event-output').innerHTML = '<small class="text-muted">Event callbacks will appear here...</small>';
+}
+
+// Add clear button
+document.addEventListener('DOMContentLoaded', function() {
+    const clearBtn = document.createElement('button');
+    clearBtn.className = 'button small';
+    clearBtn.textContent = 'Clear Output';
+    clearBtn.addEventListener('click', clearEventOutput);
+    
+    const eventOutput = document.getElementById('event-output');
+    eventOutput.parentNode.insertBefore(clearBtn, eventOutput.nextSibling);
+});
+</script>
+{% endblock %}

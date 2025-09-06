@@ -790,6 +790,14 @@ def calendar_picker_demo(request):
 	return render(request, 'demo/calendar_picker_demo.html', context)
 
 
+def date_picker_demo(request):
+	"""Demo page for date picker component."""
+	context = {
+		'page_title': 'Date Picker Component - MetroUI5 Demo',
+	}
+	return render(request, 'demo/date_picker_demo.html', context)
+
+
 def card_demo(request):
 	"""Card component demo page."""
 	context = {
