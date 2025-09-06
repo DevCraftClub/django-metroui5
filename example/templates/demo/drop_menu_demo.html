@@ -609,9 +609,38 @@ $(document).ready(function() {
     const instructionDiv = $('<div class="alert alert-info mt-2"><small><strong>Instructions:</strong> Click menu buttons to open drop menus. Nested menus will open when hovering over items with submenus. Use the API buttons to control menu behavior programmatically.</small></div>');
     $('#interactive-menu').after(instructionDiv);
     
+    // Manually initialize all drop menus to prevent toggle errors
+    $('[data-role="dropmenu"]').each(function() {
+        try {
+            // Try different component names to see which works
+            if (typeof Metro.makePlugin === 'function') {
+                Metro.makePlugin(this, "dropmenu");
+                addToMenuOutput('Initialized drop menu as "dropmenu": ' + (this.id || 'unnamed'));
+            } else if (typeof Metro.dropmenu !== 'undefined') {
+                Metro.dropmenu(this);
+                addToMenuOutput('Initialized with Metro.dropmenu: ' + (this.id || 'unnamed'));
+            } else {
+                addToMenuOutput('Metro dropmenu not available');
+            }
+        } catch (e) {
+            console.log('Drop menu initialization error:', e);
+            addToMenuOutput('Error initializing drop menu: ' + e.message);
+            
+            // Try alternative initialization
+            try {
+                if (this.id) {
+                    Metro.makePlugin('#' + this.id, "dropdown");
+                    addToMenuOutput('Fallback: initialized as dropdown: ' + this.id);
+                }
+            } catch (e2) {
+                addToMenuOutput('Fallback failed: ' + e2.message);
+            }
+        }
+    });
+    
     // Add initial message
     setTimeout(function() {
-        addToMenuOutput('Page loaded - try opening drop menus to see events');
+        addToMenuOutput('Page loaded - drop menus manually initialized');
     }, 500);
 });
 </script>

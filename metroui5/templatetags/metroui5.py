@@ -594,9 +594,19 @@ def metroui5_drop_menu(items=None, button_text="Menu", **kwargs):
 
 
 @register.simple_tag
-def metroui5_dropdown(items, button_text="Dropdown", **kwargs):
-    """Renders MetroUI dropdown."""
-    return mark_safe(render_dropdown(items, button_text, **kwargs))
+def metroui5_dropdown(content="", button_text="", toggle_element=None, items=None, **kwargs):
+    """
+    Renders MetroUI dropdown component.
+    
+    Args:
+        content: The HTML content to be displayed in the dropdown (string).
+        button_text: Text for the dropdown toggle button (string, default: "").
+        toggle_element: Custom toggle element HTML (string, default: None).
+        items: List of dropdown items to auto-generate menu (list, default: None).
+        **kwargs: Additional attributes for dropdown configuration.
+    """
+    return mark_safe(render_dropdown(content=content, button_text=button_text, 
+                                   toggle_element=toggle_element, items=items, **kwargs))
 
 
 @register.simple_tag

@@ -1377,3 +1377,93 @@ def test_demo(request):
 		'page_title': 'Test Demo - MetroUI5 Demo',
 	}
 	return render(request, 'demo/test_demo.html', context)
+
+
+def dropdown_demo(request):
+	"""Dropdown component demo page."""
+	# Basic dropdown items
+	dropdown_items = [
+		{'text': 'Option 1', 'href': '/option1/'},
+		{'text': 'Option 2', 'href': '/option2/'},
+		{'text': 'Option 3', 'href': '/option3/'}
+	]
+	
+	# User account menu items
+	user_account_items = [
+		{'text': 'Profile', 'href': '/profile/'},
+		{'text': 'Settings', 'href': '/settings/'},
+		{'text': 'Billing', 'href': '/billing/'},
+		{'text': 'Sign Out', 'href': '/logout/'}
+	]
+	
+	# Settings menu items
+	settings_items = [
+		{'text': 'General', 'href': '/settings/general/'},
+		{'text': 'Privacy', 'href': '/settings/privacy/'},
+		{'text': 'Security', 'href': '/settings/security/'},
+		{'text': 'Notifications', 'href': '/settings/notifications/'}
+	]
+	
+	# Actions menu items
+	actions_items = [
+		{'text': 'Edit', 'href': '/edit/'},
+		{'text': 'Delete', 'href': '/delete/'},
+		{'text': 'Share', 'href': '/share/'},
+		{'text': 'Export', 'href': '/export/'}
+	]
+	
+	# Form controls dropdown content
+	form_dropdown_content = '''
+		<div style="padding: 15px; min-width: 250px;">
+			<h4>Quick Form</h4>
+			<div style="margin-bottom: 10px;">
+				<label>Name:</label>
+				<input type="text" data-role="input" style="width: 100%;">
+			</div>
+			<div style="margin-bottom: 10px;">
+				<label>Email:</label>
+				<input type="email" data-role="input" style="width: 100%;">
+			</div>
+			<div>
+				<button class="button primary">Submit</button>
+				<button class="button secondary">Cancel</button>
+			</div>
+		</div>
+	'''
+	
+	# Rich content dropdown
+	rich_dropdown_content = '''
+		<div style="padding: 15px; min-width: 300px;">
+			<div style="display: flex; align-items: center; margin-bottom: 10px;">
+				<img src="https://placehold.co/40x40" style="border-radius: 50%; margin-right: 10px;" alt="Avatar">
+				<div>
+					<div style="font-weight: bold;">John Doe</div>
+					<div style="color: #666; font-size: 0.9em;">john@example.com</div>
+				</div>
+			</div>
+			<hr>
+			<div style="margin-bottom: 10px;">
+				<strong>Recent Activity:</strong>
+			</div>
+			<ul style="margin: 0; padding-left: 20px;">
+				<li>Updated profile</li>
+				<li>Changed password</li>
+				<li>Added new project</li>
+			</ul>
+			<hr>
+			<div style="text-align: center;">
+				<button class="button primary small">View Profile</button>
+			</div>
+		</div>
+	'''
+	
+	context = {
+		'page_title': 'Dropdown Demo - MetroUI5 Demo',
+		'dropdown_items': dropdown_items,
+		'user_account_items': user_account_items,
+		'settings_items': settings_items,
+		'actions_items': actions_items,
+		'form_dropdown_content': form_dropdown_content,
+		'rich_dropdown_content': rich_dropdown_content,
+	}
+	return render(request, 'demo/dropdown_demo.html', context)
