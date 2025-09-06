@@ -57,5 +57,6 @@ urlpatterns = [
     path('d-menu-demo/', views.d_menu_demo, name='d_menu_demo'),
     path('dialog-demo/', views.dialog_demo, name='dialog_demo'),
     path('directive-demo/', views.directive_demo, name='directive_demo'),
+    path('donut-demo/', views.donut_demo, name='donut_demo'),
     path('test-demo/', views.test_demo, name='test_demo'),
 ]
