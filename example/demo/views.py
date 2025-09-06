@@ -982,6 +982,145 @@ def donut_demo(request):
 	return render(request, 'demo/donut_demo.html', context)
 
 
+def double_select_box_demo(request):
+	"""Double Select Box component demo page."""
+	context = {
+		'page_title': 'Double Select Box Component Demo - MetroUI5 Demo',
+		
+		# Basic example data
+		'basic_left_options': [
+			{'value': '1', 'text': 'Item 1'},
+			{'value': '2', 'text': 'Item 2'},
+			{'value': '3', 'text': 'Item 3'},
+			{'value': '4', 'text': 'Item 4'},
+		],
+		'basic_right_options': [],
+		
+		# Browser example with templates
+		'browser_left_options': [
+			{'value': 'ie', 'text': 'IE', 'template': "<span class='mif-ie'></span> $1"},
+			{'value': 'chrome', 'text': 'Chrome', 'template': "<span class='mif-chrome'></span> $1"},
+			{'value': 'firefox', 'text': 'Firefox', 'template': "<span class='mif-firefox'></span> $1"},
+		],
+		'browser_right_options': [
+			{'value': 'safari', 'text': 'Safari', 'template': "<span class='mif-safari'></span> $1"},
+			{'value': 'opera', 'text': 'Opera', 'template': "<span class='mif-opera'></span> $1"},
+		],
+		
+		# Programming languages
+		'programming_left_options': [
+			{'value': 'python', 'text': 'Python'},
+			{'value': 'javascript', 'text': 'JavaScript'},
+			{'value': 'java', 'text': 'Java'},
+			{'value': 'csharp', 'text': 'C#'},
+			{'value': 'php', 'text': 'PHP'},
+			{'value': 'ruby', 'text': 'Ruby'},
+		],
+		'programming_right_options': [
+			{'value': 'go', 'text': 'Go'},
+			{'value': 'rust', 'text': 'Rust'},
+		],
+		
+		# Countries
+		'country_left_options': [
+			{'value': 'us', 'text': 'United States'},
+			{'value': 'uk', 'text': 'United Kingdom'},
+			{'value': 'fr', 'text': 'France'},
+			{'value': 'de', 'text': 'Germany'},
+			{'value': 'it', 'text': 'Italy'},
+			{'value': 'es', 'text': 'Spain'},
+			{'value': 'ca', 'text': 'Canada'},
+			{'value': 'au', 'text': 'Australia'},
+		],
+		'country_right_options': [
+			{'value': 'jp', 'text': 'Japan'},
+			{'value': 'kr', 'text': 'South Korea'},
+		],
+		
+		# Colors
+		'color_left_options': [
+			{'value': 'red', 'text': 'Red'},
+			{'value': 'blue', 'text': 'Blue'},
+			{'value': 'green', 'text': 'Green'},
+			{'value': 'yellow', 'text': 'Yellow'},
+		],
+		'color_right_options': [
+			{'value': 'purple', 'text': 'Purple'},
+			{'value': 'orange', 'text': 'Orange'},
+		],
+		
+		# Fruits
+		'fruit_left_options': [
+			{'value': 'apple', 'text': 'Apple'},
+			{'value': 'banana', 'text': 'Banana'},
+			{'value': 'orange', 'text': 'Orange'},
+			{'value': 'grape', 'text': 'Grape'},
+		],
+		'fruit_right_options': [
+			{'value': 'mango', 'text': 'Mango'},
+		],
+		
+		# Skills
+		'skill_left_options': [
+			{'value': 'html', 'text': 'HTML'},
+			{'value': 'css', 'text': 'CSS'},
+			{'value': 'js', 'text': 'JavaScript'},
+			{'value': 'react', 'text': 'React'},
+			{'value': 'vue', 'text': 'Vue.js'},
+			{'value': 'angular', 'text': 'Angular'},
+		],
+		'skill_right_options': [
+			{'value': 'python', 'text': 'Python'},
+			{'value': 'django', 'text': 'Django'},
+		],
+		
+		# Real-world examples
+		'permission_available_options': [
+			{'value': 'read_users', 'text': 'Read Users'},
+			{'value': 'write_users', 'text': 'Write Users'},
+			{'value': 'delete_users', 'text': 'Delete Users'},
+			{'value': 'read_posts', 'text': 'Read Posts'},
+			{'value': 'write_posts', 'text': 'Write Posts'},
+			{'value': 'delete_posts', 'text': 'Delete Posts'},
+		],
+		'permission_assigned_options': [
+			{'value': 'read_profile', 'text': 'Read Profile'},
+			{'value': 'edit_profile', 'text': 'Edit Profile'},
+		],
+		
+		'member_available_options': [
+			{'value': 'john_doe', 'text': 'John Doe'},
+			{'value': 'jane_smith', 'text': 'Jane Smith'},
+			{'value': 'bob_wilson', 'text': 'Bob Wilson'},
+			{'value': 'alice_brown', 'text': 'Alice Brown'},
+		],
+		'member_selected_options': [
+			{'value': 'team_lead', 'text': 'Team Lead'},
+		],
+		
+		'feature_available_options': [
+			{'value': 'analytics', 'text': 'Advanced Analytics'},
+			{'value': 'api_access', 'text': 'API Access'},
+			{'value': 'custom_branding', 'text': 'Custom Branding'},
+			{'value': 'priority_support', 'text': 'Priority Support'},
+		],
+		'feature_included_options': [
+			{'value': 'basic_reporting', 'text': 'Basic Reporting'},
+			{'value': 'email_support', 'text': 'Email Support'},
+		],
+		
+		'item_uncategorized_options': [
+			{'value': 'item1', 'text': 'Product A'},
+			{'value': 'item2', 'text': 'Product B'},
+			{'value': 'item3', 'text': 'Product C'},
+		],
+		'item_categorized_options': [
+			{'value': 'item4', 'text': 'Product D'},
+		],
+	}
+	return render(request, 'demo/double_select_box_demo.html', context)
+
+
 def test_demo(request):
 	"""Test demo page to check layout."""
 	context = {

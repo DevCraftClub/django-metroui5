@@ -1,0 +1,448 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Double Select Box Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Double Select Box Components</h1>
+    <p>Demonstrating the MetroUI v5 Double Select Box component - a user interface for moving items between two select boxes.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Basic Double Select Box</h2>
+                <p>Simple double select box with basic items.</p>
+                
+                {% metroui5_double_select_box left_options=basic_left_options right_options=basic_right_options %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>With Icons and Templates</h2>
+                <p>Double select box with browser icons using templates.</p>
+                
+                {% metroui5_double_select_box left_options=browser_left_options right_options=browser_right_options %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Multi-Select Mode</h2>
+                <p>Double select box that allows selecting multiple items at once.</p>
+                
+                {% metroui5_double_select_box left_options=programming_left_options right_options=programming_right_options multi_select=True %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Custom Height</h2>
+                <p>Double select box with custom height setting.</p>
+                
+                {% metroui5_double_select_box left_options=country_left_options right_options=country_right_options height="200px" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Custom Icons</h2>
+                <p>Double select box with custom move button icons.</p>
+                
+                {% metroui5_double_select_box left_options=color_left_options right_options=color_right_options move_right_icon="→" move_left_icon="←" move_right_all_icon="⇒" move_left_all_icon="⇐" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>With Custom CSS Classes</h2>
+                <p>Double select box with custom styling classes.</p>
+                
+                {% metroui5_double_select_box left_options=fruit_left_options right_options=fruit_right_options cls_box="custom-double-select" cls_move_button="custom-move-btn" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Interactive Example</h2>
+                <p>Double select box with event handlers and interactive controls.</p>
+                
+                {% metroui5_double_select_box left_options=skill_left_options right_options=skill_right_options id="interactive-double-select" on_double_select_box_create="handleDoubleSelectCreate()" multi_select=True height="250px" %}
+                
+                <div class="mt-4">
+                    <h4>Event Output</h4>
+                    <div id="double-select-event-output" class="bg-lightGray p-2" style="min-height: 100px; border-radius: 4px;">
+                        <small class="text-muted">Double select box events will appear here...</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Real-world Examples</h2>
+                <p>Practical examples of double select boxes in common use cases.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>User Permissions</h4>
+                            <p>Assign permissions to a user role.</p>
+                            {% metroui5_double_select_box left_options=permission_available_options right_options=permission_assigned_options height="180px" multi_select=True %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Team Selection</h4>
+                            <p>Select team members for a project.</p>
+                            {% metroui5_double_select_box left_options=member_available_options right_options=member_selected_options height="180px" %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Feature Selection</h4>
+                            <p>Choose features for a product package.</p>
+                            {% metroui5_double_select_box left_options=feature_available_options right_options=feature_included_options height="180px" multi_select=True %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Category Management</h4>
+                            <p>Organize items into categories.</p>
+                            {% metroui5_double_select_box left_options=item_uncategorized_options right_options=item_categorized_options height="180px" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Double Select Box</div>
+                <div class="content">
+                    <pre><code>{% metroui5_double_select_box left_options=left_items right_options=right_items %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Templates and Icons</div>
+                <div class="content">
+                    <pre><code># In your view:
+left_options = [
+    {'value': 'chrome', 'text': 'Chrome', 'template': "&lt;span class='mif-chrome'&gt;&lt;/span&gt; $1"},
+    {'value': 'firefox', 'text': 'Firefox', 'template': "&lt;span class='mif-firefox'&gt;&lt;/span&gt; $1"}
+]
+
+# In your template:
+{% metroui5_double_select_box left_options=left_options right_options=right_options %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Multi-Select Mode</div>
+                <div class="content">
+                    <pre><code>{% metroui5_double_select_box left_options=left_items right_options=right_items multi_select=True %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Custom Height and Icons</div>
+                <div class="content">
+                    <pre><code>{% metroui5_double_select_box left_options=left_items right_options=right_items height="300px" move_right_icon="→" move_left_icon="←" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Custom CSS Classes</div>
+                <div class="content">
+                    <pre><code>{% metroui5_double_select_box left_options=left_items right_options=right_items cls_box="custom-container" cls_move_button="custom-btn" %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Component Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>left_options</td>
+                        <td>list</td>
+                        <td>[]</td>
+                        <td>List of options for the left select box</td>
+                    </tr>
+                    <tr>
+                        <td>right_options</td>
+                        <td>list</td>
+                        <td>[]</td>
+                        <td>List of options for the right select box</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>string</td>
+                        <td>"auto"</td>
+                        <td>Height of the select boxes</td>
+                    </tr>
+                    <tr>
+                        <td>multi_select</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Allows selecting multiple items at once</td>
+                    </tr>
+                    <tr>
+                        <td>move_right_icon</td>
+                        <td>string</td>
+                        <td>"›"</td>
+                        <td>Icon for the move right button</td>
+                    </tr>
+                    <tr>
+                        <td>move_right_all_icon</td>
+                        <td>string</td>
+                        <td>"»"</td>
+                        <td>Icon for the move all right button</td>
+                    </tr>
+                    <tr>
+                        <td>move_left_icon</td>
+                        <td>string</td>
+                        <td>"‹"</td>
+                        <td>Icon for the move left button</td>
+                    </tr>
+                    <tr>
+                        <td>move_left_all_icon</td>
+                        <td>string</td>
+                        <td>"«"</td>
+                        <td>Icon for the move all left button</td>
+                    </tr>
+                    <tr>
+                        <td>cls_box</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for the component container</td>
+                    </tr>
+                    <tr>
+                        <td>cls_move_button</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for all move buttons</td>
+                    </tr>
+                    <tr>
+                        <td>cls_list_left</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for the left list</td>
+                    </tr>
+                    <tr>
+                        <td>cls_list_right</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for the right list</td>
+                    </tr>
+                    <tr>
+                        <td>on_double_select_box_create</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Triggered when the component is created</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Option Format</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>value</td>
+                        <td>string</td>
+                        <td>Yes</td>
+                        <td>The value attribute of the option</td>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>string</td>
+                        <td>Yes</td>
+                        <td>The display text of the option</td>
+                    </tr>
+                    <tr>
+                        <td>template</td>
+                        <td>string</td>
+                        <td>No</td>
+                        <td>HTML template for custom option display (use $1 for text placeholder)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Interaction Methods</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Double-click item</td>
+                        <td>Move single item to the other list</td>
+                    </tr>
+                    <tr>
+                        <td>Select + Move button</td>
+                        <td>Move selected item(s) to the other list</td>
+                    </tr>
+                    <tr>
+                        <td>Move All button</td>
+                        <td>Move all items from one list to the other</td>
+                    </tr>
+                    <tr>
+                        <td>Multi-select mode</td>
+                        <td>Hold Ctrl/Cmd to select multiple items at once</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>CSS Variables</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Default (Light)</th>
+                        <th>Dark Mode</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>--double-select-border-radius</td>
+                        <td>4px</td>
+                        <td>4px</td>
+                        <td>Border radius of the select boxes</td>
+                    </tr>
+                    <tr>
+                        <td>--double-select-border-color</td>
+                        <td>var(—border-color)</td>
+                        <td>var(—border-color)</td>
+                        <td>Border color of the select boxes</td>
+                    </tr>
+                    <tr>
+                        <td>--double-select-item-background-active</td>
+                        <td>#e6e6e6</td>
+                        <td>#2c2d30</td>
+                        <td>Background color of active items</td>
+                    </tr>
+                    <tr>
+                        <td>--double-select-item-color-active</td>
+                        <td>#191919</td>
+                        <td>#efefef</td>
+                        <td>Text color of active items</td>
+                    </tr>
+                    <tr>
+                        <td>--double-select-item-background-hover</td>
+                        <td>#e6e6e6</td>
+                        <td>#2c2d30</td>
+                        <td>Background color of items on hover</td>
+                    </tr>
+                    <tr>
+                        <td>--double-select-item-color-hover</td>
+                        <td>#191919</td>
+                        <td>#efefef</td>
+                        <td>Text color of items on hover</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom styling for demo */
+.custom-double-select {
+    border: 2px solid #2196F3;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.custom-move-btn {
+    background-color: #2196F3;
+    color: white;
+    border-radius: 4px;
+}
+
+.custom-move-btn:hover {
+    background-color: #1976D2;
+}
+
+#double-select-event-output {
+    font-family: monospace;
+    font-size: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Spacing for double select boxes */
+[data-role="double-select-box"] {
+    margin: 20px 0;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Event handler function for demo
+function handleDoubleSelectCreate() {
+    console.log("Double Select Box created event triggered");
+    addToDoubleSelectOutput("Double Select Box created successfully");
+}
+
+// Utility function to add output
+function addToDoubleSelectOutput(message) {
+    const output = document.getElementById('double-select-event-output');
+    if (output) {
+        const timestamp = new Date().toLocaleTimeString();
+        output.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+        output.scrollTop = output.scrollHeight;
+    }
+}
+
+// Initialize when page loads
+$(document).ready(function() {
+    // MetroUI will initialize elements with data-role automatically
+    
+    // Add clear button for event output
+    const clearBtn = $('<button class="button small mt-2">Clear Output</button>');
+    clearBtn.on('click', function() {
+        $('#double-select-event-output').html('<small class="text-muted">Double select box events will appear here...</small>');
+    });
+    $('#double-select-event-output').after(clearBtn);
+    
+    // Add initial message
+    addToDoubleSelectOutput('Page loaded - interact with the double select box above to see events');
+    
+    // Add some instruction text
+    const instructionDiv = $('<div class="alert alert-info mt-2"><small><strong>Instructions:</strong> Double-click items to move them between lists, or select items and use the arrow buttons. In multi-select mode, hold Ctrl/Cmd to select multiple items.</small></div>');
+    $('#interactive-double-select').after(instructionDiv);
+});
+</script>
+{% endblock %}
