@@ -46,6 +46,7 @@ from .donut import render_donut
 from .double_select_box import render_double_select_box
 from .double_slider import render_double_slider
 from .drag_items import render_drag_items
+from .draggable import render_draggable
 from .dropdown import render_dropdown
 from .input import render_input, render_material_input
 from .list import render_list
@@ -125,6 +126,7 @@ __all__ = [
     'render_double_select_box',
     'render_double_slider',
     'render_drag_items',
+    'render_draggable',
     'render_dropdown',
     'render_input',
     'render_material_input',

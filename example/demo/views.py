@@ -990,6 +990,14 @@ def double_slider_demo(request):
 	return render(request, 'demo/double_slider_demo.html', context)
 
 
+def draggable_demo(request):
+	"""Draggable component demo page."""
+	context = {
+		'page_title': 'Draggable Component Demo - MetroUI5 Demo',
+	}
+	return render(request, 'demo/draggable_demo.html', context)
+
+
 def drag_items_demo(request):
 	"""Drag Items component demo page."""
 	context = {

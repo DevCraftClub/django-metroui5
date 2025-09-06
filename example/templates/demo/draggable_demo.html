@@ -1,0 +1,750 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Draggable Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Draggable Components</h1>
+    <p>Demonstrating the MetroUI v5 Draggable component - allows you to make any element draggable within a specified area, providing customizable options for boundaries, drag handles, and event callbacks.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Basic Draggable</h2>
+                <p>Simple draggable element with default settings.</p>
+                
+                <div class="example-container" id="basic-container">
+                    {% metroui5_draggable content="<div class='drag-box'>Drag me around!</div>" %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Draggable with Custom Handle</h2>
+                <p>Element that can only be dragged by a specific handle.</p>
+                
+                <div class="example-container" id="handle-container">
+                    {% metroui5_draggable content="<div class='drag-box-with-handle'><div class='handle'>⋮⋮ Drag here</div><div class='content'>Content area - not draggable</div></div>" drag_element=".handle" %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Boundary Restricted</h2>
+                <p>Draggable element restricted within its container boundaries.</p>
+                
+                <div class="example-container restricted-container" id="restricted-container">
+                    {% metroui5_draggable content="<div class='drag-box'>Can't escape this box!</div>" boundary_restriction=True %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>No Boundary Restriction</h2>
+                <p>Draggable element that can move beyond container boundaries.</p>
+                
+                <div class="example-container" id="unrestricted-container">
+                    {% metroui5_draggable content="<div class='drag-box'>I can escape!</div>" boundary_restriction=False %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Custom Drag Area</h2>
+                <p>Element restricted to a specific drag area (body).</p>
+                
+                <div class="example-container" id="body-area-container">
+                    {% metroui5_draggable content="<div class='drag-box'>Drag anywhere on page!</div>" drag_area="body" %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Initially Disabled</h2>
+                <p>Draggable element that starts disabled.</p>
+                
+                <div class="example-container" id="disabled-container">
+                    <div class="mb-2">
+                        <button class="button" onclick="toggleDraggable('disabled-draggable')">Toggle Dragging</button>
+                    </div>
+                    {% metroui5_draggable content="<div class='drag-box disabled-initially'>Click button to enable dragging</div>" id="disabled-draggable" %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Interactive Example with Events</h2>
+                <p>Draggable element with comprehensive event handling and custom styling.</p>
+                
+                <div class="example-container" id="interactive-container">
+                    {% metroui5_draggable content="<div class='drag-box interactive-box'>Interactive Draggable - Watch events below</div>" id="interactive-draggable" on_drag_start="handleDragStart()" on_drag_stop="handleDragStop()" on_drag_move="handleDragMove()" on_draggable_create="handleDraggableCreate()" %}
+                    
+                    <div class="mt-4">
+                        <h4>Event Output</h4>
+                        <div id="drag-event-output" class="bg-lightGray p-2" style="min-height: 120px; border-radius: 4px; font-family: monospace; font-size: 12px; max-height: 200px; overflow-y: auto;">
+                            <small class="text-muted">Drag events will appear here...</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Real-world Examples</h2>
+                <p>Practical examples of draggable elements in common use cases.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Modal Window</h4>
+                            <p>Draggable modal-like element.</p>
+                            <div class="example-container">
+                                {% metroui5_draggable content="<div class='modal-like'><div class='modal-header'>📋 Modal Title</div><div class='modal-body'>This modal can be dragged around by its header.</div></div>" drag_element=".modal-header" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Widget Panel</h4>
+                            <p>Draggable dashboard widget.</p>
+                            <div class="example-container">
+                                {% metroui5_draggable content="<div class='widget-panel'><div class='widget-header'>📊 Analytics Widget</div><div class='widget-content'>Chart data goes here...</div></div>" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Floating Toolbar</h4>
+                            <p>Moveable toolbar panel.</p>
+                            <div class="example-container">
+                                {% metroui5_draggable content="<div class='toolbar-panel'><div class='toolbar-handle'>⋮⋮</div><div class='toolbar-buttons'>🔧 🎨 📎 💾</div></div>" drag_element=".toolbar-handle" %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Notification</h4>
+                            <p>Draggable notification popup.</p>
+                            <div class="example-container">
+                                {% metroui5_draggable content="<div class='notification-box'><div class='notification-header'>🔔 Notification</div><div class='notification-text'>You can drag this notification around!</div></div>" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Image Thumbnail</h4>
+                            <p>Draggable image element.</p>
+                            <div class="example-container">
+                                {% metroui5_draggable content="<div class='image-thumbnail'><div class='image-placeholder'>🖼️</div><div class='image-caption'>Drag to reposition</div></div>" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Sticky Note</h4>
+                            <p>Moveable sticky note.</p>
+                            <div class="example-container">
+                                {% metroui5_draggable content="<div class='sticky-note'>📝 This is a sticky note that you can drag around!</div>" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Custom Styled Draggables</h2>
+                <p>Draggable elements with different themes and custom styling.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Blue Theme</h4>
+                            <div class="example-container">
+                                {% metroui5_draggable content="<div class='drag-box blue-theme'>Blue draggable element</div>" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Green Theme</h4>
+                            <div class="example-container">
+                                {% metroui5_draggable content="<div class='drag-box green-theme'>Green draggable element</div>" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Red Theme</h4>
+                            <div class="example-container">
+                                {% metroui5_draggable content="<div class='drag-box red-theme'>Red draggable element</div>" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>API Demonstration</h2>
+                <p>Demonstrate the API methods for controlling drag functionality.</p>
+                
+                <div class="example-container">
+                    <div class="mb-2">
+                        <button class="button" onclick="enableDragging('api-draggable')">Enable Dragging</button>
+                        <button class="button" onclick="disableDragging('api-draggable')">Disable Dragging</button>
+                        <button class="button alert" onclick="destroyDraggable('api-draggable')">Destroy Component</button>
+                    </div>
+                    {% metroui5_draggable content="<div class='drag-box'>API Control Example</div>" id="api-draggable" %}
+                    <div class="mt-2">
+                        <div id="api-status" class="bg-lightGray p-2" style="border-radius: 4px;">
+                            <small><strong>Status:</strong> Dragging enabled</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Draggable</div>
+                <div class="content">
+                    <pre><code>{% metroui5_draggable content="&lt;div&gt;Drag me!&lt;/div&gt;" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Custom Handle</div>
+                <div class="content">
+                    <pre><code>{% metroui5_draggable content="&lt;div&gt;&lt;div class='handle'&gt;Handle&lt;/div&gt;&lt;div&gt;Content&lt;/div&gt;&lt;/div&gt;" drag_element=".handle" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Boundary Restricted</div>
+                <div class="content">
+                    <pre><code>{% metroui5_draggable content="&lt;div&gt;Restricted dragging&lt;/div&gt;" boundary_restriction=True %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Custom Drag Area</div>
+                <div class="content">
+                    <pre><code>{% metroui5_draggable content="&lt;div&gt;Can drag anywhere on page&lt;/div&gt;" drag_area="body" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Events</div>
+                <div class="content">
+                    <pre><code>{% metroui5_draggable content="&lt;div&gt;Event tracking&lt;/div&gt;" on_drag_start="handleStart()" on_drag_stop="handleStop()" %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Component Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>content</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Content inside the draggable element</td>
+                    </tr>
+                    <tr>
+                        <td>drag_context</td>
+                        <td>object</td>
+                        <td>null</td>
+                        <td>Context object passed to event callbacks</td>
+                    </tr>
+                    <tr>
+                        <td>draggable_deferred</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Delay in milliseconds before initialization</td>
+                    </tr>
+                    <tr>
+                        <td>drag_element</td>
+                        <td>string</td>
+                        <td>"self"</td>
+                        <td>Selector for the drag handle element. Use "self" to make the entire element draggable</td>
+                    </tr>
+                    <tr>
+                        <td>drag_area</td>
+                        <td>string</td>
+                        <td>"parent"</td>
+                        <td>Selector for the container that limits the draggable area. Can be "parent", "body", or any valid CSS selector</td>
+                    </tr>
+                    <tr>
+                        <td>timeout</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Timeout for initialization</td>
+                    </tr>
+                    <tr>
+                        <td>boundary_restriction</td>
+                        <td>boolean</td>
+                        <td>true</td>
+                        <td>When true, restricts dragging within the boundaries of the dragArea</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Event Handlers</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>on_can_drag</td>
+                        <td>Callback function that determines if dragging is allowed. Should return true to allow dragging</td>
+                    </tr>
+                    <tr>
+                        <td>on_drag_start</td>
+                        <td>Callback function triggered when dragging starts</td>
+                    </tr>
+                    <tr>
+                        <td>on_drag_stop</td>
+                        <td>Callback function triggered when dragging stops</td>
+                    </tr>
+                    <tr>
+                        <td>on_drag_move</td>
+                        <td>Callback function triggered during dragging movement</td>
+                    </tr>
+                    <tr>
+                        <td>on_draggable_create</td>
+                        <td>Callback function triggered when the draggable component is created</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>API Methods</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>on()</td>
+                        <td>Enables dragging functionality for the element</td>
+                        <td>draggable.on()</td>
+                    </tr>
+                    <tr>
+                        <td>off()</td>
+                        <td>Disables dragging functionality for the element</td>
+                        <td>draggable.off()</td>
+                    </tr>
+                    <tr>
+                        <td>destroy()</td>
+                        <td>Removes the draggable functionality and event listeners from the element</td>
+                        <td>draggable.destroy()</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>CSS Classes</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>.draggable</td>
+                        <td>Applied to elements while they are being dragged. Adds a shadow effect.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Best Practices</h2>
+        <div class="remark info" data-role="remark">
+            <h4>Tips for Using Draggable Components</h4>
+            <ul>
+                <li>Use the <code>drag_element</code> option to specify a handle when you want only part of an element to be draggable</li>
+                <li>Set <code>boundary_restriction</code> to true to prevent elements from being dragged outside their container</li>
+                <li>Use the <code>drag_area</code> option to define a specific area where the element can be dragged</li>
+                <li>Implement the <code>on_can_drag</code> callback to conditionally allow or prevent dragging based on your application's state</li>
+                <li>Consider the user experience when implementing draggable elements, ensuring they provide visual feedback during dragging</li>
+                <li>Use clear visual indicators (like handles) to show users which parts of an element are draggable</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom styling for demo */
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px 0;
+    background: #f9f9f9;
+    min-height: 150px;
+    position: relative;
+}
+
+.restricted-container {
+    min-height: 200px;
+    border: 2px dashed #2196F3;
+    background: #e3f2fd;
+}
+
+.drag-box {
+    background-color: #ffffff;
+    border: 2px solid #2196F3;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: move;
+    display: inline-block;
+    min-width: 150px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.drag-box:hover {
+    transform: scale(1.02);
+}
+
+.drag-box-with-handle {
+    background-color: #ffffff;
+    border: 2px solid #2196F3;
+    border-radius: 8px;
+    overflow: hidden;
+    display: inline-block;
+    min-width: 200px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.handle {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    cursor: move;
+    font-weight: bold;
+    user-select: none;
+}
+
+.content {
+    padding: 15px;
+    text-align: center;
+    cursor: default;
+}
+
+.disabled-initially {
+    opacity: 0.6;
+    background-color: #f5f5f5;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
+.interactive-box {
+    background-color: #e8f5e8;
+    border-color: #4CAF50;
+}
+
+/* Real-world example styles */
+.modal-like {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 250px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: #2196F3;
+    color: white;
+    padding: 12px 16px;
+    cursor: move;
+    font-weight: bold;
+    user-select: none;
+}
+
+.modal-body {
+    padding: 16px;
+    cursor: default;
+}
+
+.widget-panel {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-width: 200px;
+    cursor: move;
+    user-select: none;
+}
+
+.widget-header {
+    background: #f5f5f5;
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: bold;
+}
+
+.widget-content {
+    padding: 16px;
+    color: #666;
+}
+
+.toolbar-panel {
+    background: #333;
+    color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.toolbar-handle {
+    background: #555;
+    padding: 8px 12px;
+    cursor: move;
+    user-select: none;
+    border-right: 1px solid #555;
+}
+
+.toolbar-buttons {
+    padding: 8px 16px;
+    cursor: default;
+    font-size: 18px;
+}
+
+.notification-box {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    min-width: 250px;
+    cursor: move;
+    user-select: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.notification-header {
+    background: #ffc107;
+    color: #212529;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #ffb300;
+}
+
+.notification-text {
+    padding: 12px;
+    color: #856404;
+}
+
+.image-thumbnail {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    cursor: move;
+    user-select: none;
+    min-width: 120px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.image-placeholder {
+    font-size: 40px;
+    padding: 20px 10px 10px;
+}
+
+.image-caption {
+    padding: 0 10px 15px;
+    font-size: 12px;
+    color: #666;
+}
+
+.sticky-note {
+    background: #ffeb3b;
+    color: #333;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: move;
+    user-select: none;
+    min-width: 150px;
+    font-family: 'Comic Sans MS', cursive;
+    transform: rotate(-2deg);
+    border: 1px solid #fdd835;
+}
+
+/* Theme-based draggables */
+.blue-theme {
+    background-color: #e3f2fd;
+    border-color: #2196F3;
+    color: #0d47a1;
+}
+
+.green-theme {
+    background-color: #e8f5e8;
+    border-color: #4CAF50;
+    color: #1b5e20;
+}
+
+.red-theme {
+    background-color: #ffebee;
+    border-color: #F44336;
+    color: #b71c1c;
+}
+
+#drag-event-output {
+    line-height: 1.4;
+}
+
+/* Override draggable class for custom styling during drag */
+.draggable {
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px !important;
+    opacity: 0.9 !important;
+    transform: scale(1.05) !important;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Event handler functions for demo
+function handleDragStart() {
+    addToDragOutput("Drag started");
+}
+
+function handleDragStop() {
+    addToDragOutput("Drag stopped");
+}
+
+function handleDragMove() {
+    addToDragOutput("Dragging...");
+}
+
+function handleDraggableCreate() {
+    addToDragOutput("Draggable component created successfully");
+}
+
+// API method demonstrations
+function enableDragging(elementId) {
+    const draggable = Metro.getPlugin('#' + elementId, 'draggable');
+    if (draggable) {
+        draggable.on();
+        updateApiStatus("Dragging enabled");
+        addToDragOutput("API: Dragging enabled for " + elementId);
+    }
+}
+
+function disableDragging(elementId) {
+    const draggable = Metro.getPlugin('#' + elementId, 'draggable');
+    if (draggable) {
+        draggable.off();
+        updateApiStatus("Dragging disabled");
+        addToDragOutput("API: Dragging disabled for " + elementId);
+    }
+}
+
+function toggleDraggable(elementId) {
+    const draggable = Metro.getPlugin('#' + elementId, 'draggable');
+    if (draggable) {
+        // Metro UI doesn't have a toggle method, so we'll implement our own
+        const element = document.getElementById(elementId);
+        const isDisabled = element.classList.contains('disabled-initially');
+        
+        if (isDisabled) {
+            draggable.on();
+            element.classList.remove('disabled-initially');
+            updateApiStatus("Dragging enabled");
+            addToDragOutput("API: Dragging enabled for " + elementId);
+        } else {
+            draggable.off();
+            element.classList.add('disabled-initially');
+            updateApiStatus("Dragging disabled");
+            addToDragOutput("API: Dragging disabled for " + elementId);
+        }
+    }
+}
+
+function destroyDraggable(elementId) {
+    const draggable = Metro.getPlugin('#' + elementId, 'draggable');
+    if (draggable) {
+        draggable.destroy();
+        updateApiStatus("Component destroyed");
+        addToDragOutput("API: Draggable component destroyed for " + elementId);
+    }
+}
+
+// Utility functions
+function addToDragOutput(message) {
+    const output = document.getElementById('drag-event-output');
+    if (output) {
+        const timestamp = new Date().toLocaleTimeString();
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = `[${timestamp}] ${message}`;
+        output.appendChild(newDiv);
+        output.scrollTop = output.scrollHeight;
+    }
+}
+
+function updateApiStatus(status) {
+    const statusDiv = document.getElementById('api-status');
+    if (statusDiv) {
+        statusDiv.innerHTML = `<small><strong>Status:</strong> ${status}</small>`;
+    }
+}
+
+// Initialize when page loads
+$(document).ready(function() {
+    // MetroUI will initialize elements with data-role automatically
+    
+    // Add clear button for event output
+    const clearBtn = $('<button class="button small mt-2">Clear Output</button>');
+    clearBtn.on('click', function() {
+        $('#drag-event-output').html('<small class="text-muted">Drag events will appear here...</small>');
+    });
+    $('#drag-event-output').after(clearBtn);
+    
+    // Add some instruction text
+    const instructionDiv = $('<div class="alert alert-info mt-2"><small><strong>Instructions:</strong> Drag elements around to see them in action. Elements with handles can only be dragged by clicking and dragging the handle area. Use the API buttons to control functionality programmatically.</small></div>');
+    $('#interactive-draggable').after(instructionDiv);
+    
+    // Initially disable one draggable for demo
+    const disabledDraggable = Metro.getPlugin('#disabled-draggable', 'draggable');
+    if (disabledDraggable) {
+        disabledDraggable.off();
+    }
+    
+    // Add initial message
+    setTimeout(function() {
+        addToDragOutput('Page loaded - try dragging elements to see events');
+    }, 500);
+});
+</script>
+{% endblock %}
