@@ -53,7 +53,8 @@ def app_bar_data(request):
                             {'text': 'Catalog Menu', 'href': '/catalog-menu-demo/', 'icon': 'mif-list'},
                             {'text': 'Collapse', 'href': '/collapse-demo/', 'icon': 'mif-chevron-down'},
                             {'text': 'Drop Menu', 'href': '/drop-menu-demo/', 'icon': 'mif-menu'},
-                            {'text': 'Dropdown', 'href': '/dropdown-demo/', 'icon': 'mif-chevron-down'}
+                            {'text': 'Dropdown', 'href': '/dropdown-demo/', 'icon': 'mif-chevron-down'},
+                            {'text': 'Dropdown Button', 'href': '/dropdown-button-demo/', 'icon': 'mif-play'}
                         ]
                     },
                     {
