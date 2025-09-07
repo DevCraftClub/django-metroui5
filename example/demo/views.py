@@ -1575,3 +1575,20 @@ def file_demo(request):
 		}
 	}
 	return render(request, 'demo/file_demo.html', context)
+
+
+def flip_card_demo(request):
+	"""Demo page for flip card component."""
+	context = {
+		'page_title': 'Flip Card Demo - MetroUI5 Demo',
+		# Demo data for flip card examples
+		'flip_card_examples': {
+			'basic': 'Basic flip card with front and back content',
+			'hover': 'Flip card that flips on hover',
+			'active': 'Flip card that flips when active class is added',
+			'horizontal': 'Flip card that flips horizontally',
+			'dimensions': 'Flip card with custom dimensions',
+			'styling': 'Flip card with custom styling'
+		}
+	}
+	return render(request, 'demo/flip_card_demo.html', context)

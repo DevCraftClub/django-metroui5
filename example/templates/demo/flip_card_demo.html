@@ -1,0 +1,502 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Flip Card Demo - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+	<h1>Flip Card Demo</h1>
+	<p>Demonstrating the MetroUI v5 Flip Card component with all features and flip effects.</p>
+
+	<div class="grid">
+		<div class="row">
+			<div class="cell-md-6">
+				<h2>Basic Usage</h2>
+				<p>Basic flip card with front and back content.</p>
+				<div class="example-container">
+					{% metroui5_flip_card 
+						front_content='<h3>Front Side</h3><p>This is the front content of the card.</p>' 
+						back_content='<h3>Back Side</h3><p>This is the back content of the card.</p>'
+						width="300px" height="200px" %}
+				</div>
+			</div>
+
+			<div class="cell-md-6">
+				<h2>Vertical Flip on Hover</h2>
+				<p>Flip card that flips vertically when hovered.</p>
+				<div class="example-container">
+					{% metroui5_flip_card_hover 
+						front_content='<h3>Front Side</h3><p>Hover over me to flip!</p>' 
+						back_content='<h3>Back Side</h3><p>You flipped me!</p>'
+						width="300px" height="200px" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-6">
+				<h2>Horizontal Flip with Active State</h2>
+				<p>Flip card that flips horizontally when active class is added.</p>
+				<div class="example-container">
+					{% metroui5_flip_card_horizontal 
+						front_content='<h3>Front Side</h3><p>Click the button to flip me!</p><button class="button" onclick="toggleFlip(this)">Flip Card</button>' 
+						back_content='<h3>Back Side</h3><p>I was flipped horizontally!</p><button class="button" onclick="toggleFlip(this)">Flip Back</button>'
+						width="300px" height="200px" %}
+				</div>
+			</div>
+
+			<div class="cell-md-6">
+				<h2>Custom Dimensions</h2>
+				<p>Flip card with custom width and height.</p>
+				<div class="example-container">
+					{% metroui5_flip_card_with_dimensions 
+						front_content='<h3>Custom Size</h3><p>This card has custom dimensions.</p>' 
+						back_content='<h3>Back Side</h3><p>Custom sized flip card!</p>'
+						width="250px" height="150px" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-6">
+				<h2>Custom Animation Speed</h2>
+				<p>Flip card with slower animation speed.</p>
+				<div class="example-container">
+					{% metroui5_flip_card_hover 
+						front_content='<h3>Slow Flip</h3><p>This card flips slowly.</p>' 
+						back_content='<h3>Back Side</h3><p>Slow and smooth flip!</p>'
+						width="300px" height="200px" animation_speed="0.8s" %}
+				</div>
+			</div>
+
+			<div class="cell-md-6">
+				<h2>Custom Perspective</h2>
+				<p>Flip card with custom perspective for 3D effect.</p>
+				<div class="example-container">
+					{% metroui5_flip_card_hover 
+						front_content='<h3>3D Effect</h3><p>Enhanced 3D perspective.</p>' 
+						back_content='<h3>Back Side</h3><p>Dramatic 3D flip!</p>'
+						width="300px" height="200px" perspective="1000px" %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-12">
+				<h2>Interactive Examples</h2>
+				<p>Flip cards with different interactive behaviors.</p>
+
+				<div class="grid">
+					<div class="row">
+						<div class="cell-md-4">
+							<h4>Hover Effect</h4>
+							<div class="example-container">
+								{% metroui5_flip_card_hover 
+									front_content='<div class="text-center"><h4>Hover Me</h4><p>Move your mouse over me</p></div>' 
+									back_content='<div class="text-center"><h4>Flipped!</h4><p>You hovered over me</p></div>'
+									width="200px" height="150px" %}
+							</div>
+						</div>
+						<div class="cell-md-4">
+							<h4>Active State</h4>
+							<div class="example-container">
+								{% metroui5_flip_card_active 
+									front_content='<div class="text-center"><h4>Click Me</h4><p>Click the button to flip</p><button class="button small" onclick="toggleActiveFlip(this)">Flip</button></div>' 
+									back_content='<div class="text-center"><h4>Active!</h4><p>I am active now</p><button class="button small" onclick="toggleActiveFlip(this)">Back</button></div>'
+									width="200px" height="150px" %}
+							</div>
+						</div>
+						<div class="cell-md-4">
+							<h4>Horizontal Flip</h4>
+							<div class="example-container">
+								{% metroui5_flip_card_horizontal 
+									front_content='<div class="text-center"><h4>Horizontal</h4><p>I flip horizontally</p><button class="button small" onclick="toggleHorizontalFlip(this)">Flip</button></div>' 
+									back_content='<div class="text-center"><h4>Flipped!</h4><p>Horizontal flip done</p><button class="button small" onclick="toggleHorizontalFlip(this)">Back</button></div>'
+									width="200px" height="150px" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-12">
+				<h2>Real-world Examples</h2>
+				<p>Practical examples of flip cards in different scenarios.</p>
+
+				<div class="grid">
+					<div class="row">
+						<div class="cell-md-4">
+							<h4>Product Card</h4>
+							<div class="example-container">
+								{% metroui5_flip_card_hover 
+									front_content='<div class="text-center"><img src="https://placehold.co/150x100/2196f3/ffffff?text=Product" alt="Product" style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px;"><h4>Product Name</h4><p>$29.99</p></div>' 
+									back_content='<div class="text-center"><h4>Product Details</h4><p>Description of the product with features and specifications.</p><button class="button primary">Add to Cart</button></div>'
+									width="250px" height="200px" %}
+							</div>
+						</div>
+						<div class="cell-md-4">
+							<h4>Team Member Card</h4>
+							<div class="example-container">
+								{% metroui5_flip_card_hover 
+									front_content='<div class="text-center"><img src="https://placehold.co/100x100/4caf50/ffffff?text=JD" alt="John Doe" style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 10px;"><h4>John Doe</h4><p>Developer</p></div>' 
+									back_content='<div class="text-center"><h4>Contact Info</h4><p>john.doe@example.com</p><p>+1 (555) 123-4567</p><button class="button small">Contact</button></div>'
+									width="250px" height="200px" %}
+							</div>
+						</div>
+						<div class="cell-md-4">
+							<h4>Feature Card</h4>
+							<div class="example-container">
+								{% metroui5_flip_card_hover 
+									front_content='<div class="text-center"><span class="mif-cog mif-3x" style="color: #ff9800;"></span><h4>Feature</h4><p>Click to learn more</p></div>' 
+									back_content='<div class="text-center"><h4>Feature Details</h4><p>Detailed description of the feature and its benefits for users.</p><button class="button small">Learn More</button></div>'
+									width="250px" height="200px" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="cell-md-12">
+				<h2>Custom Styling Examples</h2>
+				<p>Flip cards with custom CSS classes and styling.</p>
+
+				<div class="grid">
+					<div class="row">
+						<div class="cell-md-6">
+							<h4>Custom Styling</h4>
+							<div class="example-container">
+								{% metroui5_flip_card_hover 
+									front_content='<div class="text-center"><h4>Custom Style</h4><p>This card has custom styling</p></div>' 
+									back_content='<div class="text-center"><h4>Styled Back</h4><p>Custom styled flip card</p></div>'
+									width="300px" height="200px" 
+									cls_flip_card="custom-flip-card" 
+									cls_front="custom-front" 
+									cls_back="custom-back" %}
+							</div>
+						</div>
+						<div class="cell-md-6">
+							<h4>Gradient Background</h4>
+							<div class="example-container">
+								{% metroui5_flip_card_hover 
+									front_content='<div class="text-center"><h4>Gradient</h4><p>Beautiful gradient background</p></div>' 
+									back_content='<div class="text-center"><h4>Flipped</h4><p>Gradient flip card</p></div>'
+									width="300px" height="200px" 
+									cls_flip_card="gradient-flip-card" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<h2>Usage Examples</h2>
+		<div class="accordion" data-role="accordion">
+			<div class="frame">
+				<div class="heading">Basic Usage</div>
+				<div class="content">
+					<pre><code>{% metroui5_flip_card 
+	front_content='&lt;h3&gt;Front Side&lt;/h3&gt;&lt;p&gt;Front content&lt;/p&gt;' 
+	back_content='&lt;h3&gt;Back Side&lt;/h3&gt;&lt;p&gt;Back content&lt;/p&gt;'
+	width="300px" height="200px" %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">Hover Effect</div>
+				<div class="content">
+					<pre><code>{% metroui5_flip_card_hover 
+	front_content='&lt;h3&gt;Front Side&lt;/h3&gt;&lt;p&gt;Hover over me!&lt;/p&gt;' 
+	back_content='&lt;h3&gt;Back Side&lt;/h3&gt;&lt;p&gt;You flipped me!&lt;/p&gt;'
+	width="300px" height="200px" %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">Active State</div>
+				<div class="content">
+					<pre><code>{% metroui5_flip_card_active 
+	front_content='&lt;h3&gt;Front Side&lt;/h3&gt;&lt;p&gt;Click to flip!&lt;/p&gt;' 
+	back_content='&lt;h3&gt;Back Side&lt;/h3&gt;&lt;p&gt;I am active!&lt;/p&gt;'
+	width="300px" height="200px" %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">Horizontal Flip</div>
+				<div class="content">
+					<pre><code>{% metroui5_flip_card_horizontal 
+	front_content='&lt;h3&gt;Front Side&lt;/h3&gt;&lt;p&gt;Horizontal flip!&lt;/p&gt;' 
+	back_content='&lt;h3&gt;Back Side&lt;/h3&gt;&lt;p&gt;Flipped horizontally!&lt;/p&gt;'
+	width="300px" height="200px" %}</code></pre>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="heading">Custom Dimensions</div>
+				<div class="content">
+					<pre><code>{% metroui5_flip_card_with_dimensions 
+	front_content='&lt;h3&gt;Custom Size&lt;/h3&gt;&lt;p&gt;Custom dimensions&lt;/p&gt;' 
+	back_content='&lt;h3&gt;Back Side&lt;/h3&gt;&lt;p&gt;Custom sized card!&lt;/p&gt;'
+	width="250px" height="150px" %}</code></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<h2>Component Parameters</h2>
+		<div class="table-container">
+			<table class="table striped">
+				<thead>
+					<tr>
+						<th>Parameter</th>
+						<th>Type</th>
+						<th>Default</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>front_content</td>
+						<td>string/HTML</td>
+						<td>""</td>
+						<td>Content for the front side of the card</td>
+					</tr>
+					<tr>
+						<td>back_content</td>
+						<td>string/HTML</td>
+						<td>""</td>
+						<td>Content for the back side of the card</td>
+					</tr>
+					<tr>
+						<td>flip_horizontal</td>
+						<td>boolean</td>
+						<td>false</td>
+						<td>Make the card flip horizontally instead of vertically</td>
+					</tr>
+					<tr>
+						<td>effect_on_hover</td>
+						<td>boolean</td>
+						<td>false</td>
+						<td>Trigger flip effect on hover</td>
+					</tr>
+					<tr>
+						<td>effect_on_active</td>
+						<td>boolean</td>
+						<td>false</td>
+						<td>Trigger flip effect when card has active class</td>
+					</tr>
+					<tr>
+						<td>width</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Width of the flip card (e.g., "300px", "100%")</td>
+					</tr>
+					<tr>
+						<td>height</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Height of the flip card (e.g., "200px", "100%")</td>
+					</tr>
+					<tr>
+						<td>animation_speed</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Duration of the flip animation (e.g., "0.3s", "0.5s")</td>
+					</tr>
+					<tr>
+						<td>perspective</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Perspective value for 3D effect (e.g., "600px", "1000px")</td>
+					</tr>
+					<tr>
+						<td>cls_flip_card</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Additional CSS class for flip card container</td>
+					</tr>
+					<tr>
+						<td>cls_front</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Additional CSS class for front side</td>
+					</tr>
+					<tr>
+						<td>cls_back</td>
+						<td>string</td>
+						<td>""</td>
+						<td>Additional CSS class for back side</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<h2>CSS Classes</h2>
+		<div class="table-container">
+			<table class="table striped">
+				<thead>
+					<tr>
+						<th>Class</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>.flip-card</td>
+						<td>The main container class for the flip card component</td>
+					</tr>
+					<tr>
+						<td>.front</td>
+						<td>The front side of the card</td>
+					</tr>
+					<tr>
+						<td>.back</td>
+						<td>The back side of the card</td>
+					</tr>
+					<tr>
+						<td>.flip-horizontal</td>
+						<td>Makes the card flip horizontally (by default, the card flips vertically)</td>
+					</tr>
+					<tr>
+						<td>.effect-on-hover</td>
+						<td>Triggers the flip effect when the user hovers over the card</td>
+					</tr>
+					<tr>
+						<td>.effect-on-active</td>
+						<td>Triggers the flip effect when the card has the active class</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<h2>CSS Variables</h2>
+		<div class="table-container">
+			<table class="table striped">
+				<thead>
+					<tr>
+						<th>Variable</th>
+						<th>Default</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>--defaultAnimationSpeed</td>
+						<td>0.3s</td>
+						<td>The duration of the flip animation</td>
+					</tr>
+					<tr>
+						<td>--defaultPerspective</td>
+						<td>600px</td>
+						<td>The perspective value for the 3D effect</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<style>
+	.example-container {
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 15px;
+		margin: 10px 0;
+		background: #f9f9f9;
+		min-height: 250px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/* Custom styling for flip cards */
+	.custom-flip-card {
+		border: 2px solid #2196f3;
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	}
+
+	.custom-front {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.custom-back {
+		background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.gradient-flip-card .front {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.gradient-flip-card .back {
+		background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/* Ensure proper spacing in examples */
+	.example-container .flip-card {
+		margin: 0;
+	}
+
+	/* Center content in flip cards */
+	.flip-card .front,
+	.flip-card .back {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 20px;
+	}
+</style>
+
+<script>
+	// JavaScript functions for interactive examples
+	function toggleFlip(button) {
+		const flipCard = button.closest('.flip-card');
+		flipCard.classList.toggle('active');
+	}
+
+	function toggleActiveFlip(button) {
+		const flipCard = button.closest('.flip-card');
+		flipCard.classList.toggle('active');
+	}
+
+	function toggleHorizontalFlip(button) {
+		const flipCard = button.closest('.flip-card');
+		flipCard.classList.toggle('active');
+	}
+
+	// Auto-flip demonstration
+	document.addEventListener('DOMContentLoaded', function() {
+		// Find flip cards with auto-flip class and flip them periodically
+		const autoFlipCards = document.querySelectorAll('.flip-card.auto-flip');
+		autoFlipCards.forEach(card => {
+			setInterval(() => {
+				card.classList.toggle('active');
+			}, 3000);
+		});
+	});
+</script>
+{% endblock %}

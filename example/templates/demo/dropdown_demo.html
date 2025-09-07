@@ -58,10 +58,10 @@
             <p>Dropdown opens above the toggle:</p>
             
             <div class="example" style="margin-top: 100px;">
-                {% metroui5_dropdown button_text="Drop Up" content="<div>Content appears above</div>" drop_up=True %}
+                {% metroui5_dropdown button_text="Drop Up" content="<div>Content appears above</div>" open_mode="up" %}
             </div>
             
-            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Drop Up" content="<div>Content appears above</div>" drop_up=True %}{% endverbatim %}</code></pre>
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Drop Up" content="<div>Content appears above</div>" open_mode="up" %}{% endverbatim %}</code></pre>
         </div>
 
         <div class="cell-md-4">
@@ -69,21 +69,21 @@
             <p>Dropdown opens to the right:</p>
             
             <div class="example">
-                {% metroui5_dropdown button_text="Drop Right" content="<div>Content to the right</div>" drop_right=True %}
+                {% metroui5_dropdown button_text="Drop Right" content="<div>Content to the right</div>" open_mode="right" %}
             </div>
             
-            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Drop Right" content="<div>Content to the right</div>" drop_right=True %}{% endverbatim %}</code></pre>
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Drop Right" content="<div>Content to the right</div>" open_mode="right" %}{% endverbatim %}</code></pre>
         </div>
 
         <div class="cell-md-4">
-            <h4>Drop Down Right</h4>
-            <p>Dropdown opens below and aligned right:</p>
+            <h4>Drop Left</h4>
+            <p>Dropdown opens to the left:</p>
             
             <div class="example">
-                {% metroui5_dropdown button_text="Drop Down Right" content="<div>Content below and right aligned</div>" drop_down_right=True %}
+                {% metroui5_dropdown button_text="Drop Left" content="<div>Content to the left</div>" open_mode="left" %}
             </div>
             
-            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Drop Down Right" content="<div>Content below and right aligned</div>" drop_down_right=True %}{% endverbatim %}</code></pre>
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Drop Left" content="<div>Content to the left</div>" open_mode="left" %}{% endverbatim %}</code></pre>
         </div>
     </div>
 
@@ -100,14 +100,14 @@
         </div>
 
         <div class="cell-md-6">
-            <h3>No Auto-Close</h3>
-            <p>Dropdown with no_close parameter:</p>
+            <h3>Deferred Initialization</h3>
+            <p>Dropdown with delayed initialization:</p>
             
             <div class="example">
-                {% metroui5_dropdown button_text="No Close" content="<div>Won't close automatically</div>" no_close=True %}
+                {% metroui5_dropdown button_text="Deferred" content="<div>Initialized after 1 second</div>" dropdown_deferred=1000 %}
             </div>
             
-            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="No Close" content="<div>Won't close automatically</div>" no_close=True %}{% endverbatim %}</code></pre>
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Deferred" content="<div>Initialized after 1 second</div>" dropdown_deferred=1000 %}{% endverbatim %}</code></pre>
         </div>
     </div>
 
@@ -119,17 +119,6 @@
 
     <div class="row">
         <div class="cell-md-6">
-            <h3>Custom Duration</h3>
-            <p>Dropdown with slower animation (300ms):</p>
-            
-            <div class="example">
-                {% metroui5_dropdown button_text="Slow Animation" content="<div>This opens/closes slowly</div>" duration=300 %}
-            </div>
-            
-            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Slow Animation" content="<div>This opens/closes slowly</div>" duration=300 %}{% endverbatim %}</code></pre>
-        </div>
-
-        <div class="cell-md-6">
             <h3>Fixed Height</h3>
             <p>Dropdown with fixed height and scrolling:</p>
             
@@ -139,29 +128,26 @@
             
             <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Fixed Height" content="<div>...</div>" height="100px" %}{% endverbatim %}</code></pre>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="cell-md-6">
-            <h3>Right Alignment</h3>
-            <p>Dropdown content aligned to the right:</p>
-            
-            <div class="example">
-                {% metroui5_dropdown button_text="Right Aligned" content="<div>Right aligned content</div>" align="right" %}
-            </div>
-            
-            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Right Aligned" content="<div>Right aligned content</div>" align="right" %}{% endverbatim %}</code></pre>
-        </div>
 
         <div class="cell-md-6">
-            <h3>Deferred Initialization</h3>
-            <p>Dropdown with delayed initialization:</p>
+            <h3>Open Mode Examples</h3>
+            <p>Different positioning options:</p>
             
             <div class="example">
-                {% metroui5_dropdown button_text="Deferred" content="<div>Initialized after 1 second</div>" dropdown_deferred=1000 %}
+                <div style="margin-bottom: 10px;">
+                    {% metroui5_dropdown button_text="Auto" content="<div>Auto positioning</div>" %}
+                </div>
+                <div style="margin-bottom: 10px;">
+                    {% metroui5_dropdown button_text="Up" content="<div>Opens above</div>" open_mode="up" %}
+                </div>
+                <div>
+                    {% metroui5_dropdown button_text="Right" content="<div>Opens right</div>" open_mode="right" %}
+                </div>
             </div>
             
-            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Deferred" content="<div>Initialized after 1 second</div>" dropdown_deferred=1000 %}{% endverbatim %}</code></pre>
+            <pre><code>{% verbatim %}{% metroui5_dropdown button_text="Auto" content="<div>Auto positioning</div>" %}
+{% metroui5_dropdown button_text="Up" content="<div>Opens above</div>" open_mode="up" %}
+{% metroui5_dropdown button_text="Right" content="<div>Opens right</div>" open_mode="right" %}{% endverbatim %}</code></pre>
         </div>
     </div>
 
@@ -215,7 +201,7 @@ dropdown.toggle();</code></pre>
         <div class="cell-md-4">
             <h4>User Account Menu</h4>
             <div class="example">
-                {% metroui5_dropdown button_text="👤 John Doe" items=user_account_items drop_down_right=True %}
+                {% metroui5_dropdown button_text="👤 John Doe" items=user_account_items open_mode="right" %}
             </div>
         </div>
 
@@ -286,16 +272,15 @@ dropdown.toggle();</code></pre>
                 <tbody>
                     <tr><td>content</td><td>string</td><td>""</td><td>HTML content for the dropdown</td></tr>
                     <tr><td>button_text</td><td>string</td><td>""</td><td>Text for the button toggle</td></tr>
+                    <tr><td>toggle_element</td><td>string</td><td>None</td><td>Custom toggle element HTML</td></tr>
                     <tr><td>items</td><td>list</td><td>None</td><td>Auto-generate menu from items</td></tr>
-                    <tr><td>dropdown_deferred</td><td>number</td><td>0</td><td>Delay before initialization (ms)</td></tr>
-                    <tr><td>align</td><td>string</td><td>"left"</td><td>Content alignment ("left"/"right")</td></tr>
-                    <tr><td>no_close</td><td>boolean</td><td>false</td><td>Prevent auto-close on outside click</td></tr>
-                    <tr><td>duration</td><td>number</td><td>50</td><td>Animation duration (ms)</td></tr>
+                    <tr><td>open_mode</td><td>string</td><td>"auto"</td><td>Positioning: "auto", "up", "left", "right"</td></tr>
                     <tr><td>height</td><td>string</td><td>"auto"</td><td>Fixed height with scrolling</td></tr>
-                    <tr><td>drop_up</td><td>boolean</td><td>false</td><td>Open above toggle</td></tr>
-                    <tr><td>drop_right</td><td>boolean</td><td>false</td><td>Open to the right</td></tr>
-                    <tr><td>drop_down_right</td><td>boolean</td><td>false</td><td>Open below and right-aligned</td></tr>
-                    <tr><td>keep_open</td><td>boolean</td><td>false</td><td>Stay open when clicking elsewhere</td></tr>
+                    <tr><td>dropdown_deferred</td><td>number</td><td>0</td><td>Delay before initialization (ms)</td></tr>
+                    <tr><td>keep_open</td><td>boolean</td><td>false</td><td>Stay open when clicking elsewhere (CSS class)</td></tr>
+                    <tr><td>on_drop</td><td>string</td><td>None</td><td>JavaScript event when dropdown opens</td></tr>
+                    <tr><td>on_up</td><td>string</td><td>None</td><td>JavaScript event when dropdown closes</td></tr>
+                    <tr><td>on_dropdown_create</td><td>string</td><td>None</td><td>JavaScript event when dropdown is created</td></tr>
                 </tbody>
             </table>
         </div>

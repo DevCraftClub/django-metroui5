@@ -80,11 +80,9 @@ class BaseComponent(ABC):
         # Add additional classes if provided
         if additional_classes:
             css_classes.extend(additional_classes)
-        
+
         # Add component-specific class
         component_param_name = f'cls_{self.component_name}'
-        if component_attrs.get(component_param_name):
-            css_classes.append(component_attrs[component_param_name])
         
         # Add any additional cls parameters
         for key, value in cls_attrs.items():

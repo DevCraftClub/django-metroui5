@@ -57,6 +57,11 @@ from ..components import (
     render_file_drop,
     render_file_with_icon,
     render_file_multiple,
+    render_flip_card,
+    render_flip_card_hover,
+    render_flip_card_active,
+    render_flip_card_horizontal,
+    render_flip_card_with_dimensions,
     render_input,
     render_material_input,
     render_list,
@@ -772,7 +777,99 @@ def metroui5_file_multiple(**kwargs):
     Args:
         **kwargs: Additional component attributes
     """
-    return mark_safe(render_file_multiple(**kwargs))
+    return mark_safe(render_file_multiple(**kwargs    ))
+
+
+@register.simple_tag
+def metroui5_flip_card(**kwargs):
+    """
+    Renders MetroUI flip card component.
+    
+    Args:
+        **kwargs: Component attributes including:
+            # Content
+            - front_content: Content for the front side of the card (string/HTML)
+            - back_content: Content for the back side of the card (string/HTML)
+            
+            # Flip behavior
+            - flip_horizontal: Make the card flip horizontally instead of vertically (boolean, default: false)
+            - effect_on_hover: Trigger flip effect on hover (boolean, default: false)
+            - effect_on_active: Trigger flip effect when card has active class (boolean, default: false)
+            
+            # Styling
+            - cls_flip_card: Additional CSS class for flip card container (string)
+            - cls_front: Additional CSS class for front side (string)
+            - cls_back: Additional CSS class for back side (string)
+            
+            # Dimensions
+            - width: Width of the flip card (string, e.g., "300px", "100%")
+            - height: Height of the flip card (string, e.g., "200px", "100%")
+            
+            # Animation
+            - animation_speed: Duration of the flip animation (string, e.g., "0.3s", "0.5s")
+            - perspective: Perspective value for 3D effect (string, e.g., "600px", "1000px")
+    """
+    return mark_safe(render_flip_card(**kwargs))
+
+
+@register.simple_tag
+def metroui5_flip_card_hover(front_content, back_content, **kwargs):
+    """
+    Renders MetroUI flip card that flips on hover.
+    
+    Args:
+        front_content: Content for the front side (string/HTML)
+        back_content: Content for the back side (string/HTML)
+        **kwargs: Additional component attributes
+    """
+    return mark_safe(render_flip_card_hover(front_content=front_content, back_content=back_content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_flip_card_active(front_content, back_content, **kwargs):
+    """
+    Renders MetroUI flip card that flips when active class is added.
+    
+    Args:
+        front_content: Content for the front side (string/HTML)
+        back_content: Content for the back side (string/HTML)
+        **kwargs: Additional component attributes
+    """
+    return mark_safe(render_flip_card_active(front_content=front_content, back_content=back_content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_flip_card_horizontal(front_content, back_content, **kwargs):
+    """
+    Renders MetroUI flip card that flips horizontally.
+    
+    Args:
+        front_content: Content for the front side (string/HTML)
+        back_content: Content for the back side (string/HTML)
+        **kwargs: Additional component attributes
+    """
+    return mark_safe(render_flip_card_horizontal(front_content=front_content, back_content=back_content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_flip_card_with_dimensions(front_content, back_content, width, height, **kwargs):
+    """
+    Renders MetroUI flip card with specific dimensions.
+    
+    Args:
+        front_content: Content for the front side (string/HTML)
+        back_content: Content for the back side (string/HTML)
+        width: Width of the flip card (string)
+        height: Height of the flip card (string)
+        **kwargs: Additional component attributes
+    """
+    return mark_safe(render_flip_card_with_dimensions(
+        front_content=front_content, 
+        back_content=back_content, 
+        width=width, 
+        height=height, 
+        **kwargs
+    ))
 
 
 @register.simple_tag

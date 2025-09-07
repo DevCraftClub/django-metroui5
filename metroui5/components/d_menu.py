@@ -284,9 +284,15 @@ class DMenuComponent(ComplexComponent):
                 icon_classes.append(component_attrs['cls_icon'])
             content_parts.append(render_tag("span", {"class": " ".join(icon_classes)}, ""))
         
-        # Add caption (text)
-        if item.get('text') or item.get('caption'):
-            caption_text = item.get('text') or item.get('caption')
+        # Add caption (text) - prioritize 'text' over 'caption' for consistency
+        if item.get('text'):
+            caption_text = item['text']
+            caption_classes = ["caption"]
+            if component_attrs.get('cls_caption'):
+                caption_classes.append(component_attrs['cls_caption'])
+            content_parts.append(render_tag("span", {"class": " ".join(caption_classes)}, caption_text))
+        elif item.get('caption'):
+            caption_text = item['caption']
             caption_classes = ["caption"]
             if component_attrs.get('cls_caption'):
                 caption_classes.append(component_attrs['cls_caption'])
@@ -352,3 +358,5 @@ def render_d_menu(items=None, **attrs):
         .. _MetroUI Documentation: https://v5.metroui.org.ua/
     """
     return _d_menu_component.render(items=items, **attrs)
+
+
