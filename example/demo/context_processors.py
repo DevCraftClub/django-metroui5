@@ -92,7 +92,8 @@ def app_bar_data(request):
                             {'text': 'Bar3d', 'href': '/bar3d-demo/', 'icon': 'mif-chart'},
                             {'text': 'Counter', 'href': '/counter-demo/', 'icon': 'mif-plus'},
                             {'text': 'Cube', 'href': '/cube-demo/', 'icon': 'mif-cube'},
-                            {'text': 'Donut', 'href': '/donut-demo/', 'icon': 'mif-chart'}
+                            {'text': 'Donut', 'href': '/donut-demo/', 'icon': 'mif-chart'},
+                            {'text': 'Flip Card', 'href': '/flip-card-demo/', 'icon': 'mif-credit-card'}
                         ]
                     },
                     {

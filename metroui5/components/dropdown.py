@@ -20,18 +20,12 @@ class DropdownComponent(ComplexComponent):
     def __init__(self):
         super().__init__(
             component_name="dropdown",
-            base_css_class="dropdown",
+            base_css_class="",
             component_params=[
                 # Basic parameters
                 'content', 'button_text', 'toggle_element', 'items',
-                # Configuration parameters
-                'dropdown_deferred', 'drop_filter', 'toggle_element_selector',
-                'align', 'no_close', 'duration', 'open_mode', 'open_func',
-                'close_func', 'height',
-                # Positioning parameters
-                'drop_left', 'drop_right', 'drop_up', 'drop_up_left',
-                'drop_up_right', 'drop_down', 'drop_down_left', 'drop_down_right',
-                'keep_open',
+                # Supported configuration parameters
+                'dropdown_deferred', 'no_close', 'open_mode', 'height', 'keep_open',
                 # Event handlers
                 'on_drop', 'on_up', 'on_dropdown_create'
                 # Note: cls_* parameters are handled automatically by base class
@@ -49,24 +43,10 @@ class DropdownComponent(ComplexComponent):
             items: List of dropdown items to auto-generate menu (list, default: None)
             **attrs: Component attributes including:
                 - dropdown_deferred: Delay before dropdown appears (number, default: 0)
-                - drop_filter: CSS selector to filter dropdowns (string, default: null)
-                - toggle_element_selector: CSS selector for toggle element (string, default: null)
-                - align: Alignment ("left" or "right", default: "left")
                 - no_close: Won't close when clicking outside (boolean, default: false)
-                - duration: Animation duration in milliseconds (number, default: 50)
-                - open_mode: How dropdown opens ("auto", "up", default: "auto")
-                - open_func: Function for opening animation (string, default: "show")
-                - close_func: Function for closing animation (string, default: "hide")
+                - open_mode: How dropdown opens ("auto", "up", "left", "right", default: "auto")
                 - height: Height of dropdown (string, default: "auto")
-                - drop_left: Position to left of toggle (boolean)
-                - drop_right: Position to right of toggle (boolean)
-                - drop_up: Position above toggle (boolean)
-                - drop_up_left: Position above and left of toggle (boolean)
-                - drop_up_right: Position above and right of toggle (boolean)
-                - drop_down: Position below toggle (boolean, default)
-                - drop_down_left: Position below and left of toggle (boolean)
-                - drop_down_right: Position below and right of toggle (boolean)
-                - keep_open: Prevent closing when clicking outside (boolean)
+                - keep_open: Prevent closing when clicking outside (boolean, adds CSS class)
                 - on_drop: Triggered when dropdown is opened (string)
                 - on_up: Triggered when dropdown is closed (string)
                 - on_dropdown_create: Triggered when dropdown is created (string)
@@ -77,60 +57,33 @@ class DropdownComponent(ComplexComponent):
         # Separate attributes
         component_attrs, standard_attrs, cls_attrs = self.separate_attributes(attrs)
         
-        # Add method parameters to component_attrs for processing
-        component_attrs['content'] = content
-        component_attrs['button_text'] = button_text
-        component_attrs['toggle_element'] = toggle_element
-        component_attrs['items'] = items
+        # Store method parameters separately (not as component attributes)
+        method_params = {
+            'content': content,
+            'button_text': button_text,
+            'toggle_element': toggle_element,
+            'items': items
+        }
         
         # Build CSS classes including positioning classes
         css_classes = self.build_css_classes(component_attrs, cls_attrs, standard_attrs)
+
+        # Add keep-open CSS class if specified
+        if component_attrs.get('keep_open'):
+            css_classes.append('keep-open')
         
-        # Add positioning classes
-        positioning_classes = {
-            'drop_left': 'drop-left',
-            'drop_right': 'drop-right', 
-            'drop_up': 'drop-up',
-            'drop_up_left': 'drop-up-left',
-            'drop_up_right': 'drop-up-right',
-            'drop_down': 'drop-down',
-            'drop_down_left': 'drop-down-left',
-            'drop_down_right': 'drop-down-right',
-            'keep_open': 'keep-open'
-        }
-        
-        for py_param, css_class in positioning_classes.items():
-            if component_attrs.get(py_param):
-                css_classes.append(css_class)
-        
-        # Build data attributes
-        data_attrs = {"data-role": "dropdown"}
-        
+        # Build data attributes using base class method
         data_attr_mapping = {
             'dropdown_deferred': 'data-dropdown-deferred',
-            'drop_filter': 'data-drop-filter', 
-            'toggle_element_selector': 'data-toggle-element',
-            'align': 'data-align',
-            'no_close': 'data-no-close',
-            'duration': 'data-duration',
             'open_mode': 'data-open-mode',
-            'open_func': 'data-open-func',
-            'close_func': 'data-close-func',
             'height': 'data-height',
             'on_drop': 'data-on-drop',
             'on_up': 'data-on-up',
             'on_dropdown_create': 'data-on-dropdown-create'
         }
         
-        for param, data_attr in data_attr_mapping.items():
-            if param in component_attrs:
-                value = component_attrs[param]
-                if isinstance(value, bool):
-                    data_attrs[data_attr] = "true" if value else "false"
-                elif isinstance(value, (int, float)):
-                    data_attrs[data_attr] = str(value)
-                else:
-                    data_attrs[data_attr] = value
+        data_attrs = self.build_data_attributes(component_attrs, data_attr_mapping)
+        data_attrs["data-role"] = "dropdown"
         
         # Build final dropdown attributes
         dropdown_attrs = {
@@ -140,18 +93,18 @@ class DropdownComponent(ComplexComponent):
         }
         
         # Build dropdown content
-        dropdown_content = self.build_dropdown_content(component_attrs)
+        dropdown_content = self.build_dropdown_content(method_params)
         
         # Build dropdown HTML
         dropdown_html = self.render_component('div', dropdown_attrs, dropdown_content)
         
         # Create the complete dropdown structure
-        return self.build_dropdown_structure(component_attrs, cls_attrs, dropdown_html)
+        return self.build_dropdown_structure(method_params, cls_attrs, dropdown_html)
     
-    def build_dropdown_content(self, component_attrs):
+    def build_dropdown_content(self, method_params):
         """Build the dropdown content from various sources."""
-        content = component_attrs.get('content', '')
-        items = component_attrs.get('items')
+        content = method_params.get('content', '')
+        items = method_params.get('items')
         
         # Auto-generate content from items if provided and no content
         if items and not content:
@@ -179,10 +132,10 @@ class DropdownComponent(ComplexComponent):
         
         return content
     
-    def build_dropdown_structure(self, component_attrs, cls_attrs, dropdown_html):
+    def build_dropdown_structure(self, method_params, cls_attrs, dropdown_html):
         """Build the complete dropdown structure with toggle element."""
-        toggle_element = component_attrs.get('toggle_element')
-        button_text = component_attrs.get('button_text')
+        toggle_element = method_params.get('toggle_element')
+        button_text = method_params.get('button_text')
         
         if toggle_element:
             # Use custom toggle element with nested dropdown
@@ -195,15 +148,15 @@ class DropdownComponent(ComplexComponent):
                 container_attrs = {'class': 'dropdown-toggle'}
                 return self.render_component('div', container_attrs, toggle_element + dropdown_html)
         elif button_text:
-            # Create button toggle with dropdown in container
-            button_attrs = {'class': 'button'}
+            # Create button toggle with dropdown in container (dropdown-button pattern from examples)
+            button_attrs = {'class': 'button dropdown-toggle'}
             
             # Add toggle-specific CSS classes
             if cls_attrs.get('cls_toggle'):
                 button_attrs['class'] += ' ' + cls_attrs['cls_toggle']
             
             button_html = self.render_component('button', button_attrs, button_text)
-            container_attrs = {'class': 'dropdown-toggle'}
+            container_attrs = {'class': 'dropdown-button'}
             
             return self.render_component('div', container_attrs, button_html + dropdown_html)
         else:
@@ -226,6 +179,39 @@ def render_dropdown(content="", button_text="", toggle_element=None, items=None,
         toggle_element: Custom toggle element HTML (string, default: None)
         items: List of dropdown items to auto-generate menu (list, default: None)
         **attrs: Component attributes (see DropdownComponent.render for details)
+
+    Example:
+        Basic dropdown with button:
+        ```python
+        render_dropdown(button_text="Options", content="<div>Dropdown content</div>")
+        ```
+
+        Dropdown with positioning:
+        ```python
+        render_dropdown(
+            button_text="Drop Up", 
+            content="<div>Content appears above</div>",
+            open_mode="up"
+        )
+        ```
+
+        Dropdown with deferred creation:
+        ```python
+        render_dropdown(
+            button_text="Deferred", 
+            content="<div>Created after delay</div>",
+            dropdown_deferred=3000
+        )
+        ```
+
+        Dropdown with keep-open behavior:
+        ```python
+        render_dropdown(
+            button_text="Keep Open", 
+            content="<div>Won't close automatically</div>",
+            no_close=True
+        )
+        ```
     """
     return _dropdown_component.render(
         content=content, 

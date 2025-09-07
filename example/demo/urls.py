@@ -66,5 +66,6 @@ urlpatterns = [
     path('dropdown-demo/', views.dropdown_demo, name='dropdown_demo'),
     path('dropdown-button-demo/', views.dropdown_button_demo, name='dropdown_button_demo'),
     path('file-demo/', views.file_demo, name='file_demo'),
+    path('flip-card-demo/', views.flip_card_demo, name='flip_card_demo'),
     path('test-demo/', views.test_demo, name='test_demo'),
 ]
