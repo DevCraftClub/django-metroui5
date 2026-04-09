@@ -5,14 +5,14 @@ from django.conf import settings
 
 METROUI5_DEFAULTS = {
 	"css_url": {
-		"url": "metroui5/css/metro.all.css",
+		"url": "metroui5/css/metro.css",
 		"integrity": None,
 		"crossorigin": None,
 		"type": "text/css",
 		"media": "all",
 	},
 	"javascript_url": {
-		"url": "metroui5/js/metro.all.js",
+		"url": "metroui5/js/metro.js",
 		"integrity": None,
 		"crossorigin": None,
 		"type": "text/javascript",
