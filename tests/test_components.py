@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_input_mask,
     render_info_panel,
     render_info_button,
     render_info_box,
@@ -765,3 +766,9 @@ class TestDocRole:
         result = render_info_panel()
         assert '<div' in result
         assert 'class="info-panel"' in result
+
+
+    def test_doc_input_mask(self):
+        result = render_input_mask()
+        assert '<input' in result
+        assert 'data-role="input, input-mask"' in result
