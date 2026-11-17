@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_sidenav_simple,
     render_sidenav_counter,
     render_select,
     render_resizable_container,
@@ -554,3 +555,8 @@ class TestDocRole:
         result = render_sidenav_counter()
         assert '<ul' in result
         assert 'data-role="sidenav-counter"' in result
+
+    def test_sidenav_simple(self):
+        result = render_sidenav_simple()
+        assert '<ul' in result
+        assert 'data-role="sidenav-simple"' in result
