@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_timeline,
     render_template,
     render_taskbar,
     render_metro_tag,
@@ -963,3 +964,9 @@ class TestDocRole:
         result = render_template()
         assert '<div' in result
         assert 'data-role="template"' in result
+
+
+    def test_doc_timeline(self):
+        result = render_timeline()
+        assert '<ul' in result
+        assert 'class="timeline"' in result
