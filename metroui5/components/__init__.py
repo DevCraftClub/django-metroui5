@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .window import render_window
 from .viewport_check import render_viewport_check
 from .video_player import render_video_player
 from .typer import render_typer
@@ -184,6 +185,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_window',
     'render_viewport_check',
     'render_video_player',
     'render_typer',

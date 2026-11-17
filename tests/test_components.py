@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_window,
     render_viewport_check,
     render_video_player,
     render_typer,
@@ -620,3 +621,8 @@ class TestDocRole:
         result = render_viewport_check()
         assert '<div' in result
         assert 'data-role="viewport-check"' in result
+
+    def test_window(self):
+        result = render_window()
+        assert '<div' in result
+        assert 'data-role="window"' in result
