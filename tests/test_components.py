@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_info_button,
     render_info_box,
     render_image_magnifier,
     render_image_grid,
@@ -751,3 +752,9 @@ class TestDocRole:
         result = render_info_box()
         assert '<div' in result
         assert 'data-role="info-box"' in result
+
+
+    def test_doc_info_button(self):
+        result = render_info_button()
+        assert '<button' in result
+        assert 'class="info-button"' in result
