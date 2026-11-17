@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_streamer,
     render_slider,
     render_sidenav_simple,
     render_sidenav_counter,
@@ -947,6 +948,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_streamer(content="", **kwargs):
+    """Компонент streamer."""
+    return mark_safe(render_streamer(content, **kwargs))
 
 
 @register.simple_tag

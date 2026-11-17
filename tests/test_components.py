@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_streamer,
     render_stepper,
     render_slider,
     render_sidenav_simple,
@@ -572,3 +573,8 @@ class TestDocRole:
         result = render_stepper()
         assert '<div' in result
         assert 'data-role="stepper"' in result
+
+    def test_streamer(self):
+        result = render_streamer()
+        assert '<div' in result
+        assert 'data-role="streamer"' in result

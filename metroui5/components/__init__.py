@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .streamer import render_streamer
 from .stepper import render_stepper
 from .slider import render_slider
 from .sidenav_simple import render_sidenav_simple
@@ -176,6 +177,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_streamer',
     'render_stepper',
     'render_slider',
     'render_sidenav_simple',
