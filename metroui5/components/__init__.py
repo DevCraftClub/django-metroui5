@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .resizer import render_resizer
 from .remark import render_remark
 from .radio import render_radio
 from .page_control import render_page_control
@@ -212,6 +213,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_resizer',
     'render_remark',
     'render_radio',
     'render_page_control',

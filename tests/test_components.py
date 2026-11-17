@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_resizer,
     render_remark,
     render_radio,
     render_page_control,
@@ -822,3 +823,9 @@ class TestDocRole:
         result = render_remark()
         assert '<div' in result
         assert 'class="remark"' in result
+
+
+    def test_doc_resizer(self):
+        result = render_resizer()
+        assert '<div' in result
+        assert 'data-role="resizer"' in result
