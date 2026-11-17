@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_social_box,
     render_skill_box,
     render_sidenav,
     render_shortcut,
@@ -878,3 +879,9 @@ class TestDocRole:
         result = render_skill_box()
         assert '<div' in result
         assert 'class="skill-box"' in result
+
+
+    def test_doc_social_box(self):
+        result = render_social_box()
+        assert '<div' in result
+        assert 'class="social-box"' in result
