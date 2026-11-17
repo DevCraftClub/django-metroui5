@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_h_menu,
     render_gravatar,
     render_github_box,
     render_eval,
@@ -672,3 +673,9 @@ class TestDocRole:
         result = render_gravatar()
         assert '<img' in result
         assert 'data-role="gravatar"' in result
+
+
+    def test_doc_h_menu(self):
+        result = render_h_menu()
+        assert '<ul' in result
+        assert 'class="h-menu"' in result

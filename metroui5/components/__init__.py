@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .h_menu import render_h_menu
 from .gravatar import render_gravatar
 from .github_box import render_github_box
 from .eval import render_eval
@@ -191,6 +192,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_h_menu',
     'render_gravatar',
     'render_github_box',
     'render_eval',

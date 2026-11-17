@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_h_menu,
     render_gravatar,
     render_github_box,
     render_eval,
@@ -960,6 +961,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_h_menu(content="", **kwargs):
+    """Компонент h-menu."""
+    return mark_safe(render_h_menu(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_gravatar(**kwargs):
