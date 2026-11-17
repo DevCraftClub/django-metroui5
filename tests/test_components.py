@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_image_carousel,
     render_image_button,
     render_icon_box,
     render_html_container,
@@ -714,3 +715,9 @@ class TestDocRole:
         result = render_image_button()
         assert '<button' in result
         assert 'class="image-button"' in result
+
+
+    def test_doc_image_carousel(self):
+        result = render_image_carousel()
+        assert '<div' in result
+        assert 'data-role="image-carousel"' in result
