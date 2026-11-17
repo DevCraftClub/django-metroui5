@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_linked_block,
     render_keypad,
     render_image_placeholder,
     render_image_box,
@@ -482,3 +483,8 @@ class TestDocRole:
         result = render_keypad()
         assert '<input' in result
         assert 'data-role="keypad"' in result
+
+    def test_linked_block(self):
+        result = render_linked_block()
+        assert '<div' in result
+        assert 'data-role="linked-block"' in result
