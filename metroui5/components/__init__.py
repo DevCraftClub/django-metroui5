@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .marquee import render_marquee
 from .listview import render_listview
 from .linked_block import render_linked_block
 from .keypad import render_keypad
@@ -163,6 +164,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_marquee',
     'render_listview',
     'render_linked_block',
     'render_keypad',

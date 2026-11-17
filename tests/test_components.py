@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_marquee,
     render_listview,
     render_linked_block,
     render_keypad,
@@ -494,3 +495,8 @@ class TestDocRole:
         result = render_listview()
         assert '<ul' in result
         assert 'data-role="listview"' in result
+
+    def test_marquee(self):
+        result = render_marquee()
+        assert '<div' in result
+        assert 'data-role="marquee"' in result
