@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .image_box import render_image_box
 from .hover_box import render_hover_box
 from .hint import render_hint
 from .gradient_box import render_gradient_box
@@ -158,6 +159,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_image_box',
     'render_hover_box',
     'render_hint',
     'render_gradient_box',

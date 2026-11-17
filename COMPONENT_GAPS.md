@@ -20,7 +20,6 @@
 - hotkey | дописать | нет модуля
 - html-container | дописать | нет модуля
 - icon-box | дописать | нет модуля
-- image-box | дописать | нет модуля
 - image-button | дописать | нет модуля
 - image-carousel | дописать | нет модуля
 - image-compare | дописать | нет модуля
