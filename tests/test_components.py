@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_tabs_material,
     render_t_menu,
     render_switch,
     render_swipe,
@@ -935,3 +936,9 @@ class TestDocRole:
         result = render_t_menu()
         assert '<ul' in result
         assert 'class="t-menu"' in result
+
+
+    def test_doc_tabs_material(self):
+        result = render_tabs_material()
+        assert '<ul' in result
+        assert 'data-role="materialtabs"' in result

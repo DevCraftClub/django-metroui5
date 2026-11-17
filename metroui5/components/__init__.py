@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .tabs_material import render_tabs_material
 from .t_menu import render_t_menu
 from .switch import render_switch
 from .swipe import render_swipe
@@ -228,6 +229,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_tabs_material',
     'render_t_menu',
     'render_switch',
     'render_swipe',
