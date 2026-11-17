@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_textarea,
     render_tag_input,
     render_streamer,
     render_stepper,
@@ -584,3 +585,8 @@ class TestDocRole:
         result = render_tag_input()
         assert '<input' in result
         assert 'data-role="tag-input"' in result
+
+    def test_textarea(self):
+        result = render_textarea()
+        assert '<textarea' in result
+        assert 'data-role="textarea"' in result
