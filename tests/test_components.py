@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_metro_tag,
     render_tabs_material,
     render_t_menu,
     render_switch,
@@ -942,3 +943,9 @@ class TestDocRole:
         result = render_tabs_material()
         assert '<ul' in result
         assert 'data-role="materialtabs"' in result
+
+
+    def test_doc_tag(self):
+        result = render_metro_tag()
+        assert '<span' in result
+        assert 'class="tag"' in result
