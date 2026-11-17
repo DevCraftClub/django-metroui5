@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_wizard_classic,
     render_wheel_picker,
     render_vegas,
     render_validator,
@@ -1026,3 +1027,9 @@ class TestDocRole:
         result = render_wheel_picker()
         assert '<div' in result
         assert 'class="wheel-picker"' in result
+
+
+    def test_doc_wizard_classic(self):
+        result = render_wizard_classic()
+        assert '<div' in result
+        assert 'data-role="wizard-classic"' in result
