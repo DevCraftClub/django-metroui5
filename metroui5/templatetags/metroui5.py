@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_wheel_picker,
     render_vegas,
     render_validator,
     render_v_menu,
@@ -1009,6 +1010,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_wheel_picker(content="", **kwargs):
+    """Компонент wheel-picker."""
+    return mark_safe(render_wheel_picker(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_vegas(content="", **kwargs):
