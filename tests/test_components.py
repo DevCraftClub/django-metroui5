@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_sidenav,
     render_shortcut,
     render_scrollbar,
     render_ripple,
@@ -864,3 +865,9 @@ class TestDocRole:
         result = render_shortcut()
         assert '<div' in result
         assert 'class="shortcut"' in result
+
+
+    def test_doc_sidenav(self):
+        result = render_sidenav()
+        assert '<ul' in result
+        assert 'data-role="sidenav"' in result

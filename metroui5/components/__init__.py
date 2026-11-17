@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .sidenav import render_sidenav
 from .shortcut import render_shortcut
 from .scrollbar import render_scrollbar
 from .ripple import render_ripple
@@ -218,6 +219,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_sidenav',
     'render_shortcut',
     'render_scrollbar',
     'render_ripple',

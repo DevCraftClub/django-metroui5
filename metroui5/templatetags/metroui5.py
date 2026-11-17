@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_sidenav,
     render_shortcut,
     render_scrollbar,
     render_ripple,
@@ -987,6 +988,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_sidenav(content="", **kwargs):
+    """Компонент sidenav."""
+    return mark_safe(render_sidenav(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_shortcut(content="", **kwargs):
