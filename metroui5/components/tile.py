@@ -36,8 +36,11 @@ class TileComponent(SimpleComponent):
 		# Build additional classes based on parameters
 		additional_classes = [f"tile-{size}", f"tile-{color}"]
 		
-		# Separate attributes
-		component_attrs, standard_attrs, cls_attrs = self.separate_attributes(attrs)
+		# Separate attributes. icon — именованный аргумент, в attrs его нет.
+		merged = dict(attrs)
+		if icon:
+			merged["icon"] = icon
+		component_attrs, standard_attrs, cls_attrs = self.separate_attributes(merged)
 		
 		# Build CSS classes
 		css_classes = self.build_css_classes(component_attrs, cls_attrs, standard_attrs, additional_classes)
@@ -54,7 +57,11 @@ class TileComponent(SimpleComponent):
 		}
 		
 		# Build tile content
-		tile_content = f"<h3 class='tile-title'>{title}</h3>"
+		icon_html = ""
+		if icon:
+			icon_class = icon if str(icon).startswith("mif-") else f"mif-{icon}"
+			icon_html = f"<span class='{icon_class} icon'></span>"
+		tile_content = icon_html + f"<h3 class='tile-title'>{title}</h3>"
 		if content:
 			tile_content += f"<small>{content}</small>"
 		

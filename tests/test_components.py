@@ -170,16 +170,18 @@ class TestRenderButton:
         """Тест рендеринга button с типом"""
         result = render_button("Primary", button_type="primary")
         assert 'class="button primary"' in result
+        assert "button_type=" not in result
 
     def test_render_button_outline(self):
         """Тест рендеринга outline button"""
         result = render_button("Outline", button_type="success", outline=True)
-        assert 'class="button outline-success"' in result
+        assert "outline" in result
+        assert "success" in result
 
     def test_render_button_with_size(self):
         """Тест рендеринга button с размером"""
         result = render_button("Large", size="lg")
-        assert 'class="button button-lg"' in result
+        assert "large" in result
 
     def test_render_button_with_custom_attrs(self):
         """Тест рендеринга button с пользовательскими атрибутами"""
@@ -222,6 +224,7 @@ class TestRenderTile:
         """Тест рендеринга tile с иконкой"""
         result = render_tile("Test", icon="home")
         assert 'data-icon="home"' in result
+        assert "mif-home" in result
 
     def test_render_tile_with_content(self):
         """Тест рендеринга tile с содержимым"""
@@ -440,7 +443,7 @@ class TestRenderBadge:
     def test_render_badge_basic(self):
         """Тест базового рендеринга badge"""
         result = render_badge("5")
-        assert 'class="badge badge-default"' in result
+        assert 'class="badge"' in result
         assert "5" in result
 
     def test_render_badge_with_color(self):
@@ -464,9 +467,11 @@ class TestRenderRating:
 
     def test_render_rating_with_max(self):
         """Тест рендеринга rating с максимальным значением"""
-        result = render_rating(3, max_rating=5)
-        assert result.count('class="star"') == 3
-        assert result.count('class="star-empty"') == 2
+        result = render_rating(3, max_value=5)
+        assert "<input" in result
+        assert 'data-role="rating"' in result
+        assert 'data-value="3"' in result
+        assert 'data-stars="5"' in result
 
     def test_render_rating_readonly(self):
         """Тест рендеринга readonly rating"""

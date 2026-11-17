@@ -8,8 +8,14 @@
 - context-menu | не компонент | меню задаётся вызовом Metro.contextMenu, своего элемента нет
 - cookie | не компонент | методы Metro.cookie, своей разметки нет
 - export | не компонент | выгрузка таблицы в файл, своей разметки нет
+- button | ломающая | в шаблонах цвет danger, в документации Metro это alert. Класс danger оставлен
 - form | ломающая | тег metroui5_form уже рисует форму Django, смену вызова не делал
 - grid | ломающая | тег metroui5_grid(columns=12) уже есть, смену вызова не делал
+- hint | ломающая | тег metroui5_hint(text) не вызывает render_hint, аргумент другой
+- stepper | ломающая | тег metroui5_stepper(steps) не вызывает render_stepper
+- theme-switcher | ломающая | тег metroui5_theme_switcher берёт разметку из настроек, не из render_theme_switcher
+- tile | ломающая | размер и цвет сейчас классами tile-medium и tile-blue, в документации это data-size. Классы не менял
+- wizard | ломающая | тег metroui5_wizard(steps) не вызывает render_wizard
 - hotkey | не компонент | это атрибут data-hotkey на чужом элементе
 - input-common | не компонент | общие стили полей, отдельно не вызывается
 - md5 | не компонент | функция хеша, своей разметки нет

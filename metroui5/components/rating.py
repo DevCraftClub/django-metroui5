@@ -18,10 +18,10 @@ def render_rating(value, max_value=5, **attrs):
 		"class": "rating",
 		"data-role": "rating",
 		"data-value": str(value),
-		"data-max": str(max_value)
+		"data-stars": str(max_value),
 	}
 
 	# Merge with custom attributes
 	final_attrs = {**default_attrs, **attrs}
 
-	return render_tag("div", attrs=final_attrs, content="")
+	return render_tag("input", attrs=final_attrs, close=False)
