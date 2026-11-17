@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .hero import render_hero
 from .hamburger import render_hamburger
 from .h_menu import render_h_menu
 from .gravatar import render_gravatar
@@ -193,6 +194,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_hero',
     'render_hamburger',
     'render_h_menu',
     'render_gravatar',

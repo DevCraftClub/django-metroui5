@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_hero,
     render_hamburger,
     render_h_menu,
     render_gravatar,
@@ -686,3 +687,9 @@ class TestDocRole:
         result = render_hamburger()
         assert '<button' in result
         assert 'class="hamburger"' in result
+
+
+    def test_doc_hero(self):
+        result = render_hero()
+        assert '<div' in result
+        assert 'class="hero"' in result

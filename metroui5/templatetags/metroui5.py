@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_hero,
     render_hamburger,
     render_h_menu,
     render_gravatar,
@@ -962,6 +963,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_hero(content="", **kwargs):
+    """Компонент hero."""
+    return mark_safe(render_hero(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_hamburger(content="", **kwargs):
