@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .remote_dataset import render_remote_dataset
 from .popover import render_popover
 from .package_manager import render_package_manager
 from .navview import render_navview
@@ -167,6 +168,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_remote_dataset',
     'render_popover',
     'render_package_manager',
     'render_navview',

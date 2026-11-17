@@ -39,7 +39,6 @@
 - page-control | дописать | нет модуля
 - radio | дописать | нет модуля
 - remark | дописать | нет модуля
-- remote-dataset | дописать | нет модуля
 - remote-table | дописать | нет модуля
 - resizable | дописать | нет модуля
 - resizable-container | дописать | нет модуля

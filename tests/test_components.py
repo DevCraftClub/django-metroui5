@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_remote_dataset,
     render_popover,
     render_package_manager,
     render_navview,
@@ -518,3 +519,8 @@ class TestDocRole:
         result = render_popover()
         assert '<button' in result
         assert 'data-role="popover"' in result
+
+    def test_remote_dataset(self):
+        result = render_remote_dataset()
+        assert '<div' in result
+        assert 'data-role="remote-dataset"' in result
