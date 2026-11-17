@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_package_manager,
     render_navview,
     render_marquee,
     render_listview,
@@ -937,6 +938,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_package_manager(content="", **kwargs):
+    """Компонент package-manager."""
+    return mark_safe(render_package_manager(content, **kwargs))
 
 
 @register.simple_tag

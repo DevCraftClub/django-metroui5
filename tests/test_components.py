@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_package_manager,
     render_navview,
     render_marquee,
     render_listview,
@@ -506,3 +507,8 @@ class TestDocRole:
         result = render_navview()
         assert '<div' in result
         assert 'data-role="navview"' in result
+
+    def test_package_manager(self):
+        result = render_package_manager()
+        assert '<div' in result
+        assert 'data-role="package-manager"' in result
