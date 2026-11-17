@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_switch,
     render_swipe,
     render_stack_menu,
     render_splitter,
@@ -920,3 +921,10 @@ class TestDocRole:
         result = render_swipe()
         assert '<div' in result
         assert 'data-role="swipe"' in result
+
+
+    def test_doc_switch(self):
+        result = render_switch()
+        assert '<input' in result
+        assert 'data-role="switch"' in result
+        assert 'type="checkbox"' in result
