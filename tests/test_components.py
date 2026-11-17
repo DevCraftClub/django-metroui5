@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_split_button,
     render_sorter,
     render_social_box,
     render_skill_box,
@@ -892,3 +893,9 @@ class TestDocRole:
         result = render_sorter()
         assert '<ul' in result
         assert 'data-role="sorter"' in result
+
+
+    def test_doc_split_button(self):
+        result = render_split_button()
+        assert '<div' in result
+        assert 'class="split-button"' in result
