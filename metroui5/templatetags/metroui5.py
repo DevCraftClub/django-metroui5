@@ -69,6 +69,93 @@ from ..components import (
     render_navigation,
     render_panel,
     render_sidebar,
+    render_spinner,
+    render_bottom_sheet,
+    render_wizard_classic,
+    render_wheel_picker,
+    render_vegas,
+    render_validator,
+    render_v_menu,
+    render_treeview,
+    render_transform_button,
+    render_toggle_button,
+    render_timepicker,
+    render_timeline,
+    render_template,
+    render_taskbar,
+    render_metro_tag,
+    render_tabs_material,
+    render_t_menu,
+    render_switch,
+    render_swipe,
+    render_stack_menu,
+    render_splitter,
+    render_split_button,
+    render_sorter,
+    render_social_box,
+    render_skill_box,
+    render_sidenav,
+    render_shortcut,
+    render_scrollbar,
+    render_ripple,
+    render_ribbon_menu,
+    render_ribbon,
+    render_resizer,
+    render_remark,
+    render_radio,
+    render_page_control,
+    render_overlay,
+    render_media_player,
+    render_master,
+    render_lightbox,
+    render_input_mask,
+    render_info_panel,
+    render_info_button,
+    render_info_box,
+    render_image_magnifier,
+    render_image_grid,
+    render_image_compare,
+    render_image_carousel,
+    render_image_button,
+    render_icon_box,
+    render_html_container,
+    render_hero,
+    render_hamburger,
+    render_h_menu,
+    render_gravatar,
+    render_github_box,
+    render_eval,
+    render_cookie_disclaimer,
+    render_working_tree,
+    render_window,
+    render_viewport_check,
+    render_video_player,
+    render_typer,
+    render_tokenizer,
+    render_textarea,
+    render_tag_input,
+    render_streamer,
+    render_slider,
+    render_sidenav_simple,
+    render_sidenav_counter,
+    render_select,
+    render_resizable_container,
+    render_resizable,
+    render_remote_table,
+    render_remote_dataset,
+    render_popover,
+    render_package_manager,
+    render_navview,
+    render_marquee,
+    render_listview,
+    render_linked_block,
+    render_keypad,
+    render_image_placeholder,
+    render_image_box,
+    render_hover_box,
+    render_gradient_box,
+    render_gauge,
+    render_countdown,
     render_table,
     render_tabs,
     render_toolbar,
@@ -922,6 +1009,528 @@ def metroui5_sidebar(items, **kwargs):
 
 
 @register.simple_tag
+def metroui5_spinner(**kwargs):
+    """Поле с шагом."""
+    return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_bottom_sheet(content="", **kwargs):
+    """Нижняя панель."""
+    return mark_safe(render_bottom_sheet(content, **kwargs))
+
+@register.simple_tag
+def metroui5_wizard_classic(content="", **kwargs):
+    """Компонент wizard-classic."""
+    return mark_safe(render_wizard_classic(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_wheel_picker(content="", **kwargs):
+    """Компонент wheel-picker."""
+    return mark_safe(render_wheel_picker(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_vegas(content="", **kwargs):
+    """Компонент vegas."""
+    return mark_safe(render_vegas(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_validator(content="", **kwargs):
+    """Компонент validator."""
+    return mark_safe(render_validator(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_v_menu(content="", **kwargs):
+    """Компонент v-menu."""
+    return mark_safe(render_v_menu(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_treeview(content="", **kwargs):
+    """Компонент treeview."""
+    return mark_safe(render_treeview(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_transform_button(content="", **kwargs):
+    """Компонент transform-button."""
+    return mark_safe(render_transform_button(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_toggle_button(content="", **kwargs):
+    """Компонент toggle-button."""
+    return mark_safe(render_toggle_button(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_timepicker(**kwargs):
+    """Компонент timepicker."""
+    return mark_safe(render_timepicker(**kwargs))
+
+
+@register.simple_tag
+def metroui5_timeline(content="", **kwargs):
+    """Компонент timeline."""
+    return mark_safe(render_timeline(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_template(content="", **kwargs):
+    """Компонент template."""
+    return mark_safe(render_template(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_taskbar(content="", **kwargs):
+    """Компонент taskbar."""
+    return mark_safe(render_taskbar(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_tag(content="", **kwargs):
+    """Компонент tag."""
+    return mark_safe(render_metro_tag(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_tabs_material(content="", **kwargs):
+    """Компонент tabs-material."""
+    return mark_safe(render_tabs_material(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_t_menu(content="", **kwargs):
+    """Компонент t-menu."""
+    return mark_safe(render_t_menu(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_switch(**kwargs):
+    """Компонент switch."""
+    return mark_safe(render_switch(**kwargs))
+
+
+@register.simple_tag
+def metroui5_swipe(content="", **kwargs):
+    """Компонент swipe."""
+    return mark_safe(render_swipe(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_stack_menu(content="", **kwargs):
+    """Компонент stack-menu."""
+    return mark_safe(render_stack_menu(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_splitter(content="", **kwargs):
+    """Компонент splitter."""
+    return mark_safe(render_splitter(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_split_button(content="", **kwargs):
+    """Компонент split-button."""
+    return mark_safe(render_split_button(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_sorter(content="", **kwargs):
+    """Компонент sorter."""
+    return mark_safe(render_sorter(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_social_box(content="", **kwargs):
+    """Компонент social-box."""
+    return mark_safe(render_social_box(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_skill_box(content="", **kwargs):
+    """Компонент skill-box."""
+    return mark_safe(render_skill_box(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_sidenav(content="", **kwargs):
+    """Компонент sidenav."""
+    return mark_safe(render_sidenav(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_shortcut(content="", **kwargs):
+    """Компонент shortcut."""
+    return mark_safe(render_shortcut(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_scrollbar(content="", **kwargs):
+    """Компонент scrollbar."""
+    return mark_safe(render_scrollbar(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_ripple(content="", **kwargs):
+    """Компонент ripple."""
+    return mark_safe(render_ripple(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_ribbon_menu(content="", **kwargs):
+    """Компонент ribbon-menu."""
+    return mark_safe(render_ribbon_menu(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_ribbon(content="", **kwargs):
+    """Компонент ribbon."""
+    return mark_safe(render_ribbon(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_resizer(content="", **kwargs):
+    """Компонент resizer."""
+    return mark_safe(render_resizer(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_remark(content="", **kwargs):
+    """Компонент remark."""
+    return mark_safe(render_remark(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_radio(**kwargs):
+    """Компонент radio."""
+    return mark_safe(render_radio(**kwargs))
+
+
+@register.simple_tag
+def metroui5_page_control(content="", **kwargs):
+    """Компонент page-control."""
+    return mark_safe(render_page_control(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_overlay(content="", **kwargs):
+    """Компонент overlay."""
+    return mark_safe(render_overlay(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_media_player(content="", **kwargs):
+    """Компонент media-player."""
+    return mark_safe(render_media_player(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_master(content="", **kwargs):
+    """Компонент master."""
+    return mark_safe(render_master(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_lightbox(content="", **kwargs):
+    """Компонент lightbox."""
+    return mark_safe(render_lightbox(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_input_mask(**kwargs):
+    """Компонент input-mask."""
+    return mark_safe(render_input_mask(**kwargs))
+
+
+@register.simple_tag
+def metroui5_info_panel(content="", **kwargs):
+    """Компонент info-panel."""
+    return mark_safe(render_info_panel(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_info_button(content="", **kwargs):
+    """Компонент info-button."""
+    return mark_safe(render_info_button(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_info_box(content="", **kwargs):
+    """Компонент info-box."""
+    return mark_safe(render_info_box(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_image_magnifier(content="", **kwargs):
+    """Компонент image-magnifier."""
+    return mark_safe(render_image_magnifier(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_image_grid(content="", **kwargs):
+    """Компонент image-grid."""
+    return mark_safe(render_image_grid(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_image_compare(content="", **kwargs):
+    """Компонент image-compare."""
+    return mark_safe(render_image_compare(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_image_carousel(content="", **kwargs):
+    """Компонент image-carousel."""
+    return mark_safe(render_image_carousel(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_image_button(content="", **kwargs):
+    """Компонент image-button."""
+    return mark_safe(render_image_button(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_icon_box(content="", **kwargs):
+    """Компонент icon-box."""
+    return mark_safe(render_icon_box(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_html_container(content="", **kwargs):
+    """Компонент html-container."""
+    return mark_safe(render_html_container(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_hero(content="", **kwargs):
+    """Компонент hero."""
+    return mark_safe(render_hero(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_hamburger(content="", **kwargs):
+    """Компонент hamburger."""
+    return mark_safe(render_hamburger(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_h_menu(content="", **kwargs):
+    """Компонент h-menu."""
+    return mark_safe(render_h_menu(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_gravatar(**kwargs):
+    """Компонент gravatar."""
+    return mark_safe(render_gravatar(**kwargs))
+
+
+@register.simple_tag
+def metroui5_github_box(content="", **kwargs):
+    """Компонент github-box."""
+    return mark_safe(render_github_box(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_eval(content="", **kwargs):
+    """Компонент eval."""
+    return mark_safe(render_eval(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_cookie_disclaimer(content="", **kwargs):
+    """Компонент cookie-disclaimer."""
+    return mark_safe(render_cookie_disclaimer(content, **kwargs))
+
+
+
+@register.simple_tag
+def metroui5_working_tree(content="", **kwargs):
+    """Компонент working-tree."""
+    return mark_safe(render_working_tree(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_window(content="", **kwargs):
+    """Компонент window."""
+    return mark_safe(render_window(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_viewport_check(content="", **kwargs):
+    """Компонент viewport-check."""
+    return mark_safe(render_viewport_check(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_video_player(content="", **kwargs):
+    """Компонент video-player."""
+    return mark_safe(render_video_player(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_typer(content="", **kwargs):
+    """Компонент typer."""
+    return mark_safe(render_typer(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_tokenizer(content="", **kwargs):
+    """Компонент tokenizer."""
+    return mark_safe(render_tokenizer(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_textarea(content="", **kwargs):
+    """Компонент textarea."""
+    return mark_safe(render_textarea(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_tag_input(content="", **kwargs):
+    """Компонент tag-input."""
+    return mark_safe(render_tag_input(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_streamer(content="", **kwargs):
+    """Компонент streamer."""
+    return mark_safe(render_streamer(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_slider(content="", **kwargs):
+    """Компонент slider."""
+    return mark_safe(render_slider(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_sidenav_simple(content="", **kwargs):
+    """Компонент sidenav-simple."""
+    return mark_safe(render_sidenav_simple(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_sidenav_counter(content="", **kwargs):
+    """Компонент sidenav-counter."""
+    return mark_safe(render_sidenav_counter(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_select(content="", **kwargs):
+    """Компонент select."""
+    return mark_safe(render_select(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_resizable_container(content="", **kwargs):
+    """Компонент resizable-container."""
+    return mark_safe(render_resizable_container(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_resizable(content="", **kwargs):
+    """Компонент resizable."""
+    return mark_safe(render_resizable(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_remote_table(content="", **kwargs):
+    """Компонент remote-table."""
+    return mark_safe(render_remote_table(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_remote_dataset(content="", **kwargs):
+    """Компонент remote-dataset."""
+    return mark_safe(render_remote_dataset(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_popover(content="", **kwargs):
+    """Компонент popover."""
+    return mark_safe(render_popover(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_package_manager(content="", **kwargs):
+    """Компонент package-manager."""
+    return mark_safe(render_package_manager(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_navview(content="", **kwargs):
+    """Компонент navview."""
+    return mark_safe(render_navview(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_marquee(content="", **kwargs):
+    """Компонент marquee."""
+    return mark_safe(render_marquee(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_listview(content="", **kwargs):
+    """Компонент listview."""
+    return mark_safe(render_listview(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_linked_block(content="", **kwargs):
+    """Компонент linked-block."""
+    return mark_safe(render_linked_block(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_keypad(content="", **kwargs):
+    """Компонент keypad."""
+    return mark_safe(render_keypad(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_image_placeholder(content="", **kwargs):
+    """Компонент image-placeholder."""
+    return mark_safe(render_image_placeholder(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_image_box(content="", **kwargs):
+    """Компонент image-box."""
+    return mark_safe(render_image_box(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_hover_box(content="", **kwargs):
+    """Компонент hover-box."""
+    return mark_safe(render_hover_box(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_gradient_box(content="", **kwargs):
+    """Компонент gradient-box."""
+    return mark_safe(render_gradient_box(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_gauge(content="", **kwargs):
+    """Компонент gauge."""
+    return mark_safe(render_gauge(content, **kwargs))
+
+
+@register.simple_tag
+def metroui5_countdown(content="", **kwargs):
+    """Компонент countdown."""
+    return mark_safe(render_countdown(content, **kwargs))
+
+
+@register.simple_tag
 def metroui5_table(headers, rows, **kwargs):
     """Renders MetroUI table."""
     return mark_safe(render_table(headers, rows, **kwargs))
@@ -1067,14 +1676,6 @@ def metroui5_hint(text, **kwargs):
 def metroui5_loading(**kwargs):
     """Renders MetroUI loading indicator."""
     attrs = {"class": "loading", "data-role": "loading"}
-    attrs.update(kwargs)
-    return mark_safe(render_tag("div", attrs=attrs, content=""))
-
-
-@register.simple_tag
-def metroui5_spinner(**kwargs):
-    """Renders MetroUI spinner."""
-    attrs = {"class": "spinner", "data-role": "spinner"}
     attrs.update(kwargs)
     return mark_safe(render_tag("div", attrs=attrs, content=""))
 

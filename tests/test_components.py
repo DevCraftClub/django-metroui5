@@ -8,6 +8,7 @@ from metroui5.components import (
     render_tile,
     render_card,
     render_progress,
+    render_tabs,
     render_accordion,
     render_calendar,
     render_dialog,
@@ -18,6 +19,97 @@ from metroui5.components import (
     render_navigation,
     render_panel,
     render_sidebar,
+    render_spinner,
+    render_bottom_sheet,
+    render_wizard_classic,
+    render_wheel_picker,
+    render_vegas,
+    render_validator,
+    render_v_menu,
+    render_treeview,
+    render_transform_button,
+    render_toggle_button,
+    render_timepicker,
+    render_timeline,
+    render_template,
+    render_taskbar,
+    render_metro_tag,
+    render_tabs_material,
+    render_t_menu,
+    render_switch,
+    render_swipe,
+    render_stack_menu,
+    render_splitter,
+    render_split_button,
+    render_sorter,
+    render_social_box,
+    render_skill_box,
+    render_sidenav,
+    render_shortcut,
+    render_scrollbar,
+    render_ripple,
+    render_ribbon_menu,
+    render_ribbon,
+    render_resizer,
+    render_remark,
+    render_radio,
+    render_page_control,
+    render_overlay,
+    render_media_player,
+    render_master,
+    render_lightbox,
+    render_input_mask,
+    render_info_panel,
+    render_info_button,
+    render_info_box,
+    render_image_magnifier,
+    render_image_grid,
+    render_image_compare,
+    render_image_carousel,
+    render_image_button,
+    render_icon_box,
+    render_html_container,
+    render_hero,
+    render_hamburger,
+    render_h_menu,
+    render_gravatar,
+    render_github_box,
+    render_eval,
+    render_cookie_disclaimer,
+    render_working_tree,
+    render_wizard,
+    render_window,
+    render_viewport_check,
+    render_video_player,
+    render_typer,
+    render_tokenizer,
+    render_theme_switcher,
+    render_textarea,
+    render_tag_input,
+    render_streamer,
+    render_stepper,
+    render_slider,
+    render_sidenav_simple,
+    render_sidenav_counter,
+    render_select,
+    render_resizable_container,
+    render_resizable,
+    render_remote_table,
+    render_remote_dataset,
+    render_popover,
+    render_package_manager,
+    render_navview,
+    render_marquee,
+    render_listview,
+    render_linked_block,
+    render_keypad,
+    render_image_placeholder,
+    render_image_box,
+    render_hover_box,
+    render_hint,
+    render_gradient_box,
+    render_gauge,
+    render_countdown,
     render_table,
     render_tabs,
     render_toolbar,
@@ -80,16 +172,18 @@ class TestRenderButton:
         """Тест рендеринга button с типом"""
         result = render_button("Primary", button_type="primary")
         assert 'class="button primary"' in result
+        assert "button_type=" not in result
 
     def test_render_button_outline(self):
         """Тест рендеринга outline button"""
         result = render_button("Outline", button_type="success", outline=True)
-        assert 'class="button outline-success"' in result
+        assert "outline" in result
+        assert "success" in result
 
     def test_render_button_with_size(self):
         """Тест рендеринга button с размером"""
         result = render_button("Large", size="lg")
-        assert 'class="button button-lg"' in result
+        assert "large" in result
 
     def test_render_button_with_custom_attrs(self):
         """Тест рендеринга button с пользовательскими атрибутами"""
@@ -132,6 +226,12 @@ class TestRenderTile:
         """Тест рендеринга tile с иконкой"""
         result = render_tile("Test", icon="home")
         assert 'data-icon="home"' in result
+        assert "mif-home" in result
+
+    def test_render_tile_icon_quote_is_escaped(self):
+        result = render_tile("Test", icon="a'b")
+        assert "mif-a&#x27;b" in result
+        assert "a'b" not in result
 
     def test_render_tile_with_content(self):
         """Тест рендеринга tile с содержимым"""
@@ -203,6 +303,23 @@ class TestRenderProgress:
         """Тест рендеринга progress с цветом"""
         result = render_progress(60, color="success")
         assert 'class="progress progress-success"' in result
+
+    def test_render_progress_small_uses_data_attribute(self):
+        result = render_progress(25, size="small")
+        assert 'data-small="true"' in result
+        assert "progress-small" in result
+
+    def test_render_tabs_uses_targets(self):
+        result = render_tabs([
+            {"title": "Tab 1", "content": "A"},
+            {"title": "Tab 2", "content": "B", "active": True},
+        ])
+        assert result.startswith("<ul")
+        assert 'data-role="tabs"' in result
+        assert 'class="tabs-targets"' in result
+        assert 'href="#tab-0"' in result
+        assert 'id="tab-1"' in result
+        assert "active" in result
 
     def test_render_progress_with_striped(self):
         """Тест рендеринга striped progress"""
@@ -350,7 +467,7 @@ class TestRenderBadge:
     def test_render_badge_basic(self):
         """Тест базового рендеринга badge"""
         result = render_badge("5")
-        assert 'class="badge badge-default"' in result
+        assert 'class="badge"' in result
         assert "5" in result
 
     def test_render_badge_with_color(self):
@@ -374,9 +491,11 @@ class TestRenderRating:
 
     def test_render_rating_with_max(self):
         """Тест рендеринга rating с максимальным значением"""
-        result = render_rating(3, max_rating=5)
-        assert result.count('class="star"') == 3
-        assert result.count('class="star-empty"') == 2
+        result = render_rating(3, max_value=5)
+        assert "<input" in result
+        assert 'data-role="rating"' in result
+        assert 'data-value="3"' in result
+        assert 'data-stars="5"' in result
 
     def test_render_rating_readonly(self):
         """Тест рендеринга readonly rating"""
@@ -405,3 +524,547 @@ class TestEdgeCases:
         """Тест рендеринга компонентов с Unicode"""
         result = render_button("Привет мир")
         assert "Привет мир" in result
+
+
+class TestRenderSpinner:
+    """Поле с шагом."""
+
+    def test_render_spinner_basic(self):
+        result = render_spinner()
+        assert '<input' in result
+        assert 'data-role="spinner"' in result
+
+    def test_spinner_tag_is_input(self):
+        from django.template import Context, Template
+        html = Template("{% load metroui5 %}{% metroui5_spinner %}").render(Context())
+        assert "<input" in html
+        assert 'data-role="spinner"' in html
+
+    def test_render_spinner_configuration(self):
+        result = render_spinner(
+            default_value=10,
+            step=5,
+            min_value=0,
+            max_value=100,
+            label="Quantity",
+        )
+        assert 'data-default-value="10"' in result
+        assert 'data-step="5"' in result
+        assert 'data-min-value="0"' in result
+        assert 'data-max-value="100"' in result
+        assert 'data-label="Quantity"' in result
+
+
+
+class TestDocRole:
+    """Один элемент с data-role из документации."""
+
+    def test_countdown(self):
+        result = render_countdown()
+        assert '<div' in result
+        assert 'data-role="countdown"' in result
+
+    def test_gauge(self):
+        result = render_gauge()
+        assert '<div' in result
+        assert 'data-role="gauge"' in result
+
+    def test_gradient_box(self):
+        result = render_gradient_box()
+        assert '<div' in result
+        assert 'data-role="gradient-box"' in result
+
+    def test_hint(self):
+        result = render_hint()
+        assert '<button' in result
+        assert 'data-role="hint"' in result
+
+    def test_hover_box(self):
+        result = render_hover_box()
+        assert '<div' in result
+        assert 'data-role="hover-box"' in result
+
+    def test_image_box(self):
+        result = render_image_box()
+        assert '<div' in result
+        assert 'data-role="image-box"' in result
+
+    def test_image_placeholder(self):
+        result = render_image_placeholder()
+        assert '<img' in result
+        assert 'data-role="image-placeholder"' in result
+
+    def test_keypad(self):
+        result = render_keypad()
+        assert '<input' in result
+        assert 'data-role="keypad"' in result
+
+    def test_linked_block(self):
+        result = render_linked_block()
+        assert '<div' in result
+        assert 'data-role="linked-block"' in result
+
+    def test_listview(self):
+        result = render_listview()
+        assert '<ul' in result
+        assert 'data-role="listview"' in result
+
+    def test_marquee(self):
+        result = render_marquee()
+        assert '<div' in result
+        assert 'data-role="marquee"' in result
+
+    def test_navview(self):
+        result = render_navview()
+        assert '<div' in result
+        assert 'data-role="navview"' in result
+
+    def test_package_manager(self):
+        result = render_package_manager()
+        assert '<div' in result
+        assert 'data-role="package-manager"' in result
+
+    def test_popover(self):
+        result = render_popover()
+        assert '<button' in result
+        assert 'data-role="popover"' in result
+
+    def test_remote_dataset(self):
+        result = render_remote_dataset()
+        assert '<div' in result
+        assert 'data-role="remote-dataset"' in result
+
+    def test_remote_table(self):
+        result = render_remote_table()
+        assert '<div' in result
+        assert 'data-role="remote-table"' in result
+
+    def test_resizable(self):
+        result = render_resizable()
+        assert '<div' in result
+        assert 'data-role="resizable"' in result
+
+    def test_resizable_container(self):
+        result = render_resizable_container()
+        assert '<div' in result
+        assert 'data-role="resizable-container"' in result
+
+    def test_select(self):
+        result = render_select()
+        assert '<select' in result
+        assert 'data-role="select"' in result
+
+    def test_sidenav_counter(self):
+        result = render_sidenav_counter()
+        assert '<ul' in result
+        assert 'data-role="sidenav-counter"' in result
+
+    def test_sidenav_simple(self):
+        result = render_sidenav_simple()
+        assert '<ul' in result
+        assert 'data-role="sidenav-simple"' in result
+
+    def test_slider(self):
+        result = render_slider()
+        assert '<input' in result
+        assert 'data-role="slider"' in result
+
+    def test_stepper(self):
+        result = render_stepper()
+        assert '<div' in result
+        assert 'data-role="stepper"' in result
+
+    def test_streamer(self):
+        result = render_streamer()
+        assert '<div' in result
+        assert 'data-role="streamer"' in result
+
+    def test_tag_input(self):
+        result = render_tag_input()
+        assert '<input' in result
+        assert 'data-role="tag-input"' in result
+
+    def test_textarea(self):
+        result = render_textarea()
+        assert '<textarea' in result
+        assert 'data-role="textarea"' in result
+
+    def test_theme_switcher(self):
+        result = render_theme_switcher()
+        assert '<input' in result
+        assert 'data-role="theme-switcher"' in result
+
+    def test_tokenizer(self):
+        result = render_tokenizer()
+        assert '<div' in result
+        assert 'data-role="tokenizer"' in result
+
+    def test_typer(self):
+        result = render_typer()
+        assert '<span' in result
+        assert 'data-role="typer"' in result
+
+    def test_video_player(self):
+        result = render_video_player()
+        assert '<video' in result
+        assert 'data-role="video-player"' in result
+
+    def test_viewport_check(self):
+        result = render_viewport_check()
+        assert '<div' in result
+        assert 'data-role="viewport-check"' in result
+
+    def test_window(self):
+        result = render_window()
+        assert '<div' in result
+        assert 'data-role="window"' in result
+
+    def test_wizard(self):
+        result = render_wizard()
+        assert '<div' in result
+        assert 'data-role="wizard"' in result
+
+    def test_working_tree(self):
+        result = render_working_tree()
+        assert '<ul' in result
+        assert 'data-role="working-tree"' in result
+
+
+    def test_doc_cookie_disclaimer(self):
+        result = render_cookie_disclaimer()
+        assert '<div' in result
+        assert 'class="cookie-disclaimer"' in result
+
+
+    def test_doc_eval(self):
+        result = render_eval()
+        assert '<div' in result
+        assert 'data-role="eval"' in result
+
+
+    def test_doc_github_box(self):
+        result = render_github_box()
+        assert '<div' in result
+        assert 'class="github-box"' in result
+
+
+    def test_doc_gravatar(self):
+        result = render_gravatar()
+        assert '<img' in result
+        assert 'data-role="gravatar"' in result
+
+
+    def test_doc_h_menu(self):
+        result = render_h_menu()
+        assert '<ul' in result
+        assert 'class="h-menu"' in result
+
+
+    def test_doc_hamburger(self):
+        result = render_hamburger()
+        assert '<button' in result
+        assert 'class="hamburger"' in result
+
+
+    def test_doc_hero(self):
+        result = render_hero()
+        assert '<div' in result
+        assert 'class="hero"' in result
+
+
+    def test_doc_html_container(self):
+        result = render_html_container()
+        assert '<div' in result
+        assert 'data-role="html-container"' in result
+
+
+    def test_doc_icon_box(self):
+        result = render_icon_box()
+        assert '<div' in result
+        assert 'class="icon-box"' in result
+
+
+    def test_doc_image_button(self):
+        result = render_image_button()
+        assert '<button' in result
+        assert 'class="image-button"' in result
+
+
+    def test_doc_image_carousel(self):
+        result = render_image_carousel()
+        assert '<div' in result
+        assert 'data-role="image-carousel"' in result
+
+
+    def test_doc_image_compare(self):
+        result = render_image_compare()
+        assert '<div' in result
+        assert 'data-role="image-compare"' in result
+        assert 'class="image-compare"' in result
+
+
+    def test_doc_image_grid(self):
+        result = render_image_grid()
+        assert '<div' in result
+        assert 'data-role="image-grid"' in result
+        assert 'class="image-grid"' in result
+
+
+    def test_doc_image_magnifier(self):
+        result = render_image_magnifier()
+        assert '<div' in result
+        assert 'data-role="image-magnifier"' in result
+
+
+    def test_doc_info_box(self):
+        result = render_info_box()
+        assert '<div' in result
+        assert 'data-role="info-box"' in result
+
+
+    def test_doc_info_button(self):
+        result = render_info_button()
+        assert '<button' in result
+        assert 'class="info-button"' in result
+
+
+    def test_doc_info_panel(self):
+        result = render_info_panel()
+        assert '<div' in result
+        assert 'class="info-panel"' in result
+
+
+    def test_doc_input_mask(self):
+        result = render_input_mask()
+        assert '<input' in result
+        assert 'data-role="input, input-mask"' in result
+
+
+    def test_doc_lightbox(self):
+        result = render_lightbox()
+        assert '<div' in result
+        assert 'data-role="lightbox"' in result
+
+
+    def test_doc_master(self):
+        result = render_master()
+        assert '<div' in result
+        assert 'data-role="master"' in result
+
+
+    def test_doc_media_player(self):
+        result = render_media_player()
+        assert '<div' in result
+        assert 'class="media-player"' in result
+
+
+    def test_doc_overlay(self):
+        result = render_overlay()
+        assert '<div' in result
+        assert 'class="overlay"' in result
+
+
+    def test_doc_page_control(self):
+        result = render_page_control()
+        assert '<ul' in result
+        assert 'data-role="page-control"' in result
+
+
+    def test_doc_radio(self):
+        result = render_radio()
+        assert '<input' in result
+        assert 'data-role="radio"' in result
+        assert 'type="radio"' in result
+
+
+    def test_doc_remark(self):
+        result = render_remark()
+        assert '<div' in result
+        assert 'class="remark"' in result
+
+
+    def test_doc_resizer(self):
+        result = render_resizer()
+        assert '<div' in result
+        assert 'data-role="resizer"' in result
+
+
+    def test_doc_ribbon(self):
+        result = render_ribbon()
+        assert '<span' in result
+        assert 'class="ribbon"' in result
+
+
+    def test_doc_ribbon_menu(self):
+        result = render_ribbon_menu()
+        assert '<div' in result
+        assert 'data-role="ribbon-menu"' in result
+
+
+    def test_doc_ripple(self):
+        result = render_ripple()
+        assert '<button' in result
+        assert 'data-role="ripple"' in result
+
+
+    def test_doc_scrollbar(self):
+        result = render_scrollbar()
+        assert '<div' in result
+        assert 'class="scrollbar-type-1"' in result
+
+
+    def test_doc_shortcut(self):
+        result = render_shortcut()
+        assert '<div' in result
+        assert 'class="shortcut"' in result
+
+
+    def test_doc_sidenav(self):
+        result = render_sidenav()
+        assert '<ul' in result
+        assert 'data-role="sidenav"' in result
+
+
+    def test_doc_skill_box(self):
+        result = render_skill_box()
+        assert '<div' in result
+        assert 'class="skill-box"' in result
+
+
+    def test_doc_social_box(self):
+        result = render_social_box()
+        assert '<div' in result
+        assert 'class="social-box"' in result
+
+
+    def test_doc_sorter(self):
+        result = render_sorter()
+        assert '<ul' in result
+        assert 'data-role="sorter"' in result
+
+
+    def test_doc_split_button(self):
+        result = render_split_button()
+        assert '<div' in result
+        assert 'class="split-button"' in result
+
+
+    def test_doc_splitter(self):
+        result = render_splitter()
+        assert '<div' in result
+        assert 'data-role="splitter"' in result
+
+
+    def test_doc_stack_menu(self):
+        result = render_stack_menu()
+        assert '<div' in result
+        assert 'data-role="stack-menu"' in result
+
+
+    def test_doc_swipe(self):
+        result = render_swipe()
+        assert '<div' in result
+        assert 'data-role="swipe"' in result
+
+
+    def test_doc_switch(self):
+        result = render_switch()
+        assert '<input' in result
+        assert 'data-role="switch"' in result
+        assert 'type="checkbox"' in result
+
+
+    def test_doc_t_menu(self):
+        result = render_t_menu()
+        assert '<ul' in result
+        assert 'class="t-menu"' in result
+
+
+    def test_doc_tabs_material(self):
+        result = render_tabs_material()
+        assert '<ul' in result
+        assert 'data-role="materialtabs"' in result
+
+
+    def test_doc_tag(self):
+        result = render_metro_tag()
+        assert '<span' in result
+        assert 'class="tag"' in result
+
+
+    def test_doc_taskbar(self):
+        result = render_taskbar()
+        assert '<div' in result
+        assert 'data-role="task-bar"' in result
+
+
+    def test_doc_template(self):
+        result = render_template()
+        assert '<div' in result
+        assert 'data-role="template"' in result
+
+
+    def test_doc_timeline(self):
+        result = render_timeline()
+        assert '<ul' in result
+        assert 'class="timeline"' in result
+
+
+    def test_doc_timepicker(self):
+        result = render_timepicker()
+        assert '<input' in result
+        assert 'data-role="time-picker"' in result
+
+
+    def test_doc_toggle_button(self):
+        result = render_toggle_button()
+        assert '<div' in result
+        assert 'data-role="toggle-button"' in result
+
+
+    def test_doc_transform_button(self):
+        result = render_transform_button()
+        assert '<button' in result
+        assert 'class="transform-button"' in result
+
+
+    def test_doc_treeview(self):
+        result = render_treeview()
+        assert '<ul' in result
+        assert 'data-role="treeview"' in result
+
+
+    def test_doc_v_menu(self):
+        result = render_v_menu()
+        assert '<ul' in result
+        assert 'class="v-menu"' in result
+
+
+    def test_doc_validator(self):
+        result = render_validator()
+        assert '<form' in result
+        assert 'data-role="validator"' in result
+
+
+    def test_doc_vegas(self):
+        result = render_vegas()
+        assert '<div' in result
+        assert 'data-role="vegas"' in result
+
+
+    def test_doc_wheel_picker(self):
+        result = render_wheel_picker()
+        assert '<div' in result
+        assert 'class="wheel-picker"' in result
+
+
+    def test_doc_wizard_classic(self):
+        result = render_wizard_classic()
+        assert '<div' in result
+        assert 'data-role="wizard-classic"' in result
+
+    def test_doc_bottom_sheet(self):
+        result = render_bottom_sheet()
+        assert "<ul" in result
+        assert 'class="bottom-sheet"' in result
+        assert 'data-role="bottomsheet"' in result

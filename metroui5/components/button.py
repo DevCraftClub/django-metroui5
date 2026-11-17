@@ -66,6 +66,12 @@ class ButtonComponent(SimpleComponent):
 			.. _MetroUI Button: https://v5.metroui.org.ua/components/button/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
 		"""
+		# Старый вызов передаёт button_type и size="lg"/"sm".
+		button_type = attrs.pop("button_type", None)
+		if button_type and button_type != "default" and color in (None, "default"):
+			color = button_type
+		size = {"sm": "small", "lg": "large"}.get(size, size)
+
 		# Build additional classes based on parameters
 		additional_classes = []
 		
@@ -89,12 +95,11 @@ class ButtonComponent(SimpleComponent):
 		elif shape == "cycle":
 			additional_classes.append("cycle")
 		
-		# Color classes
+		# Color classes. Контур в документации — отдельный класс outline.
+		if outline:
+			additional_classes.append("outline")
 		if color and color not in ["default"]:
-			if outline:
-				additional_classes.append(f"outline-{color}")
-			else:
-				additional_classes.append(color)
+			additional_classes.append(color)
 		
 		# Effect classes
 		if shadow:
