@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_treeview,
     render_transform_button,
     render_toggle_button,
     render_timepicker,
@@ -991,3 +992,9 @@ class TestDocRole:
         result = render_transform_button()
         assert '<button' in result
         assert 'class="transform-button"' in result
+
+
+    def test_doc_treeview(self):
+        result = render_treeview()
+        assert '<ul' in result
+        assert 'data-role="treeview"' in result

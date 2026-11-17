@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .treeview import render_treeview
 from .transform_button import render_transform_button
 from .toggle_button import render_toggle_button
 from .timepicker import render_timepicker
@@ -236,6 +237,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_treeview',
     'render_transform_button',
     'render_toggle_button',
     'render_timepicker',
