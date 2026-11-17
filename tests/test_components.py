@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_toggle_button,
     render_timepicker,
     render_timeline,
     render_template,
@@ -977,3 +978,9 @@ class TestDocRole:
         result = render_timepicker()
         assert '<input' in result
         assert 'data-role="time-picker"' in result
+
+
+    def test_doc_toggle_button(self):
+        result = render_toggle_button()
+        assert '<div' in result
+        assert 'data-role="toggle-button"' in result
