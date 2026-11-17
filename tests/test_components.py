@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_image_placeholder,
     render_image_box,
     render_hover_box,
     render_hint,
@@ -470,3 +471,8 @@ class TestDocRole:
         result = render_image_box()
         assert '<div' in result
         assert 'data-role="image-box"' in result
+
+    def test_image_placeholder(self):
+        result = render_image_placeholder()
+        assert '<img' in result
+        assert 'data-role="image-placeholder"' in result

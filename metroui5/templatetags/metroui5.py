@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_image_placeholder,
     render_image_box,
     render_hover_box,
     render_gradient_box,
@@ -931,6 +932,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_image_placeholder(content="", **kwargs):
+    """Компонент image-placeholder."""
+    return mark_safe(render_image_placeholder(content, **kwargs))
 
 
 @register.simple_tag

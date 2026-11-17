@@ -25,7 +25,6 @@
 - image-compare | дописать | нет модуля
 - image-grid | дописать | нет модуля
 - image-magnifier | дописать | нет модуля
-- image-placeholder | дописать | нет модуля
 - info-box | дописать | нет модуля
 - info-button | дописать | нет модуля
 - info-panel | дописать | нет модуля
