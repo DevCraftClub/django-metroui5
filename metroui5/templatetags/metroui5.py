@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_cookie_disclaimer,
     render_working_tree,
     render_window,
     render_viewport_check,
@@ -956,6 +957,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_cookie_disclaimer(content="", **kwargs):
+    """Компонент cookie-disclaimer."""
+    return mark_safe(render_cookie_disclaimer(content, **kwargs))
+
 
 
 @register.simple_tag

@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_cookie_disclaimer,
     render_working_tree,
     render_wizard,
     render_window,
@@ -644,3 +645,9 @@ class TestDocRole:
         result = render_working_tree()
         assert '<ul' in result
         assert 'data-role="working-tree"' in result
+
+
+    def test_doc_cookie_disclaimer(self):
+        result = render_cookie_disclaimer()
+        assert '<div' in result
+        assert 'class="cookie-disclaimer"' in result

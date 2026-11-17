@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .cookie_disclaimer import render_cookie_disclaimer
 from .working_tree import render_working_tree
 from .wizard import render_wizard
 from .window import render_window
@@ -187,6 +188,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_cookie_disclaimer',
     'render_working_tree',
     'render_wizard',
     'render_window',
