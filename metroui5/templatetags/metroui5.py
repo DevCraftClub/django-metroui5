@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_image_grid,
     render_image_compare,
     render_image_carousel,
     render_image_button,
@@ -968,6 +969,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_image_grid(content="", **kwargs):
+    """Компонент image-grid."""
+    return mark_safe(render_image_grid(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_image_compare(content="", **kwargs):

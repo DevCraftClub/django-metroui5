@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_image_grid,
     render_image_compare,
     render_image_carousel,
     render_image_button,
@@ -729,3 +730,10 @@ class TestDocRole:
         assert '<div' in result
         assert 'data-role="image-compare"' in result
         assert 'class="image-compare"' in result
+
+
+    def test_doc_image_grid(self):
+        result = render_image_grid()
+        assert '<div' in result
+        assert 'data-role="image-grid"' in result
+        assert 'class="image-grid"' in result
