@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_image_compare,
     render_image_carousel,
     render_image_button,
     render_icon_box,
@@ -721,3 +722,10 @@ class TestDocRole:
         result = render_image_carousel()
         assert '<div' in result
         assert 'data-role="image-carousel"' in result
+
+
+    def test_doc_image_compare(self):
+        result = render_image_compare()
+        assert '<div' in result
+        assert 'data-role="image-compare"' in result
+        assert 'class="image-compare"' in result

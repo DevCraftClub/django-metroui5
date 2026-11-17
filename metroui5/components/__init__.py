@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .image_compare import render_image_compare
 from .image_carousel import render_image_carousel
 from .image_button import render_image_button
 from .icon_box import render_icon_box
@@ -198,6 +199,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_image_compare',
     'render_image_carousel',
     'render_image_button',
     'render_icon_box',
