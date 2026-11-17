@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_sorter,
     render_social_box,
     render_skill_box,
     render_sidenav,
@@ -990,6 +991,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_sorter(content="", **kwargs):
+    """Компонент sorter."""
+    return mark_safe(render_sorter(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_social_box(content="", **kwargs):

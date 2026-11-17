@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_sorter,
     render_social_box,
     render_skill_box,
     render_sidenav,
@@ -885,3 +886,9 @@ class TestDocRole:
         result = render_social_box()
         assert '<div' in result
         assert 'class="social-box"' in result
+
+
+    def test_doc_sorter(self):
+        result = render_sorter()
+        assert '<ul' in result
+        assert 'data-role="sorter"' in result
