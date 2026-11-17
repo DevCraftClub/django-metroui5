@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_gradient_box,
     render_gauge,
     render_countdown,
     render_table,
@@ -446,3 +447,8 @@ class TestDocRole:
         result = render_gauge()
         assert '<div' in result
         assert 'data-role="gauge"' in result
+
+    def test_gradient_box(self):
+        result = render_gradient_box()
+        assert '<div' in result
+        assert 'data-role="gradient-box"' in result

@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .gradient_box import render_gradient_box
 from .gauge import render_gauge
 from .countdown import render_countdown
 from .table import render_table
@@ -155,6 +156,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_gradient_box',
     'render_gauge',
     'render_countdown',
     'render_table',
