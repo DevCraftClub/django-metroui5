@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_stepper,
     render_slider,
     render_sidenav_simple,
     render_sidenav_counter,
@@ -566,3 +567,8 @@ class TestDocRole:
         result = render_slider()
         assert '<input' in result
         assert 'data-role="slider"' in result
+
+    def test_stepper(self):
+        result = render_stepper()
+        assert '<div' in result
+        assert 'data-role="stepper"' in result
