@@ -69,6 +69,7 @@ from ..components import (
     render_navigation,
     render_panel,
     render_sidebar,
+    render_spinner,
     render_table,
     render_tabs,
     render_toolbar,
@@ -919,6 +920,12 @@ def metroui5_panel(title=None, content=None, **kwargs):
 def metroui5_sidebar(items, **kwargs):
     """Renders MetroUI sidebar."""
     return mark_safe(render_sidebar(items, **kwargs))
+
+
+@register.simple_tag
+def metroui5_spinner(**kwargs):
+    """Поле с шагом."""
+    return mark_safe(render_spinner(**kwargs))
 
 
 @register.simple_tag

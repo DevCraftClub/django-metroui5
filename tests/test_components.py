@@ -18,6 +18,7 @@ from metroui5.components import (
     render_navigation,
     render_panel,
     render_sidebar,
+    render_spinner,
     render_table,
     render_tabs,
     render_toolbar,
@@ -405,3 +406,27 @@ class TestEdgeCases:
         """Тест рендеринга компонентов с Unicode"""
         result = render_button("Привет мир")
         assert "Привет мир" in result
+
+
+class TestRenderSpinner:
+    """Поле с шагом."""
+
+    def test_render_spinner_basic(self):
+        result = render_spinner()
+        assert '<input' in result
+        assert 'data-role="spinner"' in result
+
+    def test_render_spinner_configuration(self):
+        result = render_spinner(
+            default_value=10,
+            step=5,
+            min_value=0,
+            max_value=100,
+            label="Quantity",
+        )
+        assert 'data-default-value="10"' in result
+        assert 'data-step="5"' in result
+        assert 'data-min-value="0"' in result
+        assert 'data-max-value="100"' in result
+        assert 'data-label="Quantity"' in result
+
