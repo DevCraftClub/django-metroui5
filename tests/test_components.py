@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_ripple,
     render_ribbon_menu,
     render_ribbon,
     render_resizer,
@@ -843,3 +844,9 @@ class TestDocRole:
         result = render_ribbon_menu()
         assert '<div' in result
         assert 'data-role="ribbon-menu"' in result
+
+
+    def test_doc_ripple(self):
+        result = render_ripple()
+        assert '<button' in result
+        assert 'data-role="ripple"' in result
