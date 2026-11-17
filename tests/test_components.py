@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_radio,
     render_page_control,
     render_overlay,
     render_media_player,
@@ -807,3 +808,10 @@ class TestDocRole:
         result = render_page_control()
         assert '<ul' in result
         assert 'data-role="page-control"' in result
+
+
+    def test_doc_radio(self):
+        result = render_radio()
+        assert '<input' in result
+        assert 'data-role="radio"' in result
+        assert 'type="radio"' in result
