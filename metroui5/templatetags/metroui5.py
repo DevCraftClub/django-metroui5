@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_timepicker,
     render_timeline,
     render_template,
     render_taskbar,
@@ -1002,6 +1003,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_timepicker(**kwargs):
+    """Компонент timepicker."""
+    return mark_safe(render_timepicker(**kwargs))
+
 
 @register.simple_tag
 def metroui5_timeline(content="", **kwargs):

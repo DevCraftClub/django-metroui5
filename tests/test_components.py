@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_timepicker,
     render_timeline,
     render_template,
     render_taskbar,
@@ -970,3 +971,9 @@ class TestDocRole:
         result = render_timeline()
         assert '<ul' in result
         assert 'class="timeline"' in result
+
+
+    def test_doc_timepicker(self):
+        result = render_timepicker()
+        assert '<input' in result
+        assert 'data-role="time-picker"' in result
