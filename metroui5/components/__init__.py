@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .template import render_template
 from .taskbar import render_taskbar
 from .tag import render_metro_tag
 from .tabs_material import render_tabs_material
@@ -231,6 +232,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_template',
     'render_taskbar',
     'render_metro_tag',
     'render_tabs_material',
