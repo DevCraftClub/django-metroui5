@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_image_button,
     render_icon_box,
     render_html_container,
     render_hero,
@@ -707,3 +708,9 @@ class TestDocRole:
         result = render_icon_box()
         assert '<div' in result
         assert 'class="icon-box"' in result
+
+
+    def test_doc_image_button(self):
+        result = render_image_button()
+        assert '<button' in result
+        assert 'class="image-button"' in result
