@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_select,
     render_resizable_container,
     render_resizable,
     render_remote_table,
@@ -542,3 +543,8 @@ class TestDocRole:
         result = render_resizable_container()
         assert '<div' in result
         assert 'data-role="resizable-container"' in result
+
+    def test_select(self):
+        result = render_select()
+        assert '<select' in result
+        assert 'data-role="select"' in result
