@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_shortcut,
     render_scrollbar,
     render_ripple,
     render_ribbon_menu,
@@ -857,3 +858,9 @@ class TestDocRole:
         result = render_scrollbar()
         assert '<div' in result
         assert 'class="scrollbar-type-1"' in result
+
+
+    def test_doc_shortcut(self):
+        result = render_shortcut()
+        assert '<div' in result
+        assert 'class="shortcut"' in result
