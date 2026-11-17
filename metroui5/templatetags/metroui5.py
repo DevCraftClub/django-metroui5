@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_t_menu,
     render_switch,
     render_swipe,
     render_stack_menu,
@@ -996,6 +997,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_t_menu(content="", **kwargs):
+    """Компонент t-menu."""
+    return mark_safe(render_t_menu(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_switch(**kwargs):

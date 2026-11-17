@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_t_menu,
     render_switch,
     render_swipe,
     render_stack_menu,
@@ -928,3 +929,9 @@ class TestDocRole:
         assert '<input' in result
         assert 'data-role="switch"' in result
         assert 'type="checkbox"' in result
+
+
+    def test_doc_t_menu(self):
+        result = render_t_menu()
+        assert '<ul' in result
+        assert 'class="t-menu"' in result
