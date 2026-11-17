@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_theme_switcher,
     render_textarea,
     render_tag_input,
     render_streamer,
@@ -590,3 +591,8 @@ class TestDocRole:
         result = render_textarea()
         assert '<textarea' in result
         assert 'data-role="textarea"' in result
+
+    def test_theme_switcher(self):
+        result = render_theme_switcher()
+        assert '<input' in result
+        assert 'data-role="theme-switcher"' in result

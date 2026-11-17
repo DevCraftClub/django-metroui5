@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .theme_switcher import render_theme_switcher
 from .textarea import render_textarea
 from .tag_input import render_tag_input
 from .streamer import render_streamer
@@ -179,6 +180,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_theme_switcher',
     'render_textarea',
     'render_tag_input',
     'render_streamer',
