@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_typer,
     render_tokenizer,
     render_textarea,
     render_tag_input,
@@ -951,6 +952,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_typer(content="", **kwargs):
+    """Компонент typer."""
+    return mark_safe(render_typer(content, **kwargs))
 
 
 @register.simple_tag

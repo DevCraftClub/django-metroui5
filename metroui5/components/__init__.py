@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .typer import render_typer
 from .tokenizer import render_tokenizer
 from .theme_switcher import render_theme_switcher
 from .textarea import render_textarea
@@ -181,6 +182,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_typer',
     'render_tokenizer',
     'render_theme_switcher',
     'render_textarea',

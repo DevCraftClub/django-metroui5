@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_typer,
     render_tokenizer,
     render_theme_switcher,
     render_textarea,
@@ -602,3 +603,8 @@ class TestDocRole:
         result = render_tokenizer()
         assert '<div' in result
         assert 'data-role="tokenizer"' in result
+
+    def test_typer(self):
+        result = render_typer()
+        assert '<span' in result
+        assert 'data-role="typer"' in result
