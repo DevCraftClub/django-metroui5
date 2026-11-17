@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_ribbon,
     render_resizer,
     render_remark,
     render_radio,
@@ -829,3 +830,9 @@ class TestDocRole:
         result = render_resizer()
         assert '<div' in result
         assert 'data-role="resizer"' in result
+
+
+    def test_doc_ribbon(self):
+        result = render_ribbon()
+        assert '<span' in result
+        assert 'class="ribbon"' in result
