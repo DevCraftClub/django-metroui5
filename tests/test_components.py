@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_listview,
     render_linked_block,
     render_keypad,
     render_image_placeholder,
@@ -488,3 +489,8 @@ class TestDocRole:
         result = render_linked_block()
         assert '<div' in result
         assert 'data-role="linked-block"' in result
+
+    def test_listview(self):
+        result = render_listview()
+        assert '<ul' in result
+        assert 'data-role="listview"' in result

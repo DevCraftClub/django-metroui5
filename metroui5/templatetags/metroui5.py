@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_listview,
     render_linked_block,
     render_keypad,
     render_image_placeholder,
@@ -934,6 +935,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_listview(content="", **kwargs):
+    """Компонент listview."""
+    return mark_safe(render_listview(content, **kwargs))
 
 
 @register.simple_tag
