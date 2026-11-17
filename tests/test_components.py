@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_overlay,
     render_media_player,
     render_master,
     render_lightbox,
@@ -793,3 +794,9 @@ class TestDocRole:
         result = render_media_player()
         assert '<div' in result
         assert 'class="media-player"' in result
+
+
+    def test_doc_overlay(self):
+        result = render_overlay()
+        assert '<div' in result
+        assert 'class="overlay"' in result
