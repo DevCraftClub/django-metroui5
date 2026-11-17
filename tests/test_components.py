@@ -450,6 +450,12 @@ class TestRenderSpinner:
         assert '<input' in result
         assert 'data-role="spinner"' in result
 
+    def test_spinner_tag_is_input(self):
+        from django.template import Context, Template
+        html = Template("{% load metroui5 %}{% metroui5_spinner %}").render(Context())
+        assert "<input" in html
+        assert 'data-role="spinner"' in html
+
     def test_render_spinner_configuration(self):
         result = render_spinner(
             default_value=10,

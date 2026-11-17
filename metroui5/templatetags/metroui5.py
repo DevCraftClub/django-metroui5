@@ -1289,14 +1289,6 @@ def metroui5_loading(**kwargs):
 
 
 @register.simple_tag
-def metroui5_spinner(**kwargs):
-    """Renders MetroUI spinner."""
-    attrs = {"class": "spinner", "data-role": "spinner"}
-    attrs.update(kwargs)
-    return mark_safe(render_tag("div", attrs=attrs, content=""))
-
-
-@register.simple_tag
 def metroui5_stepper(steps, **kwargs):
     """Renders MetroUI stepper."""
     attrs = {"class": "stepper", "data-role": "stepper"}
