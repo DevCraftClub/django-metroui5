@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_gravatar,
     render_github_box,
     render_eval,
     render_cookie_disclaimer,
@@ -665,3 +666,9 @@ class TestDocRole:
         result = render_github_box()
         assert '<div' in result
         assert 'class="github-box"' in result
+
+
+    def test_doc_gravatar(self):
+        result = render_gravatar()
+        assert '<img' in result
+        assert 'data-role="gravatar"' in result
