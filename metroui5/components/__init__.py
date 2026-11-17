@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .resizable_container import render_resizable_container
 from .resizable import render_resizable
 from .remote_table import render_remote_table
 from .remote_dataset import render_remote_dataset
@@ -170,6 +171,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_resizable_container',
     'render_resizable',
     'render_remote_table',
     'render_remote_dataset',

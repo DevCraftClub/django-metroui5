@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_resizable_container,
     render_resizable,
     render_remote_table,
     render_remote_dataset,
@@ -536,3 +537,8 @@ class TestDocRole:
         result = render_resizable()
         assert '<div' in result
         assert 'data-role="resizable"' in result
+
+    def test_resizable_container(self):
+        result = render_resizable_container()
+        assert '<div' in result
+        assert 'data-role="resizable-container"' in result
