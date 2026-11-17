@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .stack_menu import render_stack_menu
 from .splitter import render_splitter
 from .split_button import render_split_button
 from .sorter import render_sorter
@@ -224,6 +225,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_stack_menu',
     'render_splitter',
     'render_split_button',
     'render_sorter',

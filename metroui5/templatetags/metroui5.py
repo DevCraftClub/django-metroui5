@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_stack_menu,
     render_splitter,
     render_split_button,
     render_sorter,
@@ -993,6 +994,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_stack_menu(content="", **kwargs):
+    """Компонент stack-menu."""
+    return mark_safe(render_stack_menu(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_splitter(content="", **kwargs):

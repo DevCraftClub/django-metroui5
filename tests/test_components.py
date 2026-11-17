@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_stack_menu,
     render_splitter,
     render_split_button,
     render_sorter,
@@ -906,3 +907,9 @@ class TestDocRole:
         result = render_splitter()
         assert '<div' in result
         assert 'data-role="splitter"' in result
+
+
+    def test_doc_stack_menu(self):
+        result = render_stack_menu()
+        assert '<div' in result
+        assert 'data-role="stack-menu"' in result
