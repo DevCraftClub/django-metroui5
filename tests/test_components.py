@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_taskbar,
     render_metro_tag,
     render_tabs_material,
     render_t_menu,
@@ -949,3 +950,9 @@ class TestDocRole:
         result = render_metro_tag()
         assert '<span' in result
         assert 'class="tag"' in result
+
+
+    def test_doc_taskbar(self):
+        result = render_taskbar()
+        assert '<div' in result
+        assert 'data-role="task-bar"' in result
