@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .validator import render_validator
 from .v_menu import render_v_menu
 from .treeview import render_treeview
 from .transform_button import render_transform_button
@@ -238,6 +239,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_validator',
     'render_v_menu',
     'render_treeview',
     'render_transform_button',

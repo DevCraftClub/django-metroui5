@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_validator,
     render_v_menu,
     render_treeview,
     render_transform_button,
@@ -1007,6 +1008,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_validator(content="", **kwargs):
+    """Компонент validator."""
+    return mark_safe(render_validator(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_v_menu(content="", **kwargs):

@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_validator,
     render_v_menu,
     render_treeview,
     render_transform_button,
@@ -1005,3 +1006,9 @@ class TestDocRole:
         result = render_v_menu()
         assert '<ul' in result
         assert 'class="v-menu"' in result
+
+
+    def test_doc_validator(self):
+        result = render_validator()
+        assert '<form' in result
+        assert 'data-role="validator"' in result
