@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .working_tree import render_working_tree
 from .wizard import render_wizard
 from .window import render_window
 from .viewport_check import render_viewport_check
@@ -186,6 +187,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_working_tree',
     'render_wizard',
     'render_window',
     'render_viewport_check',
