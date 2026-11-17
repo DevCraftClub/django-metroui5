@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_v_menu,
     render_treeview,
     render_transform_button,
     render_toggle_button,
@@ -998,3 +999,9 @@ class TestDocRole:
         result = render_treeview()
         assert '<ul' in result
         assert 'data-role="treeview"' in result
+
+
+    def test_doc_v_menu(self):
+        result = render_v_menu()
+        assert '<ul' in result
+        assert 'class="v-menu"' in result
