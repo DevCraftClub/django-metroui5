@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_eval,
     render_cookie_disclaimer,
     render_working_tree,
     render_wizard,
@@ -651,3 +652,9 @@ class TestDocRole:
         result = render_cookie_disclaimer()
         assert '<div' in result
         assert 'class="cookie-disclaimer"' in result
+
+
+    def test_doc_eval(self):
+        result = render_eval()
+        assert '<div' in result
+        assert 'data-role="eval"' in result
