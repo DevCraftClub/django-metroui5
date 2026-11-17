@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .video_player import render_video_player
 from .typer import render_typer
 from .tokenizer import render_tokenizer
 from .theme_switcher import render_theme_switcher
@@ -182,6 +183,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_video_player',
     'render_typer',
     'render_tokenizer',
     'render_theme_switcher',

@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_video_player,
     render_typer,
     render_tokenizer,
     render_theme_switcher,
@@ -608,3 +609,8 @@ class TestDocRole:
         result = render_typer()
         assert '<span' in result
         assert 'data-role="typer"' in result
+
+    def test_video_player(self):
+        result = render_video_player()
+        assert '<video' in result
+        assert 'data-role="video-player"' in result

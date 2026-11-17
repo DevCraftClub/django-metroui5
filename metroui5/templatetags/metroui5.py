@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_video_player,
     render_typer,
     render_tokenizer,
     render_textarea,
@@ -952,6 +953,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_video_player(content="", **kwargs):
+    """Компонент video-player."""
+    return mark_safe(render_video_player(content, **kwargs))
 
 
 @register.simple_tag
