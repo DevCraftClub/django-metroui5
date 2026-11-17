@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_keypad,
     render_image_placeholder,
     render_image_box,
     render_hover_box,
@@ -932,6 +933,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_keypad(content="", **kwargs):
+    """Компонент keypad."""
+    return mark_safe(render_keypad(content, **kwargs))
 
 
 @register.simple_tag

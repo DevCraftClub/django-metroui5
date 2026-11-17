@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_keypad,
     render_image_placeholder,
     render_image_box,
     render_hover_box,
@@ -476,3 +477,8 @@ class TestDocRole:
         result = render_image_placeholder()
         assert '<img' in result
         assert 'data-role="image-placeholder"' in result
+
+    def test_keypad(self):
+        result = render_keypad()
+        assert '<input' in result
+        assert 'data-role="keypad"' in result

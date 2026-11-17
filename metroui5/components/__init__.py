@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .keypad import render_keypad
 from .image_placeholder import render_image_placeholder
 from .image_box import render_image_box
 from .hover_box import render_hover_box
@@ -160,6 +161,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_keypad',
     'render_image_placeholder',
     'render_image_box',
     'render_hover_box',
