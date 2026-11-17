@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_hover_box,
     render_gradient_box,
     render_gauge,
     render_countdown,
@@ -929,6 +930,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_hover_box(content="", **kwargs):
+    """Компонент hover-box."""
+    return mark_safe(render_hover_box(content, **kwargs))
 
 
 @register.simple_tag

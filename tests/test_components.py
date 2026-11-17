@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_hover_box,
     render_hint,
     render_gradient_box,
     render_gauge,
@@ -458,3 +459,8 @@ class TestDocRole:
         result = render_hint()
         assert '<button' in result
         assert 'data-role="hint"' in result
+
+    def test_hover_box(self):
+        result = render_hover_box()
+        assert '<div' in result
+        assert 'data-role="hover-box"' in result
