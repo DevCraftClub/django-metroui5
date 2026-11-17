@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_page_control,
     render_overlay,
     render_media_player,
     render_master,
@@ -800,3 +801,9 @@ class TestDocRole:
         result = render_overlay()
         assert '<div' in result
         assert 'class="overlay"' in result
+
+
+    def test_doc_page_control(self):
+        result = render_page_control()
+        assert '<ul' in result
+        assert 'data-role="page-control"' in result

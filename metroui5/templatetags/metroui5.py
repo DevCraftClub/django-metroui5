@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_page_control,
     render_overlay,
     render_media_player,
     render_master,
@@ -978,6 +979,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_page_control(content="", **kwargs):
+    """Компонент page-control."""
+    return mark_safe(render_page_control(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_overlay(content="", **kwargs):

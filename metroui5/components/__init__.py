@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .page_control import render_page_control
 from .overlay import render_overlay
 from .media_player import render_media_player
 from .master import render_master
@@ -209,6 +210,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_page_control',
     'render_overlay',
     'render_media_player',
     'render_master',
