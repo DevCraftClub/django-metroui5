@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_resizable,
     render_remote_table,
     render_remote_dataset,
     render_popover,
@@ -941,6 +942,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_resizable(content="", **kwargs):
+    """Компонент resizable."""
+    return mark_safe(render_resizable(content, **kwargs))
 
 
 @register.simple_tag
