@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_vegas,
     render_validator,
     render_v_menu,
     render_treeview,
@@ -1012,3 +1013,9 @@ class TestDocRole:
         result = render_validator()
         assert '<form' in result
         assert 'data-role="validator"' in result
+
+
+    def test_doc_vegas(self):
+        result = render_vegas()
+        assert '<div' in result
+        assert 'data-role="vegas"' in result
