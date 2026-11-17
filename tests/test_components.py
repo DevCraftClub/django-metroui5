@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_tokenizer,
     render_theme_switcher,
     render_textarea,
     render_tag_input,
@@ -596,3 +597,8 @@ class TestDocRole:
         result = render_theme_switcher()
         assert '<input' in result
         assert 'data-role="theme-switcher"' in result
+
+    def test_tokenizer(self):
+        result = render_tokenizer()
+        assert '<div' in result
+        assert 'data-role="tokenizer"' in result
