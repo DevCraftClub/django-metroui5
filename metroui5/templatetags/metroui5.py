@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_remark,
     render_radio,
     render_page_control,
     render_overlay,
@@ -980,6 +981,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_remark(content="", **kwargs):
+    """Компонент remark."""
+    return mark_safe(render_remark(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_radio(**kwargs):

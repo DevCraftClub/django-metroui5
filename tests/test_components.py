@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_remark,
     render_radio,
     render_page_control,
     render_overlay,
@@ -815,3 +816,9 @@ class TestDocRole:
         assert '<input' in result
         assert 'data-role="radio"' in result
         assert 'type="radio"' in result
+
+
+    def test_doc_remark(self):
+        result = render_remark()
+        assert '<div' in result
+        assert 'class="remark"' in result
