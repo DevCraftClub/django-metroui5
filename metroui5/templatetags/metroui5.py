@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_icon_box,
     render_html_container,
     render_hero,
     render_hamburger,
@@ -964,6 +965,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_icon_box(content="", **kwargs):
+    """Компонент icon-box."""
+    return mark_safe(render_icon_box(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_html_container(content="", **kwargs):

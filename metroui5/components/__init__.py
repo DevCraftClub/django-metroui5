@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .icon_box import render_icon_box
 from .html_container import render_html_container
 from .hero import render_hero
 from .hamburger import render_hamburger
@@ -195,6 +196,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_icon_box',
     'render_html_container',
     'render_hero',
     'render_hamburger',

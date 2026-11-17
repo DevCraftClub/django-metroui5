@@ -11,7 +11,6 @@
 - form | ломающая | тег metroui5_form уже рисует форму Django, смену вызова не делал
 - grid | ломающая | тег metroui5_grid(columns=12) уже есть, смену вызова не делал
 - hotkey | не компонент | это атрибут data-hotkey на чужом элементе
-- icon-box | дописать | нет модуля
 - image-button | дописать | нет модуля
 - image-carousel | дописать | нет модуля
 - image-compare | дописать | нет модуля
