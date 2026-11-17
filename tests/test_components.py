@@ -8,6 +8,7 @@ from metroui5.components import (
     render_tile,
     render_card,
     render_progress,
+    render_tabs,
     render_accordion,
     render_calendar,
     render_dialog,
@@ -302,6 +303,23 @@ class TestRenderProgress:
         """Тест рендеринга progress с цветом"""
         result = render_progress(60, color="success")
         assert 'class="progress progress-success"' in result
+
+    def test_render_progress_small_uses_data_attribute(self):
+        result = render_progress(25, size="small")
+        assert 'data-small="true"' in result
+        assert "progress-small" in result
+
+    def test_render_tabs_uses_targets(self):
+        result = render_tabs([
+            {"title": "Tab 1", "content": "A"},
+            {"title": "Tab 2", "content": "B", "active": True},
+        ])
+        assert result.startswith("<ul")
+        assert 'data-role="tabs"' in result
+        assert 'class="tabs-targets"' in result
+        assert 'href="#tab-0"' in result
+        assert 'id="tab-1"' in result
+        assert "active" in result
 
     def test_render_progress_with_striped(self):
         """Тест рендеринга striped progress"""

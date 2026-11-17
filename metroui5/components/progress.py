@@ -26,6 +26,8 @@ def render_progress(value, max_value=100, color="blue", size="default", **attrs)
 
 	if size != "default":
 		default_attrs["class"] = merge_css_classes(default_attrs["class"], f"progress-{size}")
+	if size == "small":
+		default_attrs["data-small"] = "true"
 
 	# Merge with custom attributes
 	final_attrs = {**default_attrs, **attrs}
