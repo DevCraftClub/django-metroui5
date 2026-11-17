@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_countdown,
     render_table,
     render_tabs,
     render_toolbar,
@@ -430,3 +431,12 @@ class TestRenderSpinner:
         assert 'data-max-value="100"' in result
         assert 'data-label="Quantity"' in result
 
+
+
+class TestDocRole:
+    """Один элемент с data-role из документации."""
+
+    def test_countdown(self):
+        result = render_countdown()
+        assert '<div' in result
+        assert 'data-role="countdown"' in result

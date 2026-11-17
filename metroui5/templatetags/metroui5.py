@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_countdown,
     render_table,
     render_tabs,
     render_toolbar,
@@ -926,6 +927,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_countdown(content="", **kwargs):
+    """Компонент countdown."""
+    return mark_safe(render_countdown(content, **kwargs))
 
 
 @register.simple_tag
