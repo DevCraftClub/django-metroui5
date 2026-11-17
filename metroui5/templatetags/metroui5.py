@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_viewport_check,
     render_video_player,
     render_typer,
     render_tokenizer,
@@ -953,6 +954,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_viewport_check(content="", **kwargs):
+    """Компонент viewport-check."""
+    return mark_safe(render_viewport_check(content, **kwargs))
 
 
 @register.simple_tag
