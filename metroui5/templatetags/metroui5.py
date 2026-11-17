@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_sidenav_counter,
     render_select,
     render_resizable_container,
     render_resizable,
@@ -944,6 +945,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_sidenav_counter(content="", **kwargs):
+    """Компонент sidenav-counter."""
+    return mark_safe(render_sidenav_counter(content, **kwargs))
 
 
 @register.simple_tag
