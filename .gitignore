@@ -11816,3 +11816,12 @@ jspm_packages/
 .parcel-cache
 
 COMPONENT_DEVELOPMENT_GUIDE.md
+
+.code-review-graphignore
+.graphifyignore
+.ai/
+.ai/*
+graphify-out/
+graphify-out/*
+.code-review-graph/
+.code-review-graph/*
