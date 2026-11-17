@@ -2,6 +2,8 @@
 MetroUI Tile Component
 """
 
+from django.utils.html import escape
+
 from .base import SimpleComponent
 
 
@@ -38,8 +40,9 @@ class TileComponent(SimpleComponent):
 		
 		# Separate attributes. icon — именованный аргумент, в attrs его нет.
 		merged = dict(attrs)
-		if icon:
-			merged["icon"] = icon
+		safe_icon = escape(icon) if icon else None
+		if safe_icon:
+			merged["icon"] = safe_icon
 		component_attrs, standard_attrs, cls_attrs = self.separate_attributes(merged)
 		
 		# Build CSS classes
@@ -58,8 +61,8 @@ class TileComponent(SimpleComponent):
 		
 		# Build tile content
 		icon_html = ""
-		if icon:
-			icon_class = icon if str(icon).startswith("mif-") else f"mif-{icon}"
+		if safe_icon:
+			icon_class = safe_icon if str(safe_icon).startswith("mif-") else f"mif-{safe_icon}"
 			icon_html = f"<span class='{icon_class} icon'></span>"
 		tile_content = icon_html + f"<h3 class='tile-title'>{title}</h3>"
 		if content:

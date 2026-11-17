@@ -227,6 +227,11 @@ class TestRenderTile:
         assert 'data-icon="home"' in result
         assert "mif-home" in result
 
+    def test_render_tile_icon_quote_is_escaped(self):
+        result = render_tile("Test", icon="a'b")
+        assert "mif-a&#x27;b" in result
+        assert "a'b" not in result
+
     def test_render_tile_with_content(self):
         """Тест рендеринга tile с содержимым"""
         result = render_tile("Title", content="Additional content")
