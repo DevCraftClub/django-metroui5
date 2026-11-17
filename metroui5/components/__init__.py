@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .media_player import render_media_player
 from .master import render_master
 from .lightbox import render_lightbox
 from .input_mask import render_input_mask
@@ -207,6 +208,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_media_player',
     'render_master',
     'render_lightbox',
     'render_input_mask',

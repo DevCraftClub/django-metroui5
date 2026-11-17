@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_media_player,
     render_master,
     render_lightbox,
     render_input_mask,
@@ -786,3 +787,9 @@ class TestDocRole:
         result = render_master()
         assert '<div' in result
         assert 'data-role="master"' in result
+
+
+    def test_doc_media_player(self):
+        result = render_media_player()
+        assert '<div' in result
+        assert 'class="media-player"' in result
