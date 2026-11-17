@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_html_container,
     render_hero,
     render_hamburger,
     render_h_menu,
@@ -693,3 +694,9 @@ class TestDocRole:
         result = render_hero()
         assert '<div' in result
         assert 'class="hero"' in result
+
+
+    def test_doc_html_container(self):
+        result = render_html_container()
+        assert '<div' in result
+        assert 'data-role="html-container"' in result
