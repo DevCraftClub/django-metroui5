@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_remote_table,
     render_remote_dataset,
     render_popover,
     render_package_manager,
@@ -940,6 +941,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_remote_table(content="", **kwargs):
+    """Компонент remote-table."""
+    return mark_safe(render_remote_table(content, **kwargs))
 
 
 @register.simple_tag

@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_remote_table,
     render_remote_dataset,
     render_popover,
     render_package_manager,
@@ -524,3 +525,8 @@ class TestDocRole:
         result = render_remote_dataset()
         assert '<div' in result
         assert 'data-role="remote-dataset"' in result
+
+    def test_remote_table(self):
+        result = render_remote_table()
+        assert '<div' in result
+        assert 'data-role="remote-table"' in result
