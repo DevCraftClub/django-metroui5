@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_gauge,
     render_countdown,
     render_table,
     render_tabs,
@@ -440,3 +441,8 @@ class TestDocRole:
         result = render_countdown()
         assert '<div' in result
         assert 'data-role="countdown"' in result
+
+    def test_gauge(self):
+        result = render_gauge()
+        assert '<div' in result
+        assert 'data-role="gauge"' in result
