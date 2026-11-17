@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_popover,
     render_package_manager,
     render_navview,
     render_marquee,
@@ -512,3 +513,8 @@ class TestDocRole:
         result = render_package_manager()
         assert '<div' in result
         assert 'data-role="package-manager"' in result
+
+    def test_popover(self):
+        result = render_popover()
+        assert '<button' in result
+        assert 'data-role="popover"' in result
