@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .lightbox import render_lightbox
 from .input_mask import render_input_mask
 from .info_panel import render_info_panel
 from .info_button import render_info_button
@@ -205,6 +206,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_lightbox',
     'render_input_mask',
     'render_info_panel',
     'render_info_button',
