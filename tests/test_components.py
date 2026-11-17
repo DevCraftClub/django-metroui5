@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_github_box,
     render_eval,
     render_cookie_disclaimer,
     render_working_tree,
@@ -658,3 +659,9 @@ class TestDocRole:
         result = render_eval()
         assert '<div' in result
         assert 'data-role="eval"' in result
+
+
+    def test_doc_github_box(self):
+        result = render_github_box()
+        assert '<div' in result
+        assert 'class="github-box"' in result

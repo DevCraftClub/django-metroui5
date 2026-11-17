@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_github_box,
     render_eval,
     render_cookie_disclaimer,
     render_working_tree,
@@ -958,6 +959,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_github_box(content="", **kwargs):
+    """Компонент github-box."""
+    return mark_safe(render_github_box(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_eval(content="", **kwargs):
