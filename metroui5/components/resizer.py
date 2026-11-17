@@ -45,5 +45,13 @@ _resizer_component = ResizerComponent()
 
 
 def render_resizer(content="", **attrs):
-	"""Возвращает div для resizer."""
+	"""
+	Возвращает div для resizer.
+	Example:
+		render_resizer()
+
+	Empty or invalid:
+		`render_resizer()` returns `<div data-role="resizer"></div>`.
+
+	"""
 	return _resizer_component.render(content, **attrs)

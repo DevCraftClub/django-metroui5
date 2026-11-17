@@ -249,5 +249,11 @@ def render_card(header=None, content=None, footer=None, **attrs):
 		References:
 			.. _MetroUI Cards: https://v5.metroui.org.ua/components/cards/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_card()
+
+	Empty or invalid:
+		`render_card()` returns `<div class="card"><div class="card-content"></div></div>`.
+
 	"""
 	return _card_component.render(header, content, footer, **attrs)

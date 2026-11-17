@@ -57,5 +57,13 @@ _page_control_component = PageControlComponent()
 
 
 def render_page_control(content="", **attrs):
-	"""Возвращает ul для page-control."""
+	"""
+	Возвращает ul для page-control.
+	Example:
+		render_page_control()
+
+	Empty or invalid:
+		`render_page_control()` returns `<ul data-role="page-control"></ul>`.
+
+	"""
 	return _page_control_component.render(content, **attrs)

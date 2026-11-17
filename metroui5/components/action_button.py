@@ -170,7 +170,15 @@ def render_action_button(actions, main_icon="mif-plus", **attrs):
 		
 	Returns:
 		str: Rendered HTML div element with action button functionality
-		
+
+	Example:
+		render_action_button([{"icon": "mif-share", "href": "/share"}])
+
+	Empty or invalid:
+		render_action_button([]) returns the main plus button and an empty
+		`<ul class="actions"></ul>` inside the action-button div.
+		None raises TypeError. The function does not catch it.
+
 	References:
 		.. _MetroUI Action Button: https://v5.metroui.org.ua/components/action-button/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/

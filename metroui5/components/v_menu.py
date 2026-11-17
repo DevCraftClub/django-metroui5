@@ -43,5 +43,13 @@ _v_menu_component = VMenuComponent()
 
 
 def render_v_menu(content="", **attrs):
-	"""Возвращает ul для v-menu."""
+	"""
+	Возвращает ul для v-menu.
+	Example:
+		render_v_menu()
+
+	Empty or invalid:
+		`render_v_menu()` returns `<ul class="v-menu"></ul>`.
+
+	"""
 	return _v_menu_component.render(content, **attrs)

@@ -43,5 +43,13 @@ _media_player_component = MediaPlayerComponent()
 
 
 def render_media_player(content="", **attrs):
-	"""Возвращает div для media-player."""
+	"""
+	Возвращает div для media-player.
+	Example:
+		render_media_player()
+
+	Empty or invalid:
+		`render_media_player()` returns `<div class="media-player"></div>`.
+
+	"""
 	return _media_player_component.render(content, **attrs)

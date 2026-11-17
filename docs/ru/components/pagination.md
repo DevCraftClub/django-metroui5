@@ -600,3 +600,16 @@ function navigateToPage(page) {
 - [Списки](lists.md) - Для контента списков с пагинацией
 - [Навигация](navigation.md) - Для навигации между страницами
 - [Карточки](cards.md) - Для макетов карточек с пагинацией
+
+
+## metroui5_pagination
+
+```python
+render_pagination('Text', ['One'])
+```
+
+Пустое или неверное значение: `render_pagination('Text', ['One'])` вызывает TypeError: '>' not supported between instances of 'str' and 'int'. Пустой вызов вызывает TypeError: '>' not supported between instances of 'str' and 'int'.
+
+```django
+{% metroui5_pagination current_page="Text" total_pages %}
+```

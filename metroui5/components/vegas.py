@@ -62,5 +62,13 @@ _vegas_component = VegasComponent()
 
 
 def render_vegas(content="", **attrs):
-	"""Возвращает div для vegas."""
+	"""
+	Возвращает div для vegas.
+	Example:
+		render_vegas()
+
+	Empty or invalid:
+		`render_vegas()` returns `<div data-role="vegas"></div>`.
+
+	"""
 	return _vegas_component.render(content, **attrs)

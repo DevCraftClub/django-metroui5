@@ -43,5 +43,13 @@ _info_panel_component = InfoPanelComponent()
 
 
 def render_info_panel(content="", **attrs):
-	"""Возвращает div для info-panel."""
+	"""
+	Возвращает div для info-panel.
+	Example:
+		render_info_panel()
+
+	Empty or invalid:
+		`render_info_panel()` returns `<div class="info-panel"></div>`.
+
+	"""
 	return _info_panel_component.render(content, **attrs)

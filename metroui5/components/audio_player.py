@@ -192,5 +192,11 @@ def render_audio_player(src="", **attrs):
 	References:
 		.. _MetroUI Audio Player: https://v5.metroui.org.ua/components/audio-player/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_audio_player()
+
+	Empty or invalid:
+		`render_audio_player()` returns `<audio class="" data-role="audio-player"></audio>`.
+
 	"""
 	return _audio_player_component.render(src, **attrs)

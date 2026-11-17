@@ -43,5 +43,13 @@ _hero_component = HeroComponent()
 
 
 def render_hero(content="", **attrs):
-	"""Возвращает div для hero."""
+	"""
+	Возвращает div для hero.
+	Example:
+		render_hero()
+
+	Empty or invalid:
+		`render_hero()` returns `<div class="hero"></div>`.
+
+	"""
 	return _hero_component.render(content, **attrs)

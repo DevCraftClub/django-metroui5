@@ -88,5 +88,13 @@ _remote_table = RemoteTableComponent()
 
 
 def render_remote_table(content="", **attrs):
-	"""Возвращает разметку с data-role=\"remote-table\"."""
+	"""
+	Возвращает разметку с data-role=\"remote-table\".
+	Example:
+		render_remote_table()
+
+	Empty or invalid:
+		`render_remote_table()` returns `<div data-role="remote-table"></div>`.
+
+	"""
 	return _remote_table.render(content=content, **attrs)

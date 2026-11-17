@@ -356,6 +356,12 @@ def render_d_menu(items=None, **attrs):
     References:
         .. _MetroUI D-Menu: https://v5.metroui.org.ua/components/d-menu/
         .. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_d_menu()
+
+	Empty or invalid:
+		`render_d_menu()` returns `<ul class="d-menu"></ul>`.
+
     """
     return _d_menu_component.render(items=items, **attrs)
 

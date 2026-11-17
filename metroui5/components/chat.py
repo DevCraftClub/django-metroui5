@@ -253,5 +253,11 @@ def render_chat(messages=None, **attrs):
 		References:
 			.. _MetroUI Chat: https://v5.metroui.org.ua/components/chat/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_chat()
+
+	Empty or invalid:
+		`render_chat()` returns `<div class="chat" id="chat-789d3d5a" data-role="chat"></div>`. An empty call returns `<div class="chat" id="chat-e6e07fed" data-role="chat"></div>`.
+
 	"""
 	return _chat_component.render(messages, **attrs)

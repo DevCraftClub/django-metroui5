@@ -43,5 +43,13 @@ _ribbon_component = RibbonComponent()
 
 
 def render_ribbon(content="", **attrs):
-	"""Возвращает span для ribbon."""
+	"""
+	Возвращает span для ribbon.
+	Example:
+		render_ribbon()
+
+	Empty or invalid:
+		`render_ribbon()` returns `<span class="ribbon"></span>`.
+
+	"""
 	return _ribbon_component.render(content, **attrs)

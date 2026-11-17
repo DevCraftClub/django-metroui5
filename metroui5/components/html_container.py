@@ -50,5 +50,13 @@ _html_container_component = HtmlContainerComponent()
 
 
 def render_html_container(content="", **attrs):
-	"""Возвращает div для html-container."""
+	"""
+	Возвращает div для html-container.
+	Example:
+		render_html_container()
+
+	Empty or invalid:
+		`render_html_container()` returns `<div data-role="html-container"></div>`.
+
+	"""
 	return _html_container_component.render(content, **attrs)

@@ -45,5 +45,13 @@ _t_menu_component = TMenuComponent()
 
 
 def render_t_menu(content="", **attrs):
-	"""Возвращает ul для t-menu."""
+	"""
+	Возвращает ul для t-menu.
+	Example:
+		render_t_menu()
+
+	Empty or invalid:
+		`render_t_menu()` returns `<ul class="t-menu"></ul>`.
+
+	"""
 	return _t_menu_component.render(content, **attrs)

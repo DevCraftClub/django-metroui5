@@ -13,6 +13,12 @@ def render_modal(title, content, **attrs):
 		title: Modal title
 		content: Modal content
 		**attrs: Additional HTML attributes
+	Example:
+		render_modal('Text', 'Text')
+
+	Empty or invalid:
+		`render_modal('Text', 'Text')` returns `<div class="modal" data-role="modal"><div class='modal-title'>Text</div><div class='modal-content'>Text</div></div>`. An empty call returns `<div class="modal" data-role="modal"><div class='modal-title'></div><div class='modal-content'></div></div>`.
+
 	"""
 	default_attrs = {
 		"class": "modal",

@@ -13,6 +13,12 @@ def render_panel(title=None, content=None, **attrs):
 		title: Panel title
 		content: Panel content
 		**attrs: Additional HTML attributes
+	Example:
+		render_panel()
+
+	Empty or invalid:
+		`render_panel()` returns `<div class="panel" data-role="panel"><div class="panel-content"></div></div>`.
+
 	"""
 	default_attrs = {
 		"class": "panel",

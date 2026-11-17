@@ -53,5 +53,13 @@ _typer = TyperComponent()
 
 
 def render_typer(content="", **attrs):
-	"""Возвращает разметку с data-role=\"typer\"."""
+	"""
+	Возвращает разметку с data-role=\"typer\".
+	Example:
+		render_typer()
+
+	Empty or invalid:
+		`render_typer()` returns `<span data-role="typer"></span>`.
+
+	"""
 	return _typer.render(content=content, **attrs)

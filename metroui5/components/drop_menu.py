@@ -211,5 +211,11 @@ def render_drop_menu(items=None, button_text="Menu", **attrs):
         items: List of menu items (list of strings or dicts)
         button_text: Text for the toggle button (string, default: "Menu")
         **attrs: Component attributes (see DropMenuComponent.render for details)
+	Example:
+		render_drop_menu()
+
+	Empty or invalid:
+		`render_drop_menu()` returns `<button class="button menu-toggle">Menu</button><ul data-role="dropmenu" id="dropmenu-eea68ab9"></ul>`. An empty call returns `<button class="button menu-toggle">Menu</button><ul data-role="dropmenu" id="dropmenu-5d7ff4ec"></ul>`.
+
     """
     return _drop_menu_component.render(items=items, button_text=button_text, **attrs)

@@ -74,5 +74,13 @@ _video_player = VideoPlayerComponent()
 
 
 def render_video_player(content="", **attrs):
-	"""Возвращает разметку с data-role=\"video-player\"."""
+	"""
+	Возвращает разметку с data-role=\"video-player\".
+	Example:
+		render_video_player()
+
+	Empty or invalid:
+		`render_video_player()` returns `<video data-role="video-player"></video>`.
+
+	"""
 	return _video_player.render(content=content, **attrs)

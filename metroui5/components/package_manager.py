@@ -46,5 +46,13 @@ _package_manager = PackageManagerComponent()
 
 
 def render_package_manager(content="", **attrs):
-	"""Возвращает разметку с data-role=\"package-manager\"."""
+	"""
+	Возвращает разметку с data-role=\"package-manager\".
+	Example:
+		render_package_manager()
+
+	Empty or invalid:
+		`render_package_manager()` returns `<div data-role="package-manager"></div>`.
+
+	"""
 	return _package_manager.render(content=content, **attrs)

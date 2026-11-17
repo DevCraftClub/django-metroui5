@@ -43,5 +43,13 @@ _info_button_component = InfoButtonComponent()
 
 
 def render_info_button(content="", **attrs):
-	"""Возвращает button для info-button."""
+	"""
+	Возвращает button для info-button.
+	Example:
+		render_info_button()
+
+	Empty or invalid:
+		`render_info_button()` returns `<button class="info-button"></button>`.
+
+	"""
 	return _info_button_component.render(content, **attrs)

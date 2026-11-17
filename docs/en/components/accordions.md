@@ -2,6 +2,22 @@
 
 MetroUI5 Django provides a flexible accordion component system for creating collapsible content sections that can be expanded and collapsed independently.
 
+## Call
+
+```python
+from metroui5.components import render_accordion
+
+render_accordion([{"title": "One", "content": "Text"}])
+```
+
+An empty list returns `<div class="accordion" id="accordion-component" data-role="accordion"></div>`. `None` raises `TypeError`.
+
+In a template, pass the same list as `items`:
+
+```django
+{% metroui5_accordion items %}
+```
+
 ## Basic Usage
 
 ```python

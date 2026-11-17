@@ -58,5 +58,13 @@ _stepper = StepperComponent()
 
 
 def render_stepper(content="", **attrs):
-	"""Возвращает разметку с data-role=\"stepper\"."""
+	"""
+	Возвращает разметку с data-role=\"stepper\".
+	Example:
+		render_stepper()
+
+	Empty or invalid:
+		`render_stepper()` returns `<div data-role="stepper"></div>`.
+
+	"""
 	return _stepper.render(content=content, **attrs)

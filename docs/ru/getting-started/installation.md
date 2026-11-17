@@ -278,3 +278,4 @@ MetroUI5 может конфликтовать с Bootstrap, Foundation и др�
 2. Ознакомьтесь с [примерами](examples.md)
 3. Изучите доступные [компоненты](../components/)
 4. Изучите [API справочник](../api-reference/)
+5. Вставьте первый блок: [аккордеон для сборки страницы](../for-users/accordions.md) и [аккордеон для разработчика](../components/accordions.md)

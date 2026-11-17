@@ -150,5 +150,11 @@ def render_cloak(**attrs):
 		References:
 			.. _MetroUI Cloak: https://v5.metroui.org.ua/components/cloak/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_cloak()
+
+	Empty or invalid:
+		`render_cloak()` returns `<div class="cloak" id="cloak-component"></div>`.
+
 	"""
 	return _cloak_component.render(**attrs)

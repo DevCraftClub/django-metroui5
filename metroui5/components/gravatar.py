@@ -49,5 +49,13 @@ _gravatar_component = GravatarComponent()
 
 
 def render_gravatar(**attrs):
-	"""Возвращает img для gravatar."""
+	"""
+	Возвращает img для gravatar.
+	Example:
+		render_gravatar()
+
+	Empty or invalid:
+		`render_gravatar()` returns `<img data-role="gravatar">`.
+
+	"""
 	return _gravatar_component.render(**attrs)

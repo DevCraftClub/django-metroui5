@@ -13,6 +13,12 @@ def render_list(items, list_type="ul", **attrs):
 		items: List of items
 		list_type: List type (ul, ol)
 		**attrs: Additional HTML attributes
+	Example:
+		render_list([{'text': 'One', 'href': '/one'}])
+
+	Empty or invalid:
+		`render_list([{'text': 'One', 'href': '/one'}])` returns `<ul class="list" data-role="list"><li><a href="/one">One</a></li></ul>`. An empty call returns `<ul class="list" data-role="list"></ul>`.
+
 	"""
 	default_attrs = {
 		"class": "list",

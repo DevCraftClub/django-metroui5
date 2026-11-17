@@ -112,6 +112,12 @@ def render_input(input_type="text", placeholder="", **attrs):
 			- multiple: Allow multiple values (boolean)
 			- accept: File types to accept (string)
 			- capture: Camera capture mode (string)
+	Example:
+		render_input()
+
+	Empty or invalid:
+		`render_input()` returns `<input type="text" data-role="input, input-common" class="input">`.
+
 	"""
 	# Extract MetroUI-specific attributes
 	metro_attrs = {}

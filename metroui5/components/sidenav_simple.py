@@ -50,5 +50,13 @@ _sidenav_simple = SidenavSimpleComponent()
 
 
 def render_sidenav_simple(content="", **attrs):
-	"""Возвращает разметку с data-role=\"sidenav-simple\"."""
+	"""
+	Возвращает разметку с data-role=\"sidenav-simple\".
+	Example:
+		render_sidenav_simple()
+
+	Empty or invalid:
+		`render_sidenav_simple()` returns `<ul data-role="sidenav-simple"></ul>`.
+
+	"""
 	return _sidenav_simple.render(content=content, **attrs)

@@ -45,5 +45,13 @@ _swipe_component = SwipeComponent()
 
 
 def render_swipe(content="", **attrs):
-	"""Возвращает div для swipe."""
+	"""
+	Возвращает div для swipe.
+	Example:
+		render_swipe()
+
+	Empty or invalid:
+		`render_swipe()` returns `<div data-role="swipe"></div>`.
+
+	"""
 	return _swipe_component.render(content, **attrs)

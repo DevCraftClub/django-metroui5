@@ -320,5 +320,11 @@ def render_color_selector(**attrs):
 					onSelectColor="handleColorSelect()",
 					onColorSelectorCreate="onColorSelectorCreate()"
 				)
+	Example:
+		render_color_selector()
+
+	Empty or invalid:
+		`render_color_selector()` returns `<div class="" id="color-selector-component" data-role="color-selector"></div>`.
+
 	"""
 	return _color_selector_component.render(**attrs)

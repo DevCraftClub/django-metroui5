@@ -60,6 +60,12 @@ def render_double_slider(**attrs):
             - cls_min_max: Custom class for the min/max labels container (string)
             - cls_min: Custom class for the minimum label (string)
             - cls_max: Custom class for the maximum label (string)
+	Example:
+		render_double_slider()
+
+	Empty or invalid:
+		`render_double_slider()` returns `<input data-role="double-slider"></input>`.
+
     """
     # Build data attributes only - MetroUI will handle CSS classes and rendering
     data_attrs = {

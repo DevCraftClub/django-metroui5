@@ -43,5 +43,13 @@ _hamburger_component = HamburgerComponent()
 
 
 def render_hamburger(content="", **attrs):
-	"""Возвращает button для hamburger."""
+	"""
+	Возвращает button для hamburger.
+	Example:
+		render_hamburger()
+
+	Empty or invalid:
+		`render_hamburger()` returns `<button class="hamburger"></button>`.
+
+	"""
 	return _hamburger_component.render(content, **attrs)

@@ -197,6 +197,12 @@ def render_button(content="", variant="default", size="default", shape=None, col
 	References:
 		.. _MetroUI Button: https://v5.metroui.org.ua/components/button/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_button()
+
+	Empty or invalid:
+		`render_button()` returns `<button class="button" type="button"></button>`.
+
 	"""
 	return _button_component.render(content, variant, size, shape, color, outline, flat, 
 								   link, shadow, shift, loading, disabled, icon, icon_position, **attrs)

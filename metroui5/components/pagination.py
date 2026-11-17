@@ -13,6 +13,12 @@ def render_pagination(current_page, total_pages, **attrs):
 		current_page: Current page number
 		total_pages: Total number of pages
 		**attrs: Additional HTML attributes
+	Example:
+		render_pagination('Text', ['One'])
+
+	Empty or invalid:
+		`render_pagination('Text', ['One'])` raises TypeError: '>' not supported between instances of 'str' and 'int'. An empty call raises TypeError: '>' not supported between instances of 'str' and 'int'.
+
 	"""
 	default_attrs = {
 		"class": "pagination",

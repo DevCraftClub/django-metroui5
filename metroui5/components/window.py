@@ -88,5 +88,13 @@ _window = WindowComponent()
 
 
 def render_window(content="", **attrs):
-	"""Возвращает разметку с data-role=\"window\"."""
+	"""
+	Возвращает разметку с data-role=\"window\".
+	Example:
+		render_window()
+
+	Empty or invalid:
+		`render_window()` returns `<div data-role="window"></div>`.
+
+	"""
 	return _window.render(content=content, **attrs)

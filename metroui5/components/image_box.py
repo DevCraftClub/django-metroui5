@@ -50,5 +50,13 @@ _image_box = ImageBoxComponent()
 
 
 def render_image_box(content="", **attrs):
-	"""Возвращает разметку с data-role=\"image-box\"."""
+	"""
+	Возвращает разметку с data-role=\"image-box\".
+	Example:
+		render_image_box()
+
+	Empty or invalid:
+		`render_image_box()` returns `<div data-role="image-box"></div>`.
+
+	"""
 	return _image_box.render(content=content, **attrs)

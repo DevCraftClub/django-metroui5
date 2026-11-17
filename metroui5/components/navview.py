@@ -55,5 +55,13 @@ _navview = NavviewComponent()
 
 
 def render_navview(content="", **attrs):
-	"""Возвращает разметку с data-role=\"navview\"."""
+	"""
+	Возвращает разметку с data-role=\"navview\".
+	Example:
+		render_navview()
+
+	Empty or invalid:
+		`render_navview()` returns `<div data-role="navview"></div>`.
+
+	"""
 	return _navview.render(content=content, **attrs)

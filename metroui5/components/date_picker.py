@@ -242,5 +242,11 @@ def render_date_picker(**attrs):
     
     Args:
         **attrs: Component attributes (see DatePickerComponent.render for details)
+	Example:
+		render_date_picker()
+
+	Empty or invalid:
+		`render_date_picker()` returns `<input class="date-picker" type="text" data-role="date-picker">`.
+
     """
     return _date_picker_component.render(**attrs)

@@ -36,6 +36,12 @@ def render_donut(**attrs):
             
             # CSS Classes
             - cls_donut: Additional CSS class for donut element (string)
+	Example:
+		render_donut()
+
+	Empty or invalid:
+		`render_donut()` returns `<div data-role="donut"></div>`.
+
     """
     # Build data attributes only - MetroUI will handle CSS classes and rendering
     data_attrs = {

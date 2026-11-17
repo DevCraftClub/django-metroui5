@@ -110,7 +110,15 @@ def render_activity(**attrs):
 		
 	Returns:
 		str: Rendered HTML div element with activity indicator functionality
-		
+
+	Example:
+		render_activity(type="ring")
+
+	Empty or invalid:
+		render_activity() returns `<div class="activity" data-role="activity"></div>`.
+		render_activity(type="nope") returns the same div with `data-type="nope"`.
+		It does not raise.
+
 	References:
 		.. _MetroUI Activity: https://v5.metroui.org.ua/components/activity/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/

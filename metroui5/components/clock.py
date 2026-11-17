@@ -159,5 +159,11 @@ def render_clock(**attrs):
 		References:
 			.. _MetroUI Clock: https://v5.metroui.org.ua/components/clock/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_clock()
+
+	Empty or invalid:
+		`render_clock()` returns `<div class="clock" id="clock-component" data-role="clock"></div>`.
+
 	"""
 	return _clock_component.render(**attrs)

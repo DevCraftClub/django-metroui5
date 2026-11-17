@@ -50,5 +50,13 @@ _eval_component = EvalComponent()
 
 
 def render_eval(content="", **attrs):
-	"""Возвращает div для eval."""
+	"""
+	Возвращает div для eval.
+	Example:
+		render_eval()
+
+	Empty or invalid:
+		`render_eval()` returns `<div data-role="eval"></div>`.
+
+	"""
 	return _eval_component.render(content, **attrs)

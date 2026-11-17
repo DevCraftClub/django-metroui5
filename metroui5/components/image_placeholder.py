@@ -51,5 +51,13 @@ _image_placeholder = ImagePlaceholderComponent()
 
 
 def render_image_placeholder(content="", **attrs):
-	"""Возвращает разметку с data-role=\"image-placeholder\"."""
+	"""
+	Возвращает разметку с data-role=\"image-placeholder\".
+	Example:
+		render_image_placeholder()
+
+	Empty or invalid:
+		`render_image_placeholder()` returns `<img data-role="image-placeholder">`.
+
+	"""
 	return _image_placeholder.render(content=content, **attrs)

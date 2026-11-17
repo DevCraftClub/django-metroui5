@@ -43,5 +43,13 @@ _h_menu_component = HMenuComponent()
 
 
 def render_h_menu(content="", **attrs):
-	"""Возвращает ul для h-menu."""
+	"""
+	Возвращает ul для h-menu.
+	Example:
+		render_h_menu()
+
+	Empty or invalid:
+		`render_h_menu()` returns `<ul class="h-menu"></ul>`.
+
+	"""
 	return _h_menu_component.render(content, **attrs)

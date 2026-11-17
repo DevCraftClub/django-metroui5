@@ -37,6 +37,12 @@ def render_double_select_box(left_options=None, right_options=None, **attrs):
             - cls_move_left_all_button: Additional CSS class for the move all left button (string)
             - cls_list_left: Additional CSS class for the left list (string)
             - cls_list_right: Additional CSS class for the right list (string)
+	Example:
+		render_double_select_box()
+
+	Empty or invalid:
+		`render_double_select_box()` returns `<div data-role="double-select-box"><select></select><select></select></div>`.
+
     """
     # Build data attributes only - MetroUI will handle CSS classes and rendering
     data_attrs = {

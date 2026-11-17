@@ -45,5 +45,13 @@ _working_tree = WorkingTreeComponent()
 
 
 def render_working_tree(content="", **attrs):
-	"""Возвращает разметку с data-role=\"working-tree\"."""
+	"""
+	Возвращает разметку с data-role=\"working-tree\".
+	Example:
+		render_working_tree()
+
+	Empty or invalid:
+		`render_working_tree()` returns `<ul data-role="working-tree"></ul>`.
+
+	"""
 	return _working_tree.render(content=content, **attrs)

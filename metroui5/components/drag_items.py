@@ -35,6 +35,12 @@ def render_drag_items(items=None, **attrs):
             # CSS Classes
             - cls_drag_item_avatar: Additional CSS class for drag avatar (string)
             - cls_drag_item: Additional CSS class for drag item (string)
+	Example:
+		render_drag_items()
+
+	Empty or invalid:
+		`render_drag_items()` returns `<ul data-role="drag-items"></ul>`.
+
     """
     # Build data attributes only - MetroUI will handle CSS classes and rendering
     data_attrs = {

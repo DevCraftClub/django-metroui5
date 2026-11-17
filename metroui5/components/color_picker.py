@@ -158,5 +158,11 @@ def render_color_picker(**attrs):
 				onColorSelected="onColorSelected()",
 				onColorPickerCreate="onColorPickerCreate()"
 			)
+	Example:
+		render_color_picker()
+
+	Empty or invalid:
+		`render_color_picker()` returns `<input class="" type="text" data-role="color-picker" id="color-picker-component"></input>`.
+
 	"""
 	return _color_picker_component.render(**attrs)

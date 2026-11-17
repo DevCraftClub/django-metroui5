@@ -539,3 +539,16 @@ function filterByBadge(badgeType) {
 - [Навигация](navigation.md) - Для элементов навигации со значками
 - [Карточки](cards.md) - Для карточек с заголовками значков
 - [Таблицы](tables.md) - Для ячеек таблиц с индикаторами значков
+
+
+## metroui5_badge
+
+```python
+render_badge('Text')
+```
+
+Пустое или неверное значение: `render_badge('Text')` даёт `<span class="badge">Text</span>`. Пустой вызов даёт `<span class="badge"></span>`.
+
+```django
+{% metroui5_badge content="Text" %}
+```

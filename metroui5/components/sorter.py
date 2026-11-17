@@ -56,5 +56,13 @@ _sorter_component = SorterComponent()
 
 
 def render_sorter(content="", **attrs):
-	"""Возвращает ul для sorter."""
+	"""
+	Возвращает ul для sorter.
+	Example:
+		render_sorter()
+
+	Empty or invalid:
+		`render_sorter()` returns `<ul data-role="sorter"></ul>`.
+
+	"""
 	return _sorter_component.render(content, **attrs)

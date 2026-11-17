@@ -30,6 +30,12 @@ def render_draggable(content="", **attrs):
             - on_drag_stop: Callback function triggered when dragging stops (string)
             - on_drag_move: Callback function triggered during dragging movement (string)
             - on_draggable_create: Callback function triggered when the draggable component is created (string)
+	Example:
+		render_draggable()
+
+	Empty or invalid:
+		`render_draggable()` returns `<div data-role="draggable"></div>`.
+
     """
     # Build data attributes only - MetroUI will handle CSS classes and rendering
     data_attrs = {

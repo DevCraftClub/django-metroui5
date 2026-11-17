@@ -167,7 +167,15 @@ def render_accordion(items, **attrs):
 		
 	Returns:
 		str: Rendered HTML div element with accordion functionality
-		
+
+	Example:
+		render_accordion([{"title": "One", "content": "Text"}])
+
+	Empty or invalid:
+		render_accordion([]) returns
+		`<div class="accordion" id="accordion-component" data-role="accordion"></div>`.
+		None raises TypeError. The function does not catch it.
+
 	References:
 		.. _MetroUI Accordion: https://v5.metroui.org.ua/components/accordion/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/

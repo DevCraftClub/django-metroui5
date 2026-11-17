@@ -79,5 +79,13 @@ _timepicker_component = TimepickerComponent()
 
 
 def render_timepicker(**attrs):
-	"""Возвращает input для timepicker."""
+	"""
+	Возвращает input для timepicker.
+	Example:
+		render_timepicker()
+
+	Empty or invalid:
+		`render_timepicker()` returns `<input data-role="time-picker">`.
+
+	"""
 	return _timepicker_component.render(**attrs)

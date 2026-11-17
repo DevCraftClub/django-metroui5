@@ -12,6 +12,12 @@ def render_toolbar(items, **attrs):
 	Args:
 		items: List of toolbar items
 		**attrs: Additional HTML attributes
+	Example:
+		render_toolbar([{'text': 'One', 'href': '/one'}])
+
+	Empty or invalid:
+		`render_toolbar([{'text': 'One', 'href': '/one'}])` returns `<ul class="toolbar" data-role="toolbar"><li><a href="/one">One</a></li></ul>`. An empty call returns `<ul class="toolbar" data-role="toolbar"></ul>`.
+
 	"""
 	default_attrs = {
 		"class": "toolbar",

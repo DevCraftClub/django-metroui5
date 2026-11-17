@@ -100,5 +100,11 @@ def render_bar3d(**attrs):
 	References:
 		.. _MetroUI Bar3d: https://v5.metroui.org.ua/components/bar3d/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_bar3d()
+
+	Empty or invalid:
+		`render_bar3d()` returns `<div class="bar3d" data-role="bar3d" id="bar3d-component"></div>`.
+
 	"""
 	return _bar3d_component.render(**attrs)

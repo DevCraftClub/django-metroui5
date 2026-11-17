@@ -304,3 +304,16 @@ METROUI5 = {
 
 MetroUI 5 автоматически обрабатывает переключение тем через компонент `theme-switcher`. При изменении темы автоматически
 добавляется/убирается класс `.dark-side` к указанному target элементу.
+
+
+## metroui5_theme_switcher
+
+```python
+render_theme_switcher()
+```
+
+Пустое или неверное значение: `render_theme_switcher()` даёт `<input data-role="theme-switcher">`.
+
+```django
+{% metroui5_theme_switcher %}
+```

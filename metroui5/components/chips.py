@@ -169,5 +169,11 @@ def render_chips(**attrs):
 		References:
 			.. _MetroUI Chips: https://v5.metroui.org.ua/components/chips/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_chips()
+
+	Empty or invalid:
+		`render_chips()` returns `<div class="chip" id="chips-component"><div class="label">Chip</div></div>`.
+
 	"""
 	return _chips_component.render(**attrs)

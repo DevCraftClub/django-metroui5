@@ -13,6 +13,12 @@ def render_table(headers, rows, **attrs):
 		headers: List of header texts
 		rows: List of rows (each row is a list of cells)
 		**attrs: Additional HTML attributes
+	Example:
+		render_table(['Name'], [['One']])
+
+	Empty or invalid:
+		`render_table(['Name'], [['One']])` returns `<table class="table" data-role="table"><tr><th>Name</th></tr><tr><td>One</td></tr></table>`. An empty call returns `<table class="table" data-role="table"><tr></tr></table>`.
+
 	"""
 	default_attrs = {
 		"class": "table",

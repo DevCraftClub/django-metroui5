@@ -12,6 +12,12 @@ def render_menu(items, **attrs):
 	Args:
 		items: List of menu items
 		**attrs: Additional HTML attributes
+	Example:
+		render_menu([{'text': 'One', 'href': '/one'}])
+
+	Empty or invalid:
+		`render_menu([{'text': 'One', 'href': '/one'}])` returns `<ul class="menu" data-role="menu"><li><a href="/one">One</a></li></ul>`. An empty call returns `<ul class="menu" data-role="menu"></ul>`.
+
 	"""
 	default_attrs = {
 		"class": "menu",

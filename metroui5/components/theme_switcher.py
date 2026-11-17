@@ -54,5 +54,13 @@ _theme_switcher = ThemeSwitcherComponent()
 
 
 def render_theme_switcher(content="", **attrs):
-	"""Возвращает разметку с data-role=\"theme-switcher\"."""
+	"""
+	Возвращает разметку с data-role=\"theme-switcher\".
+	Example:
+		render_theme_switcher()
+
+	Empty or invalid:
+		`render_theme_switcher()` returns `<input data-role="theme-switcher">`.
+
+	"""
 	return _theme_switcher.render(content=content, **attrs)

@@ -63,5 +63,13 @@ _cookie_disclaimer_component = CookieDisclaimerComponent()
 
 
 def render_cookie_disclaimer(content="", **attrs):
-	"""Возвращает div для cookie-disclaimer."""
+	"""
+	Возвращает div для cookie-disclaimer.
+	Example:
+		render_cookie_disclaimer()
+
+	Empty or invalid:
+		`render_cookie_disclaimer()` returns `<div class="cookie-disclaimer"></div>`.
+
+	"""
 	return _cookie_disclaimer_component.render(content, **attrs)

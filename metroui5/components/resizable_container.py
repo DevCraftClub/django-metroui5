@@ -41,5 +41,13 @@ _resizable_container = ResizableContainerComponent()
 
 
 def render_resizable_container(content="", **attrs):
-	"""Возвращает разметку с data-role=\"resizable-container\"."""
+	"""
+	Возвращает разметку с data-role=\"resizable-container\".
+	Example:
+		render_resizable_container()
+
+	Empty or invalid:
+		`render_resizable_container()` returns `<div data-role="resizable-container"></div>`.
+
+	"""
 	return _resizable_container.render(content=content, **attrs)

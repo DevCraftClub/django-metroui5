@@ -136,5 +136,11 @@ def render_charms(content=None, **attrs):
 		References:
 			.. _MetroUI Charms: https://v5.metroui.org.ua/components/charms/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_charms()
+
+	Empty or invalid:
+		`render_charms()` returns `<div class="charms right-side" id="charms-component" data-role="charms" />`. An empty call returns `<div class="charms right-side" id="charms-component" data-role="charms"></div>`.
+
 	"""
 	return _charms_component.render(content, **attrs)

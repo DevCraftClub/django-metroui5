@@ -43,5 +43,13 @@ _github_box_component = GithubBoxComponent()
 
 
 def render_github_box(content="", **attrs):
-	"""Возвращает div для github-box."""
+	"""
+	Возвращает div для github-box.
+	Example:
+		render_github_box()
+
+	Empty or invalid:
+		`render_github_box()` returns `<div class="github-box"></div>`.
+
+	"""
 	return _github_box_component.render(content, **attrs)

@@ -47,5 +47,13 @@ _sidenav_component = SidenavComponent()
 
 
 def render_sidenav(content="", **attrs):
-	"""Возвращает ul для sidenav."""
+	"""
+	Возвращает ul для sidenav.
+	Example:
+		render_sidenav()
+
+	Empty or invalid:
+		`render_sidenav()` returns `<ul data-role="sidenav"></ul>`.
+
+	"""
 	return _sidenav_component.render(content, **attrs)

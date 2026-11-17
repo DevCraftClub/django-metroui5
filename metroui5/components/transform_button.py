@@ -43,5 +43,13 @@ _transform_button_component = TransformButtonComponent()
 
 
 def render_transform_button(content="", **attrs):
-	"""Возвращает button для transform-button."""
+	"""
+	Возвращает button для transform-button.
+	Example:
+		render_transform_button()
+
+	Empty or invalid:
+		`render_transform_button()` returns `<button class="transform-button"></button>`.
+
+	"""
 	return _transform_button_component.render(content, **attrs)

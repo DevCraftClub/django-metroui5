@@ -529,3 +529,16 @@ METROUI5 = {
 - [Template Tags](templatetags.md) - Django template integration
 - [CSS Utilities](css.md) - CSS class management
 - [JavaScript Integration](../getting-started/javascript.md) - Client-side functionality
+
+
+## metroui5_theme_switcher
+
+```python
+render_theme_switcher()
+```
+
+Empty or invalid: `render_theme_switcher()` returns `<input data-role="theme-switcher">`.
+
+```django
+{% metroui5_theme_switcher %}
+```

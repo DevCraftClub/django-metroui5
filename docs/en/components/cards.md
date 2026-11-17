@@ -497,3 +497,16 @@ def accessible_cards_view(request):
 - [Template Tags](templatetags.md) - Django template integration
 - [Layout](layout.md) - Page layout components
 - [CSS Utilities](css.md) - CSS class management
+
+
+## metroui5_card
+
+```python
+render_card()
+```
+
+Empty or invalid: `render_card()` returns `<div class="card"><div class="card-content"></div></div>`.
+
+```django
+{% metroui5_card %}
+```

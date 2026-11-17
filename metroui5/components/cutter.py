@@ -31,6 +31,12 @@ def render_cutter(content="", icon="", text="", **kwargs):
     
     References:
         https://v5.metroui.org.ua/components/cutter/
+	Example:
+		render_cutter()
+
+	Empty or invalid:
+		`render_cutter()` returns `<div class="cutter" id="cutter-component"><div class="content"></div></div>`.
+
     """
     component = CutterComponent()
     return component.render(content=content, icon=icon, text=text, **kwargs)

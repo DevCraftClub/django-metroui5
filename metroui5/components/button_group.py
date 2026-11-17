@@ -163,6 +163,12 @@ def render_button_group(buttons, mode="one", targets="button", cls_active="",
 	References:
 		.. _MetroUI Button Group: https://v5.metroui.org.ua/components/button-group/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_button_group(['One'])
+
+	Empty or invalid:
+		`render_button_group(['One'])` returns `<div class="button-group" id="button_group-component" data-role="button-group" data-mode="one" data-targets="button"><button>One</button></div>`. An empty call returns `<div class="button-group" id="button_group-component" data-role="button-group" data-mode="one" data-targets="[]"></div>`.
+
 	"""
 	return _button_group_component.render(buttons, mode, targets, cls_active, 
 										 required_button, **attrs)

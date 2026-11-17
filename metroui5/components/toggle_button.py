@@ -47,5 +47,13 @@ _toggle_button_component = ToggleButtonComponent()
 
 
 def render_toggle_button(content="", **attrs):
-	"""Возвращает div для toggle-button."""
+	"""
+	Возвращает div для toggle-button.
+	Example:
+		render_toggle_button()
+
+	Empty or invalid:
+		`render_toggle_button()` returns `<div data-role="toggle-button"></div>`.
+
+	"""
 	return _toggle_button_component.render(content, **attrs)

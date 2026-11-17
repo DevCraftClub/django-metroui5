@@ -58,5 +58,13 @@ _listview = ListviewComponent()
 
 
 def render_listview(content="", **attrs):
-	"""Возвращает разметку с data-role=\"listview\"."""
+	"""
+	Возвращает разметку с data-role=\"listview\".
+	Example:
+		render_listview()
+
+	Empty or invalid:
+		`render_listview()` returns `<ul data-role="listview"></ul>`.
+
+	"""
 	return _listview.render(content=content, **attrs)

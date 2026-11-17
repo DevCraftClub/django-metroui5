@@ -73,5 +73,13 @@ _linked_block = LinkedBlockComponent()
 
 
 def render_linked_block(content="", **attrs):
-	"""Возвращает разметку с data-role=\"linked-block\"."""
+	"""
+	Возвращает разметку с data-role=\"linked-block\".
+	Example:
+		render_linked_block()
+
+	Empty or invalid:
+		`render_linked_block()` returns `<div data-role="linked-block"></div>`.
+
+	"""
 	return _linked_block.render(content=content, **attrs)

@@ -693,3 +693,16 @@ def create_accessible_breadcrumb(items):
 - [Меню](menus.md) - Для выпадающих меню навигации
 - [Иконки](icons.md) - Для иконок хлебных крошек
 - [Ссылки](links.md) - Для стилизации ссылок хлебных крошек
+
+
+## metroui5_breadcrumb
+
+```python
+render_breadcrumb([{'text': 'One', 'href': '/one'}])
+```
+
+Пустое или неверное значение: `render_breadcrumb([{'text': 'One', 'href': '/one'}])` даёт `<ul class="breadcrumbs" id="breadcrumb-component"><li class="active"><a href="/one">One</a></li></ul>`. Пустой вызов даёт `<ul class="breadcrumbs" id="breadcrumb-component"></ul>`.
+
+```django
+{% metroui5_breadcrumb items %}
+```

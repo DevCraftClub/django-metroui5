@@ -398,3 +398,16 @@ def responsive_cards_view(request):
 2. Ознакомьтесь с [примерами](../../getting-started/examples.md)
 3. Изучите [API справочник](../../api-reference/) для детальной информации
 4. Создайте информативные и красивые карточки!
+
+
+## metroui5_card
+
+```python
+render_card()
+```
+
+Пустое или неверное значение: `render_card()` даёт `<div class="card"><div class="card-content"></div></div>`.
+
+```django
+{% metroui5_card %}
+```

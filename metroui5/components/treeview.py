@@ -60,5 +60,13 @@ _treeview_component = TreeviewComponent()
 
 
 def render_treeview(content="", **attrs):
-	"""Возвращает ul для treeview."""
+	"""
+	Возвращает ul для treeview.
+	Example:
+		render_treeview()
+
+	Empty or invalid:
+		`render_treeview()` returns `<ul data-role="treeview"></ul>`.
+
+	"""
 	return _treeview_component.render(content, **attrs)

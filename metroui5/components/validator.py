@@ -57,5 +57,13 @@ _validator_component = ValidatorComponent()
 
 
 def render_validator(content="", **attrs):
-	"""Возвращает form для validator."""
+	"""
+	Возвращает form для validator.
+	Example:
+		render_validator()
+
+	Empty or invalid:
+		`render_validator()` returns `<form data-role="validator"></form>`.
+
+	"""
 	return _validator_component.render(content, **attrs)

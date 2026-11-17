@@ -37,6 +37,12 @@ def render_custom_checkbox(state_on="✓", state_off="✗", caption_on="", capti
     
     References:
         https://v5.metroui.org.ua/components/custom-checkbox/
+	Example:
+		render_custom_checkbox()
+
+	Empty or invalid:
+		`render_custom_checkbox()` returns `<input data-role="custom-checkbox" data-state-on="✓" data-state-off="✗" data-caption-position="right" type="checkbox" id="custom_checkbox-component">`.
+
     """
     component = CustomCheckboxComponent()
     return component.render(

@@ -49,5 +49,13 @@ _image_compare_component = ImageCompareComponent()
 
 
 def render_image_compare(content="", **attrs):
-	"""Возвращает div для image-compare."""
+	"""
+	Возвращает div для image-compare.
+	Example:
+		render_image_compare()
+
+	Empty or invalid:
+		`render_image_compare()` returns `<div data-role="image-compare" class="image-compare"></div>`.
+
+	"""
 	return _image_compare_component.render(content, **attrs)

@@ -47,5 +47,13 @@ _viewport_check = ViewportCheckComponent()
 
 
 def render_viewport_check(content="", **attrs):
-	"""Возвращает разметку с data-role=\"viewport-check\"."""
+	"""
+	Возвращает разметку с data-role=\"viewport-check\".
+	Example:
+		render_viewport_check()
+
+	Empty or invalid:
+		`render_viewport_check()` returns `<div data-role="viewport-check"></div>`.
+
+	"""
 	return _viewport_check.render(content=content, **attrs)

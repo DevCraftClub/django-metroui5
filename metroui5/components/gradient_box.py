@@ -49,5 +49,13 @@ _gradient_box = GradientBoxComponent()
 
 
 def render_gradient_box(content="", **attrs):
-	"""Возвращает разметку с data-role=\"gradient-box\"."""
+	"""
+	Возвращает разметку с data-role=\"gradient-box\".
+	Example:
+		render_gradient_box()
+
+	Empty or invalid:
+		`render_gradient_box()` returns `<div data-role="gradient-box"></div>`.
+
+	"""
 	return _gradient_box.render(content=content, **attrs)

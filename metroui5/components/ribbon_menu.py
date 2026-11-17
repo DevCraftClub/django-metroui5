@@ -49,5 +49,13 @@ _ribbon_menu_component = RibbonMenuComponent()
 
 
 def render_ribbon_menu(content="", **attrs):
-	"""Возвращает div для ribbon-menu."""
+	"""
+	Возвращает div для ribbon-menu.
+	Example:
+		render_ribbon_menu()
+
+	Empty or invalid:
+		`render_ribbon_menu()` returns `<div data-role="ribbon-menu"></div>`.
+
+	"""
 	return _ribbon_menu_component.render(content, **attrs)

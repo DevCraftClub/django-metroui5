@@ -44,5 +44,13 @@ _hover_box = HoverBoxComponent()
 
 
 def render_hover_box(content="", **attrs):
-	"""Возвращает разметку с data-role=\"hover-box\"."""
+	"""
+	Возвращает разметку с data-role=\"hover-box\".
+	Example:
+		render_hover_box()
+
+	Empty or invalid:
+		`render_hover_box()` returns `<div data-role="hover-box"></div>`.
+
+	"""
 	return _hover_box.render(content=content, **attrs)

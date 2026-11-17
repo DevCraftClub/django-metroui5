@@ -99,5 +99,13 @@ _select = SelectComponent()
 
 
 def render_select(content="", **attrs):
-	"""Возвращает разметку с data-role=\"select\"."""
+	"""
+	Возвращает разметку с data-role=\"select\".
+	Example:
+		render_select()
+
+	Empty or invalid:
+		`render_select()` returns `<select data-role="select"></select>`.
+
+	"""
 	return _select.render(content=content, **attrs)

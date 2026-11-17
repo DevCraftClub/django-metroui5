@@ -285,5 +285,11 @@ def render_carousel(slides=None, **attrs):
 		References:
 			.. _MetroUI Carousel: https://v5.metroui.org.ua/components/carousel/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_carousel()
+
+	Empty or invalid:
+		`render_carousel()` returns `<div class="carousel" id="carousel-component" data-role="carousel"></div>`.
+
 	"""
 	return _carousel_component.render(slides, **attrs)

@@ -13,6 +13,12 @@ def render_rating(value, max_value=5, **attrs):
 		value: Current rating value
 		max_value: Maximum rating value
 		**attrs: Additional HTML attributes
+	Example:
+		render_rating(0)
+
+	Empty or invalid:
+		`render_rating(0)` returns `<input class="rating" data-role="rating" data-value="0" data-stars="5">`. An empty call returns `<input class="rating" data-role="rating" data-value="0" data-stars="0">`.
+
 	"""
 	default_attrs = {
 		"class": "rating",

@@ -47,5 +47,13 @@ _template_component = TemplateComponent()
 
 
 def render_template(content="", **attrs):
-	"""Возвращает div для template."""
+	"""
+	Возвращает div для template.
+	Example:
+		render_template()
+
+	Empty or invalid:
+		`render_template()` returns `<div data-role="template"></div>`.
+
+	"""
 	return _template_component.render(content, **attrs)

@@ -43,5 +43,13 @@ _bottom_sheet_component = BottomSheetComponent()
 
 
 def render_bottom_sheet(content="", **attrs):
-	"""Возвращает список с data-role bottomsheet."""
+	"""
+	Возвращает список с data-role bottomsheet.
+	Example:
+		render_bottom_sheet()
+
+	Empty or invalid:
+		`render_bottom_sheet()` returns `<ul data-role="bottomsheet" class="bottom-sheet"></ul>`.
+
+	"""
 	return _bottom_sheet_component.render(content, **attrs)

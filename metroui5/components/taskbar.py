@@ -46,5 +46,13 @@ _taskbar_component = TaskbarComponent()
 
 
 def render_taskbar(content="", **attrs):
-	"""Возвращает div для taskbar."""
+	"""
+	Возвращает div для taskbar.
+	Example:
+		render_taskbar()
+
+	Empty or invalid:
+		`render_taskbar()` returns `<div data-role="task-bar"></div>`.
+
+	"""
 	return _taskbar_component.render(content, **attrs)

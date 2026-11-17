@@ -277,3 +277,4 @@ After successful installation:
 2. Check out [examples](examples.md)
 3. Study available [components](../components/)
 4. Study [API reference](../api-reference/)
+5. Insert the first piece: [accordion for page builders](../for-users/accordions.md) and [accordion for developers](../components/accordions.md)

@@ -48,5 +48,13 @@ _stack_menu_component = StackMenuComponent()
 
 
 def render_stack_menu(content="", **attrs):
-	"""Возвращает div для stack-menu."""
+	"""
+	Возвращает div для stack-menu.
+	Example:
+		render_stack_menu()
+
+	Empty or invalid:
+		`render_stack_menu()` returns `<div data-role="stack-menu"></div>`.
+
+	"""
 	return _stack_menu_component.render(content, **attrs)

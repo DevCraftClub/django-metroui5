@@ -43,5 +43,13 @@ _icon_box_component = IconBoxComponent()
 
 
 def render_icon_box(content="", **attrs):
-	"""Возвращает div для icon-box."""
+	"""
+	Возвращает div для icon-box.
+	Example:
+		render_icon_box()
+
+	Empty or invalid:
+		`render_icon_box()` returns `<div class="icon-box"></div>`.
+
+	"""
 	return _icon_box_component.render(content, **attrs)

@@ -163,6 +163,12 @@ def render_file(**attrs):
 
     Args:
         **attrs: Component attributes (see FileComponent.render for details)
+	Example:
+		render_file()
+
+	Empty or invalid:
+		`render_file()` returns `<input class="" type="file" data-role="file"></input>`.
+
     """
     return _file.render(**attrs)
 

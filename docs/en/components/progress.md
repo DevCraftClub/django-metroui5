@@ -316,3 +316,16 @@ animateProgress(80, 2000); // Animate to 80% over 2 seconds
 - [Buttons](buttons.md) - For action buttons
 - [Cards](cards.md) - For containing progress bars
 - [Forms](forms.md) - For form-related progress indicators
+
+
+## metroui5_progress
+
+```python
+render_progress(0)
+```
+
+Empty or invalid: `render_progress(0)` returns `<div class="progress progress-blue" data-role="progress" data-value="0" data-max="100"></div>`. An empty call returns `<div class="progress progress-blue progress-0" data-role="progress" data-value="0" data-max="0"></div>`.
+
+```django
+{% metroui5_progress value="Text" %}
+```

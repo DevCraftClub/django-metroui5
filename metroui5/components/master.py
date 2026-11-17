@@ -73,5 +73,13 @@ _master_component = MasterComponent()
 
 
 def render_master(content="", **attrs):
-	"""Возвращает div для master."""
+	"""
+	Возвращает div для master.
+	Example:
+		render_master()
+
+	Empty or invalid:
+		`render_master()` returns `<div data-role="master"></div>`.
+
+	"""
 	return _master_component.render(content, **attrs)

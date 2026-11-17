@@ -277,5 +277,11 @@ def render_calendar(show=None, **attrs):
 		References:
 			.. _MetroUI Calendar: https://v5.metroui.org.ua/components/calendar/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_calendar()
+
+	Empty or invalid:
+		`render_calendar()` returns `<div class="calendar" data-role="calendar"></div>`.
+
 	"""
 	return _calendar_component.render(show, **attrs)

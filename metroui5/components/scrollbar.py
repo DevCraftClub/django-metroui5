@@ -43,5 +43,13 @@ _scrollbar_component = ScrollbarComponent()
 
 
 def render_scrollbar(content="", **attrs):
-	"""Возвращает div для scrollbar."""
+	"""
+	Возвращает div для scrollbar.
+	Example:
+		render_scrollbar()
+
+	Empty or invalid:
+		`render_scrollbar()` returns `<div class="scrollbar-type-1"></div>`.
+
+	"""
 	return _scrollbar_component.render(content, **attrs)

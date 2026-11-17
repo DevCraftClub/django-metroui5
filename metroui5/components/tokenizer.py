@@ -63,5 +63,13 @@ _tokenizer = TokenizerComponent()
 
 
 def render_tokenizer(content="", **attrs):
-	"""Возвращает разметку с data-role=\"tokenizer\"."""
+	"""
+	Возвращает разметку с data-role=\"tokenizer\".
+	Example:
+		render_tokenizer()
+
+	Empty or invalid:
+		`render_tokenizer()` returns `<div data-role="tokenizer"></div>`.
+
+	"""
 	return _tokenizer.render(content=content, **attrs)

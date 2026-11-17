@@ -247,3 +247,16 @@ nav = get_navigation_items(request.user)
 - [Хлебные крошки](breadcrumbs.md) - Для навигации по хлебным крошкам
 - [Боковые панели](sidebars.md) - Для боковой навигации
 - [Вкладки](tabs.md) - Для навигации по вкладкам
+
+
+## metroui5_navigation
+
+```python
+render_navigation([{'text': 'One', 'href': '/one'}])
+```
+
+Пустое или неверное значение: `render_navigation([{'text': 'One', 'href': '/one'}])` даёт `<ul class="navigation" data-role="navigation"><li><a href="/one">One</a></li></ul>`. Пустой вызов даёт `<ul class="navigation" data-role="navigation"></ul>`.
+
+```django
+{% metroui5_navigation items %}
+```

@@ -58,5 +58,13 @@ _switch_component = SwitchComponent()
 
 
 def render_switch(**attrs):
-	"""Возвращает input для switch."""
+	"""
+	Возвращает input для switch.
+	Example:
+		render_switch()
+
+	Empty or invalid:
+		`render_switch()` returns `<input data-role="switch" type="checkbox">`.
+
+	"""
 	return _switch_component.render(**attrs)

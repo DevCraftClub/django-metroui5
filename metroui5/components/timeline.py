@@ -43,5 +43,13 @@ _timeline_component = TimelineComponent()
 
 
 def render_timeline(content="", **attrs):
-	"""Возвращает ul для timeline."""
+	"""
+	Возвращает ul для timeline.
+	Example:
+		render_timeline()
+
+	Empty or invalid:
+		`render_timeline()` returns `<ul class="timeline"></ul>`.
+
+	"""
 	return _timeline_component.render(content, **attrs)

@@ -115,5 +115,11 @@ def render_audio_button(content="", **attrs):
 	References:
 		.. _MetroUI Audio Button: https://v5.metroui.org.ua/components/audio-button/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_audio_button()
+
+	Empty or invalid:
+		`render_audio_button()` returns `<button class="button" data-role="audio-button"></button>`.
+
 	"""
 	return _audio_button_component.render(content, **attrs)

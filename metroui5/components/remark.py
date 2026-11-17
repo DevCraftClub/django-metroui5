@@ -43,5 +43,13 @@ _remark_component = RemarkComponent()
 
 
 def render_remark(content="", **attrs):
-	"""Возвращает div для remark."""
+	"""
+	Возвращает div для remark.
+	Example:
+		render_remark()
+
+	Empty or invalid:
+		`render_remark()` returns `<div class="remark"></div>`.
+
+	"""
 	return _remark_component.render(content, **attrs)

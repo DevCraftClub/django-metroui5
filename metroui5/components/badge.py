@@ -93,5 +93,11 @@ def render_badge(content, corner=False, corner_outside=False, **attrs):
 	References:
 		.. _MetroUI Badges: https://v5.metroui.org.ua/components/badges/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_badge('Text')
+
+	Empty or invalid:
+		`render_badge('Text')` returns `<span class="badge">Text</span>`. An empty call returns `<span class="badge"></span>`.
+
 	"""
 	return _badge_component.render(content, corner, corner_outside, **attrs)

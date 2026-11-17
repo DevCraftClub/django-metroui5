@@ -77,5 +77,13 @@ _tag_input = TagInputComponent()
 
 
 def render_tag_input(content="", **attrs):
-	"""Возвращает разметку с data-role=\"tag-input\"."""
+	"""
+	Возвращает разметку с data-role=\"tag-input\".
+	Example:
+		render_tag_input()
+
+	Empty or invalid:
+		`render_tag_input()` returns `<input data-role="tag-input">`.
+
+	"""
 	return _tag_input.render(content=content, **attrs)

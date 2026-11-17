@@ -140,5 +140,13 @@ def render_adblock_detection(**attrs):
 	References:
 		.. _MetroUI Adblock Detection: https://v5.metroui.org.ua/components/adblock/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_adblock_detection()
+
+	Empty or invalid:
+		`render_adblock_detection()` returns `<div class="adblock-detection" id="adblock-component" data-role="adblock">
+			<!-- Hidden element to detect ad blockers -->
+			<div class="adsbox" style="position: absolute; left: -10000px; top: -10000px; width: 1px; hei...`.
+
 	"""
 	return _adblock_component.render(**attrs)

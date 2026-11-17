@@ -43,5 +43,13 @@ _splitter_component = SplitterComponent()
 
 
 def render_splitter(content="", **attrs):
-	"""Возвращает div для splitter."""
+	"""
+	Возвращает div для splitter.
+	Example:
+		render_splitter()
+
+	Empty or invalid:
+		`render_splitter()` returns `<div data-role="splitter"></div>`.
+
+	"""
 	return _splitter_component.render(content, **attrs)

@@ -539,3 +539,16 @@ function filterByBadge(badgeType) {
 - [Navigation](navigation.md) - For navigation items with badges
 - [Cards](cards.md) - For cards with badge headers
 - [Tables](tables.md) - For table cells with badge indicators
+
+
+## metroui5_badge
+
+```python
+render_badge('Text')
+```
+
+Empty or invalid: `render_badge('Text')` returns `<span class="badge">Text</span>`. An empty call returns `<span class="badge"></span>`.
+
+```django
+{% metroui5_badge content="Text" %}
+```

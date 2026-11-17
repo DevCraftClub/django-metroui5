@@ -104,5 +104,11 @@ def render_bulls(bull_type="success", size=16, **attrs):
 	References:
 		.. _MetroUI Bulls: https://v5.metroui.org.ua/components/bulls/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_bulls()
+
+	Empty or invalid:
+		`render_bulls()` returns `<div class="bull" data-role="bull" data-type="success" data-size="16"></div>`. An empty call returns `<div class="bull" data-role="bull" data-type="success" data-size="0"></div>`.
+
 	"""
 	return _bulls_component.render(bull_type, size, **attrs)

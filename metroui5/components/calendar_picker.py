@@ -316,5 +316,11 @@ def render_calendar_picker(**attrs):
 	References:
 		.. _MetroUI Calendar Picker: https://v5.metroui.org.ua/components/calendar-picker/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_calendar_picker()
+
+	Empty or invalid:
+		`render_calendar_picker()` returns `<input class="" data-role="calendar-picker" type="text"></input>`.
+
 	"""
 	return _calendar_picker_component.render(**attrs)

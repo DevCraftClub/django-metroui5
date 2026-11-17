@@ -49,5 +49,13 @@ _ripple_component = RippleComponent()
 
 
 def render_ripple(content="", **attrs):
-	"""Возвращает button для ripple."""
+	"""
+	Возвращает button для ripple.
+	Example:
+		render_ripple()
+
+	Empty or invalid:
+		`render_ripple()` returns `<button data-role="ripple"></button>`.
+
+	"""
 	return _ripple_component.render(content, **attrs)

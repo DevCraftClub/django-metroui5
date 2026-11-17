@@ -47,5 +47,13 @@ _wheel_picker_component = WheelPickerComponent()
 
 
 def render_wheel_picker(content="", **attrs):
-	"""Возвращает div для wheel-picker."""
+	"""
+	Возвращает div для wheel-picker.
+	Example:
+		render_wheel_picker()
+
+	Empty or invalid:
+		`render_wheel_picker()` returns `<div class="wheel-picker"></div>`.
+
+	"""
 	return _wheel_picker_component.render(content, **attrs)

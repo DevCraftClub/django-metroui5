@@ -43,5 +43,13 @@ _image_button_component = ImageButtonComponent()
 
 
 def render_image_button(content="", **attrs):
-	"""Возвращает button для image-button."""
+	"""
+	Возвращает button для image-button.
+	Example:
+		render_image_button()
+
+	Empty or invalid:
+		`render_image_button()` returns `<button class="image-button"></button>`.
+
+	"""
 	return _image_button_component.render(content, **attrs)

@@ -61,5 +61,13 @@ _tabs_material_component = TabsMaterialComponent()
 
 
 def render_tabs_material(content="", **attrs):
-	"""Возвращает ul для tabs-material."""
+	"""
+	Возвращает ul для tabs-material.
+	Example:
+		render_tabs_material()
+
+	Empty or invalid:
+		`render_tabs_material()` returns `<ul data-role="materialtabs"></ul>`.
+
+	"""
 	return _tabs_material_component.render(content, **attrs)

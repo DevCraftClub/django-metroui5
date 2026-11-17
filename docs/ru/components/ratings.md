@@ -755,3 +755,16 @@ def get_cached_rating(product_id):
 - [Формы](forms.md) - Для интеграции с формами рейтинга
 - [Иконки](icons.md) - Для пользовательских символов рейтинга
 - [Полосы прогресса](progress.md) - Для отображения разбивки рейтинга
+
+
+## metroui5_rating
+
+```python
+render_rating(0)
+```
+
+Пустое или неверное значение: `render_rating(0)` даёт `<input class="rating" data-role="rating" data-value="0" data-stars="5">`. Пустой вызов даёт `<input class="rating" data-role="rating" data-value="0" data-stars="0">`.
+
+```django
+{% metroui5_rating value="Text" %}
+```

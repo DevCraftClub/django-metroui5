@@ -61,5 +61,13 @@ _marquee = MarqueeComponent()
 
 
 def render_marquee(content="", **attrs):
-	"""Возвращает разметку с data-role=\"marquee\"."""
+	"""
+	Возвращает разметку с data-role=\"marquee\".
+	Example:
+		render_marquee()
+
+	Empty or invalid:
+		`render_marquee()` returns `<div data-role="marquee"></div>`.
+
+	"""
 	return _marquee.render(content=content, **attrs)

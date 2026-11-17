@@ -62,5 +62,13 @@ _info_box_component = InfoBoxComponent()
 
 
 def render_info_box(content="", **attrs):
-	"""Возвращает div для info-box."""
+	"""
+	Возвращает div для info-box.
+	Example:
+		render_info_box()
+
+	Empty or invalid:
+		`render_info_box()` returns `<div data-role="info-box"></div>`.
+
+	"""
 	return _info_box_component.render(content, **attrs)

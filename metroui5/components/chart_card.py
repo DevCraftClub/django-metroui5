@@ -141,5 +141,11 @@ def render_chart_card(value=None, title=None, subtitle=None, chart_content=None,
 		References:
 			.. _MetroUI Chart Card: https://v5.metroui.org.ua/components/chart-card/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_chart_card()
+
+	Empty or invalid:
+		`render_chart_card()` returns `<div class="chart-card" id="chart_card-component"><div class="content"></div><div class="chart"></div></div>`.
+
 	"""
 	return _chart_card_component.render(value, title, subtitle, chart_content, **attrs)

@@ -579,3 +579,16 @@ METROUI5 = {
 - [Icons](icons.md) - Icon usage in buttons
 - [Forms](forms.md) - Form button integration
 - [CSS Utilities](css.md) - CSS class management
+
+
+## metroui5_button
+
+```python
+render_button()
+```
+
+Empty or invalid: `render_button()` returns `<button class="button" type="button"></button>`.
+
+```django
+{% metroui5_button %}
+```

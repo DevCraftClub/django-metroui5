@@ -541,3 +541,16 @@ def filter_menu_by_permissions(menu_items, user):
 - [Кнопки](buttons.md) - Для триггеров меню
 - [Иконки](icons.md) - Для иконок элементов меню
 - [Выпадающие списки](dropdowns.md) - Для выпадающих меню
+
+
+## metroui5_menu
+
+```python
+render_menu([{'text': 'One', 'href': '/one'}])
+```
+
+Пустое или неверное значение: `render_menu([{'text': 'One', 'href': '/one'}])` даёт `<ul class="menu" data-role="menu"><li><a href="/one">One</a></li></ul>`. Пустой вызов даёт `<ul class="menu" data-role="menu"></ul>`.
+
+```django
+{% metroui5_menu items %}
+```

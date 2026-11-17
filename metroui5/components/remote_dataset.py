@@ -90,5 +90,13 @@ _remote_dataset = RemoteDatasetComponent()
 
 
 def render_remote_dataset(content="", **attrs):
-	"""Возвращает разметку с data-role=\"remote-dataset\"."""
+	"""
+	Возвращает разметку с data-role=\"remote-dataset\".
+	Example:
+		render_remote_dataset()
+
+	Empty or invalid:
+		`render_remote_dataset()` returns `<div data-role="remote-dataset"></div>`.
+
+	"""
 	return _remote_dataset.render(content=content, **attrs)

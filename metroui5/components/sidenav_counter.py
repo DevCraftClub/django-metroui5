@@ -50,5 +50,13 @@ _sidenav_counter = SidenavCounterComponent()
 
 
 def render_sidenav_counter(content="", **attrs):
-	"""Возвращает разметку с data-role=\"sidenav-counter\"."""
+	"""
+	Возвращает разметку с data-role=\"sidenav-counter\".
+	Example:
+		render_sidenav_counter()
+
+	Empty or invalid:
+		`render_sidenav_counter()` returns `<ul data-role="sidenav-counter"></ul>`.
+
+	"""
 	return _sidenav_counter.render(content=content, **attrs)

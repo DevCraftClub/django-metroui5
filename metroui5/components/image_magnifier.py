@@ -61,5 +61,13 @@ _image_magnifier_component = ImageMagnifierComponent()
 
 
 def render_image_magnifier(content="", **attrs):
-	"""Возвращает div для image-magnifier."""
+	"""
+	Возвращает div для image-magnifier.
+	Example:
+		render_image_magnifier()
+
+	Empty or invalid:
+		`render_image_magnifier()` returns `<div data-role="image-magnifier"></div>`.
+
+	"""
 	return _image_magnifier_component.render(content, **attrs)

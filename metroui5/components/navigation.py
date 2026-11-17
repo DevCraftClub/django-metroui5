@@ -12,6 +12,12 @@ def render_navigation(items, **attrs):
 	Args:
 		items: List of navigation items
 		**attrs: Additional HTML attributes
+	Example:
+		render_navigation([{'text': 'One', 'href': '/one'}])
+
+	Empty or invalid:
+		`render_navigation([{'text': 'One', 'href': '/one'}])` returns `<ul class="navigation" data-role="navigation"><li><a href="/one">One</a></li></ul>`. An empty call returns `<ul class="navigation" data-role="navigation"></ul>`.
+
 	"""
 	default_attrs = {
 		"class": "navigation",

@@ -79,5 +79,13 @@ _countdown = CountdownComponent()
 
 
 def render_countdown(content="", **attrs):
-	"""Возвращает разметку с data-role=\"countdown\"."""
+	"""
+	Возвращает разметку с data-role=\"countdown\".
+	Example:
+		render_countdown()
+
+	Empty or invalid:
+		`render_countdown()` returns `<div data-role="countdown"></div>`.
+
+	"""
 	return _countdown.render(content=content, **attrs)

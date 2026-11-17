@@ -212,6 +212,12 @@ def render_dropdown(content="", button_text="", toggle_element=None, items=None,
 			no_close=True
 		)
 		```
+	Example:
+		render_dropdown()
+
+	Empty or invalid:
+		`render_dropdown()` returns `<div class="dropdown-toggle">Click me<div class="dropdown" data-role="dropdown"></div></div>`.
+
 	"""
 	return _dropdown_component.render(
 		content=content,

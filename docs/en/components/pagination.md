@@ -600,3 +600,16 @@ function navigateToPage(page) {
 - [Lists](lists.md) - For paginated list content
 - [Navigation](navigation.md) - For navigation between pages
 - [Cards](cards.md) - For paginated card layouts
+
+
+## metroui5_pagination
+
+```python
+render_pagination('Text', ['One'])
+```
+
+Empty or invalid: `render_pagination('Text', ['One'])` raises TypeError: '>' not supported between instances of 'str' and 'int'. An empty call raises TypeError: '>' not supported between instances of 'str' and 'int'.
+
+```django
+{% metroui5_pagination current_page="Text" total_pages %}
+```

@@ -58,5 +58,13 @@ _radio_component = RadioComponent()
 
 
 def render_radio(**attrs):
-	"""Возвращает input для radio."""
+	"""
+	Возвращает input для radio.
+	Example:
+		render_radio()
+
+	Empty or invalid:
+		`render_radio()` returns `<input data-role="radio" type="radio">`.
+
+	"""
 	return _radio_component.render(**attrs)

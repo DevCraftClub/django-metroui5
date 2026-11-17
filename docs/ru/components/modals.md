@@ -360,3 +360,16 @@ $("#my-modal").on("dialogclose", function () {
 - [Уведомления](alerts.md) - Для сообщений-предупреждений
 - [Формы](forms.md) - Для содержимого форм в модальных окнах
 - [Кнопки](buttons.md) - Для кнопок действий модальных окон
+
+
+## metroui5_modal
+
+```python
+render_modal('Text', 'Text')
+```
+
+Пустое или неверное значение: `render_modal('Text', 'Text')` даёт `<div class="modal" data-role="modal"><div class='modal-title'>Text</div><div class='modal-content'>Text</div></div>`. Пустой вызов даёт `<div class="modal" data-role="modal"><div class='modal-title'></div><div class='modal-content'></div></div>`.
+
+```django
+{% metroui5_modal title="Text" content="Text" %}
+```

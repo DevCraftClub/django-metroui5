@@ -70,5 +70,13 @@ _spinner_component = SpinnerComponent()
 
 
 def render_spinner(**attrs):
-	"""Возвращает input с data-role=\"spinner\" и переданными параметрами."""
+	"""
+	Возвращает input с data-role=\"spinner\" и переданными параметрами.
+	Example:
+		render_spinner()
+
+	Empty or invalid:
+		`render_spinner()` returns `<input data-role="spinner">`.
+
+	"""
 	return _spinner_component.render(**attrs)

@@ -55,5 +55,13 @@ _hint = HintComponent()
 
 
 def render_hint(content="", **attrs):
-	"""Возвращает разметку с data-role=\"hint\"."""
+	"""
+	Возвращает разметку с data-role=\"hint\".
+	Example:
+		render_hint()
+
+	Empty or invalid:
+		`render_hint()` returns `<button data-role="hint"></button>`.
+
+	"""
 	return _hint.render(content=content, **attrs)

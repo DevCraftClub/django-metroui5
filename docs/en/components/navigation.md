@@ -247,3 +247,16 @@ nav = get_navigation_items(request.user)
 - [Breadcrumbs](breadcrumbs.md) - For breadcrumb navigation
 - [Sidebars](sidebars.md) - For sidebar navigation
 - [Tabs](tabs.md) - For tabbed navigation
+
+
+## metroui5_navigation
+
+```python
+render_navigation([{'text': 'One', 'href': '/one'}])
+```
+
+Empty or invalid: `render_navigation([{'text': 'One', 'href': '/one'}])` returns `<ul class="navigation" data-role="navigation"><li><a href="/one">One</a></li></ul>`. An empty call returns `<ul class="navigation" data-role="navigation"></ul>`.
+
+```django
+{% metroui5_navigation items %}
+```

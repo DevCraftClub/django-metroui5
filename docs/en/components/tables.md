@@ -190,3 +190,16 @@ table = render_table(headers, rows, class="table table-border")
 - [Cards](cards.md) - For card-based layouts
 - [Lists](lists.md) - For list-based data display
 - [Pagination](pagination.md) - For paginated table data
+
+
+## metroui5_table
+
+```python
+render_table(['Name'], [['One']])
+```
+
+Empty or invalid: `render_table(['Name'], [['One']])` returns `<table class="table" data-role="table"><tr><th>Name</th></tr><tr><td>One</td></tr></table>`. An empty call returns `<table class="table" data-role="table"><tr></tr></table>`.
+
+```django
+{% metroui5_table headers rows %}
+```

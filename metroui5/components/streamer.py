@@ -67,5 +67,13 @@ _streamer = StreamerComponent()
 
 
 def render_streamer(content="", **attrs):
-	"""Возвращает разметку с data-role=\"streamer\"."""
+	"""
+	Возвращает разметку с data-role=\"streamer\".
+	Example:
+		render_streamer()
+
+	Empty or invalid:
+		`render_streamer()` returns `<div data-role="streamer"></div>`.
+
+	"""
 	return _streamer.render(content=content, **attrs)

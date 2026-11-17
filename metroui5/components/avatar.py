@@ -12,6 +12,12 @@ def render_avatar(image_url, **attrs):
 	Args:
 		image_url: Image URL
 		**attrs: Additional HTML attributes
+	Example:
+		render_avatar('Text')
+
+	Empty or invalid:
+		`render_avatar('Text')` returns `<img class="avatar" data-role="avatar" src="Text" alt="Avatar">`. An empty call returns `<img class="avatar" data-role="avatar" src="" alt="Avatar">`.
+
 	"""
 	default_attrs = {
 		"class": "avatar",

@@ -189,5 +189,11 @@ def render_checkbox(**attrs):
 		References:
 			.. _MetroUI Checkbox: https://v5.metroui.org.ua/components/checkbox/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_checkbox()
+
+	Empty or invalid:
+		`render_checkbox()` returns `<input class="" id="checkbox-component" type="checkbox" data-role="checkbox">`.
+
 	"""
 	return _checkbox_component.render(**attrs)

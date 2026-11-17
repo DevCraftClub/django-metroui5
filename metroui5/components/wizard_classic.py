@@ -74,5 +74,13 @@ _wizard_classic_component = WizardClassicComponent()
 
 
 def render_wizard_classic(content="", **attrs):
-	"""Возвращает div для wizard-classic."""
+	"""
+	Возвращает div для wizard-classic.
+	Example:
+		render_wizard_classic()
+
+	Empty or invalid:
+		`render_wizard_classic()` returns `<div data-role="wizard-classic"></div>`.
+
+	"""
 	return _wizard_classic_component.render(content, **attrs)

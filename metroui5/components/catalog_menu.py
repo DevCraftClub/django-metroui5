@@ -191,5 +191,11 @@ def render_catalog_menu(items=None, **attrs):
 		References:
 			.. _MetroUI Catalog Menu: https://v5.metroui.org.ua/components/catalog-menu/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_catalog_menu()
+
+	Empty or invalid:
+		`render_catalog_menu()` returns `<nav class="catalog-menu" id="catalog_menu-component" data-role="catalog-menu"></nav>`.
+
 	"""
 	return _catalog_menu_component.render(items, **attrs)

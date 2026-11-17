@@ -635,3 +635,16 @@ def create_stateful_tabs(items, request):
 - [Панели](panels.md) - Для панелей содержимого вкладок
 - [Иконки](icons.md) - Для иконок вкладок
 - [Формы](forms.md) - Для форм с вкладками
+
+
+## metroui5_tabs
+
+```python
+render_tabs([{'title': 'One', 'content': 'Text'}])
+```
+
+Пустое или неверное значение: `render_tabs([{'title': 'One', 'content': 'Text'}])` даёт `<ul data-role="tabs"><li><a href="#tab-0">One</a></li></ul><div class="tabs-targets"><div id="tab-0">Text</div></div>`. Пустой вызов даёт `<ul data-role="tabs"></ul><div class="tabs-targets"></div>`.
+
+```django
+{% metroui5_tabs tabs %}
+```

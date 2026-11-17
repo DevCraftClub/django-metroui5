@@ -43,5 +43,13 @@ _skill_box_component = SkillBoxComponent()
 
 
 def render_skill_box(content="", **attrs):
-	"""Возвращает div для skill-box."""
+	"""
+	Возвращает div для skill-box.
+	Example:
+		render_skill_box()
+
+	Empty or invalid:
+		`render_skill_box()` returns `<div class="skill-box"></div>`.
+
+	"""
 	return _skill_box_component.render(content, **attrs)

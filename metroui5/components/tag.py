@@ -43,5 +43,13 @@ _tag_component = TagComponent()
 
 
 def render_metro_tag(content="", **attrs):
-	"""Возвращает span для tag."""
+	"""
+	Возвращает span для tag.
+	Example:
+		render_metro_tag()
+
+	Empty or invalid:
+		`render_metro_tag()` returns `<span class="tag"></span>`.
+
+	"""
 	return _tag_component.render(content, **attrs)

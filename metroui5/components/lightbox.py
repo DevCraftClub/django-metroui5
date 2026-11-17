@@ -66,5 +66,13 @@ _lightbox_component = LightboxComponent()
 
 
 def render_lightbox(content="", **attrs):
-	"""Возвращает div для lightbox."""
+	"""
+	Возвращает div для lightbox.
+	Example:
+		render_lightbox()
+
+	Empty or invalid:
+		`render_lightbox()` returns `<div data-role="lightbox"></div>`.
+
+	"""
 	return _lightbox_component.render(content, **attrs)

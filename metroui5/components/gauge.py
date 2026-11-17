@@ -56,5 +56,13 @@ _gauge = GaugeComponent()
 
 
 def render_gauge(content="", **attrs):
-	"""Возвращает разметку с data-role=\"gauge\"."""
+	"""
+	Возвращает разметку с data-role=\"gauge\".
+	Example:
+		render_gauge()
+
+	Empty or invalid:
+		`render_gauge()` returns `<div data-role="gauge"></div>`.
+
+	"""
 	return _gauge.render(content=content, **attrs)

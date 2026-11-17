@@ -296,5 +296,11 @@ def render_app_bar(brand=None, menu_items=None, static_items=None, **attrs):
 	References:
 		.. _MetroUI App Bar: https://v5.metroui.org.ua/components/app-bar/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_app_bar()
+
+	Empty or invalid:
+		`render_app_bar()` returns `<nav class="app-bar" id="app_bar-component" data-role="appbar"></nav>`.
+
 	"""
 	return _app_bar_component.render(brand, menu_items, static_items, **attrs)

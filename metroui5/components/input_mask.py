@@ -51,5 +51,13 @@ _input_mask_component = InputMaskComponent()
 
 
 def render_input_mask(**attrs):
-	"""Возвращает input для input-mask."""
+	"""
+	Возвращает input для input-mask.
+	Example:
+		render_input_mask()
+
+	Empty or invalid:
+		`render_input_mask()` returns `<input data-role="input, input-mask">`.
+
+	"""
 	return _input_mask_component.render(**attrs)

@@ -809,3 +809,16 @@ def create_accessible_dialog(title, content, actions=None):
 - [Формы](forms.md) - Для содержимого форм в диалогах
 - [Уведомления](alerts.md) - Для диалогов в стиле уведомлений
 - [Кнопки](buttons.md) - Для кнопок действий диалога
+
+
+## metroui5_dialog
+
+```python
+render_dialog()
+```
+
+Пустое или неверное значение: `render_dialog()` даёт `<div class="dialog" id="dialog-component" data-role="dialog"><div class="dialog-actions"><button class="button js-dialog-close" data-action="ok">OK</button><button class="button js-dialog-close" data-action="cancel">Canc...`.
+
+```django
+{% metroui5_dialog %}
+```

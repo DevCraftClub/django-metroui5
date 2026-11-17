@@ -282,6 +282,12 @@ def render_dropdown_button(button_text="Options", items=None, content="", **attr
         items: List of dropdown menu items (list of strings or dicts, default: None)
         content: Custom HTML content for dropdown (string, default: "")
         **attrs: Component attributes (see DropdownButtonComponent.render for details)
+	Example:
+		render_dropdown_button()
+
+	Empty or invalid:
+		`render_dropdown_button()` returns `<div class="dropdown-button"><button class="button dropdown-toggle">Options</button><ul class="d-menu" data-role="dropdown"><li><a href="#">No items</a></li></ul></div>`.
+
     """
     return _dropdown_button_component.render(
         button_text=button_text,

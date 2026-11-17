@@ -49,5 +49,13 @@ _image_carousel_component = ImageCarouselComponent()
 
 
 def render_image_carousel(content="", **attrs):
-	"""Возвращает div для image-carousel."""
+	"""
+	Возвращает div для image-carousel.
+	Example:
+		render_image_carousel()
+
+	Empty or invalid:
+		`render_image_carousel()` returns `<div data-role="image-carousel"></div>`.
+
+	"""
 	return _image_carousel_component.render(content, **attrs)

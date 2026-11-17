@@ -12,6 +12,12 @@ def render_tabs(tabs, **attrs):
 	Args:
 		tabs: List of tab dictionaries with 'title' and 'content' keys
 		**attrs: Additional HTML attributes
+	Example:
+		render_tabs([{'title': 'One', 'content': 'Text'}])
+
+	Empty or invalid:
+		`render_tabs([{'title': 'One', 'content': 'Text'}])` returns `<ul data-role="tabs"><li><a href="#tab-0">One</a></li></ul><div class="tabs-targets"><div id="tab-0">Text</div></div>`. An empty call returns `<ul data-role="tabs"></ul><div class="tabs-targets"></div>`.
+
 	"""
 	list_attrs = {"data-role": "tabs", **attrs}
 

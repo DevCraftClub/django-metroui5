@@ -97,5 +97,11 @@ def render_box(content="", title=None, secondary_title=None, **attrs):
 	References:
 			.. _MetroUI Box: https://v5.metroui.org.ua/components/box/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_box()
+
+	Empty or invalid:
+		`render_box()` returns `<div class="box" id="box-component"></div>`.
+
 	"""
 	return _box_component.render(content, title, secondary_title, **attrs)

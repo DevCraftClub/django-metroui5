@@ -143,6 +143,12 @@ def render_flip_card(**attrs):
 
     Args:
         **attrs: Component attributes (see FlipCardComponent.render for details)
+	Example:
+		render_flip_card()
+
+	Empty or invalid:
+		`render_flip_card()` returns `<div class="flip-card" data-role="flip-card"><div class="front"></div><div class="back"></div></div>`.
+
     """
     return _flip_card.render(**attrs)
 

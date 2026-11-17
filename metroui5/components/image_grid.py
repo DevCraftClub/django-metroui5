@@ -54,5 +54,13 @@ _image_grid_component = ImageGridComponent()
 
 
 def render_image_grid(content="", **attrs):
-	"""Возвращает div для image-grid."""
+	"""
+	Возвращает div для image-grid.
+	Example:
+		render_image_grid()
+
+	Empty or invalid:
+		`render_image_grid()` returns `<div data-role="image-grid" class="image-grid"></div>`.
+
+	"""
 	return _image_grid_component.render(content, **attrs)

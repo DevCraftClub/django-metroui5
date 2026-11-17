@@ -43,5 +43,13 @@ _split_button_component = SplitButtonComponent()
 
 
 def render_split_button(content="", **attrs):
-	"""Возвращает div для split-button."""
+	"""
+	Возвращает div для split-button.
+	Example:
+		render_split_button()
+
+	Empty or invalid:
+		`render_split_button()` returns `<div class="split-button"></div>`.
+
+	"""
 	return _split_button_component.render(content, **attrs)

@@ -81,5 +81,13 @@ _slider = SliderComponent()
 
 
 def render_slider(content="", **attrs):
-	"""Возвращает разметку с data-role=\"slider\"."""
+	"""
+	Возвращает разметку с data-role=\"slider\".
+	Example:
+		render_slider()
+
+	Empty or invalid:
+		`render_slider()` returns `<input data-role="slider">`.
+
+	"""
 	return _slider.render(content=content, **attrs)

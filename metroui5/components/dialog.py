@@ -315,6 +315,12 @@ def render_dialog(title="", content="", **attrs):
         title: Dialog title (string)
         content: Dialog content (string)
         **attrs: Component attributes (see DialogComponent.render for details)
+	Example:
+		render_dialog()
+
+	Empty or invalid:
+		`render_dialog()` returns `<div class="dialog" id="dialog-component" data-role="dialog"><div class="dialog-actions"><button class="button js-dialog-close" data-action="ok">OK</button><button class="button js-dialog-close" data-action="cancel">Canc...`.
+
     """
     return _dialog_component.render(title, content, **attrs)
 

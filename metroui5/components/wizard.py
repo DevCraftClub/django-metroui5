@@ -66,5 +66,13 @@ _wizard = WizardComponent()
 
 
 def render_wizard(content="", **attrs):
-	"""Возвращает разметку с data-role=\"wizard\"."""
+	"""
+	Возвращает разметку с data-role=\"wizard\".
+	Example:
+		render_wizard()
+
+	Empty or invalid:
+		`render_wizard()` returns `<div data-role="wizard"></div>`.
+
+	"""
 	return _wizard.render(content=content, **attrs)

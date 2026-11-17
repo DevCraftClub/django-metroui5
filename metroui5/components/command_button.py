@@ -285,5 +285,11 @@ def render_command_button(icon="", caption="", description="", **attrs):
 					ripple=True,
 					rippleColor="gray"
 				)
+	Example:
+		render_command_button()
+
+	Empty or invalid:
+		`render_command_button()` returns `<button class="command-button" id="command-button-component" type="button"></button>`.
+
 	"""
 	return _command_button_component.render(icon=icon, caption=caption, description=description, **attrs)

@@ -130,5 +130,11 @@ def render_analog_clock(**attrs):
 	References:
 		.. _MetroUI Analog Clock: https://v5.metroui.org.ua/components/analog-clock/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_analog_clock()
+
+	Empty or invalid:
+		`render_analog_clock()` returns `<div class="analog-clock" data-role="analog-clock"></div>`.
+
 	"""
 	return _analog_clock_component.render(**attrs)

@@ -79,5 +79,13 @@ _keypad = KeypadComponent()
 
 
 def render_keypad(content="", **attrs):
-	"""Возвращает разметку с data-role=\"keypad\"."""
+	"""
+	Возвращает разметку с data-role=\"keypad\".
+	Example:
+		render_keypad()
+
+	Empty or invalid:
+		`render_keypad()` returns `<input data-role="keypad">`.
+
+	"""
 	return _keypad.render(content=content, **attrs)

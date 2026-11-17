@@ -66,5 +66,13 @@ _textarea = TextareaComponent()
 
 
 def render_textarea(content="", **attrs):
-	"""Возвращает разметку с data-role=\"textarea\"."""
+	"""
+	Возвращает разметку с data-role=\"textarea\".
+	Example:
+		render_textarea()
+
+	Empty or invalid:
+		`render_textarea()` returns `<textarea data-role="textarea"></textarea>`.
+
+	"""
 	return _textarea.render(content=content, **attrs)

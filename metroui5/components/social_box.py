@@ -43,5 +43,13 @@ _social_box_component = SocialBoxComponent()
 
 
 def render_social_box(content="", **attrs):
-	"""Возвращает div для social-box."""
+	"""
+	Возвращает div для social-box.
+	Example:
+		render_social_box()
+
+	Empty or invalid:
+		`render_social_box()` returns `<div class="social-box"></div>`.
+
+	"""
 	return _social_box_component.render(content, **attrs)

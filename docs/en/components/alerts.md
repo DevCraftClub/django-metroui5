@@ -410,3 +410,16 @@ Now that you've mastered alerts:
 1. Study other [components](../) for creating complete interfaces
 2. Check out [examples](../../getting-started/examples.md)
 3. Study [API reference](../../api-reference/) for detailed information
+
+
+## metroui5_alert
+
+```python
+render_alert('Text')
+```
+
+Empty or invalid: `render_alert('Text')` returns `<div class="alert alert-info" role="alert">Text</div>`. An empty call returns `<div class="alert alert-info" role="alert"></div>`.
+
+```django
+{% metroui5_alert content="Text" %}
+```

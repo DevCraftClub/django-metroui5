@@ -130,5 +130,11 @@ def render_breadcrumb(items, **attrs):
 	References:
 		.. _MetroUI Breadcrumbs: https://v5.metroui.org.ua/components/breadcrumbs/
 		.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_breadcrumb([{'text': 'One', 'href': '/one'}])
+
+	Empty or invalid:
+		`render_breadcrumb([{'text': 'One', 'href': '/one'}])` returns `<ul class="breadcrumbs" id="breadcrumb-component"><li class="active"><a href="/one">One</a></li></ul>`. An empty call returns `<ul class="breadcrumbs" id="breadcrumb-component"></ul>`.
+
 	"""
 	return _breadcrumb_component.render(items, **attrs)

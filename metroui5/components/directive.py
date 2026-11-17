@@ -152,5 +152,11 @@ def render_directive(content="", **attrs):
         # Bug
         render_directive("Bug content", directive="bug")
         ```
+	Example:
+		render_directive()
+
+	Empty or invalid:
+		`render_directive()` returns `<div data-role="directive"></div>`.
+
     """
     return _directive_component.render(content=content, **attrs)

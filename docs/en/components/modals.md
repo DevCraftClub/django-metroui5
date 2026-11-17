@@ -360,3 +360,16 @@ $("#my-modal").on("dialogclose", function () {
 - [Alerts](alerts.md) - For alert messages
 - [Forms](forms.md) - For form content in modals
 - [Buttons](buttons.md) - For modal action buttons
+
+
+## metroui5_modal
+
+```python
+render_modal('Text', 'Text')
+```
+
+Empty or invalid: `render_modal('Text', 'Text')` returns `<div class="modal" data-role="modal"><div class='modal-title'>Text</div><div class='modal-content'>Text</div></div>`. An empty call returns `<div class="modal" data-role="modal"><div class='modal-title'></div><div class='modal-content'></div></div>`.
+
+```django
+{% metroui5_modal title="Text" content="Text" %}
+```

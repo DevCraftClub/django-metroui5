@@ -217,5 +217,11 @@ def render_container(content="", **attrs):
 			Semantic container:
 			.. code-block:: python
 				render_container(content="<h1>Header content</h1>", semantic=True, tag="header")
+	Example:
+		render_container()
+
+	Empty or invalid:
+		`render_container()` returns `<div class="container" id="container-component"></div>`.
+
 	"""
 	return _container_component.render(content=content, **attrs)

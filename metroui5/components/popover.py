@@ -58,5 +58,13 @@ _popover = PopoverComponent()
 
 
 def render_popover(content="", **attrs):
-	"""Возвращает разметку с data-role=\"popover\"."""
+	"""
+	Возвращает разметку с data-role=\"popover\".
+	Example:
+		render_popover()
+
+	Empty or invalid:
+		`render_popover()` returns `<button data-role="popover"></button>`.
+
+	"""
 	return _popover.render(content=content, **attrs)

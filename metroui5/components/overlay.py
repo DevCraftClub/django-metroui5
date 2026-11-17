@@ -43,5 +43,13 @@ _overlay_component = OverlayComponent()
 
 
 def render_overlay(content="", **attrs):
-	"""Возвращает div для overlay."""
+	"""
+	Возвращает div для overlay.
+	Example:
+		render_overlay()
+
+	Empty or invalid:
+		`render_overlay()` returns `<div class="overlay"></div>`.
+
+	"""
 	return _overlay_component.render(content, **attrs)

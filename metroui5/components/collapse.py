@@ -132,5 +132,11 @@ def render_collapse(content="", **attrs):
 		References:
 			.. _MetroUI Collapse: https://v5.metroui.org.ua/components/collapse/
 			.. _MetroUI Documentation: https://v5.metroui.org.ua/
+	Example:
+		render_collapse()
+
+	Empty or invalid:
+		`render_collapse()` returns `<div class="" id="collapse-component" data-role="collapse"></div>`.
+
 	"""
 	return _collapse_component.render(content=content, **attrs)

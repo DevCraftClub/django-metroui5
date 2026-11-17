@@ -79,5 +79,11 @@ def render_alert(content, alert_type="info", dismissible=False, **attrs):
 		dismissible: Whether alert can be dismissed
 		**attrs: Additional HTML attributes including:
 			cls_alert (str): Additional CSS class for the alert container
+	Example:
+		render_alert('Text')
+
+	Empty or invalid:
+		`render_alert('Text')` returns `<div class="alert alert-info" role="alert">Text</div>`. An empty call returns `<div class="alert alert-info" role="alert"></div>`.
+
 	"""
 	return _alert_component.render(content, alert_type, dismissible, **attrs)

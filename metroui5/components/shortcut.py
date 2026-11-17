@@ -43,5 +43,13 @@ _shortcut_component = ShortcutComponent()
 
 
 def render_shortcut(content="", **attrs):
-	"""Возвращает div для shortcut."""
+	"""
+	Возвращает div для shortcut.
+	Example:
+		render_shortcut()
+
+	Empty or invalid:
+		`render_shortcut()` returns `<div class="shortcut"></div>`.
+
+	"""
 	return _shortcut_component.render(content, **attrs)

@@ -87,5 +87,11 @@ def render_tile(title, content=None, size="medium", color="blue", icon=None, **a
 		icon: MetroUI icon
 		**attrs: Additional HTML attributes including:
 			cls_tile (str): Additional CSS class for the tile
+	Example:
+		render_tile('Text')
+
+	Empty or invalid:
+		`render_tile('Text')` returns `<div class="tile tile-medium tile-blue" data-role="tile"><h3 class='tile-title'>Text</h3></div>`. An empty call returns `<div class="tile tile-0 tile-blue" data-role="tile"><h3 class='tile-title'></h3></div>`.
+
 	"""
 	return _tile_component.render(title, content, size, color, icon, **attrs)
