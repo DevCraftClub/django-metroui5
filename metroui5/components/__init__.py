@@ -63,6 +63,7 @@ from .progress import render_progress
 from .rating import render_rating
 from .sidebar import render_sidebar
 from .spinner import render_spinner
+from .bottom_sheet import render_bottom_sheet
 from .wizard_classic import render_wizard_classic
 from .wheel_picker import render_wheel_picker
 from .vegas import render_vegas
@@ -242,6 +243,7 @@ __all__ = [
     'render_panel',
     'render_sidebar',
     'render_spinner',
+    'render_bottom_sheet',
     'render_wizard_classic',
     'render_wheel_picker',
     'render_vegas',

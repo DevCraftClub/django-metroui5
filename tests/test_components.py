@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_bottom_sheet,
     render_wizard_classic,
     render_wheel_picker,
     render_vegas,
@@ -1038,3 +1039,9 @@ class TestDocRole:
         result = render_wizard_classic()
         assert '<div' in result
         assert 'data-role="wizard-classic"' in result
+
+    def test_doc_bottom_sheet(self):
+        result = render_bottom_sheet()
+        assert "<ul" in result
+        assert 'class="bottom-sheet"' in result
+        assert 'data-role="bottomsheet"' in result

@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_bottom_sheet,
     render_wizard_classic,
     render_wheel_picker,
     render_vegas,
@@ -1011,6 +1012,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+
+@register.simple_tag
+def metroui5_bottom_sheet(content="", **kwargs):
+    """Нижняя панель."""
+    return mark_safe(render_bottom_sheet(content, **kwargs))
 
 @register.simple_tag
 def metroui5_wizard_classic(content="", **kwargs):
