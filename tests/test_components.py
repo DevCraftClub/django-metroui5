@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_navview,
     render_marquee,
     render_listview,
     render_linked_block,
@@ -500,3 +501,8 @@ class TestDocRole:
         result = render_marquee()
         assert '<div' in result
         assert 'data-role="marquee"' in result
+
+    def test_navview(self):
+        result = render_navview()
+        assert '<div' in result
+        assert 'data-role="navview"' in result
