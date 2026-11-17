@@ -2,6 +2,7 @@ from importlib import import_module
 from urllib.parse import urlparse
 
 from django.conf import settings
+from django.templatetags.static import static
 
 METROUI5_DEFAULTS = {
 	"css_url": {
@@ -126,20 +127,21 @@ def _get_file_url(config, config_type):
 	Returns:
 		dict: Configuration with processed URL
 	"""
-	config = _validate_url_config(config, config_type)
+	config = _validate_url_config(config, config_type).copy()
 	url = config['url']
 
-	# If it's a local static file (no scheme), ensure it starts with static prefix
+	# Resolve local static files via Django static() so STATIC_URL is respected
 	parsed_url = urlparse(url)
 	if not parsed_url.scheme and not parsed_url.netloc:
-		# Local static file - ensure it has proper static prefix
-		if not url.startswith(('http://', 'https://', '//', '/static/', 'static/')):
-			# Add static prefix if not already present
-			if not url.startswith('/'):
-				url = f'/static/{url}'
-			else:
-				url = f'/static{url}'
-		config['url'] = url
+		normalized_url = url
+		if normalized_url.startswith('/static/'):
+			normalized_url = normalized_url[len('/static/'):]
+		elif normalized_url.startswith('static/'):
+			normalized_url = normalized_url[len('static/'):]
+		else:
+			normalized_url = normalized_url.lstrip('/')
+
+		config['url'] = static(normalized_url)
 
 	return config
 
