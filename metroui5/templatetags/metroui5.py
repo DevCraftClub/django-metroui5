@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_transform_button,
     render_toggle_button,
     render_timepicker,
     render_timeline,
@@ -1004,6 +1005,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_transform_button(content="", **kwargs):
+    """Компонент transform-button."""
+    return mark_safe(render_transform_button(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_toggle_button(content="", **kwargs):

@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_transform_button,
     render_toggle_button,
     render_timepicker,
     render_timeline,
@@ -984,3 +985,9 @@ class TestDocRole:
         result = render_toggle_button()
         assert '<div' in result
         assert 'data-role="toggle-button"' in result
+
+
+    def test_doc_transform_button(self):
+        result = render_transform_button()
+        assert '<button' in result
+        assert 'class="transform-button"' in result
