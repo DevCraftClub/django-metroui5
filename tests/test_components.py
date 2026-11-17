@@ -19,6 +19,7 @@ from metroui5.components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_ribbon_menu,
     render_ribbon,
     render_resizer,
     render_remark,
@@ -836,3 +837,9 @@ class TestDocRole:
         result = render_ribbon()
         assert '<span' in result
         assert 'class="ribbon"' in result
+
+
+    def test_doc_ribbon_menu(self):
+        result = render_ribbon_menu()
+        assert '<div' in result
+        assert 'data-role="ribbon-menu"' in result

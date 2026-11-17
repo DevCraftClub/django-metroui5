@@ -70,6 +70,7 @@ from ..components import (
     render_panel,
     render_sidebar,
     render_spinner,
+    render_ribbon_menu,
     render_ribbon,
     render_resizer,
     render_remark,
@@ -983,6 +984,12 @@ def metroui5_sidebar(items, **kwargs):
 def metroui5_spinner(**kwargs):
     """Поле с шагом."""
     return mark_safe(render_spinner(**kwargs))
+
+@register.simple_tag
+def metroui5_ribbon_menu(content="", **kwargs):
+    """Компонент ribbon-menu."""
+    return mark_safe(render_ribbon_menu(content, **kwargs))
+
 
 @register.simple_tag
 def metroui5_ribbon(content="", **kwargs):
