@@ -21,7 +21,9 @@ env:
   PYTHON_VERSION_MIN: "3.9"
 
 jobs:
-
+  compatibility:
+    name: Django compatibility
+    uses: ./.github/workflows/compatibility.yml
 
   build:
     name: Build Package
@@ -55,8 +57,13 @@ jobs:
   release:
     name: Release to PyPI
     runs-on: ubuntu-latest
-    needs: [ build ]
-    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.event.inputs.skip_publish != 'true'
+    needs: [build, compatibility]
+    if: >-
+      !cancelled()
+      && needs.build.result == 'success'
+      && needs.compatibility.result == 'success'
+      && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+      && github.event.inputs.skip_publish != 'true'
     environment: pypi
     outputs:
       version: ${{ steps.set_version.outputs.version }}
@@ -153,7 +160,7 @@ jobs:
             ```
 
             ### 🔗 Links
-            - [Documentation](https://django-metroui5.readthedocs.io/)
+            - [Documentation](https://github.com/DevCraftClub/django-metroui5/tree/main/docs)
             - [GitHub Repository](https://github.com/DevCraftClub/django-metroui5)
             - [PyPI Package](https://pypi.org/project/django-metroui5/)
 

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Breadcrumb Component Demo</h1>
+    <p>This page demonstrates the MetroUI Breadcrumb component functionality based on the <a href="https://v5.metroui.org.ua/components/breadcrumbs/" target="_blank">official MetroUI v5 documentation</a>.</p>
+
+    <h2>Basic Usage</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Default Style</h3>
+            {% metroui5_breadcrumb breadcrumb_items %}
+        </div>
+    </div>
+
+    <h2>Arrow Style</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Arrow Style with Automatic Counters</h3>
+            {% metroui5_breadcrumb breadcrumb_items arrow=True %}
+        </div>
+    </div>
+
+    <h2>Advanced Configurations</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Custom Styled Breadcrumbs</h3>
+            <style>
+                .custom-breadcrumbs {
+                    --breadcrumbs-background: #f0f0f0;
+                    --breadcrumbs-color: #333333;
+                    --breadcrumbs-background-hover: #e0e0e0;
+                    --breadcrumbs-color-hover: #000000;
+                }
+            </style>
+            {% metroui5_breadcrumb breadcrumb_items cls_breadcrumb="custom-breadcrumbs" %}
+        </div>
+        <div class="cell-6">
+            <h3>Custom Arrow Style</h3>
+            <style>
+                .custom-arrow-breadcrumbs {
+                    --breadcrumbs-arrow-item-background: #2196F3;
+                    --breadcrumbs-arrow-item-color: white;
+                    --breadcrumbs-arrow-item-background-active: #0d47a1;
+                    --breadcrumbs-arrow-item-color-active: white;
+                }
+            </style>
+            {% metroui5_breadcrumb breadcrumb_items arrow=True cls_breadcrumb="custom-arrow-breadcrumbs" %}
+        </div>
+    </div>
+
+    <h2>Different Content Types</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Simple String Items</h3>
+            {% metroui5_breadcrumb simple_items %}
+        </div>
+        <div class="cell-6">
+            <h3>Mixed Content with Icons</h3>
+            {% metroui5_breadcrumb mixed_items %}
+        </div>
+    </div>
+
+    <h2>Custom Dividers</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Custom Divider Characters</h3>
+            {% metroui5_breadcrumb custom_divider_items %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

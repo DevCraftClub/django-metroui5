@@ -375,3 +375,16 @@ def form_actions(request):
 2. Ознакомьтесь с [примерами](../../getting-started/examples.md)
 3. Изучите [API справочник](../../api-reference/) для детальной информации
 4. Создайте интерактивные формы и интерфейсы!
+
+
+## metroui5_button
+
+```python
+render_button()
+```
+
+Пустое или неверное значение: `render_button()` даёт `<button class="button" type="button"></button>`.
+
+```django
+{% metroui5_button %}
+```

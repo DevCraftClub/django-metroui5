@@ -661,3 +661,16 @@ def get_calendar_events(user_id, month, year):
 - [Forms](forms.md) - For event creation forms
 - [Alerts](alerts.md) - For calendar notifications
 - [Navigation](navigation.md) - For calendar navigation
+
+
+## metroui5_calendar
+
+```python
+render_calendar()
+```
+
+Empty or invalid: `render_calendar()` returns `<div class="calendar" data-role="calendar"></div>`.
+
+```django
+{% metroui5_calendar %}
+```

@@ -1,31 +1,28 @@
 {% extends 'metroui5/layout/base.html' %}
 {% load metroui5 %}
 
-{% block app_title %}Django MetroUI5 Demo{% endblock %}
+{% block title %}Django MetroUI5 Demo{% endblock %}
 
-{% block app_bar_right %}
-<a href="{% url 'demo:index' %}" class="app-bar-element">
-    <span class="mif-home"></span>
-    Главная
-</a>
-<a href="{% url 'demo:forms' %}" class="app-bar-element">
-    <span class="mif-form"></span>
-    Формы
-</a>
-<a href="{% url 'demo:components' %}" class="app-bar-element">
-    <span class="mif-apps"></span>
-    Компоненты
-</a>
-<a href="{% url 'demo:tiles' %}" class="app-bar-element">
-    <span class="mif-grid"></span>
-    Tiles
-</a>
-<a href="{% url 'demo:advanced_components' %}" class="app-bar-element">
-    <span class="mif-cog"></span>
-    Расширенные
-</a>
-<a href="{% url 'demo:themes' %}" class="app-bar-element">
-    <span class="mif-palette"></span>
-    Темы
-</a>
+{% block content %}
+<!-- App Bar -->
+{% metroui5_app_bar brand=app_bar_brand menu_items=app_bar_menu_items static_items=app_bar_static_items expand=True %}
+
+<!-- Main Content -->
+<div class="container">
+    {% block page_content %}
+    <h1>Django MetroUI5 Demo</h1>
+    <p>Welcome to the MetroUI5 Django demo site!</p>
+    {% endblock %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize MetroUI components
+    if (typeof Metro !== 'undefined') {
+        Metro.init();
+    }
+});
+</script>
 {% endblock %}

@@ -495,3 +495,16 @@ document.querySelectorAll(".panel").forEach((panel) => {
 - [Вкладки](tabs.md) - Для содержимого вкладок в панелях
 - [Таблицы](tables.md) - Для отображения данных в панелях
 - [Полосы прогресса](progress.md) - Для индикаторов прогресса в панелях
+
+
+## metroui5_panel
+
+```python
+render_panel()
+```
+
+Пустое или неверное значение: `render_panel()` даёт `<div class="panel" data-role="panel"><div class="panel-content"></div></div>`.
+
+```django
+{% metroui5_panel %}
+```

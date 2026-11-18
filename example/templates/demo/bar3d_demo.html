@@ -1,0 +1,390 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Bar3d Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>MetroUI Bar3d Component</h1>
+    <p>This demo showcases the MetroUI v5 Bar3d component that creates a 3D bar chart visualization. It displays a value as a growing bar in a 3D perspective, with customizable colors and animations.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-12">
+                <h2>Basic Usage</h2>
+                <p>Basic bar3d with default settings:</p>
+                <div class="example-container">
+                    {% metroui5_bar3d %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Custom Value and Color</h2>
+                <p>Bar3d with custom value, color, and suffix:</p>
+                <div class="example-container">
+                    {% metroui5_bar3d value=75 bar_color="#00d153" value_suffix="%" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Different Heights and Values</h2>
+                <p>Multiple bar3d components with different configurations:</p>
+                <div class="example-container" style="display: flex; gap: 20px; align-items: end;">
+                    {% metroui5_bar3d value=25 height=150 bar_color="#ff6b6b" value_color="#fff" %}
+                    {% metroui5_bar3d value=50 height=200 bar_color="#4ecdc4" value_color="#fff" %}
+                    {% metroui5_bar3d value=75 height=250 bar_color="#45b7d1" value_color="#fff" %}
+                    {% metroui5_bar3d value=90 height=300 bar_color="#96ceb4" value_color="#fff" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Custom Animation Duration</h2>
+                <p>Bar3d with slower animation (1000ms):</p>
+                <div class="example-container">
+                    {% metroui5_bar3d value=60 height=200 bar_color="#f39c12" animation_duration=1000 %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Progress Indicators</h2>
+                <p>Using bar3d as progress indicators with different colors:</p>
+                <div class="example-container">
+                    <div style="margin-bottom: 20px;">
+                        <h4>CPU Usage: 45%</h4>
+                        {% metroui5_bar3d value=45 height=120 bar_color="#e74c3c" value_suffix="%" %}
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Memory Usage: 78%</h4>
+                        {% metroui5_bar3d value=78 height=120 bar_color="#f39c12" value_suffix="%" %}
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Disk Usage: 32%</h4>
+                        {% metroui5_bar3d value=32 height=120 bar_color="#27ae60" value_suffix="%" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Interactive Example</h2>
+                <p>Click the buttons to change the bar3d value dynamically:</p>
+                <div class="example-container">
+                    <div style="margin-bottom: 20px;">
+                        <button class="button" onclick="updateBar3d(25)">25%</button>
+                        <button class="button" onclick="updateBar3d(50)">50%</button>
+                        <button class="button" onclick="updateBar3d(75)">75%</button>
+                        <button class="button" onclick="updateBar3d(100)">100%</button>
+                    </div>
+                    <div id="interactive-bar3d">
+                        {% metroui5_bar3d value=50 height=200 bar_color="#9b59b6" value_color="#fff" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Component Parameters</h2>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>height</td>
+                            <td>number</td>
+                            <td>200</td>
+                            <td>The height of the bar</td>
+                        </tr>
+                        <tr>
+                            <td>bar_color</td>
+                            <td>string</td>
+                            <td>"#22ec1a"</td>
+                            <td>The color of the growing bar</td>
+                        </tr>
+                        <tr>
+                            <td>value_color</td>
+                            <td>string</td>
+                            <td>"#191919"</td>
+                            <td>The color of the displayed value text</td>
+                        </tr>
+                        <tr>
+                            <td>total</td>
+                            <td>number</td>
+                            <td>100</td>
+                            <td>The total value (maximum)</td>
+                        </tr>
+                        <tr>
+                            <td>value</td>
+                            <td>number</td>
+                            <td>60</td>
+                            <td>The current value to display</td>
+                        </tr>
+                        <tr>
+                            <td>value_suffix</td>
+                            <td>string</td>
+                            <td>""</td>
+                            <td>A suffix to append to the displayed value (e.g., "%")</td>
+                        </tr>
+                        <tr>
+                            <td>animation_duration</td>
+                            <td>number</td>
+                            <td>300</td>
+                            <td>The duration of the animation in milliseconds</td>
+                        </tr>
+                        <tr>
+                            <td>on_bar3d_create</td>
+                            <td>function</td>
+                            <td>Metro.noop</td>
+                            <td>Callback function triggered when the component is created</td>
+                        </tr>
+                        <tr>
+                            <td>cls_bar3d</td>
+                            <td>string</td>
+                            <td>""</td>
+                            <td>Additional CSS class for the bar3d container</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>CSS Variables</h2>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Default (Light)</th>
+                            <th>Dark Mode</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>--chart-height</td>
+                            <td>160px</td>
+                            <td>-</td>
+                            <td>The height of the chart</td>
+                        </tr>
+                        <tr>
+                            <td>--bar-height</td>
+                            <td>160px</td>
+                            <td>-</td>
+                            <td>The height of the bar</td>
+                        </tr>
+                        <tr>
+                            <td>--bar-width</td>
+                            <td>32px</td>
+                            <td>-</td>
+                            <td>The width of the bar</td>
+                        </tr>
+                        <tr>
+                            <td>--bar-value-color</td>
+                            <td>#191919</td>
+                            <td>-</td>
+                            <td>The color of the displayed value text</td>
+                        </tr>
+                        <tr>
+                            <td>--bar-bottom-color</td>
+                            <td>rgba(194, 157, 11, 0.2)</td>
+                            <td>-</td>
+                            <td>The color of the bottom side of the bar</td>
+                        </tr>
+                        <tr>
+                            <td>--bar-top-color</td>
+                            <td>rgba(254, 254, 254, 0.8)</td>
+                            <td>-</td>
+                            <td>The color of the top side of the bar</td>
+                        </tr>
+                        <tr>
+                            <td>--bar-left-color</td>
+                            <td>rgba(241, 241, 241, 0.8)</td>
+                            <td>-</td>
+                            <td>The color of the left side of the bar</td>
+                        </tr>
+                        <tr>
+                            <td>--bar-right-color</td>
+                            <td>rgba(216, 216, 216, 0.8)</td>
+                            <td>-</td>
+                            <td>The color of the right side of the bar</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Available CSS Classes</h2>
+                <h3>Base Classes</h3>
+                <ul>
+                    <li><code>.bar3d</code> - The main container class for the component</li>
+                    <li><code>.side</code> - Applied to all sides of the 3D bar</li>
+                    <li><code>.left-side</code> - The left side of the 3D bar</li>
+                    <li><code>.right-side</code> - The right side of the 3D bar</li>
+                    <li><code>.top-side</code> - The top side of the 3D bar</li>
+                    <li><code>.bottom-side</code> - The bottom side of the 3D bar</li>
+                    <li><code>.growing-bar</code> - The animated bar that grows to represent the value</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>API Methods</h2>
+                <table class="table striped">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>changeAttribute(attr, newValue)</td>
+                            <td>Changes a component attribute. Currently supports changing the data-value attribute.</td>
+                        </tr>
+                        <tr>
+                            <td>destroy()</td>
+                            <td>Removes the component from the DOM.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Usage Examples</h2>
+                <h3>Basic HTML Usage:</h3>
+                <pre><code>&lt;!-- Basic usage --&gt;
+&lt;div data-role="bar3d"&gt;&lt;/div&gt;
+
+&lt;!-- With custom value and color --&gt;
+&lt;div data-role="bar3d"
+     data-value="30"
+     data-bar-color="#00d153"
+     data-value-suffix="%"
+     data-value-color="#fff"&gt;
+&lt;/div&gt;</code></pre>
+
+                <h3>Django Template Usage:</h3>
+                <pre><code>&lbrace;% load metroui5 %}
+
+&lbrace;% metroui5_bar3d %}
+&lbrace;% metroui5_bar3d value=75 bar_color="#00d153" value_suffix="%" %}
+&lbrace;% metroui5_bar3d height=250 value=60 animation_duration=500 %}</code></pre>
+
+                <h3>Python Usage:</h3>
+                <pre><code>from metroui5.components import render_bar3d
+
+# Basic bar3d
+html = render_bar3d()
+
+# With custom parameters
+html = render_bar3d(value=75, bar_color="#00d153", value_suffix="%")
+
+# With height and animation
+html = render_bar3d(height=250, value=60, animation_duration=500)</code></pre>
+
+                <h3>JavaScript Initialization:</h3>
+                <pre><code>// Initialize with Metro.makePlugin
+const bar3d = Metro.makePlugin("#myBar", "bar3d", {
+    value: 60,
+    barColor: "#22ec1a",
+    valueSuffix: "%"
+});
+
+// Or globally configure defaults
+Metro.bar3dSetup({
+    barColor: "#22ec1a",
+    animationDuration: 500
+});
+
+// Change value dynamically
+const bar3d = Metro.getPlugin('#myBar', 'bar3d');
+bar3d.changeAttribute('data-value', 75);</code></pre>
+
+                <h3>Custom Styling:</h3>
+                <pre><code>/* Custom styling for bar3d */
+#myBar {
+    --bar-height: 200px;
+    --bar-width: 40px;
+    --bar-value-color: #ffffff;
+    --bar-top-color: rgba(200, 200, 200, 0.8);
+    --bar-left-color: rgba(180, 180, 180, 0.8);
+    --bar-right-color: rgba(160, 160, 160, 0.8);
+    --bar-bottom-color: rgba(140, 140, 140, 0.2);
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Additional Information</h2>
+                <p>The Bar3d component:</p>
+                <ul>
+                    <li>Creates a 3D bar chart visualization using CSS 3D transformations</li>
+                    <li>Displays a value as a growing bar in a 3D perspective</li>
+                    <li>Supports customizable colors and animations</li>
+                    <li>The value is displayed on the growing bar using the ::before pseudo-element</li>
+                    <li>Automatically updates when the data-value attribute is changed</li>
+                    <li>Perfect for progress indicators, statistics, and data visualization</li>
+                    <li>Uses CSS 3D transformations for the 3D effect</li>
+                    <li>Supports dynamic value updates through JavaScript API</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function updateBar3d(value) {
+    const bar3d = document.querySelector('#interactive-bar3d [data-role="bar3d"]');
+    if (bar3d) {
+        bar3d.setAttribute('data-value', value);
+        // Re-initialize the component to update the display
+        if (typeof Metro !== 'undefined' && Metro.makePlugin) {
+            Metro.makePlugin(bar3d, 'bar3d');
+        }
+    }
+}
+</script>
+
+<style>
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+.example-container h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Custom styling for the interactive example */
+#interactive-bar3d {
+    margin-top: 20px;
+}
+</style>
+{% endblock %}

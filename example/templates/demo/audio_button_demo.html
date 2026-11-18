@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Audio Button Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>MetroUI Audio Button Component</h1>
+    <p>This demo showcases the MetroUI v5 Audio Button component that allows you to create buttons that play audio when clicked.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-12">
+                <h2>Basic Usage</h2>
+                <p>Basic audio button with sound file:</p>
+                <div class="example-container">
+                    {% metroui5_audio_button "Click Me" audio_src="https://cdn.bensound.com/bensound-prism.mp3" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Custom Volume</h2>
+                <p>Audio button with custom volume level (0.8):</p>
+                <div class="example-container">
+                    {% metroui5_audio_button "Success Sound" audio_src="https://cdn.bensound.com/bensound-prism.mp3" audio_volume="0.8" class="button success" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Different Button Styles</h2>
+                <p>Audio buttons with different MetroUI button styles:</p>
+                <div class="example-container">
+                    {% metroui5_audio_button "Primary" audio_src="https://cdn.bensound.com/bensound-prism.mp3" class="button primary" %}
+                    {% metroui5_audio_button "Secondary" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" class="button secondary" %}
+                    {% metroui5_audio_button "Success" audio_src="https://cdn.bensound.com/bensound-keepitreal.mp3" class="button success" %}
+                    {% metroui5_audio_button "Alert" audio_src="https://cdn.bensound.com/bensound-prism.mp3" class="button alert" %}
+                    {% metroui5_audio_button "Warning" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" class="button warning" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Event Callbacks</h2>
+                <p>Audio buttons with JavaScript event callbacks:</p>
+                <div class="example-container">
+                    {% metroui5_audio_button "Play with Callbacks" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" audio_volume="0.7" on_audio_start="handleAudioStart(this)" on_audio_end="handleAudioEnd(this)" %}
+                    {% metroui5_audio_button "Button with Create Callback" audio_src="https://cdn.bensound.com/bensound-keepitreal.mp3" on_audio_button_create="handleAudioButtonCreate(this)" %}
+                </div>
+                <div id="callback-output" class="bg-lightGray p-2 mt-2" style="min-height: 50px; border-radius: 4px;">
+                    <small class="text-muted">Callback events will appear here...</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Multiple Sound Options</h2>
+                <p>Audio buttons with different sound files to demonstrate variety:</p>
+                <div class="example-container">
+                    {% metroui5_audio_button "Prism Sound" audio_src="https://cdn.bensound.com/bensound-prism.mp3" %}
+                    {% metroui5_audio_button "Slow Life Sound" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" %}
+                    {% metroui5_audio_button "Keep It Real Sound" audio_src="https://cdn.bensound.com/bensound-keepitreal.mp3" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Template Tag Usage</h2>
+                <p>Using the Django template tag:</p>
+                <div class="example-container">
+                    {% metroui5_audio_button "Template Tag Button" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" %}
+                    {% metroui5_audio_button "Template Tag with Volume" audio_src="https://cdn.bensound.com/bensound-keepitreal.mp3" audio_volume="0.9" class="button success" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Metro.playSound Utility</h2>
+                <p>You can also use the Metro.playSound utility function to play sounds without creating audio buttons:</p>
+                <div class="example-container">
+                    <button class="button" onclick="playSoundExample()">
+                        Play Sound with Metro.playSound()
+                    </button>
+                    <button class="button" onclick="playSoundWithOptions()">
+                        Play Sound with Options
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>API Methods</h2>
+                <p>Example of programmatic control using API methods:</p>
+                <div class="example-container">
+                    {% metroui5_audio_button "API Controlled Button" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" id="api-audio-button" %}
+                    <button class="button" onclick="playAudio()">
+                        Play Audio
+                    </button>
+                    <button class="button" onclick="stopAudio()">
+                        Stop Audio
+                    </button>
+                    <button class="button" onclick="destroyAudioButton()">
+                        Destroy Button
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="row">
+            <div class="cell-12">
+                
+                <h3>Django Template Usage:</h3>
+                <pre><code>&lbrace;% load metroui5 %}
+
+&lbrace;% metroui5_audio_button "Prism Sound" audio_src="https://cdn.bensound.com/bensound-prism.mp3" %}
+&lbrace;% metroui5_audio_button "Slow Life" audio_src="https://cdn.bensound.com/bensound-slowlife.mp3" audio_volume="0.8" class="button success" %}
+&lbrace;% metroui5_audio_button "Keep It Real" audio_src="https://cdn.bensound.com/bensound-keepitreal.mp3" class="button warning" %}</code></pre>
+
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+.example-container .button {
+    margin: 5px;
+}
+
+#callback-output {
+    font-family: monospace;
+    font-size: 12px;
+}
+</style>
+
+<script>
+// Callback functions for demo
+function handleAudioStart(button) {
+    const output = document.getElementById('callback-output');
+    output.innerHTML += '<div>Audio started: ' + button.textContent + '</div>';
+}
+
+function handleAudioEnd(button) {
+    const output = document.getElementById('callback-output');
+    output.innerHTML += '<div>Audio ended: ' + button.textContent + '</div>';
+}
+
+function handleAudioButtonCreate(button) {
+    const output = document.getElementById('callback-output');
+    output.innerHTML += '<div>Audio button created: ' + button.textContent + '</div>';
+}
+
+// Metro.playSound utility examples
+function playSoundExample() {
+    Metro.playSound("https://cdn.bensound.com/bensound-keepitreal.mp3");
+}
+
+function playSoundWithOptions() {
+    Metro.playSound({
+        audioSrc: "https://cdn.bensound.com/bensound-slowlife.mp3",
+        audioVolume: 0.7,
+        onAudioStart: function(src) {
+            console.log("Audio started: " + src);
+            const output = document.getElementById('callback-output');
+            output.innerHTML += '<div>Metro.playSound started: ' + src + '</div>';
+        },
+        onAudioEnd: function() {
+            console.log("Audio ended");
+            const output = document.getElementById('callback-output');
+            output.innerHTML += '<div>Metro.playSound ended</div>';
+        }
+    });
+}
+
+// API methods example
+let audioButtonInstance = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the audio button
+    Metro.makePlugin("#api-audio-button", "audio-button");
+    audioButtonInstance = Metro.getPlugin("#api-audio-button", "audio-button");
+});
+
+function playAudio() {
+    if (audioButtonInstance) {
+        audioButtonInstance.play(function(audio) {
+            console.log("Audio started playing via API");
+            const output = document.getElementById('callback-output');
+            output.innerHTML += '<div>API: Audio started playing</div>';
+        });
+    }
+}
+
+function stopAudio() {
+    if (audioButtonInstance) {
+        audioButtonInstance.stop(function(audio) {
+            console.log("Audio stopped via API");
+            const output = document.getElementById('callback-output');
+            output.innerHTML += '<div>API: Audio stopped</div>';
+        });
+    }
+}
+
+function destroyAudioButton() {
+    if (audioButtonInstance) {
+        audioButtonInstance.destroy();
+        audioButtonInstance = null;
+        const output = document.getElementById('callback-output');
+        output.innerHTML += '<div>API: Audio button destroyed</div>';
+    }
+}
+
+// Clear callback output
+function clearCallbackOutput() {
+    document.getElementById('callback-output').innerHTML = '<small class="text-muted">Callback events will appear here...</small>';
+}
+
+// Add clear button
+document.addEventListener('DOMContentLoaded', function() {
+    const clearBtn = document.createElement('button');
+    clearBtn.className = 'button small';
+    clearBtn.textContent = 'Clear Output';
+    clearBtn.addEventListener('click', clearCallbackOutput);
+    
+    const callbackOutput = document.getElementById('callback-output');
+    if (callbackOutput && callbackOutput.parentNode) {
+        callbackOutput.parentNode.insertBefore(clearBtn, callbackOutput.nextSibling);
+    }
+});
+</script>
+{% endblock %}

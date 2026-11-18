@@ -382,3 +382,16 @@ def create_dropdown_with_default(options, default_value=None):
 - [Формы](forms.md) - Для интеграции с формами
 - [Кнопки](buttons.md) - Для триггеров выпадающих списков
 - [Навигация](navigation.md) - Для навигационных выпадающих списков
+
+
+## metroui5_dropdown
+
+```python
+render_dropdown()
+```
+
+Пустое или неверное значение: `render_dropdown()` даёт `<div class="dropdown-toggle">Click me<div class="dropdown" data-role="dropdown"></div></div>`.
+
+```django
+{% metroui5_dropdown items %}
+```

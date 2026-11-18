@@ -1,0 +1,703 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Double Slider Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Double Slider Components</h1>
+    <p>Demonstrating the MetroUI v5 Double Slider component - a range slider with two markers that allow users to select a range of values between a minimum and maximum.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Basic Double Slider</h2>
+                <p>Simple double slider with default settings (0-100 range).</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Custom Range</h2>
+                <p>Double slider with custom min/max values and initial range.</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider min=10 max=200 value_min=50 value_max=150 %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Decimal Precision</h2>
+                <p>Double slider with decimal precision (accuracy=2).</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider min=0 max=10 accuracy=2 value_min=2.5 value_max=7.8 %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>With Hints</h2>
+                <p>Double slider showing hints when dragging markers.</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider hint=True value_min=20 value_max=80 %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Always Show Hints</h2>
+                <p>Double slider with permanently visible hints.</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider hint=True hint_always=True value_min=25 value_max=75 %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Custom Hint Masks</h2>
+                <p>Double slider with custom hint formatting.</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider hint=True hint_mask_min="Min: $1%" hint_mask_max="Max: $1%" value_min=30 value_max=70 %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Bottom Hint Position</h2>
+                <p>Double slider with hints positioned at the bottom.</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider hint=True hint_always=True hint_position_min="bottom" hint_position_max="bottom" value_min=35 value_max=65 %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Show Min/Max Labels</h2>
+                <p>Double slider displaying min and max values.</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider show_min_max=True min=0 max=1000 value_min=200 value_max=800 %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Min/Max at Top</h2>
+                <p>Double slider with min/max labels positioned at the top.</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider show_min_max=True min_max_position="top" min=50 max=500 value_min=100 value_max=400 %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>With Target Display</h2>
+                <p>Double slider that updates a target element with the selected range.</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider target="#rangeDisplay" min=1000 max=50000 value_min=15000 value_max=35000 %}
+                    <div id="rangeDisplay" class="mt-2 p-2 bg-lightGray text-center" style="border-radius: 4px;">
+                        <small class="text-muted">Selected range will appear here...</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Interactive Example with Events</h2>
+                <p>Double slider with comprehensive event handling and custom styling.</p>
+                
+                <div class="example-container">
+                    {% metroui5_double_slider id="interactive-slider" min=0 max=100 value_min=25 value_max=75 hint=True cls_slider="custom-slider" cls_complete="custom-fill" cls_marker="custom-marker" on_start="handleSliderStart()" on_stop="handleSliderStop()" on_move="handleSliderMove()" on_change="handleSliderChange()" on_double_slider_create="handleSliderCreate()" %}
+                    
+                    <div class="mt-4">
+                        <h4>Event Output</h4>
+                        <div id="slider-event-output" class="bg-lightGray p-2" style="min-height: 120px; border-radius: 4px; font-family: monospace; font-size: 12px; max-height: 200px; overflow-y: auto;">
+                            <small class="text-muted">Slider events will appear here...</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Real-world Examples</h2>
+                <p>Practical examples of double sliders in common use cases.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Price Range Filter</h4>
+                            <p>Select price range for products.</p>
+                            <div class="example-container">
+                                {% metroui5_double_slider min=0 max=2000 value_min=100 value_max=500 hint=True hint_mask_min="$1$" hint_mask_max="$1$" show_min_max=True %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Age Range Selection</h4>
+                            <p>Filter content by age range.</p>
+                            <div class="example-container">
+                                {% metroui5_double_slider min=18 max=100 value_min=25 value_max=65 hint=True hint_mask_min="$1 years" hint_mask_max="$1 years" show_min_max=True %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Score Range</h4>
+                            <p>Select score range for filtering.</p>
+                            <div class="example-container">
+                                {% metroui5_double_slider min=0 max=100 value_min=70 value_max=95 hint=True hint_mask_min="$1%" hint_mask_max="$1%" show_min_max=True %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Date Range (Days)</h4>
+                            <p>Select date range in days.</p>
+                            <div class="example-container">
+                                {% metroui5_double_slider min=1 max=365 value_min=30 value_max=90 hint=True hint_mask_min="Day $1" hint_mask_max="Day $1" show_min_max=True %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Temperature Range</h4>
+                            <p>Set temperature range in Celsius.</p>
+                            <div class="example-container">
+                                {% metroui5_double_slider min=-20 max=50 value_min=15 value_max=25 hint=True hint_mask_min="$1°C" hint_mask_max="$1°C" show_min_max=True %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>File Size Range</h4>
+                            <p>Filter files by size range in MB.</p>
+                            <div class="example-container">
+                                {% metroui5_double_slider min=0 max=1000 value_min=10 value_max=100 hint=True hint_mask_min="$1 MB" hint_mask_max="$1 MB" show_min_max=True %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Custom Styled Sliders</h2>
+                <p>Double sliders with different color themes and styles.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Blue Theme</h4>
+                            <div class="example-container">
+                                {% metroui5_double_slider value_min=20 value_max=80 hint=True cls_slider="blue-theme" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Green Theme</h4>
+                            <div class="example-container">
+                                {% metroui5_double_slider value_min=30 value_max=70 hint=True cls_slider="green-theme" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Red Theme</h4>
+                            <div class="example-container">
+                                {% metroui5_double_slider value_min=40 value_max=60 hint=True cls_slider="red-theme" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Double Slider</div>
+                <div class="content">
+                    <pre><code>{% metroui5_double_slider %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Custom Range and Initial Values</div>
+                <div class="content">
+                    <pre><code>{% metroui5_double_slider min=10 max=200 value_min=50 value_max=150 %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Hints and Custom Masks</div>
+                <div class="content">
+                    <pre><code>{% metroui5_double_slider hint=True hint_mask_min="Min: $1%" hint_mask_max="Max: $1%" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Min/Max Display and Target</div>
+                <div class="content">
+                    <pre><code>{% metroui5_double_slider show_min_max=True target="#rangeDisplay" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Custom Styling and Events</div>
+                <div class="content">
+                    <pre><code>{% metroui5_double_slider cls_slider="custom-slider" cls_complete="custom-fill" on_change="handleSliderChange()" %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Component Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>min</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Minimum value of the slider</td>
+                    </tr>
+                    <tr>
+                        <td>max</td>
+                        <td>number</td>
+                        <td>100</td>
+                        <td>Maximum value of the slider</td>
+                    </tr>
+                    <tr>
+                        <td>accuracy</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Decimal precision for values (0 = integers only)</td>
+                    </tr>
+                    <tr>
+                        <td>round_value</td>
+                        <td>boolean</td>
+                        <td>true</td>
+                        <td>Whether to round values according to accuracy</td>
+                    </tr>
+                    <tr>
+                        <td>value_min</td>
+                        <td>number</td>
+                        <td>null</td>
+                        <td>Initial minimum value (defaults to min if not specified)</td>
+                    </tr>
+                    <tr>
+                        <td>value_max</td>
+                        <td>number</td>
+                        <td>null</td>
+                        <td>Initial maximum value (defaults to max if not specified)</td>
+                    </tr>
+                    <tr>
+                        <td>hint</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Show hints when dragging markers</td>
+                    </tr>
+                    <tr>
+                        <td>hint_always</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Always show hints, not just when dragging</td>
+                    </tr>
+                    <tr>
+                        <td>hint_position_min</td>
+                        <td>string</td>
+                        <td>"top"</td>
+                        <td>Position of the minimum value hint ("top" or "bottom")</td>
+                    </tr>
+                    <tr>
+                        <td>hint_position_max</td>
+                        <td>string</td>
+                        <td>"top"</td>
+                        <td>Position of the maximum value hint ("top" or "bottom")</td>
+                    </tr>
+                    <tr>
+                        <td>hint_mask_min</td>
+                        <td>string</td>
+                        <td>"$1"</td>
+                        <td>Format for minimum value hint ($1 is replaced with the value)</td>
+                    </tr>
+                    <tr>
+                        <td>hint_mask_max</td>
+                        <td>string</td>
+                        <td>"$1"</td>
+                        <td>Format for maximum value hint ($1 is replaced with the value)</td>
+                    </tr>
+                    <tr>
+                        <td>show_min_max</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Show min and max values below/above the slider</td>
+                    </tr>
+                    <tr>
+                        <td>min_max_position</td>
+                        <td>string</td>
+                        <td>"bottom"</td>
+                        <td>Position of min/max labels ("top" or "bottom")</td>
+                    </tr>
+                    <tr>
+                        <td>target</td>
+                        <td>string</td>
+                        <td>null</td>
+                        <td>Target element to display selected values (selector or DOM element)</td>
+                    </tr>
+                    <tr>
+                        <td>size</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Width of the slider in pixels (0 = auto/100%)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Event Handlers</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>on_start</td>
+                        <td>Triggered when the user starts dragging a marker</td>
+                    </tr>
+                    <tr>
+                        <td>on_stop</td>
+                        <td>Triggered when the user stops dragging a marker</td>
+                    </tr>
+                    <tr>
+                        <td>on_move</td>
+                        <td>Triggered continuously while dragging a marker</td>
+                    </tr>
+                    <tr>
+                        <td>on_change</td>
+                        <td>Triggered when the slider value changes</td>
+                    </tr>
+                    <tr>
+                        <td>on_change_value</td>
+                        <td>Triggered when the slider value changes (alias for onChange)</td>
+                    </tr>
+                    <tr>
+                        <td>on_focus</td>
+                        <td>Triggered when a marker receives focus</td>
+                    </tr>
+                    <tr>
+                        <td>on_blur</td>
+                        <td>Triggered when a marker loses focus</td>
+                    </tr>
+                    <tr>
+                        <td>on_double_slider_create</td>
+                        <td>Triggered when the double slider is created</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>CSS Classes</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>cls_slider</td>
+                        <td>Custom class for the slider container</td>
+                    </tr>
+                    <tr>
+                        <td>cls_backside</td>
+                        <td>Custom class for the background track</td>
+                    </tr>
+                    <tr>
+                        <td>cls_complete</td>
+                        <td>Custom class for the filled portion</td>
+                    </tr>
+                    <tr>
+                        <td>cls_marker</td>
+                        <td>Custom class for both markers</td>
+                    </tr>
+                    <tr>
+                        <td>cls_marker_min</td>
+                        <td>Custom class for the minimum marker</td>
+                    </tr>
+                    <tr>
+                        <td>cls_marker_max</td>
+                        <td>Custom class for the maximum marker</td>
+                    </tr>
+                    <tr>
+                        <td>cls_hint</td>
+                        <td>Custom class for both hints</td>
+                    </tr>
+                    <tr>
+                        <td>cls_hint_min</td>
+                        <td>Custom class for the minimum hint</td>
+                    </tr>
+                    <tr>
+                        <td>cls_hint_max</td>
+                        <td>Custom class for the maximum hint</td>
+                    </tr>
+                    <tr>
+                        <td>cls_min_max</td>
+                        <td>Custom class for the min/max labels container</td>
+                    </tr>
+                    <tr>
+                        <td>cls_min</td>
+                        <td>Custom class for the minimum label</td>
+                    </tr>
+                    <tr>
+                        <td>cls_max</td>
+                        <td>Custom class for the maximum label</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>CSS Variables</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Default (Light)</th>
+                        <th>Dark Mode</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>--slider-thumb-size</td>
+                        <td>18px</td>
+                        <td>18px</td>
+                        <td>Size of the slider markers</td>
+                    </tr>
+                    <tr>
+                        <td>--slider-thumb-color</td>
+                        <td>var(—color-blue)</td>
+                        <td>var(—color-crimson)</td>
+                        <td>Color of the slider markers</td>
+                    </tr>
+                    <tr>
+                        <td>--slider-bar-color</td>
+                        <td>#191919</td>
+                        <td>#191919</td>
+                        <td>Color of the slider bar</td>
+                    </tr>
+                    <tr>
+                        <td>--slider-back-color</td>
+                        <td>#d5d5d5</td>
+                        <td>#4e5055</td>
+                        <td>Background color of the slider track</td>
+                    </tr>
+                    <tr>
+                        <td>--slider-fill-color</td>
+                        <td>var(—color-cyan)</td>
+                        <td>#ff145c</td>
+                        <td>Color of the selected range between markers</td>
+                    </tr>
+                    <tr>
+                        <td>--slider-thumb-border-color</td>
+                        <td>var(—color-light-cyan)</td>
+                        <td>#ffffff</td>
+                        <td>Border color of the slider markers</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>API Methods</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>val(vMin, vMax)</td>
+                        <td>Gets or sets the current values of the double slider</td>
+                        <td>slider.val(20, 80)</td>
+                    </tr>
+                    <tr>
+                        <td>changeValue()</td>
+                        <td>Updates the slider values based on data attributes</td>
+                        <td>slider.changeValue()</td>
+                    </tr>
+                    <tr>
+                        <td>disable()</td>
+                        <td>Disables the double slider</td>
+                        <td>slider.disable()</td>
+                    </tr>
+                    <tr>
+                        <td>enable()</td>
+                        <td>Enables the double slider</td>
+                        <td>slider.enable()</td>
+                    </tr>
+                    <tr>
+                        <td>toggleState()</td>
+                        <td>Toggles between enabled and disabled states</td>
+                        <td>slider.toggleState()</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom styling for demo */
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+.custom-slider {
+    margin: 20px 0;
+}
+
+.custom-fill {
+    background-color: #e91e63 !important;
+}
+
+.custom-marker {
+    background-color: #c2185b !important;
+    border-color: #ad1457 !important;
+}
+
+/* Theme-based sliders */
+.blue-theme {
+    --slider-fill-color: #2196F3;
+    --slider-thumb-color: #1976D2;
+    --slider-thumb-border-color: #0D47A1;
+}
+
+.green-theme {
+    --slider-fill-color: #4CAF50;
+    --slider-thumb-color: #388E3C;
+    --slider-thumb-border-color: #1B5E20;
+}
+
+.red-theme {
+    --slider-fill-color: #F44336;
+    --slider-thumb-color: #D32F2F;
+    --slider-thumb-border-color: #B71C1C;
+}
+
+#slider-event-output {
+    line-height: 1.4;
+}
+
+/* Spacing for sliders */
+[data-role="double-slider"] {
+    margin: 15px 0;
+    width: 100%;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Event handler functions for demo
+function handleSliderStart() {
+    addToSliderOutput("Slider drag started");
+}
+
+function handleSliderStop() {
+    const slider = Metro.getPlugin('#interactive-slider', 'double-slider');
+    if (slider) {
+        const values = slider.val();
+        addToSliderOutput(`Slider drag stopped - Range: ${values[0]} - ${values[1]}`);
+    }
+}
+
+function handleSliderMove() {
+    const slider = Metro.getPlugin('#interactive-slider', 'double-slider');
+    if (slider) {
+        const values = slider.val();
+        addToSliderOutput(`Slider moving - Current range: ${values[0]} - ${values[1]}`);
+    }
+}
+
+function handleSliderChange() {
+    const slider = Metro.getPlugin('#interactive-slider', 'double-slider');
+    if (slider) {
+        const values = slider.val();
+        addToSliderOutput(`Slider value changed - New range: ${values[0]} - ${values[1]}`);
+    }
+}
+
+function handleSliderCreate() {
+    addToSliderOutput("Double Slider created successfully");
+}
+
+// Utility function to add output
+function addToSliderOutput(message) {
+    const output = document.getElementById('slider-event-output');
+    if (output) {
+        const timestamp = new Date().toLocaleTimeString();
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = `[${timestamp}] ${message}`;
+        output.appendChild(newDiv);
+        output.scrollTop = output.scrollHeight;
+    }
+}
+
+// Initialize when page loads
+$(document).ready(function() {
+    // MetroUI will initialize elements with data-role automatically
+    
+    // Add clear button for event output
+    const clearBtn = $('<button class="button small mt-2">Clear Output</button>');
+    clearBtn.on('click', function() {
+        $('#slider-event-output').html('<small class="text-muted">Slider events will appear here...</small>');
+    });
+    $('#slider-event-output').after(clearBtn);
+    
+    // Add some instruction text
+    const instructionDiv = $('<div class="alert alert-info mt-2"><small><strong>Instructions:</strong> Drag the slider markers to see events in action. The range values will be displayed and logged in real-time.</small></div>');
+    $('#interactive-slider').after(instructionDiv);
+    
+    // Add initial message
+    setTimeout(function() {
+        addToSliderOutput('Page loaded - interact with the slider above to see events');
+    }, 500);
+});
+</script>
+{% endblock %}

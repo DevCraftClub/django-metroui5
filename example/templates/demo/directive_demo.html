@@ -1,0 +1,565 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Directive Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Directive Components</h1>
+    <p>Demonstrating the MetroUI v5 Directive component for displaying notes, warnings, tips, and other informational content.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Basic Directive Types</h2>
+                <p>Different types of directive boxes for various informational content.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Note Directive</h4>
+                            {% metroui5_directive content="This is a note directive with default styling." directive="note" %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Info Directive</h4>
+                            {% metroui5_directive content="This is an info directive with blue styling." directive="info" %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Warning Directive</h4>
+                            {% metroui5_directive content="This is a warning directive with yellow styling." directive="warning" %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Success Directive</h4>
+                            {% metroui5_directive content="This is a success directive with green styling." directive="success" %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Caution Directive</h4>
+                            {% metroui5_directive content="This is a caution directive with red styling." directive="caution" %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Important Directive</h4>
+                            {% metroui5_directive content="This is an important directive with orange styling." directive="important" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Directive Styles</h2>
+                <p>Different visual styles for directive boxes.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Style 1 (Default)</h4>
+                            {% metroui5_directive content="This is style 1 with icon on the right." directive="info" style=1 %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Style 2</h4>
+                            {% metroui5_directive content="This is style 2 with icon on the left and thicker border." directive="info" style=2 %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Style 3</h4>
+                            {% metroui5_directive content="This is style 3 with icon on the left and padding." directive="info" style=3 %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Directive with Custom Titles</h2>
+                <p>Directives with custom titles instead of default localized labels.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Custom Warning Title</h4>
+                            {% metroui5_directive content="This warning has a custom title." directive="warning" title="Attention!" %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Custom Info Title</h4>
+                            {% metroui5_directive content="This info directive has a custom title." directive="info" title="Information" %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Custom Success Title</h4>
+                            {% metroui5_directive content="This success directive has a custom title." directive="success" title="Great Job!" %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Custom Error Title</h4>
+                            {% metroui5_directive content="This error directive has a custom title." directive="caution" title="Error Occurred" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Directive without Icons</h2>
+                <p>Directives with icons disabled for a cleaner look.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Info without Icon</h4>
+                            {% metroui5_directive content="This info directive has no icon." directive="info" show_icon=False %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Warning without Icon</h4>
+                            {% metroui5_directive content="This warning directive has no icon." directive="warning" show_icon=False %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Special Directive Types</h2>
+                <p>Special directive types for specific use cases.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Bug Directive</h4>
+                            {% metroui5_directive content="This is a bug directive for reporting issues." directive="bug" %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Tip Directive</h4>
+                            {% metroui5_directive content="This is a tip directive for helpful hints." directive="tip" %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Air Directive</h4>
+                            {% metroui5_directive content="This is an air directive for less important notes." directive="air" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Custom Styled Directives</h2>
+                <p>Directives with custom CSS classes for enhanced styling.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Custom Styled Info</h4>
+                            {% metroui5_directive content="This directive has custom styling applied." directive="info" cls_directive="custom-info-directive" %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Custom Styled Warning</h4>
+                            {% metroui5_directive content="This directive has custom styling applied." directive="warning" cls_directive="custom-warning-directive" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Directive with Event Handlers</h2>
+                <p>Directives with JavaScript event callbacks.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Directive with Create Event</h4>
+                            {% metroui5_directive content="This directive has a create event handler." directive="info" on_directive_create="handleDirectiveCreate()" %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Event Output</h4>
+                            <div id="directive-event-output" class="bg-lightGray p-2" style="min-height: 50px; border-radius: 4px;">
+                                <small class="text-muted">Directive events will appear here...</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Real-world Examples</h2>
+                <p>Common use cases for directive components.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>User Instructions</h4>
+                            {% metroui5_directive content="Please fill out all required fields before submitting the form. Make sure to check your email address for typos." directive="info" title="Instructions" %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>System Warning</h4>
+                            {% metroui5_directive content="Your session will expire in 5 minutes. Please save your work to avoid data loss." directive="warning" title="Session Warning" %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell-md-6">
+                            <h4>Success Message</h4>
+                            {% metroui5_directive content="Your data has been successfully saved to the database. You can now proceed with the next step." directive="success" title="Success" %}
+                        </div>
+                        <div class="cell-md-6">
+                            <h4>Error Message</h4>
+                            {% metroui5_directive content="Unable to connect to the server. Please check your internet connection and try again." directive="caution" title="Connection Error" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Directive</div>
+                <div class="content">
+                    <pre><code>{% metroui5_directive content="This is a basic directive." %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Directive with Type</div>
+                <div class="content">
+                    <pre><code>{% metroui5_directive content="This is an info directive." directive="info" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Directive with Custom Title</div>
+                <div class="content">
+                    <pre><code>{% metroui5_directive content="This directive has a custom title." directive="warning" title="Attention!" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Directive with Style</div>
+                <div class="content">
+                    <pre><code>{% metroui5_directive content="This directive uses style 2." directive="info" style=2 %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Directive without Icon</div>
+                <div class="content">
+                    <pre><code>{% metroui5_directive content="This directive has no icon." directive="info" show_icon=False %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Directive with Custom Styling</div>
+                <div class="content">
+                    <pre><code>{% metroui5_directive content="This directive has custom styling." directive="info" cls_directive="custom-directive" %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Component Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>content</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Directive content text</td>
+                    </tr>
+                    <tr>
+                        <td>directive</td>
+                        <td>string</td>
+                        <td>"note"</td>
+                        <td>Type of directive. Options: "note", "info", "warning", "caution", "tip", "success", "important", "bug", "shit", "air", "fuck"</td>
+                    </tr>
+                    <tr>
+                        <td>show_icon</td>
+                        <td>boolean</td>
+                        <td>true</td>
+                        <td>Whether to show an icon</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>string</td>
+                        <td>"default"</td>
+                        <td>Title of the directive. If set to "default", it will use the localized label for the directive type</td>
+                    </tr>
+                    <tr>
+                        <td>style</td>
+                        <td>number</td>
+                        <td>1</td>
+                        <td>Style of the directive. Options: 1, 2, 3</td>
+                    </tr>
+                    <tr>
+                        <td>on_directive_create</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Event fired when directive is created</td>
+                    </tr>
+                    <tr>
+                        <td>cls_directive</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for directive element</td>
+                    </tr>
+                    <tr>
+                        <td>cls_title</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for title element</td>
+                    </tr>
+                    <tr>
+                        <td>cls_content</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for content element</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Directive Types</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Visual Style</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>note</td>
+                        <td>Default type for general notes</td>
+                        <td>Gray styling</td>
+                    </tr>
+                    <tr>
+                        <td>info</td>
+                        <td>Informational content</td>
+                        <td>Blue styling</td>
+                    </tr>
+                    <tr>
+                        <td>warning</td>
+                        <td>Warning messages</td>
+                        <td>Yellow styling</td>
+                    </tr>
+                    <tr>
+                        <td>caution</td>
+                        <td>Caution and alert messages</td>
+                        <td>Red styling</td>
+                    </tr>
+                    <tr>
+                        <td>tip</td>
+                        <td>Helpful tips and hints</td>
+                        <td>Green styling</td>
+                    </tr>
+                    <tr>
+                        <td>success</td>
+                        <td>Success messages</td>
+                        <td>Green styling</td>
+                    </tr>
+                    <tr>
+                        <td>important</td>
+                        <td>Important information</td>
+                        <td>Orange styling</td>
+                    </tr>
+                    <tr>
+                        <td>bug</td>
+                        <td>Bug reports and issues</td>
+                        <td>Special bug styling</td>
+                    </tr>
+                    <tr>
+                        <td>air</td>
+                        <td>Less important notes</td>
+                        <td>Light styling</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Directive Styles</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Style</th>
+                        <th>Description</th>
+                        <th>Visual Characteristics</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Default style</td>
+                        <td>Icon on the right side</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Alternative style</td>
+                        <td>Icon on the left with thicker border</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Alternative style</td>
+                        <td>Icon on the left with padding</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>CSS Variables</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Default (Light)</th>
+                        <th>Dark Mode</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>--directive-background</td>
+                        <td>#f9f9f9</td>
+                        <td>Varies by type</td>
+                        <td>Background color</td>
+                    </tr>
+                    <tr>
+                        <td>--directive-color</td>
+                        <td>#191919</td>
+                        <td>#ffffff</td>
+                        <td>Text color</td>
+                    </tr>
+                    <tr>
+                        <td>--directive-border-color</td>
+                        <td>#3c3c3c1a</td>
+                        <td>Varies by type</td>
+                        <td>Border color</td>
+                    </tr>
+                    <tr>
+                        <td>--directive-title-color</td>
+                        <td>#3c3c3c</td>
+                        <td>Varies by type</td>
+                        <td>Title color</td>
+                    </tr>
+                    <tr>
+                        <td>--directive-border-radius</td>
+                        <td>10px</td>
+                        <td>Same</td>
+                        <td>Border radius</td>
+                    </tr>
+                    <tr>
+                        <td>--directive-icon-background</td>
+                        <td>#f5f5f5</td>
+                        <td>Same</td>
+                        <td>Icon background color</td>
+                    </tr>
+                    <tr>
+                        <td>--directive-icon-color</td>
+                        <td>#7a7a7a</td>
+                        <td>Varies by type</td>
+                        <td>Icon color</td>
+                    </tr>
+                    <tr>
+                        <td>--directive-icon-size</td>
+                        <td>3rem</td>
+                        <td>Same</td>
+                        <td>Icon size</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom directive styling examples */
+.custom-info-directive {
+    --directive-background: #e6f7ff;
+    --directive-border-color: #91d5ff;
+    --directive-title-color: #1890ff;
+    border-left: 4px solid #1890ff;
+}
+
+.custom-warning-directive {
+    --directive-background: #fff7e6;
+    --directive-border-color: #ffd591;
+    --directive-title-color: #fa8c16;
+    border-left: 4px solid #fa8c16;
+}
+
+#directive-event-output {
+    font-family: monospace;
+    font-size: 12px;
+}
+
+/* Additional styling for better presentation */
+.directive {
+    margin: 10px 0;
+}
+
+.directive-content {
+    line-height: 1.6;
+}
+
+.directive-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Event handler function for demo
+function handleDirectiveCreate() {
+    console.log("Directive created event triggered");
+    addToDirectiveOutput("Directive created event triggered");
+}
+
+// Utility function to add output
+function addToDirectiveOutput(message) {
+    const output = document.getElementById('directive-event-output');
+    if (output) {
+        const timestamp = new Date().toLocaleTimeString();
+        output.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+        output.scrollTop = output.scrollHeight;
+    }
+}
+
+// Initialize all directive elements when page loads
+$(document).ready(function() {
+    // MetroUI will initialize elements with data-role automatically.
+    
+    // Add clear button for event output
+    const clearBtn = $('<button class="button small">Clear Output</button>');
+    clearBtn.on('click', function() {
+        $('#directive-event-output').html('<small class="text-muted">Directive events will appear here...</small>');
+    });
+    $('#directive-event-output').after(clearBtn);
+});
+</script>
+{% endblock %}

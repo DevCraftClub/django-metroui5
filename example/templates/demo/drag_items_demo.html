@@ -1,0 +1,699 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Drag Items Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Drag Items Components</h1>
+    <p>Demonstrating the MetroUI v5 Drag Items component - allows you to create draggable and reorderable items within a container, providing flexible drag-and-drop functionality for lists and other UI elements.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Basic Drag Items</h2>
+                <p>Simple draggable list with default settings.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drag_items items=basic_items %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>With Drag Markers</h2>
+                <p>Drag items with visible drag markers (hamburger icons).</p>
+                
+                <div class="example-container">
+                    {% metroui5_drag_items items=marker_items draw_drag_marker=True %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Custom Drag Item Selector</h2>
+                <p>Using div elements instead of list items.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drag_items items=div_items drag_item="div" draw_drag_marker=True %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Initially Disabled</h2>
+                <p>Drag items with dragging disabled initially.</p>
+                
+                <div class="example-container">
+                    <div class="mb-2">
+                        <button class="button" onclick="toggleDragging('disabled-list')">Toggle Dragging</button>
+                    </div>
+                    {% metroui5_drag_items items=disabled_items can_drag=False id="disabled-list" draw_drag_marker=True %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Interactive Example with Events</h2>
+                <p>Drag items with comprehensive event handling and custom styling.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drag_items items=interactive_items id="interactive-list" draw_drag_marker=True cls_drag_item="custom-drag-item" cls_drag_item_avatar="custom-avatar" on_drag_start_item="handleDragStart()" on_drag_move_item="handleDragMove()" on_drag_drop_item="handleDragDrop()" on_drag_items_create="handleDragCreate()" %}
+                    
+                    <div class="mt-4">
+                        <h4>Event Output</h4>
+                        <div id="drag-event-output" class="bg-lightGray p-2" style="min-height: 120px; border-radius: 4px; font-family: monospace; font-size: 12px; max-height: 200px; overflow-y: auto;">
+                            <small class="text-muted">Drag events will appear here...</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Real-world Examples</h2>
+                <p>Practical examples of drag items in common use cases.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Task List</h4>
+                            <p>Reorderable task items.</p>
+                            <div class="example-container">
+                                {% metroui5_drag_items items=task_items draw_drag_marker=True %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Navigation Menu</h4>
+                            <p>Reorderable menu items.</p>
+                            <div class="example-container">
+                                {% metroui5_drag_items items=menu_items draw_drag_marker=True %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Image Gallery</h4>
+                            <p>Reorderable gallery items.</p>
+                            <div class="example-container">
+                                {% metroui5_drag_items items=gallery_items draw_drag_marker=True %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Dashboard Widgets</h4>
+                            <p>Reorderable widget panels.</p>
+                            <div class="example-container">
+                                {% metroui5_drag_items items=widget_items drag_item="div" draw_drag_marker=True %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>File List</h4>
+                            <p>Reorderable file items.</p>
+                            <div class="example-container">
+                                {% metroui5_drag_items items=file_items draw_drag_marker=True %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Priority Queue</h4>
+                            <p>Reorderable priority items.</p>
+                            <div class="example-container">
+                                {% metroui5_drag_items items=priority_items draw_drag_marker=True %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Custom Styled Drag Items</h2>
+                <p>Drag items with different themes and custom styling.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Blue Theme</h4>
+                            <div class="example-container blue-theme">
+                                {% metroui5_drag_items items=theme_items draw_drag_marker=True cls_drag_item="blue-item" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Green Theme</h4>
+                            <div class="example-container green-theme">
+                                {% metroui5_drag_items items=theme_items draw_drag_marker=True cls_drag_item="green-item" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Red Theme</h4>
+                            <div class="example-container red-theme">
+                                {% metroui5_drag_items items=theme_items draw_drag_marker=True cls_drag_item="red-item" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>API Demonstration</h2>
+                <p>Demonstrate the API methods for controlling drag functionality.</p>
+                
+                <div class="example-container">
+                    <div class="mb-2">
+                        <button class="button" onclick="enableDragging('api-list')">Enable Dragging</button>
+                        <button class="button" onclick="disableDragging('api-list')">Disable Dragging</button>
+                        <button class="button" onclick="toggleDragging('api-list')">Toggle Dragging</button>
+                        <button class="button alert" onclick="destroyDragItems('api-list')">Destroy Component</button>
+                    </div>
+                    {% metroui5_drag_items items=api_items id="api-list" draw_drag_marker=True %}
+                    <div class="mt-2">
+                        <div id="api-status" class="bg-lightGray p-2" style="border-radius: 4px;">
+                            <small><strong>Status:</strong> Dragging enabled</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Drag Items</div>
+                <div class="content">
+                    <pre><code># In your view:
+items = ['Item 1', 'Item 2', 'Item 3']
+
+# In your template:
+{% metroui5_drag_items items=items %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Drag Markers</div>
+                <div class="content">
+                    <pre><code>{% metroui5_drag_items items=items draw_drag_marker=True %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Custom Drag Item Selector</div>
+                <div class="content">
+                    <pre><code># For div elements instead of li:
+{% metroui5_drag_items items=items drag_item="div" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Complex Items with Attributes</div>
+                <div class="content">
+                    <pre><code># In your view:
+items = [
+    {'content': 'Task 1', 'class': 'priority-high'},
+    {'content': 'Task 2', 'class': 'priority-medium', 'id': 'task-2'},
+    {'content': 'Task 3', 'class': 'priority-low'}
+]
+
+# In your template:
+{% metroui5_drag_items items=items draw_drag_marker=True %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Events and Custom Styling</div>
+                <div class="content">
+                    <pre><code>{% metroui5_drag_items items=items draw_drag_marker=True cls_drag_item="custom-item" on_drag_drop_item="handleDrop()" %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Component Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>items</td>
+                        <td>list</td>
+                        <td>[]</td>
+                        <td>List of items to render (strings or dicts)</td>
+                    </tr>
+                    <tr>
+                        <td>drag_items_deferred</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Delay in milliseconds before initialization</td>
+                    </tr>
+                    <tr>
+                        <td>target</td>
+                        <td>string/object</td>
+                        <td>null</td>
+                        <td>Target element for dropping items</td>
+                    </tr>
+                    <tr>
+                        <td>drag_item</td>
+                        <td>string</td>
+                        <td>"li"</td>
+                        <td>Selector for draggable items</td>
+                    </tr>
+                    <tr>
+                        <td>drag_marker</td>
+                        <td>string</td>
+                        <td>".drag-item-marker"</td>
+                        <td>Selector for drag marker</td>
+                    </tr>
+                    <tr>
+                        <td>draw_drag_marker</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Whether to draw drag markers</td>
+                    </tr>
+                    <tr>
+                        <td>can_drag</td>
+                        <td>boolean</td>
+                        <td>true</td>
+                        <td>Whether dragging is enabled</td>
+                    </tr>
+                    <tr>
+                        <td>cls_drag_item_avatar</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for drag avatar</td>
+                    </tr>
+                    <tr>
+                        <td>cls_drag_item</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for drag item</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Event Handlers</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>on_drag_start_item</td>
+                        <td>Triggered when dragging starts</td>
+                    </tr>
+                    <tr>
+                        <td>on_drag_move_item</td>
+                        <td>Triggered when dragging moves</td>
+                    </tr>
+                    <tr>
+                        <td>on_drag_drop_item</td>
+                        <td>Triggered when item is dropped</td>
+                    </tr>
+                    <tr>
+                        <td>on_target</td>
+                        <td>Triggered when over a target</td>
+                    </tr>
+                    <tr>
+                        <td>on_target_in</td>
+                        <td>Triggered when entering a target</td>
+                    </tr>
+                    <tr>
+                        <td>on_target_out</td>
+                        <td>Triggered when leaving a target</td>
+                    </tr>
+                    <tr>
+                        <td>on_drag_items_create</td>
+                        <td>Triggered when component is created</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>API Methods</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>on()</td>
+                        <td>Enables dragging functionality</td>
+                        <td>dragItems.on()</td>
+                    </tr>
+                    <tr>
+                        <td>off()</td>
+                        <td>Disables dragging functionality</td>
+                        <td>dragItems.off()</td>
+                    </tr>
+                    <tr>
+                        <td>toggle()</td>
+                        <td>Toggles dragging functionality on/off</td>
+                        <td>dragItems.toggle()</td>
+                    </tr>
+                    <tr>
+                        <td>destroy()</td>
+                        <td>Removes event handlers and cleans up the component</td>
+                        <td>dragItems.destroy()</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Item Format</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Example</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>String</td>
+                        <td>"Item Text"</td>
+                        <td>Simple text content for the item</td>
+                    </tr>
+                    <tr>
+                        <td>Dictionary</td>
+                        <td>{'content': 'Item Text', 'class': 'custom-class'}</td>
+                        <td>Item with content and optional attributes</td>
+                    </tr>
+                    <tr>
+                        <td>Dictionary with ID</td>
+                        <td>{'content': 'Item Text', 'id': 'item-1'}</td>
+                        <td>Item with specific ID for targeting</td>
+                    </tr>
+                    <tr>
+                        <td>Complex Dictionary</td>
+                        <td>{'content': 'HTML content', 'class': 'priority-high', 'data-priority': '1'}</td>
+                        <td>Item with custom attributes and data</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>CSS Classes</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>.drag-items-target</td>
+                        <td>Applied to the container element</td>
+                    </tr>
+                    <tr>
+                        <td>.dragged-item</td>
+                        <td>Applied to the item being dragged (opacity: 0.3)</td>
+                    </tr>
+                    <tr>
+                        <td>.drag-item-marker</td>
+                        <td>Styling for the drag marker (hamburger icon)</td>
+                    </tr>
+                    <tr>
+                        <td>.dragged-item-avatar</td>
+                        <td>Styling for the avatar element that follows the cursor during dragging</td>
+                    </tr>
+                    <tr>
+                        <td>.drag-marker-dark</td>
+                        <td>Dark theme variant for the drag marker</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom styling for demo */
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px 0;
+    background: #f9f9f9;
+    min-height: 200px;
+}
+
+.custom-drag-item {
+    background-color: #e3f2fd;
+    border: 1px solid #2196F3;
+    border-radius: 4px;
+    margin: 2px 0;
+    padding: 8px;
+    transition: background-color 0.2s;
+}
+
+.custom-drag-item:hover {
+    background-color: #bbdefb;
+}
+
+.custom-avatar {
+    background-color: #2196F3 !important;
+    color: white !important;
+    border-radius: 4px !important;
+    opacity: 0.8 !important;
+}
+
+/* Theme-based styling */
+.blue-theme .blue-item {
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196F3;
+    padding: 8px 12px;
+    margin: 2px 0;
+}
+
+.green-theme .green-item {
+    background-color: #e8f5e8;
+    border-left: 4px solid #4CAF50;
+    padding: 8px 12px;
+    margin: 2px 0;
+}
+
+.red-theme .red-item {
+    background-color: #ffebee;
+    border-left: 4px solid #F44336;
+    padding: 8px 12px;
+    margin: 2px 0;
+}
+
+/* Priority styles */
+.priority-high {
+    background-color: #ffebee;
+    border-left: 4px solid #f44336;
+    padding: 8px;
+    margin: 2px 0;
+}
+
+.priority-medium {
+    background-color: #fff3e0;
+    border-left: 4px solid #ff9800;
+    padding: 8px;
+    margin: 2px 0;
+}
+
+.priority-low {
+    background-color: #e8f5e8;
+    border-left: 4px solid #4caf50;
+    padding: 8px;
+    margin: 2px 0;
+}
+
+/* Task styles */
+.task-item {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 4px 0;
+    display: flex;
+    align-items: center;
+}
+
+.task-item::before {
+    content: "✓";
+    margin-right: 8px;
+    color: #4caf50;
+    font-weight: bold;
+}
+
+/* File styles */
+.file-item {
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 2px 0;
+    display: flex;
+    align-items: center;
+}
+
+.file-item::before {
+    content: "📄";
+    margin-right: 8px;
+}
+
+/* Widget styles */
+.widget-item {
+    background-color: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px 0;
+    text-align: center;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#drag-event-output {
+    line-height: 1.4;
+}
+
+/* Spacing for drag items */
+[data-role="drag-items"] {
+    margin: 15px 0;
+    min-height: 150px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+[data-role="drag-items"] li,
+[data-role="drag-items"] div {
+    cursor: move;
+    user-select: none;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Event handler functions for demo
+function handleDragStart() {
+    addToDragOutput("Drag started");
+}
+
+function handleDragMove() {
+    addToDragOutput("Drag moving");
+}
+
+function handleDragDrop() {
+    addToDragOutput("Item dropped - list reordered");
+}
+
+function handleDragCreate() {
+    addToDragOutput("Drag Items component created successfully");
+}
+
+// API method demonstrations
+function enableDragging(listId) {
+    const dragItems = Metro.getPlugin('#' + listId, 'drag-items');
+    if (dragItems) {
+        dragItems.on();
+        updateApiStatus("Dragging enabled");
+        addToDragOutput("API: Dragging enabled for " + listId);
+    }
+}
+
+function disableDragging(listId) {
+    const dragItems = Metro.getPlugin('#' + listId, 'drag-items');
+    if (dragItems) {
+        dragItems.off();
+        updateApiStatus("Dragging disabled");
+        addToDragOutput("API: Dragging disabled for " + listId);
+    }
+}
+
+function toggleDragging(listId) {
+    const dragItems = Metro.getPlugin('#' + listId, 'drag-items');
+    if (dragItems) {
+        dragItems.toggle();
+        updateApiStatus("Dragging toggled");
+        addToDragOutput("API: Dragging toggled for " + listId);
+    }
+}
+
+function destroyDragItems(listId) {
+    const dragItems = Metro.getPlugin('#' + listId, 'drag-items');
+    if (dragItems) {
+        dragItems.destroy();
+        updateApiStatus("Component destroyed");
+        addToDragOutput("API: Drag Items component destroyed for " + listId);
+    }
+}
+
+// Utility functions
+function addToDragOutput(message) {
+    const output = document.getElementById('drag-event-output');
+    if (output) {
+        const timestamp = new Date().toLocaleTimeString();
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = `[${timestamp}] ${message}`;
+        output.appendChild(newDiv);
+        output.scrollTop = output.scrollHeight;
+    }
+}
+
+function updateApiStatus(status) {
+    const statusDiv = document.getElementById('api-status');
+    if (statusDiv) {
+        statusDiv.innerHTML = `<small><strong>Status:</strong> ${status}</small>`;
+    }
+}
+
+// Initialize when page loads
+$(document).ready(function() {
+    // MetroUI will initialize elements with data-role automatically
+    
+    // Add clear button for event output
+    const clearBtn = $('<button class="button small mt-2">Clear Output</button>');
+    clearBtn.on('click', function() {
+        $('#drag-event-output').html('<small class="text-muted">Drag events will appear here...</small>');
+    });
+    $('#drag-event-output').after(clearBtn);
+    
+    // Add some instruction text
+    const instructionDiv = $('<div class="alert alert-info mt-2"><small><strong>Instructions:</strong> Drag items to reorder them. Items with drag markers can be dragged by the hamburger icon. Use the API buttons to control drag functionality programmatically.</small></div>');
+    $('#interactive-list').after(instructionDiv);
+    
+    // Add initial message
+    setTimeout(function() {
+        addToDragOutput('Page loaded - try dragging items to see events');
+    }, 500);
+});
+</script>
+{% endblock %}

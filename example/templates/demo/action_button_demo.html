@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Action Button Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Action Button Components</h1>
+    <p>Demonstrating the MetroUI v5 Action Button component with expandable sub-actions.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Basic Action Button</h2>
+                <p>Standard action button with expandable sub-actions.</p>
+                
+                {% metroui5_action_button action_items %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Action Button with Rotation</h2>
+                <p>Action button with rotation effect on the main button.</p>
+                
+                {% metroui5_action_button action_items rotate=True %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Custom Main Icon</h2>
+                <p>Action button with a custom main icon (menu).</p>
+                
+                {% metroui5_action_button action_items main_icon="mif-menu" %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Custom Styling</h2>
+                <p>Action button with custom CSS classes.</p>
+                
+                {% metroui5_action_button action_items cls_action_button="custom-action-button" cls_main_action="custom-main-action" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>More Actions</h2>
+                <p>Action button with more sub-actions (up to 8 supported).</p>
+                
+                {% metroui5_action_button extended_action_items %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>With Callbacks</h2>
+                <p>Action button with JavaScript callback functions.</p>
+                
+                {% metroui5_action_button action_items onClick="alert('Main button clicked!')" onActionClick="alert('Sub-action clicked!')" %}
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Action Button</div>
+                <div class="content">
+                    <pre><code>{% metroui5_action_button action_items %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Action Button with Rotation</div>
+                <div class="content">
+                    <pre><code>{% metroui5_action_button action_items rotate=True %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Custom Main Icon</div>
+                <div class="content">
+                    <pre><code>{% metroui5_action_button action_items main_icon="mif-menu" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Custom Styling</div>
+                <div class="content">
+                    <pre><code>{% metroui5_action_button action_items cls_action_button="custom-action-button" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Callbacks</div>
+                <div class="content">
+                    <pre><code>{% metroui5_action_button action_items onClick="alert('Main clicked!')" onActionClick="alert('Sub clicked!')" %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Action Button Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>actions</td>
+                        <td>list</td>
+                        <td>-</td>
+                        <td>List of action dictionaries with 'icon', 'href', 'title', 'onclick'</td>
+                    </tr>
+                    <tr>
+                        <td>main_icon</td>
+                        <td>string</td>
+                        <td>"mif-plus"</td>
+                        <td>Icon class for the main action button</td>
+                    </tr>
+                    <tr>
+                        <td>rotate</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Add rotation effect to main button</td>
+                    </tr>
+                    <tr>
+                        <td>main_href</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>URL for main button</td>
+                    </tr>
+                    <tr>
+                        <td>main_title</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Title/tooltip for main button</td>
+                    </tr>
+                    <tr>
+                        <td>main_onclick</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>JavaScript onclick handler for main button</td>
+                    </tr>
+                    <tr>
+                        <td>onClick</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Callback function triggered when main button is clicked</td>
+                    </tr>
+                    <tr>
+                        <td>onActionClick</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Callback function triggered when sub-action is clicked</td>
+                    </tr>
+                    <tr>
+                        <td>onActionButtonCreate</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Callback function triggered when action button is created</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Action Item Structure</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>icon</td>
+                        <td>string</td>
+                        <td>Yes</td>
+                        <td>Icon class for the action (e.g., 'mif-home')</td>
+                    </tr>
+                    <tr>
+                        <td>href</td>
+                        <td>string</td>
+                        <td>No</td>
+                        <td>URL for the action link</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>string</td>
+                        <td>No</td>
+                        <td>Title/tooltip for the action</td>
+                    </tr>
+                    <tr>
+                        <td>onclick</td>
+                        <td>string</td>
+                        <td>No</td>
+                        <td>JavaScript onclick handler for the action</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+.custom-action-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.custom-main-action {
+    background-color: #2196F3 !important;
+    color: white !important;
+}
+
+.custom-main-action:hover {
+    background-color: #1976D2 !important;
+}
+
+/* Additional styling for better visibility */
+.action-button {
+    position: relative;
+    margin: 20px;
+}
+
+.action-button .main-action {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #ebebeb;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.action-button .main-action:hover {
+    background-color: #d0d0d0;
+    transform: scale(1.05);
+}
+
+.action-button .main-action.rotate {
+    transition: transform 0.3s ease;
+}
+
+.action-button .actions {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.action-button .sub-action {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ebebeb;
+    color: #191919;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.action-button .sub-action:hover {
+    background-color: #d0d0d0;
+    transform: scale(1.1);
+    color: #191919;
+    text-decoration: none;
+}
+</style>
+{% endblock %}

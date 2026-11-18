@@ -620,3 +620,16 @@ function getDragAfterElement(container, y) {
 - [Таблицы](tables.md) - Для отображения табличных данных
 - [Карточки](cards.md) - Для организации контента на основе карточек
 - [Пагинация](pagination.md) - Для контента списка с пагинацией
+
+
+## metroui5_list
+
+```python
+render_list([{'text': 'One', 'href': '/one'}])
+```
+
+Пустое или неверное значение: `render_list([{'text': 'One', 'href': '/one'}])` даёт `<ul class="list" data-role="list"><li><a href="/one">One</a></li></ul>`. Пустой вызов даёт `<ul class="list" data-role="list"></ul>`.
+
+```django
+{% metroui5_list items %}
+```

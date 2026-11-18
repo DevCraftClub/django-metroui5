@@ -190,3 +190,16 @@ table = render_table(headers, rows, class="table table-border")
 - [Карточки](cards.md) - Для макетов на основе карточек
 - [Списки](lists.md) - Для отображения данных на основе списков
 - [Пагинация](pagination.md) - Для табличных данных с пагинацией
+
+
+## metroui5_table
+
+```python
+render_table(['Name'], [['One']])
+```
+
+Пустое или неверное значение: `render_table(['Name'], [['One']])` даёт `<table class="table" data-role="table"><tr><th>Name</th></tr><tr><td>One</td></tr></table>`. Пустой вызов даёт `<table class="table" data-role="table"><tr></tr></table>`.
+
+```django
+{% metroui5_table headers rows %}
+```

@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Command Button Component Demo{% endblock %}
+
+{% block extra_css %}
+<style>
+    .command-button-example {
+        margin-bottom: 2rem;
+    }
+    
+    .command-button-example h3 {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .command-button-example .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .command-button-example .button-group .command-button {
+        margin-bottom: 0.5rem;
+    }
+    
+    .command-button-example .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .command-button-example label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    
+    .command-button-example .input {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .command-button-example .result {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+    }
+    
+    .command-button-example .result h4 {
+        margin-top: 0;
+        color: #495057;
+    }
+    
+    .command-button-example .form-row {
+        display: flex;
+        gap: 1rem;
+        align-items: start;
+        margin-bottom: 1rem;
+    }
+    
+    .command-button-example .form-row .form-group {
+        flex: 1;
+        margin-bottom: 0;
+    }
+    
+    .command-button-example .custom-styling {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+    }
+    
+    .command-button-example .custom-styling h3 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+    
+    .command-button-example .custom-styling .button-group {
+        justify-content: center;
+    }
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Command Button Component Demo</h1>
+    <p>This demo showcases the MetroUI Command Button component for styled buttons with icons and captions, designed to provide a more visually prominent button option with additional information.</p>
+
+    <h2>Basic Command Buttons</h2>
+    <div class="example box">
+        <h3>Simple Command Button</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-share" caption="Share" description="Share this content" %}
+        </div>
+        
+        <h3>With Icon Only</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-home" caption="Home" %}
+        </div>
+        
+        <h3>With Caption Only</h3>
+        <div class="button-group">
+            {% metroui5_command_button caption="Click Me" %}
+        </div>
+        
+        <h3>With Custom ID</h3>
+        <div class="button-group">
+            {% metroui5_command_button id="basic-command-button" icon="mif-cog" caption="Settings" description="Configure your preferences" %}
+        </div>
+    </div>
+
+    <h2>Icon Positioning</h2>
+    <div class="example box">
+        <h3>Icon on Left (Default)</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-arrow-left" caption="Previous" description="Go to previous page" %}
+        </div>
+        
+        <h3>Icon on Right</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-arrow-right" caption="Next" description="Go to next page" iconRight=True %}
+        </div>
+        
+        <h3>Comparison</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-download" caption="Download" description="Save to device" %}
+            {% metroui5_command_button icon="mif-upload" caption="Upload" description="Send to server" iconRight=True %}
+        </div>
+    </div>
+
+    <h2>Visual Styles</h2>
+    <div class="example box">
+        <h3>Outlined Command Buttons</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-share" caption="Share" description="Share this content" outline=True %}
+            {% metroui5_command_button icon="mif-download" caption="Download" description="Save to device" outline=True %}
+            {% metroui5_command_button icon="mif-upload" caption="Upload" description="Send to server" outline=True %}
+        </div>
+        
+        <h3>Shadowed Command Buttons</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-star" caption="Favorite" description="Add to favorites" shadow=True %}
+            {% metroui5_command_button icon="mif-heart" caption="Like" description="Show appreciation" shadow=True %}
+            {% metroui5_command_button icon="mif-bookmark" caption="Bookmark" description="Save for later" shadow=True %}
+        </div>
+        
+        <h3>Shift Effect</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-play" caption="Play" description="Start playback" shift=True %}
+            {% metroui5_command_button icon="mif-pause" caption="Pause" description="Pause playback" shift=True %}
+            {% metroui5_command_button icon="mif-stop" caption="Stop" description="Stop playback" shift=True %}
+        </div>
+    </div>
+
+    <h2>Color Variations</h2>
+    <div class="example box">
+        <h3>Primary Colors</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-checkmark" caption="Success" description="Operation completed" success=True %}
+            {% metroui5_command_button icon="mif-info" caption="Info" description="Additional information" info=True %}
+            {% metroui5_command_button icon="mif-warning" caption="Warning" description="Please be careful" warning=True %}
+            {% metroui5_command_button icon="mif-alarm" caption="Alert" description="Important notice" alert=True %}
+        </div>
+        
+        <h3>Secondary Colors</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-user" caption="Profile" description="View your profile" primary=True %}
+            {% metroui5_command_button icon="mif-cog" caption="Settings" description="Configure options" secondary=True %}
+            {% metroui5_command_button icon="mif-moon" caption="Dark" description="Dark theme" dark=True %}
+            {% metroui5_command_button icon="mif-sun" caption="Light" description="Light theme" light=True %}
+        </div>
+        
+        <h3>Special Colors</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-star" caption="Premium" description="Upgrade to premium" yellow=True %}
+            {% metroui5_command_button icon="mif-diamond" caption="VIP" description="Exclusive features" primary=True %}
+        </div>
+    </div>
+
+    <h2>Ripple Effects</h2>
+    <div class="example box">
+        <h3>Basic Ripple</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-touch" caption="Touch Me" description="Feel the ripple effect" ripple=True %}
+        </div>
+        
+        <h3>Colored Ripple</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-palette" caption="Red Ripple" description="Red ripple effect" ripple=True rippleColor="red" %}
+            {% metroui5_command_button icon="mif-palette" caption="Blue Ripple" description="Blue ripple effect" ripple=True rippleColor="blue" %}
+            {% metroui5_command_button icon="mif-palette" caption="Green Ripple" description="Green ripple effect" ripple=True rippleColor="green" %}
+        </div>
+        
+        <h3>Ripple with Colors</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-heart" caption="Love" description="Show some love" success=True ripple=True rippleColor="pink" %}
+            {% metroui5_command_button icon="mif-star" caption="Star" description="Rate this content" warning=True ripple=True rippleColor="gold" %}
+            {% metroui5_command_button icon="mif-fire" caption="Hot" description="Trending content" alert=True ripple=True rippleColor="orange" %}
+        </div>
+    </div>
+
+    <h2>Form Integration</h2>
+    <div class="example box">
+        <h3>Form Buttons</h3>
+        <form id="command-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" class="input" placeholder="Enter username">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="input" placeholder="Enter email">
+            </div>
+            
+            <div class="button-group">
+                {% metroui5_command_button icon="mif-checkmark" caption="Submit" description="Save changes" type="submit" success=True %}
+                {% metroui5_command_button icon="mif-cross" caption="Reset" description="Clear form" type="reset" outline=True %}
+                {% metroui5_command_button icon="mif-cancel" caption="Cancel" description="Discard changes" type="button" alert=True %}
+            </div>
+        </form>
+    </div>
+
+    <h2>Interactive Examples</h2>
+    <div class="example box">
+        <h3>Dynamic Content</h3>
+        <div class="form-group">
+            <label for="icon-input">Icon Class:</label>
+            <input type="text" id="icon-input" class="input" placeholder="e.g., mif-heart" value="mif-heart">
+        </div>
+        
+        <div class="form-group">
+            <label for="caption-input">Caption:</label>
+            <input type="text" id="caption-input" class="input" placeholder="Button caption" value="Dynamic Button">
+        </div>
+        
+        <div class="form-group">
+            <label for="description-input">Description:</label>
+            <input type="text" id="description-input" class="input" placeholder="Button description" value="This button is dynamic">
+        </div>
+        
+        <div class="button-group">
+            <button class="button" onclick="updateDynamicButton()">Update Button</button>
+            <button class="button" onclick="resetDynamicButton()">Reset</button>
+        </div>
+        
+        <div id="dynamic-button-container">
+            {% metroui5_command_button id="dynamic-button" icon="mif-heart" caption="Dynamic Button" description="This button is dynamic" %}
+        </div>
+    </div>
+
+    <h2>Event Handling</h2>
+    <div class="example box">
+        <h3>Click Events</h3>
+        <div class="button-group">
+            {% metroui5_command_button id="click-button" icon="mif-mouse" caption="Click Me" description="Check the console" onClick="handleClick()" %}
+            {% metroui5_command_button id="alert-button" icon="mif-notification" caption="Show Alert" description="Display alert message" onClick="showAlert()" %}
+            {% metroui5_command_button id="counter-button" icon="mif-plus" caption="Counter" description="Click to increment" onClick="incrementCounter()" %}
+        </div>
+        
+        <div class="result">
+            <h4>Event Log:</h4>
+            <div id="event-log">No events yet</div>
+            <div id="counter-display">Counter: 0</div>
+        </div>
+    </div>
+
+    <h2>Disabled States</h2>
+    <div class="example box">
+        <h3>Disabled Command Buttons</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-lock" caption="Disabled" description="This button is disabled" disabled=True %}
+            {% metroui5_command_button icon="mif-lock" caption="Disabled Primary" description="Primary disabled button" disabled=True primary=True %}
+            {% metroui5_command_button icon="mif-lock" caption="Disabled Alert" description="Alert disabled button" disabled=True alert=True %}
+        </div>
+    </div>
+
+    <h2>Custom Styling</h2>
+    <div class="example box">
+        <h3>Custom CSS Variables</h3>
+        <div class="custom-styling">
+            <h3>Custom Styled Command Buttons</h3>
+            <div class="button-group">
+                {% metroui5_command_button icon="mif-palette" caption="Custom 1" description="Custom styling" %}
+                {% metroui5_command_button icon="mif-brush" caption="Custom 2" description="Custom styling" %}
+                {% metroui5_command_button icon="mif-paint" caption="Custom 3" description="Custom styling" %}
+            </div>
+        </div>
+    </div>
+
+    <h2>Real-world Examples</h2>
+    <div class="example box">
+        <h3>Action Center</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-file-text" caption="New Document" description="Create a new document" primary=True ripple=True %}
+            {% metroui5_command_button icon="mif-folder" caption="Open File" description="Open existing file" secondary=True ripple=True %}
+            {% metroui5_command_button icon="mif-floppy-disk" caption="Save" description="Save current work" success=True ripple=True %}
+            {% metroui5_command_button icon="mif-print" caption="Print" description="Print document" info=True ripple=True %}
+        </div>
+        
+        <h3>Media Controls</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-play" caption="Play" description="Start playback" success=True shift=True %}
+            {% metroui5_command_button icon="mif-pause" caption="Pause" description="Pause playback" warning=True shift=True %}
+            {% metroui5_command_button icon="mif-stop" caption="Stop" description="Stop playback" alert=True shift=True %}
+            {% metroui5_command_button icon="mif-volume-high" caption="Volume" description="Adjust volume" info=True shift=True %}
+        </div>
+        
+        <h3>Social Actions</h3>
+        <div class="button-group">
+            {% metroui5_command_button icon="mif-heart" caption="Like" description="Show appreciation" success=True ripple=True rippleColor="pink" %}
+            {% metroui5_command_button icon="mif-share" caption="Share" description="Share with others" info=True ripple=True rippleColor="blue" %}
+            {% metroui5_command_button icon="mif-star" caption="Favorite" description="Add to favorites" warning=True ripple=True rippleColor="gold" %}
+            {% metroui5_command_button icon="mif-bookmark" caption="Bookmark" description="Save for later" primary=True ripple=True rippleColor="purple" %}
+        </div>
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example box">
+        <h3>Basic Usage</h3>
+        <pre><code>{% verbatim %}{% metroui5_command_button icon="mif-share" caption="Share" description="Share this content" %}{% endverbatim %}</code></pre>
+        
+        <h3>With Modifiers</h3>
+        <pre><code>{% verbatim %}{% metroui5_command_button icon="mif-share" caption="Share" description="Share this content" iconRight=True outline=True %}{% endverbatim %}</code></pre>
+        
+        <h3>With Colors and Effects</h3>
+        <pre><code>{% verbatim %}{% metroui5_command_button icon="mif-alarm" caption="Alert" description="Important notice" alert=True ripple=True rippleColor="red" %}{% endverbatim %}</code></pre>
+        
+        <h3>With Events</h3>
+        <pre><code>{% verbatim %}{% metroui5_command_button icon="mif-mouse" caption="Click Me" description="Check console" onClick="handleClick()" %}{% endverbatim %}</code></pre>
+    </div>
+</div>
+
+<script>
+// Event handling functions
+function handleClick() {
+    const log = document.getElementById('event-log');
+    const timestamp = new Date().toLocaleTimeString();
+    log.innerHTML += `<div>[${timestamp}] Button clicked!</div>`;
+}
+
+function showAlert() {
+    alert('Command button clicked!');
+}
+
+let counter = 0;
+function incrementCounter() {
+    counter++;
+    document.getElementById('counter-display').textContent = `Counter: ${counter}`;
+}
+
+// Dynamic button functions
+function updateDynamicButton() {
+    const icon = document.getElementById('icon-input').value || 'mif-heart';
+    const caption = document.getElementById('caption-input').value || 'Dynamic Button';
+    const description = document.getElementById('description-input').value || 'This button is dynamic';
+    
+    const button = document.getElementById('dynamic-button');
+    button.innerHTML = `
+        <span class="icon ${icon}"></span>
+        <span class="caption">${caption}<small>${description}</small></span>
+    `;
+}
+
+function resetDynamicButton() {
+    document.getElementById('icon-input').value = 'mif-heart';
+    document.getElementById('caption-input').value = 'Dynamic Button';
+    document.getElementById('description-input').value = 'This button is dynamic';
+    updateDynamicButton();
+}
+
+// Form submission
+document.getElementById('command-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    
+    alert(`Form submitted!\nUsername: ${username}\nEmail: ${email}`);
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click handlers to all command buttons
+    const commandButtons = document.querySelectorAll('.command-button');
+    commandButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            console.log('Command button clicked:', this);
+        });
+    });
+});
+</script>
+
+<style>
+/* Custom styling for the custom styling example */
+.custom-styling {
+    --command-button-border-radius: 12px;
+    --command-button-background: rgba(255, 255, 255, 0.2);
+    --command-button-color: white;
+    --command-button-background-hover: rgba(255, 255, 255, 0.3);
+    --command-button-color-hover: white;
+}
+
+.custom-styling .command-button {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.custom-styling .command-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+</style>
+{% endblock %}

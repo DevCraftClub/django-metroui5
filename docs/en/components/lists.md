@@ -620,3 +620,16 @@ function getDragAfterElement(container, y) {
 - [Tables](tables.md) - For tabular data display
 - [Cards](cards.md) - For card-based content organization
 - [Pagination](pagination.md) - For paginated list content
+
+
+## metroui5_list
+
+```python
+render_list([{'text': 'One', 'href': '/one'}])
+```
+
+Empty or invalid: `render_list([{'text': 'One', 'href': '/one'}])` returns `<ul class="list" data-role="list"><li><a href="/one">One</a></li></ul>`. An empty call returns `<ul class="list" data-role="list"></ul>`.
+
+```django
+{% metroui5_list items %}
+```

@@ -495,3 +495,16 @@ document.querySelectorAll(".panel").forEach((panel) => {
 - [Tabs](tabs.md) - For tabbed content within panels
 - [Tables](tables.md) - For data display in panels
 - [Progress Bars](progress.md) - For progress indicators in panels
+
+
+## metroui5_panel
+
+```python
+render_panel()
+```
+
+Empty or invalid: `render_panel()` returns `<div class="panel" data-role="panel"><div class="panel-content"></div></div>`.
+
+```django
+{% metroui5_panel %}
+```

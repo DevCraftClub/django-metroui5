@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Bulls Component Demo</h1>
+    <p>This page demonstrates the MetroUI Bulls component functionality based on the <a href="https://v5.metroui.org.ua/components/bulls/" target="_blank">official MetroUI v5 documentation</a>.</p>
+
+    <h2>Basic Usage</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Default Success Bull</h3>
+            {% metroui5_bulls %}
+        </div>
+    </div>
+
+    <h2>Bull Types</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>All Available Bull Types</h3>
+            <div class="row">
+                <div class="cell-2">
+                    <h4>Success</h4>
+                    {% metroui5_bulls bull_type="success" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Fail</h4>
+                    {% metroui5_bulls bull_type="fail" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Pending</h4>
+                    {% metroui5_bulls bull_type="pending" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Warning</h4>
+                    {% metroui5_bulls bull_type="warning" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Bulb On</h4>
+                    {% metroui5_bulls bull_type="bulb-on" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Bulb Off</h4>
+                    {% metroui5_bulls bull_type="bulb-off" %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell-2">
+                    <h4>Star</h4>
+                    {% metroui5_bulls bull_type="star" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Badge</h4>
+                    {% metroui5_bulls bull_type="badge" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Chat</h4>
+                    {% metroui5_bulls bull_type="chat" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Tree</h4>
+                    {% metroui5_bulls bull_type="tree" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Checkmark</h4>
+                    {% metroui5_bulls bull_type="checkmark" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Cancel</h4>
+                    {% metroui5_bulls bull_type="cancel" %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell-2">
+                    <h4>Rocket</h4>
+                    {% metroui5_bulls bull_type="rocket" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Default</h4>
+                    {% metroui5_bulls bull_type="default" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Custom Sizes</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Different Bull Sizes</h3>
+            <div class="row">
+                <div class="cell-2">
+                    <h4>16px (Default)</h4>
+                    {% metroui5_bulls bull_type="success" size=16 %}
+                </div>
+                <div class="cell-2">
+                    <h4>24px</h4>
+                    {% metroui5_bulls bull_type="success" size=24 %}
+                </div>
+                <div class="cell-2">
+                    <h4>32px</h4>
+                    {% metroui5_bulls bull_type="success" size=32 %}
+                </div>
+                <div class="cell-2">
+                    <h4>48px</h4>
+                    {% metroui5_bulls bull_type="success" size=48 %}
+                </div>
+                <div class="cell-2">
+                    <h4>64px</h4>
+                    {% metroui5_bulls bull_type="success" size=64 %}
+                </div>
+                <div class="cell-2">
+                    <h4>96px</h4>
+                    {% metroui5_bulls bull_type="success" size=96 %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Custom Colors</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Custom Styled Bulls</h3>
+            <div class="row">
+                <div class="cell-3">
+                    <h4>Custom Green</h4>
+                    {% metroui5_bulls bull_type="success" size=32 style="fill: #57ab5a;" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Custom Red</h4>
+                    {% metroui5_bulls bull_type="fail" size=32 style="fill: #e5534b;" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Custom Blue</h4>
+                    {% metroui5_bulls bull_type="success" size=32 style="fill: #2196F3;" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Custom Purple</h4>
+                    {% metroui5_bulls bull_type="success" size=32 style="fill: #9C27B0;" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>CSS Class Styling</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Using CSS Classes for Colors</h3>
+            <style>
+                .fc-red { fill: #e5534b !important; }
+                .fc-blue { fill: #2196F3 !important; }
+                .fc-green { fill: #57ab5a !important; }
+                .fc-orange { fill: #ff4d00 !important; }
+                .fc-purple { fill: #9C27B0 !important; }
+            </style>
+            <div class="row">
+                <div class="cell-2">
+                    <h4>Red Class</h4>
+                    {% metroui5_bulls bull_type="success" size=32 cls="fc-red" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Blue Class</h4>
+                    {% metroui5_bulls bull_type="success" size=32 cls="fc-blue" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Green Class</h4>
+                    {% metroui5_bulls bull_type="success" size=32 cls="fc-green" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Orange Class</h4>
+                    {% metroui5_bulls bull_type="success" size=32 cls="fc-orange" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Purple Class</h4>
+                    {% metroui5_bulls bull_type="success" size=32 cls="fc-purple" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</div>
+{% endblock %}

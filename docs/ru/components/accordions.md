@@ -2,6 +2,22 @@
 
 MetroUI5 Django предоставляет гибкую систему компонентов аккордеона для создания сворачиваемых секций контента, которые могут быть развернуты и свернуты независимо.
 
+## Вызов
+
+```python
+from metroui5.components import render_accordion
+
+render_accordion([{"title": "Один", "content": "Текст"}])
+```
+
+Пустой список даёт `<div class="accordion" id="accordion-component" data-role="accordion"></div>`. `None` вызывает `TypeError`.
+
+В шаблоне тот же список передаётся как `items`:
+
+```django
+{% metroui5_accordion items %}
+```
+
 ## Базовое использование
 
 ```python

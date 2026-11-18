@@ -213,14 +213,14 @@ class FormRenderer(BaseRenderer):
 
 		# Wrap in form
 		form_attrs = {
-			"method": self.form.method or "post",
+			"method": getattr(self.form, 'method', 'post'),
 			"class": "form"
 		}
 
-		if self.form.action:
+		if hasattr(self.form, 'action') and self.form.action:
 			form_attrs["action"] = self.form.action
 
-		if self.form.is_multipart:
+		if hasattr(self.form, 'is_multipart') and self.form.is_multipart:
 			form_attrs["enctype"] = "multipart/form-data"
 
 		return render_tag("form", form_attrs, form_html)

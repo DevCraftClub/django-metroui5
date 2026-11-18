@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Analog Clock Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>MetroUI Analog Clock Component</h1>
+    <p>This demo showcases the MetroUI v5 Analog Clock component that creates a stylish analog clock with customizable features.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-12">
+                <h2>Basic Usage</h2>
+                <p>Basic analog clock with default settings:</p>
+                <div class="text-center">
+                    {% metroui5_analog_clock %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-6">
+                <h2>With Numbers</h2>
+                <p>Analog clock showing numbers instead of dashes:</p>
+                <div class="text-center">
+                    {% metroui5_analog_clock show_numbers=true %}
+                </div>
+            </div>
+            <div class="cell-6">
+                <h2>With Moon Phase</h2>
+                <p>Analog clock with moon phase indicator:</p>
+                <div class="text-center">
+                    {% metroui5_analog_clock show_moon=true %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-6">
+                <h2>12-Hour Format</h2>
+                <p>Analog clock with 12-hour time format:</p>
+                <div class="text-center">
+                    {% metroui5_analog_clock time_format=12 show_numbers=true %}
+                </div>
+            </div>
+            <div class="cell-6">
+                <h2>24-Hour Format</h2>
+                <p>Analog clock with 24-hour time format:</p>
+                <div class="text-center">
+                    {% metroui5_analog_clock time_format=24 show_numbers=true %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-6">
+                <h2>With Custom Icon</h2>
+                <p>Analog clock with custom rocket icon:</p>
+                <div class="text-center">
+                    {% metroui5_analog_clock icon='<span class="mif-rocket"></span>' show_numbers=true %}
+                </div>
+            </div>
+            <div class="cell-6">
+                <h2>All Features Enabled</h2>
+                <p>Analog clock with all features enabled:</p>
+                <div class="text-center">
+                    {% metroui5_analog_clock 
+                        show_numbers=true 
+                        show_moon=true 
+                        show_day=true 
+                        show_digital_clock=true 
+                        time_format=12 %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Size Variations</h2>
+                <p>Different sizes of analog clocks:</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-12 box text-center">
+                            <h4>XS</h4>
+                            {% metroui5_analog_clock size='xs' show_numbers=true %}
+                        </div>
+                        <div class="cell-12 box text-center">
+                            <h4>SM</h4>
+                            {% metroui5_analog_clock size='sm' show_numbers=true %}
+                        </div>
+                        <div class="cell-12 box text-center">
+                            <h4>MD</h4>
+                            {% metroui5_analog_clock size='md' show_numbers=true %}
+                        </div>
+                        <div class="cell-12 box text-center">
+                            <h4>LG</h4>
+                            {% metroui5_analog_clock size='lg' show_numbers=true %}
+                        </div>
+                        <div class="cell-12 box text-center">
+                            <h4>XL</h4>
+                            {% metroui5_analog_clock size='xl' show_numbers=true %}
+                        </div>
+                        <div class="cell-12 box text-center">
+                            <h4>Default</h4>
+                            {% metroui5_analog_clock show_numbers=true %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    // Example event handling
+    $(window).on("analog-clock-create", function() {
+        console.log("Analog clock created!");
+    });
+    
+    // Example of programmatic creation
+    $(document).ready(function() {
+        // Initialize analog clock on an existing element
+        Metro.makePlugin("#myClock", "analog-clock");
+        
+        // Access the analog clock object
+        const clock = Metro.getPlugin("#myClock", "analog-clock");
+        
+        // You can destroy it later if needed
+        // clock.destroy();
+    });
+    </script>
+    {% endblock %}

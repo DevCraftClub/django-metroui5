@@ -272,3 +272,16 @@ def process_form(request):
 1. Изучите другие [компоненты](../) для создания полноценных интерфейсов
 2. Ознакомьтесь с [примерами](../../getting-started/examples.md)
 3. Изучите [API справочник](../../api-reference/) для детальной информации
+
+
+## metroui5_alert
+
+```python
+render_alert('Text')
+```
+
+Пустое или неверное значение: `render_alert('Text')` даёт `<div class="alert alert-info" role="alert">Text</div>`. Пустой вызов даёт `<div class="alert alert-info" role="alert"></div>`.
+
+```django
+{% metroui5_alert content="Text" %}
+```

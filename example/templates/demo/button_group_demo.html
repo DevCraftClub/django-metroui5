@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Button Group Component Demo</h1>
+    <p>This page demonstrates the MetroUI Button Group component functionality based on the <a href="https://v5.metroui.org.ua/components/button-group/" target="_blank">official MetroUI v5 documentation</a>.</p>
+
+    <h2>Basic Button Group</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Default Button Group</h3>
+            {% metroui5_button_group basic_buttons %}
+        </div>
+    </div>
+
+    <h2>Selection Modes</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Single Selection Mode (Default)</h3>
+            <p>Only one button can be active at a time (radio button behavior)</p>
+            {% metroui5_button_group single_selection_buttons mode="one" %}
+        </div>
+        <div class="cell-6">
+            <h3>Multiple Selection Mode</h3>
+            <p>Multiple buttons can be active (checkbox behavior)</p>
+            {% metroui5_button_group multiple_selection_buttons mode="multi" %}
+        </div>
+    </div>
+
+    <h2>Required Button Selection</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>At Least One Button Must Be Selected</h3>
+            <p>Prevents deselecting all buttons in the group</p>
+            {% metroui5_button_group required_buttons mode="one" required_button=True %}
+        </div>
+    </div>
+
+    <h2>Custom Active Class</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Custom Active Styling</h3>
+            <style>
+                .highlighted {
+                    background-color: #2196F3 !important;
+                    color: white !important;
+                }
+            </style>
+            {% metroui5_button_group custom_active_buttons mode="one" cls_active="highlighted" %}
+        </div>
+    </div>
+
+    <h2>Different Button Configurations</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>With Disabled Buttons</h3>
+            {% metroui5_button_group disabled_buttons mode="one" %}
+        </div>
+        <div class="cell-6">
+            <h3>Mixed Active States</h3>
+            {% metroui5_button_group mixed_buttons mode="multi" %}
+        </div>
+    </div>
+
+    <h2>Custom Target Elements</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Using Spans Instead of Buttons</h3>
+            <style>
+                .option {
+                    display: inline-block;
+                    padding: 8px 16px;
+                    margin: 2px;
+                    border: 1px solid #ccc;
+                    cursor: pointer;
+                    background-color: #f5f5f5;
+                }
+                .option.active {
+                    background-color: #2196F3;
+                    color: white;
+                }
+            </style>
+            {% metroui5_button_group custom_target_buttons mode="one" targets=".option" %}
+        </div>
+    </div>
+
+    <h2>Complex Examples</h2>
+    <div class="row">
+        <div class="cell-6">
+            <h3>Size Selection</h3>
+            {% metroui5_button_group size_buttons mode="one" %}
+        </div>
+        <div class="cell-6">
+            <h3>Color Selection</h3>
+            {% metroui5_button_group color_buttons mode="multi" %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

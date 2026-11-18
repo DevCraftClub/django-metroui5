@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Adblock Detection Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>MetroUI Adblock Detection Component</h1>
+    <p>This demo showcases the MetroUI v5 Adblock Detection component that can detect if users have ad blockers enabled.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-12">
+                <h2>Basic Usage</h2>
+                <p>Basic adblock detection with default settings:</p>
+                <pre><code>&lbrace;% metroui5_adblock_detection %}</code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Custom Configuration</h2>
+                <p>Adblock detection with custom parameters:</p>
+                <pre><code>&lbrace;% metroui5_adblock_detection check_interval=2000 fire_once=true localhost=false on_alert="handleAdblock()" %}</code></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Advanced Configuration</h2>
+                <p>Adblock detection with all parameters configured:</p>
+                <pre><code>&lbrace;% metroui5_adblock_detection 
+                    adblock_deferred=1000 
+                    check_interval=1500 
+                    fire_once=false 
+                    check_stop=5 
+                    localhost=true 
+                    on_alert="showAdblockMessage()" 
+                    on_fishing_start="startDetection()" 
+                    on_fishing_done="stopDetection()" 
+                    cls_adblock="custom-adblock" %}</code></pre>
+            </div>
+        </div>
+
+    
+    </div>
+</div>
+
+<!-- Hidden message for adblock detection -->
+<div id="adblock-message" class="alert alert-warning" style="display: none;">
+    <strong>Ad Blocker Detected!</strong> Please consider disabling your ad blocker to support our site.
+</div>
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Example event handlers
+    $(window).on("adblock-alert", function() {
+        console.log("Ad blocker detected!");
+        showAdblockMessage();
+    });
+    
+    $(window).on("fishing-start", function() {
+        console.log("Adblock detection started");
+    });
+    
+    $(window).on("fishing-done", function() {
+        console.log("Adblock detection completed");
+    });
+    
+    function handleAdblock() {
+        alert("Ad blocker detected! Please disable it to see ads.");
+    }
+    
+    function showAdblockMessage() {
+        document.getElementById('adblock-message').style.display = 'block';
+    }
+    
+    function startDetection() {
+        console.log("Starting adblock detection...");
+    }
+    
+    function stopDetection() {
+        console.log("Adblock detection finished.");
+    }
+    </script>
+    {% endblock %}

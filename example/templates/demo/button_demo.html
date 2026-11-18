@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Button Component Demo</h1>
+    <p>This page demonstrates the MetroUI Button component functionality based on the <a href="https://v5.metroui.org.ua/components/button/" target="_blank">official MetroUI v5 documentation</a>.</p>
+
+    <h2>Basic Buttons</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Standard Buttons</h3>
+            <div class="row">
+                <div class="cell-3">
+                    {% metroui5_button "Standard Button" %}
+                </div>
+                <div class="cell-3">
+                    {% metroui5_button "Primary" color="primary" %}
+                </div>
+                <div class="cell-3">
+                    {% metroui5_button "Secondary" color="secondary" %}
+                </div>
+                <div class="cell-3">
+                    {% metroui5_button "Success" color="success" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Button Variants</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Different Button Styles</h3>
+            <div class="row">
+                <div class="cell-3">
+                    <h4>Default</h4>
+                    {% metroui5_button "Default Button" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Flat Button</h4>
+                    {% metroui5_button "Flat Button" variant="flat-button" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Outline</h4>
+                    {% metroui5_button "Outline Button" outline=True %}
+                </div>
+                <div class="cell-3">
+                    <h4>Link Style</h4>
+                    {% metroui5_button "Link Button" link=True %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Button Sizes</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>All Available Sizes</h3>
+            <div class="row">
+                <div class="cell-2">
+                    <h4>Mini</h4>
+                    {% metroui5_button "Mini" size="mini" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Small</h4>
+                    {% metroui5_button "Small" size="small" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Medium</h4>
+                    {% metroui5_button "Medium" size="medium" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Default</h4>
+                    {% metroui5_button "Default" size="default" %}
+                </div>
+                <div class="cell-2">
+                    <h4>Large</h4>
+                    {% metroui5_button "Large" size="large" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Button Shapes</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Different Button Shapes</h3>
+            <div class="row">
+                <div class="cell-4">
+                    <h4>Pill Button</h4>
+                    {% metroui5_button "Pill Button" shape="pill-button" %}
+                </div>
+                <div class="cell-4">
+                    <h4>Square Button</h4>
+                    {% metroui5_button "" shape="square" icon="mif-home" %}
+                </div>
+                <div class="cell-4">
+                    <h4>Circular Button</h4>
+                    {% metroui5_button "" shape="cycle" icon="mif-plus" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Button States</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Different Button States</h3>
+            <div class="row">
+                <div class="cell-6">
+                    <h4>Disabled Button</h4>
+                    {% metroui5_button "Disabled Button" disabled=True %}
+                </div>
+                <div class="cell-6">
+                    <h4>Loading Button</h4>
+                    {% metroui5_button "Loading" loading=True %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Button Effects</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Visual Effects</h3>
+            <div class="row">
+                <div class="cell-6">
+                    <h4>Shadow Effect</h4>
+                    {% metroui5_button "Shadow Button" shadow=True %}
+                </div>
+                <div class="cell-6">
+                    <h4>Shift Effect</h4>
+                    {% metroui5_button "Shift Button" shift=True %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Color Variants</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Accent Colors</h3>
+            <div class="row">
+                <div class="cell-2">
+                    {% metroui5_button "Primary" color="primary" %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Secondary" color="secondary" %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Success" color="success" %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Warning" color="warning" %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Alert" color="alert" %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Info" color="info" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Outline Color Variants</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Outline Style with Colors</h3>
+            <div class="row">
+                <div class="cell-2">
+                    {% metroui5_button "Primary" color="primary" outline=True %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Secondary" color="secondary" outline=True %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Success" color="success" outline=True %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Warning" color="warning" outline=True %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Alert" color="alert" outline=True %}
+                </div>
+                <div class="cell-2">
+                    {% metroui5_button "Info" color="info" outline=True %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Buttons with Icons</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Icon Integration</h3>
+            <div class="row">
+                <div class="cell-3">
+                    <h4>Icon Left</h4>
+                    {% metroui5_button "Home" icon="mif-home" icon_position="left" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Icon Right</h4>
+                    {% metroui5_button "Next" icon="mif-arrow-right" icon_position="right" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Square with Icon</h4>
+                    {% metroui5_button "" shape="square" icon="mif-settings" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Circular with Icon</h4>
+                    {% metroui5_button "" shape="cycle" icon="mif-plus" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Combined Examples</h2>
+    <div class="row">
+        <div class="cell-12">
+            <h3>Complex Button Combinations</h3>
+            <div class="row">
+                <div class="cell-3">
+                    <h4>Large Primary with Icon</h4>
+                    {% metroui5_button "Save" color="primary" size="large" icon="mif-floppy-disk" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Pill Success with Shadow</h4>
+                    {% metroui5_button "Success" color="success" shape="pill-button" shadow=True %}
+                </div>
+                <div class="cell-3">
+                    <h4>Outline Warning Large</h4>
+                    {% metroui5_button "Warning" color="warning" outline=True size="large" %}
+                </div>
+                <div class="cell-3">
+                    <h4>Loading Primary</h4>
+                    {% metroui5_button "Processing" color="primary" loading=True %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+{% endblock %}

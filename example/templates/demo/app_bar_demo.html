@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}App Bar Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>MetroUI App Bar Component</h1>
+    <p>This demo showcases the MetroUI v5 App Bar component that provides a responsive navigation bar with hamburger menu support.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-12">
+                <h2>Basic Usage</h2>
+                <p>Basic app bar with brand and menu items:</p>
+                <div class="example-container">
+                    {% metroui5_app_bar brand=brand_data menu_items=basic_menu_items %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>With Brand Icon</h2>
+                <p>App bar with brand icon and navigation menu:</p>
+                <div class="example-container">
+                    {% metroui5_app_bar brand=brand_with_icon_data menu_items=extended_menu_items %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Advanced App Bar with Dropdowns and Static Items</h2>
+                <p>Complete app bar with dropdown menus, search input, and static items:</p>
+                <div class="example-container">
+                    {% metroui5_app_bar brand=advanced_brand_data menu_items=advanced_menu_items static_items=advanced_static_items expand=True cls_app_bar="border-bottom bd-default" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell-12">
+                <h2>Responsive App Bar</h2>
+                <p>App bar with custom expand point for responsive behavior:</p>
+                <div class="example-container">
+                    {% metroui5_app_bar brand=responsive_brand_data menu_items=responsive_menu_items expand_point="md" %}
+                </div>
+                <p><small>This app bar will expand at medium screen sizes and above (md breakpoint).</small></p>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<style>
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+.example-container .app-bar {
+    margin: 0;
+}
+</style>
+
+<script>
+// Example event handling
+$(window).on("menu-open", function() {
+    console.log("Menu opened!");
+});
+
+$(window).on("menu-close", function() {
+    console.log("Menu closed!");
+});
+
+$(window).on("app-bar-create", function() {
+    console.log("App bar created!");
+});
+
+// Example of programmatic creation
+$(document).ready(function() {
+    // Initialize app-bar on an existing element
+    Metro.makePlugin("#myAppBar", "app-bar");
+    
+    // Access the app-bar object
+    const appBar = Metro.getPlugin("#myAppBar", "app-bar");
+    
+    // You can control it programmatically
+    // appBar.open();
+    // appBar.close();
+    // appBar.destroy();
+});
+</script>
+{% endblock %}

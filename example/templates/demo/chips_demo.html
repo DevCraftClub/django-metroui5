@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Chips Component Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Chips Component Demo</h1>
+    <p>This demo showcases the MetroUI Chips component for compact elements that represent an input, attribute, or action.</p>
+
+    <h2>Basic Usage</h2>
+    <div class="example">
+        {% metroui5_chips label="Chip Example" %}
+    </div>
+
+    <h2>With Icon</h2>
+    <div class="example">
+        {% metroui5_chips label="Chip Example" icon="mif-rocket" %}
+    </div>
+
+    <h2>With Action (Close Button)</h2>
+    <div class="example">
+        {% metroui5_chips label="Chip Example" icon="mif-rocket" action=True %}
+    </div>
+
+    <h2>Pill-shaped Chip</h2>
+    <div class="example">
+        {% metroui5_chips label="Chip Example" icon="mif-rocket" action=True pill=True %}
+    </div>
+
+    <h2>Colored Chips</h2>
+    <div class="example">
+        <h3>Standard Colors</h3>
+        {% metroui5_chips label="Red Chip" action=True color="red" %}
+        {% metroui5_chips label="Blue Chip" action=True color="blue" %}
+        {% metroui5_chips label="Green Chip" action=True color="green" %}
+        {% metroui5_chips label="Orange Chip" action=True color="orange" %}
+        {% metroui5_chips label="Purple Chip" action=True color="purple" %}
+        
+        <h3>Soft Colors</h3>
+        {% metroui5_chips label="Soft Red Chip" action=True color="red" soft=True %}
+        {% metroui5_chips label="Soft Blue Chip" action=True color="blue" soft=True %}
+        {% metroui5_chips label="Soft Green Chip" action=True color="green" soft=True %}
+        {% metroui5_chips label="Soft Orange Chip" action=True color="orange" soft=True %}
+        {% metroui5_chips label="Soft Purple Chip" action=True color="purple" soft=True %}
+    </div>
+
+    <h2>Different States</h2>
+    <div class="example">
+        <h3>Readonly Chips</h3>
+        {% metroui5_chips label="Readonly Chip" icon="mif-lock" readonly=True %}
+        {% metroui5_chips label="Readonly with Action" icon="mif-info" action=True readonly=True %}
+        
+        <h3>Disabled Chips</h3>
+        {% metroui5_chips label="Disabled Chip" icon="mif-block" disabled=True %}
+        {% metroui5_chips label="Disabled with Action" icon="mif-warning" action=True disabled=True %}
+    </div>
+
+    <h2>Custom Styling with CSS Variables</h2>
+    <div class="example">
+        <div class="my-custom-chip">
+            {% metroui5_chips label="Custom Styled Chip" icon="mif-star" action=True %}
+        </div>
+    </div>
+
+    <h2>Real-world Examples</h2>
+    <div class="example">
+        <h3>Tags/Categories</h3>
+        <div class="chip-container">
+            {% metroui5_chips label="JavaScript" icon="mif-code" action=True color="yellow" %}
+            {% metroui5_chips label="Python" icon="mif-code" action=True color="green" %}
+            {% metroui5_chips label="React" icon="mif-code" action=True color="blue" %}
+            {% metroui5_chips label="Django" icon="mif-code" action=True color="green" %}
+        </div>
+        
+        <h3>User Roles</h3>
+        <div class="chip-container">
+            {% metroui5_chips label="Admin" icon="mif-user" action=True color="red" %}
+            {% metroui5_chips label="Editor" icon="mif-user" action=True color="blue" %}
+            {% metroui5_chips label="Viewer" icon="mif-user" action=True color="green" %}
+        </div>
+        
+        <h3>Status Indicators</h3>
+        <div class="chip-container">
+            {% metroui5_chips label="Active" icon="mif-checkmark" color="green" %}
+            {% metroui5_chips label="Pending" icon="mif-clock" color="orange" %}
+            {% metroui5_chips label="Inactive" icon="mif-cross" color="red" %}
+        </div>
+        
+        <h3>File Types</h3>
+        <div class="chip-container">
+            {% metroui5_chips label="PDF Document" icon="mif-file-pdf" action=True color="red" %}
+            {% metroui5_chips label="Image File" icon="mif-file-image" action=True color="blue" %}
+            {% metroui5_chips label="Text File" icon="mif-file-text" action=True color="green" %}
+        </div>
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example">
+        <h3>Basic Chip</h3>
+        <pre><code>{% verbatim %}{% metroui5_chips label="Chip Example" %}{% endverbatim %}</code></pre>
+
+        <h3>Chip with Icon</h3>
+        <pre><code>{% verbatim %}{% metroui5_chips label="Chip Example" icon="mif-rocket" %}{% endverbatim %}</code></pre>
+
+        <h3>Chip with Action</h3>
+        <pre><code>{% verbatim %}{% metroui5_chips label="Chip Example" icon="mif-rocket" action=True %}{% endverbatim %}</code></pre>
+
+        <h3>Pill-shaped Chip</h3>
+        <pre><code>{% verbatim %}{% metroui5_chips label="Chip Example" icon="mif-rocket" action=True pill=True %}{% endverbatim %}</code></pre>
+
+        <h3>Colored Chips</h3>
+        <pre><code>{% verbatim %}{% metroui5_chips label="Red Chip" action=True color="red" %}{% endverbatim %}</code></pre>
+        <pre><code>{% verbatim %}{% metroui5_chips label="Soft Blue Chip" action=True color="blue" soft=True %}{% endverbatim %}</code></pre>
+
+        <h3>Readonly/Disabled Chips</h3>
+        <pre><code>{% verbatim %}{% metroui5_chips label="Readonly Chip" icon="mif-lock" readonly=True %}{% endverbatim %}</code></pre>
+        <pre><code>{% verbatim %}{% metroui5_chips label="Disabled Chip" icon="mif-block" disabled=True %}{% endverbatim %}</code></pre>
+    </div>
+
+    <h2>Interactive Examples</h2>
+    <div class="example">
+        <h3>Dynamic Chip Management</h3>
+        <div id="chip-container" class="chip-container">
+            {% metroui5_chips label="JavaScript" icon="mif-code" action=True color="yellow" id="chip-js" %}
+            {% metroui5_chips label="Python" icon="mif-code" action=True color="green" id="chip-python" %}
+            {% metroui5_chips label="React" icon="mif-code" action=True color="blue" id="chip-react" %}
+        </div>
+        
+        <div style="margin-top: 15px;">
+            <button class="button" onclick="addChip()">Add Random Chip</button>
+            <button class="button" onclick="removeLastChip()">Remove Last Chip</button>
+            <button class="button" onclick="clearAllChips()">Clear All Chips</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Custom styling for chips demo */
+.my-custom-chip {
+    --chip-background: #e0f7fa;
+    --chip-color: #006064;
+    --chip-action-background: #00838f;
+    --chip-action-color: white;
+    --chip-background-hover: #b2ebf2;
+    --chip-color-hover: #004d40;
+}
+
+/* Chip container for proper spacing */
+.chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+/* Example styling */
+.example {
+    margin-bottom: 30px;
+}
+
+.example h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.example pre {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 12px;
+    overflow-x: auto;
+    font-size: 13px;
+}
+
+.example code {
+    background: none;
+    padding: 0;
+    font-size: 13px;
+}
+
+/* Button styling */
+.button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* Chip hover effects */
+.chip {
+    transition: all 0.2s ease;
+}
+
+.chip:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .chip-container {
+        gap: 6px;
+    }
+    
+    .chip {
+        font-size: 14px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Demo functions for interactive examples
+let chipCounter = 0;
+const chipColors = ['red', 'blue', 'green', 'orange', 'purple', 'yellow'];
+const chipIcons = ['mif-code', 'mif-star', 'mif-heart', 'mif-bookmark', 'mif-tag', 'mif-flag'];
+const chipLabels = ['New Tag', 'Important', 'Favorite', 'Bookmarked', 'Flagged', 'Special'];
+
+function addChip() {
+    chipCounter++;
+    const container = document.getElementById('chip-container');
+    const color = chipColors[Math.floor(Math.random() * chipColors.length)];
+    const icon = chipIcons[Math.floor(Math.random() * chipIcons.length)];
+    const label = chipLabels[Math.floor(Math.random() * chipLabels.length)] + ' ' + chipCounter;
+    
+    const chipHtml = `
+        <div class="chip ${color}" id="chip-${chipCounter}">
+            <div class="icon"><span class="${icon}"></span></div>
+            <div class="label">${label}</div>
+            <div class="action" onclick="removeChip('chip-${chipCounter}')"></div>
+        </div>
+    `;
+    
+    container.insertAdjacentHTML('beforeend', chipHtml);
+}
+
+function removeChip(chipId) {
+    const chip = document.getElementById(chipId);
+    if (chip) {
+        chip.remove();
+    }
+}
+
+function removeLastChip() {
+    const container = document.getElementById('chip-container');
+    const chips = container.querySelectorAll('.chip');
+    if (chips.length > 0) {
+        chips[chips.length - 1].remove();
+    }
+}
+
+function clearAllChips() {
+    const container = document.getElementById('chip-container');
+    container.innerHTML = '';
+}
+
+// Add click handlers to existing chips
+document.addEventListener('DOMContentLoaded', function() {
+    const actionButtons = document.querySelectorAll('.chip .action');
+    actionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const chip = this.closest('.chip');
+            if (chip) {
+                chip.style.opacity = '0.5';
+                chip.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    chip.remove();
+                }, 200);
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

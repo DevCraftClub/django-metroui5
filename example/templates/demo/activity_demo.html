@@ -1,0 +1,392 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Activity Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Activity Components</h1>
+    <p>Demonstrating the MetroUI v5 Activity component with animated loading indicators.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>All Activity Types</h2>
+                <p>Different types of animated loading indicators.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-2">
+                            <h4>Ring (Default)</h4>
+                            {% metroui5_activity type="ring" %}
+                        </div>
+                        <div class="cell-md-2">
+                            <h4>Metro</h4>
+                            {% metroui5_activity type="metro" %}
+                        </div>
+                        <div class="cell-md-2">
+                            <h4>Square</h4>
+                            {% metroui5_activity type="square" %}
+                        </div>
+                        <div class="cell-md-2">
+                            <h4>Cycle</h4>
+                            {% metroui5_activity type="cycle" %}
+                        </div>
+                        <div class="cell-md-2">
+                            <h4>Simple</h4>
+                            {% metroui5_activity type="simple" %}
+                        </div>
+                        <div class="cell-md-2">
+                            <h4>Atom</h4>
+                            {% metroui5_activity type="atom" %}
+                        </div>
+                        <div class="cell-md-2">
+                            <h4>Bars</h4>
+                            {% metroui5_activity type="bars" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Style Options</h2>
+                <p>Different style options for activity indicators.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Default Style</h4>
+                            {% metroui5_activity type="ring" %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Color Style</h4>
+                            {% metroui5_activity type="ring" style="color" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Size Variations</h2>
+                <p>Activity indicators with different sizes.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>Small (32px)</h4>
+                            {% metroui5_activity type="metro" size=32 %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Medium (64px)</h4>
+                            {% metroui5_activity type="metro" size=64 %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Large (96px)</h4>
+                            {% metroui5_activity type="metro" size=96 %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Extra Large (128px)</h4>
+                            {% metroui5_activity type="metro" size=128 %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Custom Styling</h2>
+                <p>Activity indicators with custom CSS classes.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Custom Class</h4>
+                            {% metroui5_activity type="cycle" cls_activity="custom-activity" %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Color + Custom</h4>
+                            {% metroui5_activity type="atom" style="color" cls_activity="custom-activity" %}
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Large + Custom</h4>
+                            {% metroui5_activity type="bars" size=100 cls_activity="custom-activity" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Simple Type with Custom Radius</h2>
+                <p>Simple type activity with different radius values.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-3">
+                            <h4>Radius 10</h4>
+                            {% metroui5_activity type="simple" radius=10 %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Radius 20 (Default)</h4>
+                            {% metroui5_activity type="simple" radius=20 %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Radius 30</h4>
+                            {% metroui5_activity type="simple" radius=30 %}
+                        </div>
+                        <div class="cell-md-3">
+                            <h4>Radius 40</h4>
+                            {% metroui5_activity type="simple" radius=40 %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Activity</div>
+                <div class="content">
+                    <pre><code>{% metroui5_activity %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Activity with Type</div>
+                <div class="content">
+                    <pre><code>{% metroui5_activity type="metro" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Activity with Type and Style</div>
+                <div class="content">
+                    <pre><code>{% metroui5_activity type="cycle" style="color" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Activity with Custom Size</div>
+                <div class="content">
+                    <pre><code>{% metroui5_activity type="ring" size=100 %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Activity with Custom Radius</div>
+                <div class="content">
+                    <pre><code>{% metroui5_activity type="simple" radius=30 %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Activity with Custom Class</div>
+                <div class="content">
+                    <pre><code>{% metroui5_activity type="atom" cls_activity="my-activity" %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Activity Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>activity_deferred</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Deferred initialization time in milliseconds</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>string</td>
+                        <td>"ring"</td>
+                        <td>Type of activity indicator. Options: "ring", "metro", "square", "cycle", "simple", "atom", "bars"</td>
+                    </tr>
+                    <tr>
+                        <td>style</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Style of the activity indicator. Options: "", "dark", "color"</td>
+                    </tr>
+                    <tr>
+                        <td>size</td>
+                        <td>number</td>
+                        <td>64</td>
+                        <td>Size of the activity indicator in pixels</td>
+                    </tr>
+                    <tr>
+                        <td>radius</td>
+                        <td>number</td>
+                        <td>20</td>
+                        <td>Radius for the "simple" type activity indicator</td>
+                    </tr>
+                    <tr>
+                        <td>on_activity_create</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Callback function triggered when the activity indicator is created</td>
+                    </tr>
+                    <tr>
+                        <td>cls_activity</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS class for the activity container</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Activity Types</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Visual Style</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ring</td>
+                        <td>Default type with five rotating circles</td>
+                        <td>Circular rotation animation</td>
+                    </tr>
+                    <tr>
+                        <td>metro</td>
+                        <td>Horizontal sliding animation with five circles</td>
+                        <td>Horizontal sliding motion</td>
+                    </tr>
+                    <tr>
+                        <td>square</td>
+                        <td>Square animation with four squares that drop into place</td>
+                        <td>Square dropping animation</td>
+                    </tr>
+                    <tr>
+                        <td>cycle</td>
+                        <td>Circular spinning animation with concentric circles</td>
+                        <td>Concentric circle rotation</td>
+                    </tr>
+                    <tr>
+                        <td>simple</td>
+                        <td>Circular path animation</td>
+                        <td>Simple circular motion</td>
+                    </tr>
+                    <tr>
+                        <td>atom</td>
+                        <td>Three rotating elliptical orbits</td>
+                        <td>Atomic orbital motion</td>
+                    </tr>
+                    <tr>
+                        <td>bars</td>
+                        <td>Six vertical bars that animate up and down</td>
+                        <td>Vertical bar animation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Style Options</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Style</th>
+                        <th>Description</th>
+                        <th>Color Scheme</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>default</td>
+                        <td>Uses the --activity-color variable (dark in light mode, light in dark mode)</td>
+                        <td>Theme-adaptive</td>
+                    </tr>
+                    <tr>
+                        <td>dark</td>
+                        <td>Forces dark styling regardless of the current theme</td>
+                        <td>Dark colors</td>
+                    </tr>
+                    <tr>
+                        <td>color</td>
+                        <td>Uses predefined colors (cyan, orange, green, red, yellow, etc.) for multi-colored animation</td>
+                        <td>Multi-colored</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom styling for activity indicators */
+.custom-activity {
+    border: 2px solid #2196F3;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+
+
+/* Center activity indicators in their containers */
+.activity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+
+/* Style for activity type labels */
+h4 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Grid spacing for activity demonstrations */
+.grid .row {
+    margin-bottom: 30px;
+}
+
+.grid .row .cell-md-2,
+.grid .row .cell-md-3,
+.grid .row .cell-md-4 {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 5px;
+    background-color: #fafafa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid .row .cell-md-2,
+    .grid .row .cell-md-3,
+    .grid .row .cell-md-4 {
+        margin-bottom: 20px;
+    }
+}
+</style>
+{% endblock %}

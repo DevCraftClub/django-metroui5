@@ -638,3 +638,16 @@ def create_authorized_sidebar(user, all_menu_items):
 - [Навигация](navigation.md) - Для систем навигации
 - [Иконки](icons.md) - Для иконок меню боковой панели
 - [Панели](panels.md) - Для панелей содержимого боковой панели
+
+
+## metroui5_sidebar
+
+```python
+render_sidebar([{'text': 'One', 'href': '/one'}])
+```
+
+Пустое или неверное значение: `render_sidebar([{'text': 'One', 'href': '/one'}])` даёт `<ul class="sidebar" data-role="sidebar"><li><a href="/one">One</a></li></ul>`. Пустой вызов даёт `<ul class="sidebar" data-role="sidebar"></ul>`.
+
+```django
+{% metroui5_sidebar items %}
+```

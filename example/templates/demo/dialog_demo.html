@@ -1,0 +1,689 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Dialog Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Dialog Components</h1>
+    <p>Demonstrating the MetroUI v5 Dialog component with comprehensive modal functionality.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Basic Dialog</h2>
+                <p>Simple dialog with title and content.</p>
+                
+                <button class="button primary" onclick="showBasicDialog()">
+                    Show Basic Dialog
+                </button>
+                
+                {% metroui5_dialog title="Basic Dialog" content="This is a basic dialog with title and content." id="basic-dialog" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Dialog with Close Button</h2>
+                <p>Dialog with close button in the top-right corner.</p>
+                
+                <button class="button primary" onclick="showCloseButtonDialog()">
+                    Show Dialog with Close Button
+                </button>
+                
+                {% metroui5_dialog title="Dialog with Close Button" content="This dialog has a close button in the top-right corner." close_button=True id="close-button-dialog" %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Dialog with Custom Buttons</h2>
+                <p>Dialog with custom action buttons.</p>
+                
+                <button class="button primary" onclick="showCustomButtonsDialog()">
+                    Show Dialog with Custom Buttons
+                </button>
+                
+                {% metroui5_dialog title="Custom Buttons Dialog" content="This dialog has custom action buttons." custom_buttons='[{"text":"Save","cls":"button success","onclick":"saveData()"},{"text":"Delete","cls":"button alert","onclick":"deleteData()"}]' id="custom-buttons-dialog" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Dialog with Default Actions</h2>
+                <p>Dialog with default OK, Cancel, and Help buttons.</p>
+                
+                <button class="button primary" onclick="showDefaultActionsDialog()">
+                    Show Default Actions Dialog
+                </button>
+                
+                {% metroui5_dialog title="Default Actions Dialog" content="This dialog shows default action buttons (OK, Cancel, Help)." default_actions=True default_action_buttons="ok,cancel,help" id="default-actions-dialog" %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Dialog with Custom Alignment</h2>
+                <p>Dialog with left-aligned action buttons.</p>
+                
+                <button class="button primary" onclick="showAlignmentDialog()">
+                    Show Left-Aligned Dialog
+                </button>
+                
+                {% metroui5_dialog title="Left-Aligned Actions" content="This dialog has left-aligned action buttons." actions_align="left" default_actions=True id="alignment-dialog" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Dialog with Custom Overlay</h2>
+                <p>Dialog with custom overlay color and opacity.</p>
+                
+                <button class="button primary" onclick="showOverlayDialog()">
+                    Show Custom Overlay Dialog
+                </button>
+                
+                {% metroui5_dialog title="Custom Overlay Dialog" content="This dialog has a custom blue overlay with 70% opacity." overlay=True overlay_color="#2196F3" overlay_alpha=0.7 id="overlay-dialog" %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Dialog with Custom Size</h2>
+                <p>Dialog with custom width and height.</p>
+                
+                <button class="button primary" onclick="showSizeDialog()">
+                    Show Custom Size Dialog
+                </button>
+                
+                {% metroui5_dialog title="Custom Size Dialog" content="This dialog has custom dimensions: 600px wide and 400px tall." width="600px" height="400px" id="size-dialog" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Dialog with Auto Hide</h2>
+                <p>Dialog that automatically hides after 5 seconds.</p>
+                
+                <button class="button primary" onclick="showAutoHideDialog()">
+                    Show Auto Hide Dialog
+                </button>
+                
+                {% metroui5_dialog title="Auto Hide Dialog" content="This dialog will automatically close in 5 seconds." auto_hide=5000 id="auto-hide-dialog" %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Dialog with Event Handlers</h2>
+                <p>Dialog with JavaScript event callbacks.</p>
+                
+                <button class="button primary" onclick="showEventDialog()">
+                    Show Event Dialog
+                </button>
+                
+                {% metroui5_dialog title="Event Dialog" content="This dialog has event handlers. Check the console for events." on_show="handleDialogShow()" on_hide="handleDialogHide()" on_ok="handleDialogOk()" on_cancel="handleDialogCancel()" id="event-dialog" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Dynamic Dialog Creation</h2>
+                <p>Create dialogs dynamically using JavaScript.</p>
+                
+                <button class="button primary" onclick="createDynamicDialog()">
+                    Create Dynamic Dialog
+                </button>
+                
+                <button class="button secondary" onclick="createComplexDialog()">
+                    Create Complex Dialog
+                </button>
+                
+                <div id="dynamic-dialog-output" class="bg-lightGray p-2 mt-2" style="min-height: 50px; border-radius: 4px;">
+                    <small class="text-muted">Dynamic dialog events will appear here...</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Dialog Positioning</h2>
+                <p>Dialogs with different positioning options.</p>
+                
+                <button class="button primary" onclick="showTopDialog()">
+                    Show Top Dialog
+                </button>
+                
+                <button class="button primary" onclick="showBottomDialog()">
+                    Show Bottom Dialog
+                </button>
+                
+                {% metroui5_dialog title="Top Positioned Dialog" content="This dialog is positioned at the top of the screen." to_top=True id="top-dialog" %}
+                {% metroui5_dialog title="Bottom Positioned Dialog" content="This dialog is positioned at the bottom of the screen." to_bottom=True id="bottom-dialog" %}
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Dialog</div>
+                <div class="content">
+                    <pre><code>{% metroui5_dialog title="Basic Dialog" content="This is a basic dialog." %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Dialog with Close Button</div>
+                <div class="content">
+                    <pre><code>{% metroui5_dialog title="Dialog" content="Content" close_button=True %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Dialog with Custom Buttons</div>
+                <div class="content">
+                    <pre><code>{% metroui5_dialog title="Dialog" content="Content" custom_buttons='[{"text":"Save","cls":"button success"}]' %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Dialog with Default Actions</div>
+                <div class="content">
+                    <pre><code>{% metroui5_dialog title="Dialog" content="Content" default_actions=True default_action_buttons="ok,cancel,help" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Dialog with Custom Overlay</div>
+                <div class="content">
+                    <pre><code>{% metroui5_dialog title="Dialog" content="Content" overlay=True overlay_color="#2196F3" overlay_alpha=0.7 %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Dialog with Event Handlers</div>
+                <div class="content">
+                    <pre><code>{% metroui5_dialog title="Dialog" content="Content" on_show="handleShow()" on_hide="handleHide()" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Dynamic Dialog Creation</div>
+                <div class="content">
+                    <pre><code>{% metroui5_dialog_create title="Dynamic Dialog" content="Created dynamically" show=True %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Component Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>title</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Dialog title text</td>
+                    </tr>
+                    <tr>
+                        <td>content</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Dialog content text</td>
+                    </tr>
+                    <tr>
+                        <td>close_button</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Show close button in top-right corner</td>
+                    </tr>
+                    <tr>
+                        <td>custom_buttons</td>
+                        <td>array</td>
+                        <td>[]</td>
+                        <td>Array of custom button objects</td>
+                    </tr>
+                    <tr>
+                        <td>actions_align</td>
+                        <td>string</td>
+                        <td>"right"</td>
+                        <td>Alignment of action buttons: "left", "center", "right"</td>
+                    </tr>
+                    <tr>
+                        <td>default_actions</td>
+                        <td>boolean</td>
+                        <td>true</td>
+                        <td>Show default action buttons</td>
+                    </tr>
+                    <tr>
+                        <td>default_action_buttons</td>
+                        <td>string</td>
+                        <td>"ok,cancel,help"</td>
+                        <td>Comma-separated list of default buttons</td>
+                    </tr>
+                    <tr>
+                        <td>overlay</td>
+                        <td>boolean</td>
+                        <td>true</td>
+                        <td>Show overlay behind dialog</td>
+                    </tr>
+                    <tr>
+                        <td>overlay_color</td>
+                        <td>string</td>
+                        <td>"#000000"</td>
+                        <td>Color of the overlay</td>
+                    </tr>
+                    <tr>
+                        <td>overlay_alpha</td>
+                        <td>number</td>
+                        <td>0.5</td>
+                        <td>Opacity of the overlay (0.0 to 1.0)</td>
+                    </tr>
+                    <tr>
+                        <td>overlay_click_close</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Close dialog when clicking on overlay</td>
+                    </tr>
+                    <tr>
+                        <td>width</td>
+                        <td>string</td>
+                        <td>"auto"</td>
+                        <td>Width of the dialog</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>string</td>
+                        <td>"auto"</td>
+                        <td>Height of the dialog</td>
+                    </tr>
+                    <tr>
+                        <td>auto_hide</td>
+                        <td>number</td>
+                        <td>0</td>
+                        <td>Auto hide dialog after specified milliseconds (0 = disabled)</td>
+                    </tr>
+                    <tr>
+                        <td>remove_on_close</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Remove dialog element from DOM when closed</td>
+                    </tr>
+                    <tr>
+                        <td>show</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Show dialog immediately after initialization</td>
+                    </tr>
+                    <tr>
+                        <td>to_top</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Position dialog at top of screen</td>
+                    </tr>
+                    <tr>
+                        <td>to_bottom</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Position dialog at bottom of screen</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Event Handlers</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>on_show</td>
+                        <td>Triggered when dialog is shown</td>
+                    </tr>
+                    <tr>
+                        <td>on_hide</td>
+                        <td>Triggered when dialog is hidden</td>
+                    </tr>
+                    <tr>
+                        <td>on_open</td>
+                        <td>Triggered when dialog is opened</td>
+                    </tr>
+                    <tr>
+                        <td>on_close</td>
+                        <td>Triggered when dialog is closed</td>
+                    </tr>
+                    <tr>
+                        <td>on_ok</td>
+                        <td>Triggered when OK button is clicked</td>
+                    </tr>
+                    <tr>
+                        <td>on_cancel</td>
+                        <td>Triggered when Cancel button is clicked</td>
+                    </tr>
+                    <tr>
+                        <td>on_help</td>
+                        <td>Triggered when Help button is clicked</td>
+                    </tr>
+                    <tr>
+                        <td>on_dialog_create</td>
+                        <td>Triggered when dialog is created</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>API Methods</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Metro.dialog.create(options)</td>
+                        <td>Create a dialog dynamically</td>
+                    </tr>
+                    <tr>
+                        <td>Metro.getPlugin(element, 'dialog').open()</td>
+                        <td>Open an existing dialog</td>
+                    </tr>
+                    <tr>
+                        <td>Metro.getPlugin(element, 'dialog').close()</td>
+                        <td>Close an existing dialog</td>
+                    </tr>
+                    <tr>
+                        <td>Metro.getPlugin(element, 'dialog').destroy()</td>
+                        <td>Destroy the dialog instance</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+#dynamic-dialog-output {
+    font-family: monospace;
+    font-size: 12px;
+}
+
+/* Custom dialog styling examples */
+.custom-dialog {
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.custom-dialog .dialog-title {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    margin: -20px -20px 20px -20px;
+    border-radius: 12px 12px 0 0;
+}
+
+.custom-dialog .dialog-content {
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.custom-dialog .dialog-actions {
+    padding: 20px;
+    background: #f8f9fa;
+    margin: 20px -20px -20px -20px;
+    border-radius: 0 0 12px 12px;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Dialog control functions
+function showBasicDialog() {
+    const dialog = Metro.getPlugin('#basic-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+function showCloseButtonDialog() {
+    const dialog = Metro.getPlugin('#close-button-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+function showCustomButtonsDialog() {
+    const dialog = Metro.getPlugin('#custom-buttons-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+function showDefaultActionsDialog() {
+    const dialog = Metro.getPlugin('#default-actions-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+function showAlignmentDialog() {
+    const dialog = Metro.getPlugin('#alignment-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+function showOverlayDialog() {
+    const dialog = Metro.getPlugin('#overlay-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+function showSizeDialog() {
+    const dialog = Metro.getPlugin('#size-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+function showAutoHideDialog() {
+    const dialog = Metro.getPlugin('#auto-hide-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+function showEventDialog() {
+    const dialog = Metro.getPlugin('#event-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+function showTopDialog() {
+    const dialog = Metro.getPlugin('#top-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+function showBottomDialog() {
+    const dialog = Metro.getPlugin('#bottom-dialog', 'dialog');
+    if (dialog) {
+        dialog.open();
+    }
+}
+
+// Event handler functions
+function handleDialogShow() {
+    console.log("Dialog shown event triggered");
+    addToOutput("Dialog shown event triggered");
+}
+
+function handleDialogHide() {
+    console.log("Dialog hidden event triggered");
+    addToOutput("Dialog hidden event triggered");
+}
+
+function handleDialogOk() {
+    console.log("Dialog OK button clicked");
+    addToOutput("Dialog OK button clicked");
+}
+
+function handleDialogCancel() {
+    console.log("Dialog Cancel button clicked");
+    addToOutput("Dialog Cancel button clicked");
+}
+
+// Dynamic dialog creation
+function createDynamicDialog() {
+    const dialog = Metro.dialog.create({
+        title: "Dynamic Dialog",
+        content: "This dialog was created dynamically using Metro.dialog.create()",
+        defaultActions: true,
+        defaultActionButtons: "ok,cancel",
+        onShow: function() {
+            addToOutput("Dynamic dialog shown");
+        },
+        onHide: function() {
+            addToOutput("Dynamic dialog hidden");
+        }
+    });
+}
+
+function createComplexDialog() {
+    const dialog = Metro.dialog.create({
+        title: "Complex Dynamic Dialog",
+        content: `
+            <div class="p-4">
+                <h4>Complex Dialog Content</h4>
+                <p>This dialog demonstrates complex content with:</p>
+                <ul>
+                    <li>Custom HTML content</li>
+                    <li>Multiple action buttons</li>
+                    <li>Custom styling</                </li>
+                    <li>Event handlers</li>
+                </ul>
+                <div class="mt-4">
+                    <input type="text" class="input" placeholder="Enter some text..." id="dialog-input">
+                </div>
+            </div>
+        `,
+        customButtons: [
+            {
+                text: "Save",
+                cls: "button success",
+                onclick: "saveFromDialog()"
+            },
+            {
+                text: "Reset",
+                cls: "button secondary",
+                onclick: "resetDialog()"
+            }
+        ],
+        width: "500px",
+        overlay: true,
+        overlayColor: "#4CAF50",
+        overlayAlpha: 0.3,
+        onShow: function() {
+            addToOutput("Complex dialog shown");
+        },
+        onHide: function() {
+            addToOutput("Complex dialog hidden");
+        }
+    });
+}
+
+// Custom button functions for dynamic dialogs
+function saveFromDialog() {
+    const input = document.getElementById('dialog-input');
+    if (input) {
+        addToOutput("Save clicked with value: " + input.value);
+    }
+    // Close the dialog
+    const dialogs = document.querySelectorAll('.dialog');
+    dialogs.forEach(dialog => {
+        const plugin = Metro.getPlugin(dialog, 'dialog');
+        if (plugin) {
+            plugin.close();
+        }
+    });
+}
+
+function resetDialog() {
+    const input = document.getElementById('dialog-input');
+    if (input) {
+        input.value = '';
+        addToOutput("Dialog reset");
+    }
+}
+
+// Utility functions
+function addToOutput(message) {
+    const output = document.getElementById('dynamic-dialog-output');
+    if (output) {
+        const timestamp = new Date().toLocaleTimeString();
+        output.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+        output.scrollTop = output.scrollHeight;
+    }
+}
+
+function saveData() {
+    addToOutput("Save data clicked");
+    // Close the dialog
+    const dialogs = document.querySelectorAll('.dialog');
+    dialogs.forEach(dialog => {
+        const plugin = Metro.getPlugin(dialog, 'dialog');
+        if (plugin) {
+            plugin.close();
+        }
+    });
+}
+
+function deleteData() {
+    addToOutput("Delete data clicked");
+    // Close the dialog
+    const dialogs = document.querySelectorAll('.dialog');
+    dialogs.forEach(dialog => {
+        const plugin = Metro.getPlugin(dialog, 'dialog');
+        if (plugin) {
+            plugin.close();
+        }
+    });
+}
+
+// Initialize all dialogs when page loads
+$(document).ready(function() {
+    // Initialize all dialog elements
+    $('.dialog').each(function() {
+        Metro.makePlugin(this, 'dialog');
+    });
+    
+    // Add clear button for output
+    const clearBtn = $('<button class="button small">Clear Output</button>');
+    clearBtn.on('click', function() {
+        $('#dynamic-dialog-output').html('<small class="text-muted">Dynamic dialog events will appear here...</small>');
+    });
+    $('#dynamic-dialog-output').after(clearBtn);
+});
+</script>
+{% endblock %}

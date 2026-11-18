@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Catalog Menu Component Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Catalog Menu Component Demo</h1>
+    <p>This demo showcases the MetroUI Catalog Menu component with various configurations and features.</p>
+
+    <h2>Basic Catalog Menu</h2>
+    <div class="example">
+        {% metroui5_catalog_menu items='[{"text": "Electronics", "href": "#electronics", "icon": "mif-laptop", "content": "Laptops, smartphones, tablets, and more"}, {"text": "Clothing", "href": "#clothing", "icon": "mif-user", "content": "Men\'s and women\'s fashion"}, {"text": "Home & Garden", "href": "#home", "icon": "mif-home", "content": "Furniture, decor, and garden supplies"}]' %}
+    </div>
+
+    <h2>Catalog Menu with Image Icons</h2>
+    <div class="example">
+        {% metroui5_catalog_menu items='[{"text": "Products", "href": "#products", "icon": "https://placehold.co/24x24/1976D2/ffffff?text=P", "content": "Browse our extensive product catalog with thousands of items"}, {"text": "Services", "href": "#services", "icon": "https://placehold.co/24x24/4CAF50/ffffff?text=S", "content": "Professional services and support"}, {"text": "Support", "href": "#support", "icon": "https://placehold.co/24x24/FF9800/ffffff?text=H", "content": "24/7 customer support and help center"}]' %}
+    </div>
+
+    <h2>E-commerce Categories</h2>
+    <div class="example">
+        {% metroui5_catalog_menu items='[{"text": "Electronics", "href": "#electronics", "icon": "mif-laptop", "content": "<h4>Electronics</h4><p>Latest gadgets and technology</p><ul><li>Smartphones</li><li>Laptops</li><li>Tablets</li><li>Accessories</li></ul>"}, {"text": "Fashion", "href": "#fashion", "icon": "mif-user", "content": "<h4>Fashion</h4><p>Trendy clothing and accessories</p><ul><li>Men\'s Clothing</li><li>Women\'s Clothing</li><li>Shoes</li><li>Accessories</li></ul>"}, {"text": "Home & Living", "href": "#home", "icon": "mif-home", "content": "<h4>Home & Living</h4><p>Everything for your home</p><ul><li>Furniture</li><li>Decor</li><li>Kitchen</li><li>Garden</li></ul>"}, {"text": "Sports", "href": "#sports", "icon": "mif-football", "content": "<h4>Sports & Fitness</h4><p>Stay active and healthy</p><ul><li>Fitness Equipment</li><li>Sports Apparel</li><li>Outdoor Gear</li><li>Team Sports</li></ul>"}]' %}
+    </div>
+
+    <h2>Service Categories</h2>
+    <div class="example">
+        {% metroui5_catalog_menu items='[{"text": "Web Development", "href": "#web-dev", "icon": "mif-code", "content": "Custom websites and web applications built with modern technologies"}, {"text": "Mobile Apps", "href": "#mobile", "icon": "mif-mobile", "content": "Native and cross-platform mobile applications for iOS and Android"}, {"text": "Consulting", "href": "#consulting", "icon": "mif-users", "content": "Strategic technology consulting and digital transformation services"}, {"text": "Support", "href": "#support", "icon": "mif-lifebuoy", "content": "24/7 technical support and maintenance services"}]' %}
+    </div>
+
+    <h2>Catalog Menu with Custom CSS Classes</h2>
+    <div class="example">
+        {% metroui5_catalog_menu items='[{"text": "Premium Products", "href": "#premium", "icon": "mif-star", "content": "Our highest quality products with premium features"}, {"text": "Special Offers", "href": "#offers", "icon": "mif-gift", "content": "Limited time offers and special discounts"}]' cls_catalog_menu="custom-catalog" cls_catalog_item="custom-item" %}
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example">
+        <h3>Basic Catalog Menu</h3>
+        <pre><code>{% verbatim %}{% metroui5_catalog_menu items='[{"text": "Category 1", "href": "#cat1", "icon": "mif-home", "content": "Content for Category 1"}]' %}{% endverbatim %}</code></pre>
+
+        <h3>Catalog Menu with Image Icons</h3>
+        <pre><code>{% verbatim %}{% metroui5_catalog_menu items='[{"text": "Products", "href": "#products", "icon": "https://placehold.co/24x24/1976D2/ffffff?text=P", "content": "Product catalog"}]' %}{% endverbatim %}</code></pre>
+
+        <h3>Catalog Menu with Custom Classes</h3>
+        <pre><code>{% verbatim %}{% metroui5_catalog_menu items='[{"text": "Category", "href": "#cat", "icon": "mif-icon", "content": "Content"}]' cls_catalog_menu="custom-menu" %}{% endverbatim %}</code></pre>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Custom styling for catalog menu demo */
+.custom-catalog {
+    --catalog-menu-width: 300px;
+    --catalog-menu-background: #f8f9fa;
+    --catalog-menu-color: #333333;
+    --catalog-menu-item-background-hover: #007bff;
+    --catalog-menu-item-color-hover: #ffffff;
+}
+
+.custom-item {
+    border-bottom: 1px solid #e9ecef;
+}
+
+.custom-item:last-child {
+    border-bottom: none;
+}
+
+/* Example of rich content styling */
+.catalog-item-content h4 {
+    margin: 0 0 8px 0;
+    color: #007bff;
+    font-size: 16px;
+}
+
+.catalog-item-content p {
+    margin: 0 0 8px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.catalog-item-content ul {
+    margin: 0;
+    padding-left: 16px;
+}
+
+.catalog-item-content li {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #555;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Example of programmatic initialization
+    const catalogMenus = document.querySelectorAll('[data-role="catalog-menu"]');
+    
+    catalogMenus.forEach((menu, index) => {
+        // Initialize catalog menu programmatically
+        const catalogMenuInstance = Metro.makePlugin(menu, 'catalog-menu');
+        
+        if (catalogMenuInstance) {
+            console.log(`Catalog menu ${index + 1} initialized successfully`);
+        }
+    });
+    
+    // Example of global configuration
+    Metro.catalogMenuSetup({
+        onCatalogCreate: function() {
+            console.log('Catalog menu has been created');
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Chart Card Component Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Chart Card Component Demo</h1>
+    <p>This demo showcases the MetroUI Chart Card component for displaying charts alongside content.</p>
+
+    <h2>Basic Chart Card</h2>
+    <div class="example">
+        {% metroui5_chart_card value="75%" title="Completion Rate" subtitle="Project milestone progress" chart_content='<canvas id="chart1" width="100" height="100"></canvas>' %}
+    </div>
+
+    <h2>Revenue Chart Card</h2>
+    <div class="example">
+        {% metroui5_chart_card value="$12,345" title="Monthly Revenue" subtitle="Last 30 days" chart_content='<div class="chart-placeholder" style="width: 100px; height: 100px; background: linear-gradient(45deg, #4CAF50, #8BC34A); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">📈</div>' %}
+    </div>
+
+    <h2>User Statistics Chart Card</h2>
+    <div class="example">
+        {% metroui5_chart_card value="1,234" title="Active Users" subtitle="Currently online" chart_content='<div class="chart-placeholder" style="width: 100px; height: 100px; background: linear-gradient(45deg, #2196F3, #03A9F4); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">👥</div>' %}
+    </div>
+
+    <h2>Performance Metrics</h2>
+    <div class="example">
+        {% metroui5_chart_card value="98.5%" title="System Uptime" subtitle="Last 7 days" chart_content='<div class="chart-placeholder" style="width: 100px; height: 100px; background: linear-gradient(45deg, #FF9800, #FFC107); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">⚡</div>' %}
+    </div>
+
+    <h2>Chart Card with Custom CSS Classes</h2>
+    <div class="example">
+        {% metroui5_chart_card value="42" title="Tasks Completed" subtitle="This week" chart_content='<div class="chart-placeholder" style="width: 100px; height: 100px; background: linear-gradient(45deg, #9C27B0, #E91E63); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">✅</div>' cls_content="custom-content" cls_chart="custom-chart" %}
+    </div>
+
+    <h2>Multiple Chart Cards Layout</h2>
+    <div class="example">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            {% metroui5_chart_card value="85%" title="CPU Usage" subtitle="Average load" chart_content='<div class="chart-placeholder" style="width: 80px; height: 80px; background: linear-gradient(45deg, #F44336, #FF5722); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">💻</div>' %}
+            
+            {% metroui5_chart_card value="2.1GB" title="Memory Usage" subtitle="RAM consumption" chart_content='<div class="chart-placeholder" style="width: 80px; height: 80px; background: linear-gradient(45deg, #607D8B, #78909C); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">🧠</div>' %}
+            
+            {% metroui5_chart_card value="156ms" title="Response Time" subtitle="Average latency" chart_content='<div class="chart-placeholder" style="width: 80px; height: 80px; background: linear-gradient(45deg, #795548, #8D6E63); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">⏱️</div>' %}
+        </div>
+    </div>
+
+    <h2>E-commerce Dashboard</h2>
+    <div class="example">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            {% metroui5_chart_card value="$45,678" title="Total Sales" subtitle="This month" chart_content='<div class="chart-placeholder" style="width: 80px; height: 80px; background: linear-gradient(45deg, #4CAF50, #66BB6A); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">💰</div>' %}
+            
+            {% metroui5_chart_card value="892" title="Orders" subtitle="Completed orders" chart_content='<div class="chart-placeholder" style="width: 80px; height: 80px; background: linear-gradient(45deg, #2196F3, #42A5F5); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">📦</div>' %}
+            
+            {% metroui5_chart_card value="4.8" title="Rating" subtitle="Customer satisfaction" chart_content='<div class="chart-placeholder" style="width: 80px; height: 80px; background: linear-gradient(45deg, #FF9800, #FFB74D); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">⭐</div>' %}
+            
+            {% metroui5_chart_card value="23%" title="Growth" subtitle="Month over month" chart_content='<div class="chart-placeholder" style="width: 80px; height: 80px; background: linear-gradient(45deg, #9C27B0, #BA68C8); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">📈</div>' %}
+        </div>
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example">
+        <h3>Basic Chart Card</h3>
+        <pre><code>{% verbatim %}{% metroui5_chart_card value="75%" title="Completion Rate" subtitle="Project milestone progress" chart_content='<canvas id="myChart" width="100" height="100"></canvas>' %}{% endverbatim %}</code></pre>
+
+        <h3>Chart Card with Custom Classes</h3>
+        <pre><code>{% verbatim %}{% metroui5_chart_card value="$1,234" title="Revenue" subtitle="Monthly earnings" chart_content='<div class="chart-placeholder">Chart here</div>' cls_content="custom-content" cls_chart="custom-chart" %}{% endverbatim %}</code></pre>
+
+        <h3>Chart Card with Only Value and Title</h3>
+        <pre><code>{% verbatim %}{% metroui5_chart_card value="42" title="Active Users" %}{% endverbatim %}</code></pre>
+    </div>
+
+    <h2>Chart Integration Examples</h2>
+    <div class="example">
+        <h3>Chart.js Integration</h3>
+        <pre><code>{% verbatim %}{% metroui5_chart_card value="85%" title="CPU Usage" subtitle="Real-time monitoring" chart_content='<canvas id="cpuChart" width="100" height="100"></canvas>' %}{% endverbatim %}</code></pre>
+
+        <h3>D3.js Integration</h3>
+        <pre><code>{% verbatim %}{% metroui5_chart_card value="1,234" title="Data Points" subtitle="Visualized data" chart_content='<svg id="d3Chart" width="100" height="100"></svg>' %}{% endverbatim %}</code></pre>
+
+        <h3>Custom HTML Chart</h3>
+        <pre><code>{% verbatim %}{% metroui5_chart_card value="98.5%" title="Success Rate" subtitle="Operation metrics" chart_content='<div class="progress-ring" data-value="98.5"></div>' %}{% endverbatim %}</code></pre>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Custom styling for chart card demo */
+.custom-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.custom-content .value {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.custom-content .title {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.custom-content .subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.custom-chart {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Chart card styling */
+.chart-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.chart-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.chart-card .content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.chart-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.2;
+}
+
+.chart-card .title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.3;
+}
+
+.chart-card .subtitle {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.4;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+    margin-top: 4px;
+}
+
+.chart-card .chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+}
+
+/* Responsive grid */
+@media (max-width: 768px) {
+    .example div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Chart placeholder styling */
+.chart-placeholder {
+    font-size: 24px;
+    text-align: center;
+    line-height: 1;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Example of Chart.js integration
+    const canvas = document.getElementById('chart1');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        
+        // Simple pie chart example
+        ctx.beginPath();
+        ctx.arc(50, 50, 40, 0, 2 * Math.PI * 0.75);
+        ctx.lineWidth = 8;
+        ctx.strokeStyle = '#4CAF50';
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.arc(50, 50, 40, 2 * Math.PI * 0.75, 2 * Math.PI);
+        ctx.lineWidth = 8;
+        ctx.strokeStyle = '#E0E0E0';
+        ctx.stroke();
+    }
+    
+    // Add click handlers for interactive charts
+    document.querySelectorAll('.chart-placeholder').forEach(placeholder => {
+        placeholder.addEventListener('click', function() {
+            const card = this.closest('.chart-card');
+            const title = card.querySelector('.title').textContent;
+            alert(`Clicked on chart: ${title}`);
+        });
+        
+        // Add hover effect
+        placeholder.style.cursor = 'pointer';
+        placeholder.style.transition = 'transform 0.2s ease';
+        
+        placeholder.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        placeholder.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Example of dynamic data updates
+    function updateChartData() {
+        const valueElements = document.querySelectorAll('.chart-card .value');
+        valueElements.forEach(element => {
+            if (element.textContent.includes('%')) {
+                const currentValue = parseInt(element.textContent);
+                const newValue = Math.max(0, Math.min(100, currentValue + (Math.random() - 0.5) * 10));
+                element.textContent = Math.round(newValue) + '%';
+            }
+        });
+    }
+    
+    // Update data every 5 seconds (demo only)
+    // setInterval(updateChartData, 5000);
+});
+</script>
+{% endblock %}

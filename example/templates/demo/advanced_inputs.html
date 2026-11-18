@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Advanced Input Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Advanced Input Components</h1>
+    <p>Demonstrating the enhanced MetroUI v5 Input component with all advanced features.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-6">
+                <h3>Basic Inputs</h3>
+                
+                <h4>Simple Input with Label</h4>
+                {% metroui5_input "text" "Enter your name" label="Name:" %}
+                
+                <h4>Input with Clear Button</h4>
+                {% metroui5_input "text" "Search..." label="Search:" clear_button=True %}
+                
+                <h4>Password with Reveal Button</h4>
+                {% metroui5_input "password" "Enter password" label="Password:" reveal_button=True %}
+                
+                <h4>Search Input with Search Button</h4>
+                {% metroui5_input "search" "Search products" label="Search:" search_button=True %}
+                
+                <h4>Input with Random Generator</h4>
+                {% metroui5_input "text" "Generate random text" label="Random:" random_button=True %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h3>Advanced Features</h3>
+                
+                <h4>Input with Autocomplete</h4>
+                {% metroui5_input "text" "Type fruit name" label="Fruit:" autocomplete="apple,banana,cherry,date,elderberry" %}
+                
+                <h4>Input with History</h4>
+                {% metroui5_input "text" "Search with history" label="Search:" history=True history_preset="previous search|another search|third search" %}
+                
+                <h4>Input with Prepend/Append</h4>
+                {% metroui5_input "text" "Enter amount" label="Price:" prepend="$" append=".00" %}
+                
+                <h4>Input with Prepend/Append Options</h4>
+                {% metroui5_input "text" "Enter URL" label="Website:" prepend_options="http://,https://,ftp://" append_options=".com,.org,.net" %}
+                
+                <h4>Input with Custom Buttons</h4>
+                {% metroui5_input "text" "Text to copy" label="Copy:" custom_buttons='[{"text":"📋","onclick":"copyToClipboard","cls":"copy-btn"}]' %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h3>Input Masks</h3>
+                
+                <h4>Phone Number Mask</h4>
+                {% metroui5_input "text" "Enter phone number" label="Phone:" mask="(___) ___-____" mask_pattern="[0-9]" %}
+                
+                <h4>Date Mask</h4>
+                {% metroui5_input "text" "Enter date" label="Date:" mask="__/__/____" mask_pattern="[0-9]" %}
+                
+                <h4>Credit Card Mask</h4>
+                {% metroui5_input "text" "Enter card number" label="Card:" mask="____ ____ ____ ____" mask_pattern="[0-9]" %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h3>Styling Options</h3>
+                
+                <h4>Material Design Input</h4>
+                {% metroui5_input "text" "Material input" label="Material:" material=True %}
+                
+                <h4>Pill-shaped Input</h4>
+                {% metroui5_input "text" "Pill input" label="Pill:" pill=True %}
+                
+                <h4>Input with Badge</h4>
+                {% metroui5_input "text" "Input with badge" label="Badge:" badge="NEW" %}
+                
+                <h4>Disabled Input</h4>
+                {% metroui5_input "text" "Disabled input" label="Disabled:" disabled=True %}
+                
+                <h4>Readonly Input</h4>
+                {% metroui5_input "text" "Readonly input" label="Readonly:" readonly=True %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h3>Validation States</h3>
+                
+                <h4>Error State</h4>
+                {% metroui5_input "email" "Enter email" label="Email:" error=True error_message="Invalid email format" %}
+                
+                <h4>Success State</h4>
+                {% metroui5_input "text" "Valid input" label="Success:" success=True success_message="Input is valid" %}
+                
+                <h4>Warning State</h4>
+                {% metroui5_input "text" "Warning input" label="Warning:" warning=True warning_message="Please check your input" %}
+                
+                <h4>Info State</h4>
+                {% metroui5_input "text" "Info input" label="Info:" info=True info_message="Additional information" %}
+                
+                <h4>Input with Help Text</h4>
+                {% metroui5_input "text" "Enter username" label="Username:" help_text="Username must be at least 3 characters long" %}
+            </div>
+            
+            <div class="cell-md-6">
+                <h3>HTML5 Validation</h3>
+                
+                <h4>Number Input with Min/Max</h4>
+                {% metroui5_input "number" "Enter age" label="Age:" min=18 max=100 step=1 required=True %}
+                
+                <h4>Text Input with Pattern</h4>
+                {% metroui5_input "text" "Enter postal code" label="Postal Code:" pattern="[0-9]{5}" placeholder="12345" %}
+                
+                <h4>Input with Length Limits</h4>
+                {% metroui5_input "text" "Enter password" label="Password:" min_length=8 max_length=20 type="password" %}
+                
+                <h4>File Input with Accept</h4>
+                {% metroui5_input "file" "Choose image" label="Upload Image:" accept=".jpg,.png,.gif" multiple=True %}
+                
+                <h4>Combined Features</h4>
+                {% metroui5_input "text" "Enter phone" label="Phone:" mask="(___) ___-____" mask_pattern="[0-9]" material=True required=True %}
+                
+                <h4>Custom Button Icons</h4>
+                {% metroui5_input "text" "Enter text" label="Custom Icons:" clear_button=True clear_button_icon="🗑️" search_button=True search_button_icon="🔍" %}
+                
+                <h4>Advanced Mask Parameters</h4>
+                {% metroui5_input "text" "Enter phone" label="Advanced Mask:" mask="(___) ___-____" mask_pattern="[0-9]" mask_placeholder="_" mask_editable_start=1 %}
+                
+                <h4>Autocomplete with URL Key</h4>
+                {% metroui5_input "text" "Search users" label="User Search:" autocomplete_url="/api/users" autocomplete_url_key="name" %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h3>Dynamic Autocomplete</h3>
+                <p>Input with dynamic autocomplete from URL:</p>
+                {% metroui5_input "text" "Search users" label="User Search:" autocomplete_url="/api/users" autocomplete_url_method="GET" %}
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h3>Usage Examples</h3>
+        <div class="accordion" data-role="accordion">
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Basic Input with Label</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "text" "Enter your name" label="Name:" %}</code></pre>
+                </div>
+            </div>
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Input with Clear Button</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "text" "Search..." label="Search:" clear_button=True %}</code></pre>
+                </div>
+            </div>
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Password with Reveal Button</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "password" "Enter password" label="Password:" reveal_button=True %}</code></pre>
+                </div>
+            </div>
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Input with Autocomplete</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "text" "Type fruit name" label="Fruit:" autocomplete="apple,banana,cherry" %}</code></pre>
+                </div>
+            </div>
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Input with Mask</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "text" "Enter phone" label="Phone:" mask="(___) ___-____" mask_pattern="[0-9]" %}</code></pre>
+                </div>
+            </div>
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Input with Validation States</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "email" "Enter email" label="Email:" error=True error_message="Invalid email format" %}</code></pre>
+                </div>
+            </div>
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Input with HTML5 Validation</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "number" "Enter age" label="Age:" min=18 max=100 step=1 required=True %}</code></pre>
+                </div>
+            </div>
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Combined Features</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "text" "Enter phone" label="Phone:" mask="(___) ___-____" mask_pattern="[0-9]" material=True required=True %}</code></pre>
+                </div>
+            </div>
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Custom Button Icons</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "text" "Enter text" label="Custom Icons:" clear_button=True clear_button_icon="🗑️" search_button=True search_button_icon="🔍" %}</code></pre>
+                </div>
+            </div>
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Advanced Mask Parameters</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "text" "Enter phone" label="Advanced Mask:" mask="(___) ___-____" mask_pattern="[0-9]" mask_placeholder="_" mask_editable_start=1 %}</code></pre>
+                </div>
+            </div>
+            <div class="accordion-frame">
+                <a class="accordion-title" href="#">Autocomplete with URL Key</a>
+                <div class="accordion-content">
+                    <pre><code>{% metroui5_input "text" "Search users" label="User Search:" autocomplete_url="/api/users" autocomplete_url_key="name" %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Example JavaScript for custom button functionality
+function copyToClipboard() {
+    const input = document.querySelector('.copy-btn').closest('.input').querySelector('input');
+    input.select();
+    document.execCommand('copy');
+    alert('Text copied to clipboard!');
+}
+</script>
+{% endblock %}

@@ -463,3 +463,16 @@ function updateCounter(input) {
 - [Buttons](buttons.md) - For input-related buttons
 - [Alerts](alerts.md) - For validation messages
 - [Cards](cards.md) - For containing input fields
+
+
+## metroui5_input
+
+```python
+render_input()
+```
+
+Empty or invalid: `render_input()` returns `<input type="text" data-role="input, input-common" class="input">`.
+
+```django
+{% metroui5_input %}
+```

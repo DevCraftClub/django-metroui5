@@ -4,10 +4,11 @@ requires = ["setuptools>=77.0.3", "wheel"]
 
 [project]
 name = "django-metroui5"
-version = "0.1.1"
+version = "0.1.2"
 description = "MetroUI v5 integration for Django 4.1+"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [
     {name = "Maxim Harder", email = "dev@devcraft.club"},
 ]
@@ -24,8 +25,8 @@ classifiers = [
     "Framework :: Django :: 5.0",
     "Framework :: Django :: 5.1",
     "Framework :: Django :: 5.2",
+    "Framework :: Django :: 6.0",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
@@ -40,19 +41,20 @@ classifiers = [
 ]
 requires-python = ">=3.9"
 dependencies = [
-    "Django>=4.2",
+    "Django(>=4.2,<6.1)",
+    "pillow (>=11.3.0,<12.0.0)",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0.0",
     "pytest-django>=4.5.0",
-    "mypy>=1.0.0",
+    "mypy>=1.0.0,<2",
 ]
 
 [project.urls]
 Homepage = "https://github.com/DevCraftClub/django-metroui5"
-"Documentation (Russian)" = "https://readme.devcraft.club"
+"Documentation (Russian)" = "https://github.com/DevCraftClub/django-metroui5/docs/ru/"
 "Documentation (English)" = "https://github.com/DevCraftClub/django-metroui5/docs/en/"
 Repository = "https://github.com/DevCraftClub/django-metroui5.git"
 "Bug Tracker" = "https://github.com/DevCraftClub/django-metroui5/issues"

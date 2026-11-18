@@ -24,8 +24,9 @@ env:
 
 jobs:
   test:
-    name: Compatibility Test (Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }})
-    runs-on: ubuntu-latest
+    name: Compatibility Test
+    # Python 3.9 есть только до Ubuntu 24.04. На ubuntu-latest (26.04) сборки нет.
+    runs-on: ubuntu-24.04
     if: github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'compatibility-test-only' || github.event_name != 'workflow_dispatch'
     strategy:
       matrix:
@@ -118,7 +119,7 @@ jobs:
       - name: Install type checking tools
         run: |
           python -m pip install --upgrade pip
-          pip install mypy
+          pip install "mypy>=1,<2"
 
       - name: Run MyPy (type checking)
         run: |

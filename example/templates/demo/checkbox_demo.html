@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Checkbox Component Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Checkbox Component Demo</h1>
+    <p>This demo showcases the MetroUI Checkbox component for customizable checkbox input with support for three states.</p>
+
+    <h2>Basic Checkbox</h2>
+    <div class="example">
+        {% metroui5_checkbox %}
+    </div>
+
+    <h2>Checkbox with Caption</h2>
+    <div class="example">
+        {% metroui5_checkbox caption="Checkbox with Caption" %}
+    </div>
+
+    <h2>Checked State</h2>
+    <div class="example">
+        {% metroui5_checkbox caption="Checked Checkbox" checked=True %}
+    </div>
+
+    <h2>Disabled State</h2>
+    <div class="example">
+        {% metroui5_checkbox caption="Disabled Checkbox" disabled=True %}
+    </div>
+
+    <h2>Three-State Checkbox</h2>
+    <div class="example">
+        {% metroui5_checkbox caption="Three-state Checkbox" threeState=True %}
+    </div>
+
+    <h2>Three-State Checkbox with Different States</h2>
+    <div class="example">
+        <h3>Checked State</h3>
+        {% metroui5_checkbox caption="Checked" threeState=True state=1 %}
+        
+        <h3>Unchecked State</h3>
+        {% metroui5_checkbox caption="Unchecked" threeState=True state=-1 %}
+        
+        <h3>Indeterminate State</h3>
+        {% metroui5_checkbox caption="Indeterminate" threeState=True state=0 %}
+    </div>
+
+    <h2>With Prepend and Append</h2>
+    <div class="example">
+        {% metroui5_checkbox prepend="Before" append="After" %}
+    </div>
+
+    <h2>With Custom Classes</h2>
+    <div class="example">
+        {% metroui5_checkbox caption="Custom Classes" clsCheckbox="custom-checkbox" clsCaption="custom-caption" %}
+    </div>
+
+    <h2>Custom Styling with CSS Variables</h2>
+    <div class="example">
+        <div style="--checkbox-color: red; --checkbox-border-radius: 8px;">
+            {% metroui5_checkbox caption="Red Checkbox with Rounded Corners" %}
+        </div>
+    </div>
+
+    <h2>Form Integration</h2>
+    <div class="example">
+        <form>
+            <h3>User Preferences</h3>
+            {% metroui5_checkbox name="newsletter" value="yes" caption="Subscribe to newsletter" checked=True %}
+            {% metroui5_checkbox name="notifications" value="email" caption="Email notifications" %}
+            {% metroui5_checkbox name="marketing" value="yes" caption="Marketing communications" threeState=True %}
+            
+            <h3>Terms and Conditions</h3>
+            {% metroui5_checkbox name="terms" value="accepted" caption="I agree to the terms and conditions" required=True %}
+            
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example">
+        <h3>Basic Checkbox</h3>
+        <pre><code>{% verbatim %}{% metroui5_checkbox %}{% endverbatim %}</code></pre>
+
+        <h3>Checkbox with Caption</h3>
+        <pre><code>{% verbatim %}{% metroui5_checkbox caption="Checkbox with Caption" %}{% endverbatim %}</code></pre>
+
+        <h3>Checked Checkbox</h3>
+        <pre><code>{% verbatim %}{% metroui5_checkbox caption="Checked Checkbox" checked=True %}{% endverbatim %}</code></pre>
+
+        <h3>Three-State Checkbox</h3>
+        <pre><code>{% verbatim %}{% metroui5_checkbox caption="Three-state Checkbox" threeState=True %}{% endverbatim %}</code></pre>
+
+        <h3>Checkbox with Prepend and Append</h3>
+        <pre><code>{% verbatim %}{% metroui5_checkbox prepend="Before" append="After" %}{% endverbatim %}</code></pre>
+
+        <h3>Checkbox with Custom Classes</h3>
+        <pre><code>{% verbatim %}{% metroui5_checkbox caption="Custom Classes" clsCheckbox="custom-checkbox" clsCaption="custom-caption" %}{% endverbatim %}</code></pre>
+    </div>
+
+    <h2>JavaScript API Examples</h2>
+    <div class="example">
+        <h3>Programmatic Control</h3>
+        {% metroui5_checkbox id="demo-checkbox" caption="Demo Checkbox" %}
+        
+        <div style="margin-top: 10px;">
+            <button class="button" onclick="checkCheckbox()">Check</button>
+            <button class="button" onclick="uncheckCheckbox()">Uncheck</button>
+            <button class="button" onclick="toggleCheckbox()">Toggle</button>
+            <button class="button" onclick="getCheckboxState()">Get State</button>
+        </div>
+        
+        <pre><code>// Get checkbox instance
+const checkbox = Metro.getPlugin('#demo-checkbox', 'checkbox');
+
+// Check the checkbox
+checkbox.check();
+
+// Uncheck the checkbox
+checkbox.uncheck();
+
+// Set to indeterminate state (for three-state checkboxes)
+checkbox.indeterminate();
+
+// Toggle the state
+checkbox.toggle();
+
+// Get the current state
+const state = checkbox.getCheckState();
+const stateAsString = checkbox.getCheckState(true);
+
+// Set specific state (-1/unchecked, 0/indeterminate, 1/checked)
+checkbox.setCheckState(1);</code></pre>
+    </div>
+
+    <h2>Event Handling Examples</h2>
+    <div class="example">
+        <h3>Checkbox with Event Callbacks</h3>
+        {% metroui5_checkbox id="event-checkbox" caption="Event Demo Checkbox" onCheckboxCreate="console.log('Checkbox created!')" %}
+        <p><small>Check browser console for event messages</small></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Custom styling for checkbox demo */
+.custom-checkbox {
+    --checkbox-color: #0078d7;
+    --checkbox-border-radius: 2px;
+    --checkbox-focus-color: rgba(0, 120, 215, 0.3);
+}
+
+.custom-caption {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Example styling */
+.example {
+    margin-bottom: 30px;
+}
+
+.example h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.example pre {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 12px;
+    overflow-x: auto;
+    font-size: 13px;
+}
+
+.example code {
+    background: none;
+    padding: 0;
+    font-size: 13px;
+}
+
+/* Form styling */
+form {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+form h3 {
+    margin-top: 0;
+    color: #495057;
+}
+
+/* Button styling */
+.button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Demo functions for JavaScript API examples
+function checkCheckbox() {
+    const checkbox = Metro.getPlugin('#demo-checkbox', 'checkbox');
+    if (checkbox) {
+        checkbox.check();
+    }
+}
+
+function uncheckCheckbox() {
+    const checkbox = Metro.getPlugin('#demo-checkbox', 'checkbox');
+    if (checkbox) {
+        checkbox.uncheck();
+    }
+}
+
+function toggleCheckbox() {
+    const checkbox = Metro.getPlugin('#demo-checkbox', 'checkbox');
+    if (checkbox) {
+        checkbox.toggle();
+    }
+}
+
+function getCheckboxState() {
+    const checkbox = Metro.getPlugin('#demo-checkbox', 'checkbox');
+    if (checkbox) {
+        const state = checkbox.getCheckState();
+        const stateAsString = checkbox.getCheckState(true);
+        alert(`State: ${state} (${stateAsString})`);
+    }
+}
+
+// Example of global configuration
+document.addEventListener('DOMContentLoaded', function() {
+    Metro.checkboxSetup({
+        onCheckboxCreate: function() {
+            console.log('Checkbox has been created');
+        }
+    });
+});
+</script>
+{% endblock %}

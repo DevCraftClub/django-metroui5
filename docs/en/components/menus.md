@@ -541,3 +541,16 @@ def filter_menu_by_permissions(menu_items, user):
 - [Buttons](buttons.md) - For menu triggers
 - [Icons](icons.md) - For menu item icons
 - [Dropdowns](dropdowns.md) - For dropdown menus
+
+
+## metroui5_menu
+
+```python
+render_menu([{'text': 'One', 'href': '/one'}])
+```
+
+Empty or invalid: `render_menu([{'text': 'One', 'href': '/one'}])` returns `<ul class="menu" data-role="menu"><li><a href="/one">One</a></li></ul>`. An empty call returns `<ul class="menu" data-role="menu"></ul>`.
+
+```django
+{% metroui5_menu items %}
+```

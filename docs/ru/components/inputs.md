@@ -463,3 +463,16 @@ function updateCounter(input) {
 - [Кнопки](buttons.md) - Для кнопок, связанных с полями ввода
 - [Уведомления](alerts.md) - Для сообщений валидации
 - [Карточки](cards.md) - Для содержания полей ввода
+
+
+## metroui5_input
+
+```python
+render_input()
+```
+
+Пустое или неверное значение: `render_input()` даёт `<input type="text" data-role="input, input-common" class="input">`.
+
+```django
+{% metroui5_input %}
+```

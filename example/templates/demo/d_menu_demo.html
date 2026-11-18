@@ -1,0 +1,344 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block page_content %}
+<div class="container-fluid">
+    <h1>D-Menu Component Demo</h1>
+    <p>MetroUI D-Menu component provides a versatile dropdown menu system for displaying contextual options, navigation items, and hierarchical menus. It supports icons, captions, hotkeys, and nested submenus.</p>
+
+    <h2>Basic Menu</h2>
+    <div class="example box">
+        <h3>Simple Menu</h3>
+        <div class="demo-content">
+            <p>Basic D-Menu with simple text items:</p>
+        </div>
+        {% metroui5_d_menu items='["Menu Item 1", "Menu Item 2", "Menu Item 3"]' id="simple-menu" %}
+        
+        <h3>Menu with Links</h3>
+        <div class="demo-content">
+            <p>D-Menu with proper links:</p>
+        </div>
+        {% metroui5_d_menu items='[{"text": "Home", "href": "/"}, {"text": "About", "href": "/about/"}, {"text": "Contact", "href": "/contact/"}]' id="menu-with-links" %}
+    </div>
+
+    <h2>Menu with Icons, Captions, and Hotkeys</h2>
+    <div class="example box">
+        <h3>Rich Menu Items</h3>
+        <div class="demo-content">
+            <p>D-Menu with icons, captions, and keyboard shortcuts:</p>
+        </div>
+        {% metroui5_d_menu items='[{"text": "Home", "icon": "mif-home", "hotkey": "Ctrl+H"}, {"text": "Settings", "icon": "mif-cog", "hotkey": "Ctrl+S"}, {"text": "Profile", "icon": "mif-user", "hotkey": "Ctrl+P"}]' id="rich-menu" %}
+        
+        <h3>Menu with Captions</h3>
+        <div class="demo-content">
+            <p>D-Menu with descriptive captions:</p>
+        </div>
+        {% metroui5_d_menu items='[{"text": "Dashboard", "icon": "mif-dashboard", "caption": "Main dashboard view"}, {"text": "Analytics", "icon": "mif-chart", "caption": "View analytics data"}, {"text": "Reports", "icon": "mif-file-text", "caption": "Generate reports"}]' id="rich-menu-captions" %}
+    </div>
+
+    <h2>Menu States</h2>
+    <div class="example box">
+        <h3>Disabled Items</h3>
+        <div class="demo-content">
+            <p>D-Menu with disabled items:</p>
+        </div>
+        {% metroui5_d_menu items='[{"text": "Enabled Item", "icon": "mif-checkmark"}, {"text": "Disabled Item", "icon": "mif-cancel", "disabled": true}, {"text": "Another Enabled Item", "icon": "mif-plus"}]' id="disabled-menu" %}
+        
+        <h3>Menu with Dividers</h3>
+        <div class="demo-content">
+            <p>D-Menu with divider lines to separate groups:</p>
+        </div>
+        {% metroui5_d_menu items='[{"text": "New", "icon": "mif-plus"}, {"text": "Open", "icon": "mif-folder-open"}, {"divider": true}, {"text": "Save", "icon": "mif-floppy-disk"}, {"text": "Save As", "icon": "mif-floppy-disk"}, {"divider": true}, {"text": "Exit", "icon": "mif-exit"}]' id="divider-menu" %}
+    </div>
+
+    <h2>Dropdown Submenus</h2>
+    <div class="example box">
+        <h3>Nested Submenus</h3>
+        <div class="demo-content">
+            <p>D-Menu with nested submenus:</p>
+        </div>
+        {% metroui5_d_menu items='[{"text": "File", "icon": "mif-file", "submenu": [{"text": "New", "icon": "mif-plus"}, {"text": "Open", "icon": "mif-folder-open"}, {"divider": true}, {"text": "Recent", "submenu": [{"text": "Document 1"}, {"text": "Document 2"}, {"text": "Document 3"}]}]}, {"text": "Edit", "icon": "mif-pencil", "submenu": [{"text": "Cut", "icon": "mif-scissors", "hotkey": "Ctrl+X"}, {"text": "Copy", "icon": "mif-copy", "hotkey": "Ctrl+C"}, {"text": "Paste", "icon": "mif-clipboard", "hotkey": "Ctrl+V"}]}, {"text": "View", "icon": "mif-eye", "submenu": [{"text": "Zoom In", "icon": "mif-zoom-in"}, {"text": "Zoom Out", "icon": "mif-zoom-out"}, {"text": "Reset Zoom", "icon": "mif-zoom-reset"}]}]' id="nested-menu" %}
+        
+        <h3>Deep Nested Menus</h3>
+        <div class="demo-content">
+            <p>D-Menu with multiple levels of nesting:</p>
+        </div>
+        {% metroui5_d_menu items='[{"text": "Tools", "icon": "mif-tools", "submenu": [{"text": "Development", "icon": "mif-code", "submenu": [{"text": "Debug", "icon": "mif-bug"}, {"text": "Profile", "icon": "mif-chart-line"}, {"text": "Test", "icon": "mif-checkmark"}]}, {"text": "Design", "icon": "mif-palette", "submenu": [{"text": "Colors", "icon": "mif-palette"}, {"text": "Fonts", "icon": "mif-font"}, {"text": "Layout", "icon": "mif-layout"}]}]}]' id="deep-nested-menu" %}
+    </div>
+
+    <h2>Menu Positioning</h2>
+    <div class="example box">
+        <h3>Right-Aligned Menu</h3>
+        <div class="demo-content">
+            <p>D-Menu positioned to the right:</p>
+        </div>
+        {% metroui5_d_menu items='["Item 1", "Item 2", "Item 3"]' align="right" id="right-aligned-menu" %}
+        
+        <h3>Menu with Custom Positioning</h3>
+        <div class="demo-content">
+            <p>D-Menu with custom positioning classes:</p>
+        </div>
+        {% metroui5_d_menu items='["Left Item", "Right Item", "Center Item"]' cls="place-right" id="custom-positioning-menu" %}
+    </div>
+
+    <h2>Interactive Examples</h2>
+    <div class="example box">
+        <h3>Dropdown with Toggle Button</h3>
+        <div class="demo-content">
+            <p>D-Menu triggered by a button:</p>
+        </div>
+        <div style="margin: 20px 0;">
+            <button class="button primary" id="toggleMenu">Toggle Menu</button>
+            {% metroui5_d_menu items='[{"text": "Option 1", "icon": "mif-checkmark"}, {"text": "Option 2", "icon": "mif-cancel"}, {"text": "Option 3", "icon": "mif-plus"}]' toggle_element="#toggleMenu" id="dropdown-with-toggle-button" %}
+        </div>
+        
+        <h3>Menu with Custom Styling</h3>
+        <div class="demo-content">
+            <p>D-Menu with custom CSS classes:</p>
+        </div>
+        {% metroui5_d_menu items='[{"text": "Custom Item 1", "icon": "mif-star"}, {"text": "Custom Item 2", "icon": "mif-heart"}, {"text": "Custom Item 3", "icon": "mif-diamond"}]' cls="custom-menu" id="custom-styling-menu" %}
+    </div>
+
+    <h2>Advanced Features</h2>
+    <div class="example box">
+        <h3>Menu with Callbacks</h3>
+        <div class="demo-content">
+            <p>D-Menu with event callbacks:</p>
+        </div>
+        {% metroui5_d_menu items='[{"text": "Action 1", "icon": "mif-play"}, {"text": "Action 2", "icon": "mif-pause"}, {"text": "Action 3", "icon": "mif-stop"}]' on_drop="onMenuOpen" on_up="onMenuClose" id="menu-with-callbacks" %}
+        
+        <h3>Menu with Custom Duration</h3>
+        <div class="demo-content">
+            <p>D-Menu with custom animation duration:</p>
+        </div>
+        {% metroui5_d_menu items='["Fast Item 1", "Fast Item 2", "Fast Item 3"]' duration="200" id="menu-with-custom-duration" %}
+        
+        <h3>Menu with No Close</h3>
+        <div class="demo-content">
+            <p>D-Menu that doesn't close when clicking outside:</p>
+        </div>
+        {% metroui5_d_menu items='["Persistent Item 1", "Persistent Item 2", "Persistent Item 3"]' no_close="true" id="menu-with-no-close" %}
+    </div>
+
+    <h2>Template Tag Usage</h2>
+    <div class="example box">
+        <h3>Basic Usage</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_d_menu items='["Item 1", "Item 2", "Item 3"]' %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>With Icons and Hotkeys</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_d_menu items='[{"text": "Home", "icon": "mif-home", "hotkey": "Ctrl+H"}]' %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>With Submenus</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_d_menu items='[{"text": "File", "submenu": [{"text": "New"}, {"text": "Open"}]}]' %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>With Positioning</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_d_menu items='["Item 1", "Item 2"]' align="right" %}{% endverbatim %}</code></pre>
+        </div>
+        
+        <h3>With Custom Styling</h3>
+        <div class="code-example">
+            <pre><code>{% verbatim %}{% metroui5_d_menu items='["Item 1", "Item 2"]' cls="my-custom-menu" %}{% endverbatim %}</code></pre>
+        </div>
+    </div>
+</div>
+
+<style>
+.code-example {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.code-example pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.code-example code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    color: #495057;
+}
+
+.demo-content {
+    margin-bottom: 1rem;
+}
+
+.demo-content p {
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+/* Custom menu styling */
+.custom-menu {
+    --d-menu-background: #f0f8ff;
+    --d-menu-item-color: #0066cc;
+    --d-menu-item-background-hover: #e6f2ff;
+    --d-menu-item-color-hover: #0044aa;
+    --d-menu-border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .d-menu {
+        font-size: 0.9em;
+    }
+    
+    .d-menu .icon {
+        margin-right: 6px;
+    }
+    
+    .d-menu .hotkey {
+        font-size: 0.8em;
+    }
+}
+
+/* Animation for menu items */
+.d-menu li {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.d-menu li:hover {
+    background-color: var(--d-menu-item-background-hover, #e8e8e8);
+    color: var(--d-menu-item-color-hover, #000000);
+}
+
+/* Submenu positioning */
+.d-menu .d-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: 200px;
+    z-index: 1000;
+    margin-top: 0;
+    margin-left: 2px;
+}
+
+.d-menu .d-menu.place-right {
+    left: auto;
+    right: 100%;
+    margin-left: 0;
+    margin-right: 2px;
+}
+#simple-menu {
+    top: 0.5rem;
+    right: 1rem;
+}
+#menu-with-links {
+    top: 7rem;
+    right: 1rem;
+}
+#rich-menu {
+    top: 0.2rem;
+    right: 1rem;
+}
+#rich-menu-captions {
+    top: 6.3rem;
+    right: 1rem;
+}
+#disabled-menu {
+    top: 0.3rem;
+    right: 1rem;
+}
+#divider-menu {
+    top: 6.3rem;
+    right: 1rem;
+}
+#nested-menu {
+    top: 0.2rem;
+    left: 16rem;
+}
+#deep-nested-menu {
+    top: 8rem;
+    left: 19rem;
+}
+#right-aligned-menu {
+    top: 0.3rem;
+    left: 16rem;
+}
+#custom-positioning-menu {
+    top: 0.3rem;
+}
+#menu-with-callbacks {
+    top: 0.1rem;
+    left: 15rem;
+}
+#custom-styling-menu {
+    top: 9.3rem;
+    left: 20rem;
+}
+#menu-with-custom-duration {
+    top: 6.1rem;
+    left: 26rem;
+}
+#menu-with-no-close {
+    top: 10.1rem;
+    left: 37rem;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Menu callbacks
+    window.onMenuOpen = function() {
+        console.log('Menu opened');
+        // You can add custom logic here
+    };
+    
+    window.onMenuClose = function() {
+        console.log('Menu closed');
+        // You can add custom logic here
+    };
+    
+    // Toggle button functionality
+    const toggleButton = document.getElementById('toggleMenu');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function() {
+            // The menu will be toggled by MetroUI automatically
+            console.log('Toggle button clicked');
+        });
+    }
+    
+    // Add click handlers for menu items
+    const menuItems = document.querySelectorAll('.d-menu a');
+    menuItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            if (this.getAttribute('href') === '#') {
+                e.preventDefault();
+                console.log('Menu item clicked:', this.textContent.trim());
+            }
+        });
+    });
+    
+    // Add keyboard navigation support
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey) {
+            switch(e.key) {
+                case 'h':
+                    e.preventDefault();
+                    console.log('Home shortcut triggered');
+                    break;
+                case 's':
+                    e.preventDefault();
+                    console.log('Settings shortcut triggered');
+                    break;
+                case 'p':
+                    e.preventDefault();
+                    console.log('Profile shortcut triggered');
+                    break;
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

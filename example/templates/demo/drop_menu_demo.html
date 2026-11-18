@@ -1,0 +1,647 @@
+{% extends "base.html" %}
+{% load metroui5 %}
+
+{% block title %}Drop Menu Components - MetroUI5 Demo{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h1>Drop Menu Components</h1>
+    <p>Demonstrating the MetroUI v5 Drop Menu component - provides a flexible and interactive dropdown menu system that can be attached to any element. Unlike the dropdown component, drop-menu has static position and supports nested menus, positioning options, and customizable styling.</p>
+
+    <div class="grid">
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Basic Drop Menu</h2>
+                <p>Simple drop menu with default settings.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drop_menu items=basic_items %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Custom Button Text</h2>
+                <p>Drop menu with custom button text.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drop_menu items=basic_items button_text="Options" %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Right-Aligned Menu</h2>
+                <p>Drop menu aligned to the right side.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drop_menu items=basic_items button_text="Right Menu" align="right" %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Fixed Height Menu</h2>
+                <p>Drop menu with fixed height and scrolling.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drop_menu items=long_items button_text="Scroll Menu" height="200" %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-6">
+                <h2>Nested Drop Menu</h2>
+                <p>Drop menu with nested submenus.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drop_menu items=nested_items button_text="Nested Menu" %}
+                </div>
+            </div>
+            
+            <div class="cell-md-6">
+                <h2>Keep Open Menu</h2>
+                <p>Menu that stays open when clicking elsewhere.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drop_menu items=basic_items button_text="Stay Open" keep_open=True %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Interactive Example with Events</h2>
+                <p>Drop menu with comprehensive event handling and custom styling.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drop_menu items=interactive_items button_text="Interactive Menu" id="interactive-menu" on_menu_create="handleMenuCreate()" button_class="success" %}
+                    
+                    <div class="mt-4">
+                        <h4>Event Output</h4>
+                        <div id="menu-event-output" class="bg-lightGray p-2" style="min-height: 120px; border-radius: 4px; font-family: monospace; font-size: 12px; max-height: 200px; overflow-y: auto;">
+                            <small class="text-muted">Menu events will appear here...</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Real-world Examples</h2>
+                <p>Practical examples of drop menus in common use cases.</p>
+                
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>User Account Menu</h4>
+                            <p>Typical user account dropdown.</p>
+                            <div class="example-container">
+                                {% metroui5_drop_menu items=account_items button_text="👤 Account" button_class="secondary" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Settings Menu</h4>
+                            <p>Application settings menu.</p>
+                            <div class="example-container">
+                                {% metroui5_drop_menu items=settings_items button_text="⚙️ Settings" button_class="info" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Actions Menu</h4>
+                            <p>Context action menu.</p>
+                            <div class="example-container">
+                                {% metroui5_drop_menu items=action_items button_text="🔧 Actions" button_class="warning" %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell-md-4">
+                            <h4>Navigation Menu</h4>
+                            <p>Site navigation dropdown.</p>
+                            <div class="example-container">
+                                {% metroui5_drop_menu items=navigation_items button_text="📋 Navigate" button_class="primary" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Language Selector</h4>
+                            <p>Language selection menu.</p>
+                            <div class="example-container">
+                                {% metroui5_drop_menu items=language_items button_text="🌐 Language" button_class="dark" %}
+                            </div>
+                        </div>
+                        <div class="cell-md-4">
+                            <h4>Help Menu</h4>
+                            <p>Support and help options.</p>
+                            <div class="example-container">
+                                {% metroui5_drop_menu items=help_items button_text="❓ Help" button_class="success" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>Advanced Nested Menu</h2>
+                <p>Complex nested menu structure with multiple levels.</p>
+                
+                <div class="example-container">
+                    {% metroui5_drop_menu items=complex_nested_items button_text="📁 File Explorer" button_class="outline secondary" %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="cell-md-12">
+                <h2>API Demonstration</h2>
+                <p>Demonstrate the API methods for controlling menu functionality.</p>
+                
+                <div class="example-container">
+                    <div class="mb-2">
+                        <button class="button" onclick="openMenu('api-menu')">Open Menu</button>
+                        <button class="button" onclick="closeMenu('api-menu')">Close Menu</button>
+                        <button class="button alert" onclick="destroyMenu('api-menu')">Destroy Component</button>
+                    </div>
+                    {% metroui5_drop_menu items=api_items button_text="API Control Menu" id="api-menu" %}
+                    <div class="mt-2">
+                        <div id="api-status" class="bg-lightGray p-2" style="border-radius: 4px;">
+                            <small><strong>Status:</strong> Menu ready</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Usage Examples</h2>
+        <div class="accordion" data-role="accordion">
+            <div class="frame">
+                <div class="heading">Basic Drop Menu</div>
+                <div class="content">
+                    <pre><code># In your view:
+items = ['Item 1', 'Item 2', 'Item 3']
+
+# In your template:
+{% metroui5_drop_menu items=items %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">With Custom Button Text</div>
+                <div class="content">
+                    <pre><code>{% metroui5_drop_menu items=items button_text="Options" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Right-Aligned Menu</div>
+                <div class="content">
+                    <pre><code>{% metroui5_drop_menu items=items align="right" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Complex Items with Links</div>
+                <div class="content">
+                    <pre><code># In your view:
+items = [
+    {'text': 'Home', 'href': '/'},
+    {'text': 'About', 'href': '/about/'},
+    {'text': 'More', 'submenu': [
+        {'text': 'Contact', 'href': '/contact/'},
+        {'text': 'FAQ', 'href': '/faq/'}
+    ]}
+]
+
+# In your template:
+{% metroui5_drop_menu items=items button_text="Navigation" %}</code></pre>
+                </div>
+            </div>
+            <div class="frame">
+                <div class="heading">Keep Open Menu</div>
+                <div class="content">
+                    <pre><code>{% metroui5_drop_menu items=items keep_open=True %}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Component Parameters</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>items</td>
+                        <td>list</td>
+                        <td>[]</td>
+                        <td>List of menu items (strings or dicts)</td>
+                    </tr>
+                    <tr>
+                        <td>button_text</td>
+                        <td>string</td>
+                        <td>"Menu"</td>
+                        <td>Text for the toggle button</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>string/number</td>
+                        <td>"auto"</td>
+                        <td>Maximum height of the menu. Can be "auto" or a specific pixel value</td>
+                    </tr>
+                    <tr>
+                        <td>align</td>
+                        <td>string</td>
+                        <td>"left"</td>
+                        <td>Horizontal alignment of the menu. Can be "left" or "right"</td>
+                    </tr>
+                    <tr>
+                        <td>keep_open</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Prevents the menu from closing when clicking elsewhere</td>
+                    </tr>
+                    <tr>
+                        <td>stay_open</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Alternative to keep_open</td>
+                    </tr>
+                    <tr>
+                        <td>ignore_document_click</td>
+                        <td>boolean</td>
+                        <td>false</td>
+                        <td>Another alternative to keep_open</td>
+                    </tr>
+                    <tr>
+                        <td>button_class</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Additional CSS classes for the button</td>
+                    </tr>
+                    <tr>
+                        <td>on_menu_create</td>
+                        <td>string</td>
+                        <td>""</td>
+                        <td>Callback function that fires when the menu is created</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Item Format</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Example</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>String</td>
+                        <td>"Menu Item"</td>
+                        <td>Simple text item with default link</td>
+                    </tr>
+                    <tr>
+                        <td>Dictionary</td>
+                        <td>{'text': 'Item', 'href': '/link/'}</td>
+                        <td>Item with custom link</td>
+                    </tr>
+                    <tr>
+                        <td>With Submenu</td>
+                        <td>{'text': 'More', 'submenu': [...]}</td>
+                        <td>Item with nested submenu</td>
+                    </tr>
+                    <tr>
+                        <td>With CSS Class</td>
+                        <td>{'text': 'Item', 'class': 'custom-class'}</td>
+                        <td>Item with custom CSS class</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>API Methods</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>open()</td>
+                        <td>Opens the drop menu</td>
+                        <td>dropMenu.open()</td>
+                    </tr>
+                    <tr>
+                        <td>close()</td>
+                        <td>Closes the drop menu</td>
+                        <td>dropMenu.close()</td>
+                    </tr>
+                    <tr>
+                        <td>destroy()</td>
+                        <td>Removes the drop menu component</td>
+                        <td>dropMenu.destroy()</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>CSS Classes</h2>
+        <div class="table-container">
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>.drop-menu</td>
+                        <td>The main container for the drop menu</td>
+                    </tr>
+                    <tr>
+                        <td>.menu-toggle</td>
+                        <td>The toggle button/element that triggers the menu</td>
+                    </tr>
+                    <tr>
+                        <td>.active-toggle</td>
+                        <td>Applied to the toggle when the menu is open</td>
+                    </tr>
+                    <tr>
+                        <td>.keep-open</td>
+                        <td>Prevents the menu from closing when clicking elsewhere</td>
+                    </tr>
+                    <tr>
+                        <td>.stay-open</td>
+                        <td>Alternative class that prevents the menu from closing</td>
+                    </tr>
+                    <tr>
+                        <td>.ignore-document-click</td>
+                        <td>Another alternative class with the same functionality</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Special Features</h2>
+        <div class="remark info" data-role="remark">
+            <h4>Key Features of Drop Menu</h4>
+            <ul>
+                <li><strong>Auto-Positioning:</strong> Automatically adjusts position to stay within viewport</li>
+                <li><strong>Nested Menus:</strong> Supports unlimited nesting of submenus</li>
+                <li><strong>Keep-Open Feature:</strong> Option to prevent menu from closing when clicking elsewhere</li>
+                <li><strong>Static Positioning:</strong> Unlike dropdown component, uses static positioning</li>
+                <li><strong>Responsive Design:</strong> Automatically adapts to different screen sizes</li>
+                <li><strong>Touch-Friendly:</strong> Optimized for touch interactions on mobile devices</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h2>Best Practices</h2>
+        <div class="remark success" data-role="remark">
+            <h4>Tips for Using Drop Menu Components</h4>
+            <ul>
+                <li>Use semantic HTML for menu structures (typically &lt;ul&gt; and &lt;li&gt; elements)</li>
+                <li>Keep menu items concise and organized logically</li>
+                <li>Consider using icons alongside text for better visual recognition</li>
+                <li>Limit the depth of nested menus to improve usability</li>
+                <li>Ensure menu items have sufficient spacing for touch interactions</li>
+                <li>Use the auto-positioning feature rather than manually positioning menus</li>
+                <li>Test menu behavior on different screen sizes and devices</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom styling for demo */
+.example-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px 0;
+    background: #f9f9f9;
+    min-height: 80px;
+    position: relative;
+}
+
+.drop-menu-container {
+    display: inline-block;
+    position: relative;
+}
+
+/* Custom menu styling examples */
+.custom-menu-style {
+    background-color: #f0f8ff;
+    border: 2px solid #4169e1;
+    border-radius: 8px;
+}
+
+.custom-menu-style li {
+    border-bottom: 1px solid #e6f2ff;
+}
+
+.custom-menu-style li:last-child {
+    border-bottom: none;
+}
+
+.custom-menu-style a {
+    padding: 12px 16px;
+    color: #4169e1;
+    font-weight: 500;
+}
+
+.custom-menu-style a:hover {
+    background-color: #e6f2ff;
+    color: #2c5aa0;
+}
+
+/* Theme examples */
+.theme-dark {
+    background-color: #2c2c2c;
+    border-color: #444;
+}
+
+.theme-dark a {
+    color: #fff;
+}
+
+.theme-dark a:hover {
+    background-color: #444;
+}
+
+#menu-event-output {
+    line-height: 1.4;
+}
+
+/* Ensure proper spacing */
+.drop-menu-container {
+    margin: 10px 5px;
+}
+
+/* Custom button styling */
+.button.success {
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+
+.button.info {
+    background-color: #2196f3;
+    border-color: #2196f3;
+}
+
+.button.warning {
+    background-color: #ff9800;
+    border-color: #ff9800;
+}
+
+.button.secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.button.dark {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.button.outline.secondary {
+    background-color: transparent;
+    color: #6c757d;
+    border-color: #6c757d;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Event handler functions for demo
+function handleMenuCreate() {
+    addToMenuOutput("Drop Menu created successfully");
+}
+
+// API method demonstrations
+function openMenu(menuId) {
+    const dropMenu = Metro.getPlugin('#' + menuId + ' ul[data-role="dropmenu"]', 'dropmenu');
+    if (dropMenu) {
+        dropMenu.open();
+        updateApiStatus("Menu opened");
+        addToMenuOutput("API: Menu opened for " + menuId);
+    }
+}
+
+function closeMenu(menuId) {
+    const dropMenu = Metro.getPlugin('#' + menuId + ' ul[data-role="dropmenu"]', 'dropmenu');
+    if (dropMenu) {
+        dropMenu.close();
+        updateApiStatus("Menu closed");
+        addToMenuOutput("API: Menu closed for " + menuId);
+    }
+}
+
+function destroyMenu(menuId) {
+    const dropMenu = Metro.getPlugin('#' + menuId + ' ul[data-role="dropmenu"]', 'dropmenu');
+    if (dropMenu) {
+        dropMenu.destroy();
+        updateApiStatus("Component destroyed");
+        addToMenuOutput("API: Drop Menu component destroyed for " + menuId);
+    }
+}
+
+// Utility functions
+function addToMenuOutput(message) {
+    const output = document.getElementById('menu-event-output');
+    if (output) {
+        const timestamp = new Date().toLocaleTimeString();
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = `[${timestamp}] ${message}`;
+        output.appendChild(newDiv);
+        output.scrollTop = output.scrollHeight;
+    }
+}
+
+function updateApiStatus(status) {
+    const statusDiv = document.getElementById('api-status');
+    if (statusDiv) {
+        statusDiv.innerHTML = `<small><strong>Status:</strong> ${status}</small>`;
+    }
+}
+
+// Initialize when page loads
+$(document).ready(function() {
+    // MetroUI will initialize elements with data-role automatically
+    
+    // Add clear button for event output
+    const clearBtn = $('<button class="button small mt-2">Clear Output</button>');
+    clearBtn.on('click', function() {
+        $('#menu-event-output').html('<small class="text-muted">Menu events will appear here...</small>');
+    });
+    $('#menu-event-output').after(clearBtn);
+    
+    // Add some instruction text
+    const instructionDiv = $('<div class="alert alert-info mt-2"><small><strong>Instructions:</strong> Click menu buttons to open drop menus. Nested menus will open when hovering over items with submenus. Use the API buttons to control menu behavior programmatically.</small></div>');
+    $('#interactive-menu').after(instructionDiv);
+    
+    // Manually initialize all drop menus to prevent toggle errors
+    $('[data-role="dropmenu"]').each(function() {
+        try {
+            // Try different component names to see which works
+            if (typeof Metro.makePlugin === 'function') {
+                Metro.makePlugin(this, "dropmenu");
+                addToMenuOutput('Initialized drop menu as "dropmenu": ' + (this.id || 'unnamed'));
+            } else if (typeof Metro.dropmenu !== 'undefined') {
+                Metro.dropmenu(this);
+                addToMenuOutput('Initialized with Metro.dropmenu: ' + (this.id || 'unnamed'));
+            } else {
+                addToMenuOutput('Metro dropmenu not available');
+            }
+        } catch (e) {
+            console.log('Drop menu initialization error:', e);
+            addToMenuOutput('Error initializing drop menu: ' + e.message);
+            
+            // Try alternative initialization
+            try {
+                if (this.id) {
+                    Metro.makePlugin('#' + this.id, "dropdown");
+                    addToMenuOutput('Fallback: initialized as dropdown: ' + this.id);
+                }
+            } catch (e2) {
+                addToMenuOutput('Fallback failed: ' + e2.message);
+            }
+        }
+    });
+    
+    // Add initial message
+    setTimeout(function() {
+        addToMenuOutput('Page loaded - drop menus manually initialized');
+    }, 500);
+});
+</script>
+{% endblock %}

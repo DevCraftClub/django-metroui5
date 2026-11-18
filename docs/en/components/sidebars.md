@@ -638,3 +638,16 @@ def create_authorized_sidebar(user, all_menu_items):
 - [Navigation](navigation.md) - For navigation systems
 - [Icons](icons.md) - For sidebar menu icons
 - [Panels](panels.md) - For sidebar content panels
+
+
+## metroui5_sidebar
+
+```python
+render_sidebar([{'text': 'One', 'href': '/one'}])
+```
+
+Empty or invalid: `render_sidebar([{'text': 'One', 'href': '/one'}])` returns `<ul class="sidebar" data-role="sidebar"><li><a href="/one">One</a></li></ul>`. An empty call returns `<ul class="sidebar" data-role="sidebar"></ul>`.
+
+```django
+{% metroui5_sidebar items %}
+```

@@ -693,3 +693,16 @@ def create_accessible_breadcrumb(items):
 - [Menus](menus.md) - For dropdown navigation menus
 - [Icons](icons.md) - For breadcrumb icons
 - [Links](links.md) - For breadcrumb link styling
+
+
+## metroui5_breadcrumb
+
+```python
+render_breadcrumb([{'text': 'One', 'href': '/one'}])
+```
+
+Empty or invalid: `render_breadcrumb([{'text': 'One', 'href': '/one'}])` returns `<ul class="breadcrumbs" id="breadcrumb-component"><li class="active"><a href="/one">One</a></li></ul>`. An empty call returns `<ul class="breadcrumbs" id="breadcrumb-component"></ul>`.
+
+```django
+{% metroui5_breadcrumb items %}
+```

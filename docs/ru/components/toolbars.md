@@ -683,3 +683,16 @@ def create_accessible_toolbar(items):
 - [Выпадающие списки](dropdowns.md) - Для выпадающих меню панели инструментов
 - [Иконки](icons.md) - Для иконок кнопок панели инструментов
 - [Навигация](navigation.md) - Для панелей инструментов навигации
+
+
+## metroui5_toolbar
+
+```python
+render_toolbar([{'text': 'One', 'href': '/one'}])
+```
+
+Пустое или неверное значение: `render_toolbar([{'text': 'One', 'href': '/one'}])` даёт `<ul class="toolbar" data-role="toolbar"><li><a href="/one">One</a></li></ul>`. Пустой вызов даёт `<ul class="toolbar" data-role="toolbar"></ul>`.
+
+```django
+{% metroui5_toolbar items %}
+```
