@@ -1,0 +1,5 @@
+site_name: Django MetroUI5
+docs_dir: docs
+
+theme:
+  name: mkdocs
