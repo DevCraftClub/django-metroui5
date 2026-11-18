@@ -1,9 +1,5 @@
-# Dependabot configuration for Django MetroUI5
-# Конфигурация Dependabot для Django MetroUI5
 version: 2
 updates:
-  # Python dependencies (pip/poetry) - consolidated into one entry
-  # Зависимости Python (pip/poetry) - объединено в одну запись
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
@@ -13,9 +9,9 @@ updates:
       timezone: "Europe/Berlin"
     open-pull-requests-limit: 20
     reviewers:
-      - "Gokujo"
+      - "MaximHarder"
     assignees:
-      - "Gokujo"
+      - "MaximHarder"
     labels:
       - "dependencies"
       - "python"
@@ -26,8 +22,6 @@ updates:
       prefix: "deps"
       include: "scope"
     ignore:
-      # Ignore major version updates for critical packages
-      # Игнорировать обновления мажорных версий для критических пакетов
       - dependency-name: "django"
         update-types: ["version-update:semver-major"]
       - dependency-name: "django-*"
@@ -42,12 +36,9 @@ updates:
         update-types: ["version-update:semver-major"]
       - dependency-name: "flake8"
         update-types: ["version-update:semver-major"]
-    # Allow updates for development dependencies
-    # Разрешить обновления для зависимостей разработки
     allow:
       - dependency-type: "development"
 
-  # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -57,9 +48,9 @@ updates:
       timezone: "Europe/Berlin"
     open-pull-requests-limit: 5
     reviewers:
-      - "Gokujo"
+      - "MaximHarder"
     assignees:
-      - "Gokujo"
+      - "MaximHarder"
     labels:
       - "dependencies"
       - "github-actions"
