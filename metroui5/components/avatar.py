@@ -85,6 +85,12 @@ def render_initials_avatar(name, **attrs):
 
 	Args:
 		name: Name to generate initials from
+<<<<<<< ours
+		**attrs: Additional HTML attributes. size, shape, bg_color, text_color,
+			max_initials, save_path and output_format control the picture.
+||||||| ancestor
+		**attrs: Additional HTML attributes
+=======
 		**attrs: Additional HTML attributes. size, shape, bg_color, text_color,
 			max_initials, save_path and output_format control the picture.
 	Example:
@@ -92,7 +98,46 @@ def render_initials_avatar(name, **attrs):
 
 	Empty or invalid:
 		`render_initials_avatar(None)` returns an img with empty initials.
+>>>>>>> theirs
 	"""
+<<<<<<< ours
+	label = "" if name is None else str(name)
+	max_initials = attrs.pop("max_initials", 2)
+	size = attrs.pop("size", "medium")
+	shape = attrs.pop("shape", "square")
+	bg_color = attrs.pop("bg_color", None)
+	text_color = attrs.pop("text_color", "white")
+	save_path = attrs.pop("save_path", None)
+	output_format = attrs.pop("output_format", "png")
+	font_size = attrs.pop("font_size", None)
+	attrs.pop("font_weight", None)
+
+	px = _AVATAR_SIZES.get(size, _AVATAR_SIZES["medium"])
+	try:
+		font_px = int(font_size) if font_size else max(12, px // 2)
+	except (TypeError, ValueError):
+		font_px = max(12, px // 2)
+	img = _avatar_image(
+		_avatar_initials(label, max_initials),
+		_avatar_color(label, bg_color),
+		text_color,
+		px,
+		shape,
+		font_px,
+	)
+	buffer = BytesIO()
+	img.save(buffer, format="PNG")
+	src = "data:image/png;base64," + base64.b64encode(buffer.getvalue()).decode("ascii")
+	if save_path:
+		file_format = _AVATAR_FORMATS.get(str(output_format).lower(), "PNG")
+		stored = img.convert("RGB") if file_format == "JPEG" else img
+		stored.save(save_path, format=file_format)
+
+	final_attrs = {
+||||||| ancestor
+	# This is a simplified version - the full implementation would be much larger
+	default_attrs = {
+=======
 	label = "" if name is None else str(name)
 	max_initials = attrs.pop("max_initials", 2)
 	size = attrs.pop("size", "medium")
@@ -126,6 +171,7 @@ def render_initials_avatar(name, **attrs):
 		stored.save(save_path, format=file_format)
 
 	final_attrs = {
+>>>>>>> theirs
 		"class": "avatar initials-avatar",
 		"src": src,
 		"alt": f"Avatar for {label}",
