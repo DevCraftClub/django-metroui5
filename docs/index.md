@@ -1,3 +1,4 @@
 # Django MetroUI5
 
-[MetroUI5 Django Documentation](README.md)
+- [English](en/index.md)
+- [Русский](ru/index.md)

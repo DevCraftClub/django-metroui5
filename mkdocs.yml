@@ -1,5 +1,20 @@
 site_name: Django MetroUI5
 docs_dir: docs
 
+# Zensical: вид как у прежней темы, в шапке English и Русский.
 theme:
-  name: mkdocs
+  name: material
+  variant: classic
+  language: en
+
+extra:
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: Русский
+      link: /ru/
+      lang: ru
+
+exclude_docs: |
+  /README.md

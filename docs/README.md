@@ -6,7 +6,7 @@ Welcome to the MetroUI5 Django documentation! This package provides convenient f
 
 This documentation is available in two languages:
 
-### 🇷🇺 [Russian Documentation](ru/README.md)
+### 🇷🇺 [Russian Documentation](ru/index.md)
 
 Complete documentation in Russian language, including:
 
@@ -14,7 +14,7 @@ Complete documentation in Russian language, including:
 - [Components](ru/components/) - UI components and their usage
 - [API Reference](ru/api-reference/) - detailed API documentation
 
-### 🇺🇸 [English Documentation](en/README.md)
+### 🇺🇸 [English Documentation](en/index.md)
 
 Complete documentation in English language, including:
 
@@ -119,8 +119,8 @@ MetroUI5 Django is a package that provides:
 
 Choose your preferred language:
 
-- **🇷🇺 [Russian](ru/README.md)** - Полная документация на русском языке
-- **🇺🇸 [English](en/README.md)** - Complete documentation in English
+- **🇷🇺 [Russian](ru/index.md)** - Полная документация на русском языке
+- **🇺🇸 [English](en/index.md)** - Complete documentation in English
 
 Both language versions contain identical information and examples, so you can choose based on your preference.
 
