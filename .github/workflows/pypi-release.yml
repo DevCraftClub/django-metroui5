@@ -96,22 +96,18 @@ jobs:
       - name: Set version
         id: set_version
         run: |
-          if [ "${{ github.event.inputs.version }}" != "" ]; then
-            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
-            echo "VERSION_STRING==\${{ github.event.inputs.version }}" >> $GITHUB_ENV
-            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
-            echo "version_string==\${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
-          elif [ "${{ github.event_name }}" == "push" ]; then
-            echo "VERSION=${{ github.ref_name }}" >> $GITHUB_ENV
-            echo "VERSION_STRING==\${{ github.ref_name }}" >> $GITHUB_ENV
-            echo "version=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-            echo "version_string==\${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            VER="${{ github.event.inputs.version }}"
+          elif [ "${{ github.event_name }}" = "push" ]; then
+            VER="${{ github.ref_name }}"
           else
-            echo "VERSION=" >> $GITHUB_ENV
-            echo "VERSION_STRING=" >> $GITHUB_ENV
-            echo "version=" >> $GITHUB_OUTPUT
-            echo "version_string=" >> $GITHUB_OUTPUT
+            VER=""
           fi
+          VER="${VER#v}"
+          echo "VERSION=$VER" >> "$GITHUB_ENV"
+          echo "VERSION_STRING=$VER" >> "$GITHUB_ENV"
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+          echo "version_string=$VER" >> "$GITHUB_OUTPUT"
 
       - name: Publish to PyPI
         env:
@@ -151,7 +147,7 @@ jobs:
             ### 📦 Installation
             ```bash
             if [ -n "${{ env.VERSION_STRING }}" ]; then
-              echo "Installing django-metroui5${{ env.VERSION_STRING }}"
+              echo "Installing django-metroui5==${{ env.VERSION_STRING }}"
               pip install django-metroui5==${{ env.VERSION_STRING }}
             else
               echo "Installing latest django-metroui5"
@@ -183,13 +179,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools wheel
           if [ -n "${{ env.VERSION_STRING }}" ]; then
-            echo "Installing django-metroui5${{ env.VERSION_STRING }}"
+            echo "Installing django-metroui5==${{ env.VERSION_STRING }}"
             pip install django-metroui5==${{ env.VERSION_STRING }}
           else
             echo "Installing latest django-metroui5"
             pip install -U django-metroui5
           fi
           python -c "import metroui5; print('Package imported successfully')"
+
+      - name: Checkout code
+        uses: actions/checkout@v6
 
       - name: Test demo application
         run: |
