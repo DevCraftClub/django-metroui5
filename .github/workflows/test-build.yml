@@ -25,6 +25,8 @@ env:
 jobs:
   test:
     name: Compatibility Test
+    # Python 3.9 есть только до Ubuntu 24.04. На ubuntu-latest (26.04) сборки нет.
+    runs-on: ubuntu-24.04
     if: github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'compatibility-test-only' || github.event_name != 'workflow_dispatch'
     strategy:
       matrix:
