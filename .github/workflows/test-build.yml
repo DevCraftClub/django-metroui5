@@ -24,8 +24,7 @@ env:
 
 jobs:
   test:
-    name: Compatibility Test (Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }})
-    runs-on: ubuntu-latest
+    name: Compatibility Test
     if: github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'compatibility-test-only' || github.event_name != 'workflow_dispatch'
     strategy:
       matrix:

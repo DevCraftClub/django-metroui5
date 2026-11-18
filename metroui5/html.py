@@ -105,8 +105,10 @@ def render_script_tag(url, **attrs):
 		if async_attr:
 			attrs['async'] = True
 	else:
-		# Use simple URL string
+		# Use simple URL string. async is a keyword, so callers pass async_attr.
 		src = url
+		if attrs.pop("async_attr", False):
+			attrs["async"] = True
 
 		if 'type' not in attrs:
 			attrs['type'] = 'text/javascript'

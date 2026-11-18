@@ -157,7 +157,7 @@ class TestRenderScriptTag:
         assert 'src="test.js"' in result
         assert 'type="text/javascript"' in result
         assert result.startswith('<script')
-        assert result.endswith(' />')
+        assert result.endswith('</script>')
 
     def test_render_script_tag_with_custom_attrs(self):
         """Тест рендеринга script тега с пользовательскими атрибутами"""
@@ -167,7 +167,7 @@ class TestRenderScriptTag:
         assert 'async' in result
         assert 'defer' in result
         assert result.startswith('<script')
-        assert result.endswith(' />')
+        assert result.endswith('</script>')
 
     def test_render_script_tag_with_config_dict(self):
         """Тест рендеринга script тега с конфигурационным словарем"""
@@ -184,7 +184,7 @@ class TestRenderScriptTag:
         assert 'integrity="sha256-test"' in result
         assert 'crossorigin="anonymous"' in result
         assert result.startswith('<script')
-        assert result.endswith(' />')
+        assert result.endswith('</script>')
 
     def test_render_script_tag_override_defaults(self):
         """Тест переопределения значений по умолчанию"""
@@ -196,7 +196,7 @@ class TestRenderScriptTag:
         assert 'src="custom.js"' in result
         assert 'type="module"' in result
         assert result.startswith('<script')
-        assert result.endswith(' />')
+        assert result.endswith('</script>')
 
     def test_render_script_tag_with_async(self):
         """Тест рендеринга script тега с async"""
@@ -205,7 +205,7 @@ class TestRenderScriptTag:
         assert 'type="text/javascript"' in result
         assert 'async' in result
         assert result.startswith('<script')
-        assert result.endswith(' />')
+        assert result.endswith('</script>')
 
     def test_render_script_tag_with_defer(self):
         """Тест рендеринга script тега с defer"""
@@ -214,7 +214,7 @@ class TestRenderScriptTag:
         assert 'type="text/javascript"' in result
         assert 'defer' in result
         assert result.startswith('<script')
-        assert result.endswith(' />')
+        assert result.endswith('</script>')
 
     def test_render_script_tag_with_integrity(self):
         """Тест рендеринга script тега с integrity"""
@@ -223,7 +223,7 @@ class TestRenderScriptTag:
         assert 'type="text/javascript"' in result
         assert 'integrity="sha256-abc123"' in result
         assert result.startswith('<script')
-        assert result.endswith(' />')
+        assert result.endswith('</script>')
 
 
 class TestRenderCustomFiles:
@@ -278,7 +278,7 @@ class TestRenderCustomFiles:
         assert 'src="custom.js"' in result
         assert 'type="text/javascript"' in result
         assert result.startswith('<script')
-        assert result.endswith(' />')
+        assert result.endswith('</script>')
 
     def test_render_custom_javascript_files_multiple(self):
         """Тест рендеринга нескольких JavaScript файлов"""
