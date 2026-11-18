@@ -1,0 +1,177 @@
+name: Dependabot queue
+
+on:
+  workflow_run:
+    workflows:
+      - Compatibility Test and Build
+    types:
+      - completed
+
+# Слияние, метка, комментарий, чтение проверок и ручной запуск того же набора тестов.
+# Обычный токен GitHub не запускает проверки сам после обновления ветки, поэтому запуск явный.
+permissions:
+  actions: write
+  checks: read
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: dependabot-automerge
+  cancel-in-progress: false
+
+jobs:
+  queue:
+    name: One dependabot pull
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Merge or hold one pull
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          HOLD: dependabot-automerge-hold
+        run: |
+          set -euo pipefail
+
+          if ! gh label list --repo "$REPO" --limit 200 | awk '{print $1}' | grep -Fxq "$HOLD"; then
+            gh label create "$HOLD" --repo "$REPO" --color B60205 --description "Не сливать, пока не будет нового коммита"
+          fi
+
+          list=$(gh pr list --repo "$REPO" --state open --author 'dependabot[bot]' --limit 50 \
+            --json number,createdAt,headRefOid,headRefName,reviewRequests,assignees,labels)
+          if [ "$(jq 'length' <<<"$list")" -eq 0 ]; then
+            exit 0
+          fi
+
+          mapfile -t rows < <(jq -c 'sort_by(.createdAt) | .[]' <<<"$list")
+          count=${#rows[@]}
+
+          has_hold() {
+            jq -e --arg name "$HOLD" '[.labels[].name] | index($name) != null' <<<"$1" >/dev/null
+          }
+
+          # ponytail: последние 30 событий метки; более старая метка после 30 чужих меток роняет задание
+          label_time() {
+            case "$1" in
+              ''|*[!0-9]*) return 1 ;;
+            esac
+            case "$REPO" in
+              */*) ;;
+              *) return 1 ;;
+            esac
+            local owner="${REPO%%/*}" name="${REPO#*/}"
+            case "${owner}${name}" in
+              *[!A-Za-z0-9._-]*) return 1 ;;
+            esac
+            gh api graphql -f query="
+              query {
+                repository(owner: \"${owner}\", name: \"${name}\") {
+                  issue(number: $1) {
+                    timelineItems(last: 30, itemTypes: [LABELED_EVENT]) {
+                      nodes { ... on LabeledEvent { createdAt label { name } } }
+                    }
+                  }
+                }
+              }" --jq '[.data.repository.issue.timelineItems.nodes[] | select(.label.name == env.HOLD) | .createdAt] | last // empty'
+          }
+
+          wait_then_run() {
+            local num="$1" old="$2" branch="$3" i head
+            for ((i = 0; i < 12; i++)); do
+              head=$(gh pr view "$num" --repo "$REPO" --json headRefOid --jq '.headRefOid')
+              if [ -n "$head" ] && [ "$head" != "$old" ]; then
+                gh workflow run "Compatibility Test and Build" --repo "$REPO" --ref "$branch"
+                return 0
+              fi
+              sleep 5
+            done
+            echo "Голова #${num} не сменилась после обновления" >&2
+            return 1
+          }
+
+          for ((i = 0; i < count; i++)); do
+            row=${rows[$i]}
+            num=$(jq -r '.number' <<<"$row")
+            sha=$(jq -r '.headRefOid' <<<"$row")
+            branch=$(jq -r '.headRefName' <<<"$row")
+
+            if has_hold "$row"; then
+              labeled_at=$(label_time "$num")
+              commit_at=$(gh api "repos/${REPO}/commits/${sha}" --jq '.commit.committer.date')
+              if [ -z "$labeled_at" ] || [ -z "$commit_at" ]; then
+                echo "Не прочитано время метки или коммита #${num}" >&2
+                exit 1
+              fi
+              label_epoch=$(date -d "$labeled_at" +%s)
+              commit_epoch=$(date -d "$commit_at" +%s)
+              if [ "$commit_epoch" -gt "$label_epoch" ]; then
+                gh pr edit "$num" --repo "$REPO" --remove-label "$HOLD"
+              else
+                continue
+              fi
+            fi
+
+            run_json=$(gh run list --repo "$REPO" --workflow "Compatibility Test and Build" --commit "$sha" --limit 5 \
+              --json status,conclusion,createdAt)
+            latest=$(jq -c 'sort_by(.createdAt) | last // empty' <<<"$run_json")
+            if [ -z "$latest" ]; then
+              exit 0
+            fi
+            status=$(jq -r '.status' <<<"$latest")
+            conclusion=$(jq -r '.conclusion' <<<"$latest")
+            if [ "$status" != "completed" ]; then
+              exit 0
+            fi
+
+            if [ "$conclusion" != "success" ]; then
+              case "$conclusion" in
+                failure|timed_out|cancelled|startup_failure)
+                  mentions=$(jq -r '[.reviewRequests[]?.login, .assignees[]?.login] | map(select(. != null and . != "")) | unique | map("@" + .) | join(" ")' <<<"$row")
+                  body="Проверки Compatibility Test and Build красные. Запрос не сливаю."
+                  if [ -n "$mentions" ]; then
+                    body="${body} ${mentions}"
+                  fi
+                  gh pr comment "$num" --repo "$REPO" --body "$body"
+                  gh pr edit "$num" --repo "$REPO" --add-label "$HOLD"
+                  continue
+                  ;;
+                *)
+                  exit 0
+                  ;;
+              esac
+            fi
+
+            base=$(gh pr view "$num" --repo "$REPO" --json baseRefName --jq '.baseRefName')
+            behind=$(gh api "repos/${REPO}/compare/${base}...${sha}" --jq '.behind_by')
+            if [ "$behind" -gt 0 ]; then
+              gh api --method PUT "repos/${REPO}/pulls/${num}/update-branch" -f "expected_head_sha=${sha}"
+              wait_then_run "$num" "$sha" "$branch"
+              exit 0
+            fi
+
+            gh pr merge "$num" --repo "$REPO" --squash
+
+            for ((j = i + 1; j < count; j++)); do
+              next=${rows[$j]}
+              if has_hold "$next"; then
+                continue
+              fi
+              next_num=$(jq -r '.number' <<<"$next")
+              next_sha=$(jq -r '.headRefOid' <<<"$next")
+              next_branch=$(jq -r '.headRefName' <<<"$next")
+              set +e
+              update_out=$(gh api --method PUT "repos/${REPO}/pulls/${next_num}/update-branch" -f "expected_head_sha=${next_sha}" 2>&1)
+              update_code=$?
+              set -e
+              if [ "$update_code" -ne 0 ] && ! grep -Fq 'There are no new commits on the base branch' <<<"$update_out"; then
+                echo "$update_out" >&2
+                exit 1
+              fi
+              if [ "$update_code" -eq 0 ]; then
+                wait_then_run "$next_num" "$next_sha" "$next_branch"
+              else
+                gh workflow run "Compatibility Test and Build" --repo "$REPO" --ref "$next_branch"
+              fi
+              exit 0
+            done
+            exit 0
+          done
