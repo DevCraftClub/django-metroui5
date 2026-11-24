@@ -188,7 +188,7 @@ jobs:
           python -c "import metroui5; print('Package imported successfully')"
 
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Test demo application
         run: |
