@@ -11,7 +11,7 @@
 ### Предварительные требования / Prerequisites
 
 - Python 3.13+
-- Django 5.2.5+
+- Django 5.2.17+
 - Git
 
 ### Установка для разработки / Development Setup

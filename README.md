@@ -1,15 +1,15 @@
 # Django MetroUI5
 
-[![Python Version](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/downloads/)
-[![Django Version](https://img.shields.io/badge/django-4.1%20%7C%204.2%20%7C%205.0%20%7C%205.1%20%7C%205.2.5-green.svg)](https://www.djangoproject.com/)
+[![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/downloads/)
+[![Django Version](https://img.shields.io/badge/django-4.1%2B%20(rec.%205.2.17%2B)-green.svg)](https://www.djangoproject.com/)
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
-[![Compatibility](https://img.shields.io/badge/compatibility-25%20combinations-brightgreen.svg)](https://github.com/DevCraftClub/django-metroui5/actions)
+[![Compatibility](https://img.shields.io/badge/compatibility-19%20combinations-brightgreen.svg)](https://github.com/DevCraftClub/django-metroui5/actions)
 
-**Django MetroUI5** - это Django пакет для интеграции MetroUI v5 с Django 4.1+ и Python 3.9+.
+**Django MetroUI5** - это Django пакет для интеграции MetroUI v5 с Django 4.1+ (рекомендуем 5.2.17+) и Python 3.10+.
 
-**Django MetroUI5** is a Django package for integrating MetroUI v5 with Django 4.1+ and Python 3.9+.
+**Django MetroUI5** is a Django package for integrating MetroUI v5 with Django 4.1+ (recommended 5.2.17+) and Python 3.10+.
 
-> 🔄 **Compatibility Tested**: Our CI/CD pipeline tests **25 different combinations** of Python and Django versions to ensure metroui5 works across all supported environments.
+> 🔄 **Compatibility Tested**: Our CI/CD pipeline tests **19 different combinations** of Python and Django versions to ensure metroui5 works across all supported environments.
 
 ## 🚀 Особенности / Features
 
@@ -19,17 +19,17 @@
 - **Поддержка MetroUI компонентов**: tiles, cards, buttons, alerts, progress bars / **MetroUI component support**:
   tiles, cards, buttons, alerts, progress bars
 - **Responsive дизайн** для всех устройств / **Responsive design** for all devices
-- **🔄 Comprehensive Compatibility Testing** - Tested across **25 Python + Django combinations**
-- **Django 4.1+ совместимость** / **Django 4.1+ compatibility**
-- **Python 3.9+ поддержка** / **Python 3.9+ support**
+- **🔄 Comprehensive Compatibility Testing** - Tested across **19 Python + Django combinations**
+- **Django 4.1+ совместимость** (рекомендуем 5.2.17+) / **Django 4.1+ compatibility** (recommended 5.2.17+)
+- **Python 3.10+ поддержка** / **Python 3.10+ support**
 - **Bilingual documentation** - English and Russian comments and docstrings
 - **Full test coverage** - Comprehensive testing for all components
 - **Online demo application** - Live demonstration of all features
 
 ## 📋 Требования / Requirements
 
-- Python 3.9, 3.10, 3.11, 3.12, or 3.13
-- Django 4.1, 4.2, 5.0, 5.1, or 5.2.5
+- Python 3.10, 3.11, 3.12, or 3.13
+- Django 4.1 or newer (recommended 5.2.17+; CI also covers 6.0 and 6.1)
 - MetroUI v5 (включен в пакет) / MetroUI v5 (included in package)
 
 ## 🛠️ Быстрый старт / Quick Start
@@ -73,10 +73,10 @@ python3 manage.py runserver
 
 ### 🧪 Compatibility Testing
 
-Our CI/CD pipeline tests **25 different combinations** of Python and Django versions to ensure metroui5 works across all supported environments:
+Our CI/CD pipeline tests **19 different combinations** of Python and Django versions to ensure metroui5 works across all supported environments:
 
-- **Python**: 3.9, 3.10, 3.11, 3.12, 3.13
-- **Django**: 4.1, 4.2, 5.0, 5.1, 5.2.5
+- **Python**: 3.10, 3.11, 3.12, 3.13
+- **Django**: 4.1, 4.2, 5.0, 5.1, 5.2.17+, 6.0, 6.1
 
 ### Запуск тестов / Running Tests
 
@@ -261,7 +261,7 @@ django-metroui5/
 - **Generic шаблоны** - базовые шаблоны для переиспользования / **Generic templates** - base templates for reuse
 - **Комплексное тестирование** - покрытие всех основных функций / **Comprehensive testing** - coverage of all main
   functions
-- **Современная архитектура** - использование Python 3.9+ возможностей / **Modern architecture** - using Python 3.9+ capabilities
+- **Современная архитектура** - использование Python 3.10+ возможностей / **Modern architecture** - using Python 3.10+ capabilities
   capabilities
 - **Full MetroUI v5 integration** - complete component library with Django integration
 
@@ -329,7 +329,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - **Bilingual Documentation** - English and Russian comments/docstrings throughout codebase
 - **Comprehensive Testing** - Full test coverage for all components and utilities
-- **Compatibility Testing Matrix** - 25 Python + Django version combinations tested
+- **Compatibility Testing Matrix** - 19 Python + Django version combinations tested
 - **Online Demo Application** - Live demonstration of all MetroUI5 features
 - **MetroUI v5 Integration** - Complete component library with Django integration
 - **Form Rendering System** - Automatic MetroUI styling for Django forms

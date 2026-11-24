@@ -49,7 +49,7 @@ Remove inappropriate options. / Удалите неподходящие вари
 
 ### Django MetroUI5 Specific / Специфично для Django MetroUI5
 
-- [ ] Changes maintain backward compatibility with Django 5.2+ / Изменения сохраняют обратную совместимость с Django 5.2+
+- [ ] Changes maintain backward compatibility with Django 4.1+ (recommended 5.2.17+) / Изменения сохраняют обратную совместимость с Django 4.1+ (рекомендуем 5.2.17+)
 - [ ] Changes maintain backward compatibility with Python 3.8+ / Изменения сохраняют обратную совместимость с Python 3.8+
 - [ ] MetroUI5 components and templates are properly updated / Компоненты и шаблоны MetroUI5 правильно обновлены
 - [ ] Form rendering compatibility is maintained / Совместимость рендеринга форм сохранена

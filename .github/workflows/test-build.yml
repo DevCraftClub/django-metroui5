@@ -20,26 +20,40 @@ on:
 
 env:
   PYTHON_VERSION: "3.13"
-  PYTHON_VERSION_MIN: "3.9"
+  PYTHON_VERSION_MIN: "3.10"
 
 jobs:
   test:
     name: Compatibility Test
-    # Python 3.9 есть только до Ubuntu 24.04. На ubuntu-latest (26.04) сборки нет.
     runs-on: ubuntu-24.04
     if: github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'compatibility-test-only' || github.event_name != 'workflow_dispatch'
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
-        django-version: ["4.2.16", "5.0.8", "5.1.4", "5.2.5"]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        django-version: ["4.1.13", "4.2.30", "5.0.14", "5.1.15", "5.2.17", "6.0.10", "6.1.3"]
         exclude:
-          # Django 5.0+ doesn't support Python 3.9
-          - python-version: "3.9"
-            django-version: "5.0.8"
-          - python-version: "3.9"
-            django-version: "5.1.4"
-          - python-version: "3.9"
-            django-version: "5.2.5"
+          # Django 4.1: Python ≤3.10
+          - python-version: "3.11"
+            django-version: "4.1.13"
+          - python-version: "3.12"
+            django-version: "4.1.13"
+          - python-version: "3.13"
+            django-version: "4.1.13"
+          # Django 4.2: Python ≤3.12
+          - python-version: "3.13"
+            django-version: "4.2.30"
+          # Django 5.0: Python ≤3.12
+          - python-version: "3.13"
+            django-version: "5.0.14"
+          # Django 6.0 и 6.1: Python ≥3.12
+          - python-version: "3.10"
+            django-version: "6.0.10"
+          - python-version: "3.11"
+            django-version: "6.0.10"
+          - python-version: "3.10"
+            django-version: "6.1.3"
+          - python-version: "3.11"
+            django-version: "6.1.3"
 
     steps:
       - name: Checkout code
@@ -55,6 +69,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install "django==${{ matrix.django-version }}"
           pip install -e .[dev]
+          pip install "django==${{ matrix.django-version }}"
           pip install pytest pytest-django pytest-cov
 
       - name: Run tests

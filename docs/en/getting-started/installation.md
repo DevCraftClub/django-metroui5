@@ -7,12 +7,12 @@ Detailed guide for installing MetroUI5 Django in your project.
 ### System Requirements
 
 - **Python**: 3.10 or higher (lower versions not tested)
-- **Django**: 5.2 or higher (lower versions not tested)
+- **Django**: 4.1 or higher (recommended 5.2.17+; CI tests from 4.1 through 6.1)
 - **Operating System**: Windows, macOS, Linux
 
 ### Dependencies
 
-- `django` >= 5.2
+- `django` >= 4.1 (recommended >= 5.2.17)
 - `django-crispy-forms` (optional, for extended form functionality)
 
 ## Installation Methods

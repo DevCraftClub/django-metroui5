@@ -45,16 +45,14 @@ body:
             label: Django Version
             description: What version of Django are you targeting?
             options:
-                - "5.2+ (Default)"
+                - "5.2.17+ (Default)"
+                - "6.1"
+                - "6.0"
                 - "5.1"
                 - "5.0"
                 - "4.2"
                 - "4.1"
-                - "4.0"
-                - "3.2"
-                - "3.1"
-                - "3.0"
-                - "< 3.0"
+                - "other"
        validations:
             required: true
     -   type: dropdown
@@ -67,9 +65,7 @@ body:
                 - "3.12"
                 - "3.11"
                 - "3.10"
-                - "3.9"
-                - "3.8"
-                - "< 3.8"
+                - "other"
         validations:
             required: true
     -   type: textarea

@@ -18,7 +18,7 @@ on:
 
 env:
   PYTHON_VERSION: "3.13"
-  PYTHON_VERSION_MIN: "3.9"
+  PYTHON_VERSION_MIN: "3.10"
 
 jobs:
   compatibility:

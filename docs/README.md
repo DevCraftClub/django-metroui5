@@ -69,7 +69,7 @@ MetroUI5 Django is a package that provides:
 ## Requirements
 
 - **Python**: 3.10 or higher
-- **Django**: 5.2 or higher
+- **Django**: 4.1 or higher (recommended 5.2.17+)
 - **MetroUI**: 5.1.17 or higher
 
 ## Quick Start
